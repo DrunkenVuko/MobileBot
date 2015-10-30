@@ -72,9 +72,9 @@ class BotController {
     /**
      * Use `startMovingWithPositionalUpdate` instead. Starts moving the Bot.
      *
-     * :param: velocity Bot velocity
-     * :param: omega Bot omega (turn speed)
-     * :param: completion Completion handler to be executed on finish
+     * - parameter velocity: Bot velocity
+     * - parameter omega: Bot omega (turn speed)
+     * - parameter completion: Completion handler to be executed on finish
      */
     func move(velocity: Float, omega: Float, completion: (() -> Void)? ) {
         logger.log(.Info, data: "moving: \(velocity): \(omega)");
@@ -98,7 +98,7 @@ class BotController {
     /**
      * Stops moving the bot. !!! Important !!! call `stoptUpdatingPosition` before calling `stop`
      *
-     * :param: callback Funktion to be called on finish
+     * - parameter callback: Funktion to be called on finish
      */
     func stop(completion: (() -> Void)? ) {
         logger.log(.Info, data: "stopping...");
@@ -109,9 +109,9 @@ class BotController {
     /**
      * Starts moving the Bot and delivers positional updates through the callback
      *
-     * :param: velocity Bot velocity
-     * :param: omega Bot omega (turn speed)
-     * :param: callbacl Delivers positional updates
+     * - parameter velocity: Bot velocity
+     * - parameter omega: Bot omega (turn speed)
+     * - parameter callbacl: Delivers positional updates
      */
     func startMovingWithPositionalUpdate(velocity: Float, omega: Float, callback: ForwardKinematicsData -> Void) {
         logger.log(.Info, data: "starting movement and positional update...");
@@ -126,7 +126,7 @@ class BotController {
     /**
      * Stops moving the bot and delivering positional updates
      *
-     * :param: callback Funktion to be called on finish
+     * - parameter callback: Funktion to be called on finish
      */
     func stopMovingWithPositionalUpdate(completion: (() -> Void)? ) {
         logger.log(.Info, data: "stopping movement and positional update");
@@ -140,7 +140,7 @@ class BotController {
      * Starts updating the current Bots position. Delivers received data to the caller through the callback. 
      * !!! Important !!! call `stoptUpdatingPosition`
      *
-     * :param: callback Funktion to be called everytime a new value is received
+     * - parameter callback: Funktion to be called everytime a new value is received
      */
     func startUpdatingPosition(once: Bool = false, completion: (ForwardKinematicsData) -> Void) {
         logger.log(.Info, data: "getting current position...");
@@ -180,14 +180,14 @@ class BotController {
     /**
      * Stops updating the current Bots position.
      *
-     * :param: callback Funktion to be called on success
+     * - parameter callback: Funktion to be called on success
      */
     func stoptUpdatingPosition() {
         self.shouldUpdatePosition = false;
     }
     
     func resetBotDynamics(completion: (() -> Void)? ) {
-        var rbd = ProtocolCommand(
+        let rbd = ProtocolCommand(
             key: ProtocolCommandKey.ResetBotDynamics,
             fields: []
         );
@@ -200,7 +200,7 @@ class BotController {
     }
     
     func resetForwardKincematics(completion: (() -> Void)? ) {
-        var sfk = ProtocolCommand(
+        let sfk = ProtocolCommand(
             key: ProtocolCommandKey.SetForwardKinematics,
             fields:
             [
@@ -232,16 +232,16 @@ class BotController {
     /**
      * Starts scanning specified range by min and max. Delivers received data to the caller through the callback
      *
-     * :param: min Minimal range to scan
-     * :param: max Maximum range to scan
-     * :param: inc Increment between each step
-     * :param: callback Funktion to be called everytime a new value is received
+     * - parameter min: Minimal range to scan
+     * - parameter max: Maximum range to scan
+     * - parameter inc: Increment between each step
+     * - parameter callback: Funktion to be called everytime a new value is received
      */
     func scanRange(min: UInt8, max: UInt8, inc: UInt8, callback: PingSensorData -> Void) {
         logger.log(.Info, data: "starting range scan...");
         
         // raw servo command
-        var ssar = ProtocolCommand(
+        let ssar = ProtocolCommand(
             key: ProtocolCommandKey.SetServoAngleRange,
             fields:
             [
@@ -252,14 +252,14 @@ class BotController {
         );
         
         // raw get ping sensor values command
-        var gpsv = ProtocolCommand(
+        let gpsv = ProtocolCommand(
             key: ProtocolCommandKey.GetPingSensorValue,
             fields: []
         );
         
         // composed command
-        var gpsvCommand = Command(command: gpsv);
-        var onSuccess: CommandSuccessHandler = { cmd in
+        let gpsvCommand = Command(command: gpsv);
+        let onSuccess: CommandSuccessHandler = { cmd in
             
             if self.shouldScanRange {
                 self.logger.log(.Info, data: "\(cmd)")
@@ -289,7 +289,7 @@ class BotController {
     func stopRangeScan(callback: () -> ()) {
         self.shouldScanRange = false;
         
-        var ssar = ProtocolCommand(
+        let ssar = ProtocolCommand(
             key: ProtocolCommandKey.SetServoAngleRange,
             fields:
             [

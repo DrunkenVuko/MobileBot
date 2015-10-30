@@ -1,0 +1,10 @@
+//
+//  Use this file to import your target's public headers that you would like to expose to Swift.
+//
+
+#import "BotConnectionManager.h"
+#import "BotConnection.h"
+
+#import "ProtocolCommand.h"
+
+#import "ProtocolCommandField.h"

@@ -8,13 +8,27 @@
 
 /* Begin PBXBuildFile section */
 		B8BDFABB1BD8B86F005CC1AE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BDFABA1BD8B86F005CC1AE /* AppDelegate.swift */; };
-		B8BDFABD1BD8B86F005CC1AE /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BDFABC1BD8B86F005CC1AE /* FirstViewController.swift */; };
-		B8BDFABF1BD8B86F005CC1AE /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BDFABE1BD8B86F005CC1AE /* SecondViewController.swift */; };
 		B8BDFAC21BD8B86F005CC1AE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B8BDFAC01BD8B86F005CC1AE /* Main.storyboard */; };
 		B8BDFAC41BD8B86F005CC1AE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B8BDFAC31BD8B86F005CC1AE /* Assets.xcassets */; };
 		B8BDFAC71BD8B86F005CC1AE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B8BDFAC51BD8B86F005CC1AE /* LaunchScreen.storyboard */; };
 		B8BDFAD21BD8B86F005CC1AE /* MobileBotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BDFAD11BD8B86F005CC1AE /* MobileBotTests.swift */; };
 		B8BDFADD1BD8B86F005CC1AE /* MobileBotUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BDFADC1BD8B86F005CC1AE /* MobileBotUITests.swift */; };
+		C59D387A1BE3694B0081F6E9 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C59D38681BE3694B0081F6E9 /* FirstViewController.swift */; };
+		C59D387F1BE3694B0081F6E9 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C59D38701BE3694B0081F6E9 /* SecondViewController.swift */; };
+		C59D389D1BE36B0F0081F6E9 /* BotConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = C59D388A1BE36B0F0081F6E9 /* BotConnection.m */; };
+		C59D389E1BE36B0F0081F6E9 /* BotConnectionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C59D388C1BE36B0F0081F6E9 /* BotConnectionManager.m */; };
+		C59D389F1BE36B0F0081F6E9 /* BotController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C59D388D1BE36B0F0081F6E9 /* BotController.swift */; };
+		C59D38A01BE36B0F0081F6E9 /* BotNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C59D388E1BE36B0F0081F6E9 /* BotNavigator.swift */; };
+		C59D38A11BE36B0F0081F6E9 /* BotUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = C59D388F1BE36B0F0081F6E9 /* BotUtils.swift */; };
+		C59D38A21BE36B0F0081F6E9 /* Command.swift in Sources */ = {isa = PBXBuildFile; fileRef = C59D38901BE36B0F0081F6E9 /* Command.swift */; };
+		C59D38A31BE36B0F0081F6E9 /* CommandQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = C59D38911BE36B0F0081F6E9 /* CommandQueue.swift */; };
+		C59D38A41BE36B0F0081F6E9 /* PersistableRegion.swift in Sources */ = {isa = PBXBuildFile; fileRef = C59D38931BE36B0F0081F6E9 /* PersistableRegion.swift */; };
+		C59D38A51BE36B0F0081F6E9 /* ProtocolCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = C59D38951BE36B0F0081F6E9 /* ProtocolCommand.m */; };
+		C59D38A61BE36B0F0081F6E9 /* ProtocolCommandExecutionUnit.m in Sources */ = {isa = PBXBuildFile; fileRef = C59D38971BE36B0F0081F6E9 /* ProtocolCommandExecutionUnit.m */; };
+		C59D38A71BE36B0F0081F6E9 /* ProtocolCommandField.m in Sources */ = {isa = PBXBuildFile; fileRef = C59D38991BE36B0F0081F6E9 /* ProtocolCommandField.m */; };
+		C59D38A81BE36B0F0081F6E9 /* Stream.swift in Sources */ = {isa = PBXBuildFile; fileRef = C59D389A1BE36B0F0081F6E9 /* Stream.swift */; };
+		C59D38A91BE36B0F0081F6E9 /* StreamableLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = C59D389B1BE36B0F0081F6E9 /* StreamableLogger.swift */; };
+		C59D38AA1BE36B0F0081F6E9 /* Toaster.swift in Sources */ = {isa = PBXBuildFile; fileRef = C59D389C1BE36B0F0081F6E9 /* Toaster.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,8 +51,6 @@
 /* Begin PBXFileReference section */
 		B8BDFAB71BD8B86F005CC1AE /* MobileBot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MobileBot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8BDFABA1BD8B86F005CC1AE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		B8BDFABC1BD8B86F005CC1AE /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
-		B8BDFABE1BD8B86F005CC1AE /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		B8BDFAC11BD8B86F005CC1AE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B8BDFAC31BD8B86F005CC1AE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B8BDFAC61BD8B86F005CC1AE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -49,6 +61,28 @@
 		B8BDFAD81BD8B86F005CC1AE /* MobileBotUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MobileBotUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8BDFADC1BD8B86F005CC1AE /* MobileBotUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobileBotUITests.swift; sourceTree = "<group>"; };
 		B8BDFADE1BD8B86F005CC1AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C59D38681BE3694B0081F6E9 /* FirstViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
+		C59D38701BE3694B0081F6E9 /* SecondViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		C59D38891BE36B0F0081F6E9 /* BotConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BotConnection.h; sourceTree = "<group>"; };
+		C59D388A1BE36B0F0081F6E9 /* BotConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BotConnection.m; sourceTree = "<group>"; };
+		C59D388B1BE36B0F0081F6E9 /* BotConnectionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BotConnectionManager.h; sourceTree = "<group>"; };
+		C59D388C1BE36B0F0081F6E9 /* BotConnectionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BotConnectionManager.m; sourceTree = "<group>"; };
+		C59D388D1BE36B0F0081F6E9 /* BotController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BotController.swift; sourceTree = "<group>"; };
+		C59D388E1BE36B0F0081F6E9 /* BotNavigator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BotNavigator.swift; sourceTree = "<group>"; };
+		C59D388F1BE36B0F0081F6E9 /* BotUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BotUtils.swift; sourceTree = "<group>"; };
+		C59D38901BE36B0F0081F6E9 /* Command.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Command.swift; sourceTree = "<group>"; };
+		C59D38911BE36B0F0081F6E9 /* CommandQueue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandQueue.swift; sourceTree = "<group>"; };
+		C59D38921BE36B0F0081F6E9 /* MobileBot-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MobileBot-Bridging-Header.h"; sourceTree = "<group>"; };
+		C59D38931BE36B0F0081F6E9 /* PersistableRegion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersistableRegion.swift; sourceTree = "<group>"; };
+		C59D38941BE36B0F0081F6E9 /* ProtocolCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProtocolCommand.h; sourceTree = "<group>"; };
+		C59D38951BE36B0F0081F6E9 /* ProtocolCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProtocolCommand.m; sourceTree = "<group>"; };
+		C59D38961BE36B0F0081F6E9 /* ProtocolCommandExecutionUnit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProtocolCommandExecutionUnit.h; sourceTree = "<group>"; };
+		C59D38971BE36B0F0081F6E9 /* ProtocolCommandExecutionUnit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProtocolCommandExecutionUnit.m; sourceTree = "<group>"; };
+		C59D38981BE36B0F0081F6E9 /* ProtocolCommandField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProtocolCommandField.h; sourceTree = "<group>"; };
+		C59D38991BE36B0F0081F6E9 /* ProtocolCommandField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProtocolCommandField.m; sourceTree = "<group>"; };
+		C59D389A1BE36B0F0081F6E9 /* Stream.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Stream.swift; sourceTree = "<group>"; };
+		C59D389B1BE36B0F0081F6E9 /* StreamableLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StreamableLogger.swift; sourceTree = "<group>"; };
+		C59D389C1BE36B0F0081F6E9 /* Toaster.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Toaster.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,9 +133,14 @@
 		B8BDFAB91BD8B86F005CC1AE /* MobileBot */ = {
 			isa = PBXGroup;
 			children = (
+				C59D38921BE36B0F0081F6E9 /* MobileBot-Bridging-Header.h */,
+				C59D38851BE369860081F6E9 /* Utility */,
+				C59D38841BE3697B0081F6E9 /* Protocol */,
+				C59D38831BE3696D0081F6E9 /* BotControl */,
+				C59D38821BE369570081F6E9 /* BotConnection */,
+				C59D38681BE3694B0081F6E9 /* FirstViewController.swift */,
+				C59D38701BE3694B0081F6E9 /* SecondViewController.swift */,
 				B8BDFABA1BD8B86F005CC1AE /* AppDelegate.swift */,
-				B8BDFABC1BD8B86F005CC1AE /* FirstViewController.swift */,
-				B8BDFABE1BD8B86F005CC1AE /* SecondViewController.swift */,
 				B8BDFAC01BD8B86F005CC1AE /* Main.storyboard */,
 				B8BDFAC31BD8B86F005CC1AE /* Assets.xcassets */,
 				B8BDFAC51BD8B86F005CC1AE /* LaunchScreen.storyboard */,
@@ -126,6 +165,53 @@
 				B8BDFADE1BD8B86F005CC1AE /* Info.plist */,
 			);
 			path = MobileBotUITests;
+			sourceTree = "<group>";
+		};
+		C59D38821BE369570081F6E9 /* BotConnection */ = {
+			isa = PBXGroup;
+			children = (
+				C59D38891BE36B0F0081F6E9 /* BotConnection.h */,
+				C59D388A1BE36B0F0081F6E9 /* BotConnection.m */,
+				C59D388B1BE36B0F0081F6E9 /* BotConnectionManager.h */,
+				C59D388C1BE36B0F0081F6E9 /* BotConnectionManager.m */,
+			);
+			name = BotConnection;
+			sourceTree = "<group>";
+		};
+		C59D38831BE3696D0081F6E9 /* BotControl */ = {
+			isa = PBXGroup;
+			children = (
+				C59D388D1BE36B0F0081F6E9 /* BotController.swift */,
+				C59D388E1BE36B0F0081F6E9 /* BotNavigator.swift */,
+				C59D388F1BE36B0F0081F6E9 /* BotUtils.swift */,
+				C59D38901BE36B0F0081F6E9 /* Command.swift */,
+				C59D38911BE36B0F0081F6E9 /* CommandQueue.swift */,
+			);
+			name = BotControl;
+			sourceTree = "<group>";
+		};
+		C59D38841BE3697B0081F6E9 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				C59D38941BE36B0F0081F6E9 /* ProtocolCommand.h */,
+				C59D38951BE36B0F0081F6E9 /* ProtocolCommand.m */,
+				C59D38961BE36B0F0081F6E9 /* ProtocolCommandExecutionUnit.h */,
+				C59D38971BE36B0F0081F6E9 /* ProtocolCommandExecutionUnit.m */,
+				C59D38981BE36B0F0081F6E9 /* ProtocolCommandField.h */,
+				C59D38991BE36B0F0081F6E9 /* ProtocolCommandField.m */,
+			);
+			name = Protocol;
+			sourceTree = "<group>";
+		};
+		C59D38851BE369860081F6E9 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				C59D38931BE36B0F0081F6E9 /* PersistableRegion.swift */,
+				C59D389A1BE36B0F0081F6E9 /* Stream.swift */,
+				C59D389B1BE36B0F0081F6E9 /* StreamableLogger.swift */,
+				C59D389C1BE36B0F0081F6E9 /* Toaster.swift */,
+			);
+			name = Utility;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -190,6 +276,7 @@
 		B8BDFAAF1BD8B86F005CC1AE /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0710;
 				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Goran Vukovic";
 				TargetAttributes = {
@@ -258,9 +345,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B8BDFABF1BD8B86F005CC1AE /* SecondViewController.swift in Sources */,
+				C59D387F1BE3694B0081F6E9 /* SecondViewController.swift in Sources */,
+				C59D38A91BE36B0F0081F6E9 /* StreamableLogger.swift in Sources */,
+				C59D389F1BE36B0F0081F6E9 /* BotController.swift in Sources */,
 				B8BDFABB1BD8B86F005CC1AE /* AppDelegate.swift in Sources */,
-				B8BDFABD1BD8B86F005CC1AE /* FirstViewController.swift in Sources */,
+				C59D38A61BE36B0F0081F6E9 /* ProtocolCommandExecutionUnit.m in Sources */,
+				C59D38AA1BE36B0F0081F6E9 /* Toaster.swift in Sources */,
+				C59D38A81BE36B0F0081F6E9 /* Stream.swift in Sources */,
+				C59D38A31BE36B0F0081F6E9 /* CommandQueue.swift in Sources */,
+				C59D387A1BE3694B0081F6E9 /* FirstViewController.swift in Sources */,
+				C59D38A51BE36B0F0081F6E9 /* ProtocolCommand.m in Sources */,
+				C59D389D1BE36B0F0081F6E9 /* BotConnection.m in Sources */,
+				C59D38A21BE36B0F0081F6E9 /* Command.swift in Sources */,
+				C59D38A01BE36B0F0081F6E9 /* BotNavigator.swift in Sources */,
+				C59D38A71BE36B0F0081F6E9 /* ProtocolCommandField.m in Sources */,
+				C59D38A41BE36B0F0081F6E9 /* PersistableRegion.swift in Sources */,
+				C59D389E1BE36B0F0081F6E9 /* BotConnectionManager.m in Sources */,
+				C59D38A11BE36B0F0081F6E9 /* BotUtils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -402,10 +503,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = MobileBot/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = MobileBotTeam.MobileBot;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "MobileBot/MobileBot-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -413,10 +517,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = MobileBot/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = MobileBotTeam.MobileBot;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "MobileBot/MobileBot-Bridging-Header.h";
 			};
 			name = Release;
 		};
@@ -487,6 +593,7 @@
 				B8BDFAE31BD8B86F005CC1AE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B8BDFAE41BD8B86F005CC1AE /* Build configuration list for PBXNativeTarget "MobileBotTests" */ = {
 			isa = XCConfigurationList;
@@ -495,6 +602,7 @@
 				B8BDFAE61BD8B86F005CC1AE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B8BDFAE71BD8B86F005CC1AE /* Build configuration list for PBXNativeTarget "MobileBotUITests" */ = {
 			isa = XCConfigurationList;
@@ -503,6 +611,7 @@
 				B8BDFAE91BD8B86F005CC1AE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
