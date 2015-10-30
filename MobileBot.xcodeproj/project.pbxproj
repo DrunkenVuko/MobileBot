@@ -83,6 +83,8 @@
 		C59D389A1BE36B0F0081F6E9 /* Stream.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Stream.swift; sourceTree = "<group>"; };
 		C59D389B1BE36B0F0081F6E9 /* StreamableLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StreamableLogger.swift; sourceTree = "<group>"; };
 		C59D389C1BE36B0F0081F6E9 /* Toaster.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Toaster.swift; sourceTree = "<group>"; };
+		C5CE0A3C1BE36FCE00E1E875 /* DataProtocolPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = DataProtocolPlayground.playground; sourceTree = "<group>"; };
+		C5CE0A3D1BE3706F00E1E875 /* BotControlPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = BotControlPlayground.playground; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -181,6 +183,7 @@
 		C59D38831BE3696D0081F6E9 /* BotControl */ = {
 			isa = PBXGroup;
 			children = (
+				C5CE0A3D1BE3706F00E1E875 /* BotControlPlayground.playground */,
 				C59D388D1BE36B0F0081F6E9 /* BotController.swift */,
 				C59D388E1BE36B0F0081F6E9 /* BotNavigator.swift */,
 				C59D388F1BE36B0F0081F6E9 /* BotUtils.swift */,
@@ -193,6 +196,7 @@
 		C59D38841BE3697B0081F6E9 /* Protocol */ = {
 			isa = PBXGroup;
 			children = (
+				C5CE0A3C1BE36FCE00E1E875 /* DataProtocolPlayground.playground */,
 				C59D38941BE36B0F0081F6E9 /* ProtocolCommand.h */,
 				C59D38951BE36B0F0081F6E9 /* ProtocolCommand.m */,
 				C59D38961BE36B0F0081F6E9 /* ProtocolCommandExecutionUnit.h */,
