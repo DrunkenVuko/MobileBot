@@ -14,9 +14,11 @@ class MobileBotTests: XCTestCase {
     var bc: BotController?
     var bn: BotNavigator?
     var bcm = BotConnectionManager.sharedInstance()
+    var defaults = NSUserDefaults.standardUserDefaults()
+
     
-    var ip = "wifibee01";
-    var port = 2000;
+    var ip = "wifibee01"
+    var port = 2000
     
     override func setUp() {
         super.setUp()
@@ -25,20 +27,23 @@ class MobileBotTests: XCTestCase {
         var connection: BotConnection?
         
         bcm.connetionWithIp(ip, port: port)
-        bcm.reconnect(connection);
+        bcm.reconnect(connection)
         
+        defaults.setObject(bcm.connections, forKey: "BotConnections")
         
-//        if bcm.connections.count > 0 {
-//            connection = bcm.connections[0] as? BotConnection
-//            
-//            if let connection = connection {
-//                connection.ip = ipTextField.text;
-//                connection.port = (portTextField.text as! NSString).integerValue;
-//            }
-//        } else {
-//            connection =
-//        }
-//        
+        defaults.objectForKey("BotConnections")
+        
+        if bcm.connections.count > 0 {
+            connection = bcm.connections[0] as? BotConnection
+            
+            if let connection = connection {
+                connection.ip = ipTextField.text;
+                connection.port = (portTextField.text as! NSString).integerValue;
+            }
+        } else {
+            connection =
+        }
+        
 //
 //        
 //        let connection = BotConnection

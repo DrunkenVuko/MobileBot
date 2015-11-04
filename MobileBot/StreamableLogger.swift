@@ -44,10 +44,10 @@ import Foundation
     func log(level: StreamableLogger.LogLevel, data: Any, functionName: String = __FUNCTION__, fileName: String = __FILE__, lineNumber: Int = __LINE__) {
         if level != .Off {
             
-//            let logMsg = "\(dateFormatter.stringFromDate(NSDate())) [\(level.description)] [\(fileName.lastPathComponent):\(lineNumber)] \(functionName): \(data)";
-            let logMsg = "hello"            
+           let logMsg = "\(dateFormatter.stringFromDate(NSDate())) [\(level.description)] [\(fileName):\(lineNumber)] \(functionName): \(data)";
+            //let logMsg = "hello"
 //            dispatch_async(dispatch_get_main_queue(), {
-                NSLog(logMsg);
+            NSLog(logMsg);
                 
                 StreamableLogger.logStream.push(logMsg);
 //            });
