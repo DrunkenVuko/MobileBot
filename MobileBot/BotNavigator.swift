@@ -130,7 +130,7 @@ class BotNavigator {
                             self.logger.log(.Info, data: "current distance: \(currentDistance), previous distance: \(previousDistance)");
                             self.logger.log(.Info, data: "destination area: \(destWithInset), current point: \(currentPoint)");
                             
-                            var destReached = CGRectContainsPoint(destWithInset, currentPoint);
+                            let destReached = CGRectContainsPoint(destWithInset, currentPoint);
                             
                             if destReached {
                                 self.destinationReached(completion);

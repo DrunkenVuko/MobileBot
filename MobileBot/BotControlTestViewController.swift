@@ -69,7 +69,7 @@ class BotControlTestViewController : UIViewController {
     }
     
     @IBAction func turnToAngle(sender: UIButton) {
-        let degrees: Float = (angleTextField.text as! NSString).floatValue;
+        let degrees: Float = Float(angleTextField.text!)!;
         
         if let bn = bn {
             bn.turnToAngle(degrees, speed: bn.turnSpeed, completion: { [weak self] data in

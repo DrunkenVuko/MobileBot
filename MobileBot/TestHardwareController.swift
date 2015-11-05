@@ -101,7 +101,7 @@ class TestHardwareController: UIViewController {
         let degrees: Float = 45;
         if let bn = bn {                   //bn.turnSpeed
             bn.turnToAngle(degrees, speed: 150, completion: { [weak self] data in
-                //self?.logger.log(.Info, data: "finished");
+                self?.logger.log(.Info, data: "finished");
                 });
         }
         timer = NSTimer.scheduledTimerWithTimeInterval(3.0, target: self, selector: "timerStop", userInfo: nil, repeats: false)
@@ -115,7 +115,7 @@ class TestHardwareController: UIViewController {
         let degrees: Float = -45;
         if let bn = bn {
             bn.turnToAngle(degrees, speed: 300, completion: { [weak self] data in
-                //self?.logger.log(.Info, data: "finished");
+                self?.logger.log(.Info, data: "finished");
                 });
         }
         timer = NSTimer.scheduledTimerWithTimeInterval(3.0, target: self, selector: "timerStop", userInfo: nil, repeats: false)
@@ -126,7 +126,7 @@ class TestHardwareController: UIViewController {
         Toaster.show("Test: Scan")
 
         bc?.scanRange(75, max: 125, inc: 3, callback: { [weak self] data in
-            //self?.logger.log(.Info, data: "\(data)")
+            self?.logger.log(.Info, data: "\(data)")
             });
         timer = NSTimer.scheduledTimerWithTimeInterval(3.0, target: self, selector: "stopRangeScan", userInfo: nil, repeats: false)
 
@@ -135,7 +135,7 @@ class TestHardwareController: UIViewController {
     func stopRangeScan()
     {
         bc?.stopRangeScan({ [weak self] in
-            //self?.logger.log(.Info, data: "scan stopped")
+            self?.logger.log(.Info, data: "scan stopped")
             });
     }
     

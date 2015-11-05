@@ -13,8 +13,9 @@ import UIKit
     
     static func show(message: String) {
         let toast = UIAlertView(title: nil, message: message, delegate: nil, cancelButtonTitle: nil);
-        
+        //let toast = UIAlertController(title: nil, message: message, preferredStyle: UIAlertControllerStyle.ActionSheet)
         toast.show();
+        
         
         let duration: UInt64 = 2; // duration in seconds
         
@@ -25,7 +26,7 @@ import UIKit
     
     static func showInfo(title: String, message: String) {
         let toast = UIAlertView(title: title, message: message, delegate: nil, cancelButtonTitle: "OK");
-        
+
         toast.show();
         
     }
