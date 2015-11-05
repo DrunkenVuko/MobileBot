@@ -40,7 +40,7 @@ class TestHardwareController: UIViewController {
                     speedField.text = String(stringInterpolationSegment: bn!.getSpeed());
                     turnSpeedField.text = String(stringInterpolationSegment: bn!.getTurnSpeed());
                     offsetField.text = String(stringInterpolationSegment: bn!.getOffset());
-*/
+                    */
                 }
                 
                 bcm.connect(connection);

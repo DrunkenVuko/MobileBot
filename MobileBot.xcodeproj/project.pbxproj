@@ -14,6 +14,7 @@
 		B8BDFAC71BD8B86F005CC1AE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B8BDFAC51BD8B86F005CC1AE /* LaunchScreen.storyboard */; };
 		B8BDFAD21BD8B86F005CC1AE /* MobileBotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BDFAD11BD8B86F005CC1AE /* MobileBotTests.swift */; };
 		B8BDFADD1BD8B86F005CC1AE /* MobileBotUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BDFADC1BD8B86F005CC1AE /* MobileBotUITests.swift */; };
+		C52DF3741BEB445700035A15 /* OfficeHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C52DF3731BEB445700035A15 /* OfficeHelper.swift */; };
 		C59D387A1BE3694B0081F6E9 /* BotControlTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C59D38681BE3694B0081F6E9 /* BotControlTestViewController.swift */; };
 		C59D387F1BE3694B0081F6E9 /* TestHardwareController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C59D38701BE3694B0081F6E9 /* TestHardwareController.swift */; };
 		C59D389D1BE36B0F0081F6E9 /* BotConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = C59D388A1BE36B0F0081F6E9 /* BotConnection.m */; };
@@ -63,6 +64,7 @@
 		B8BDFAD81BD8B86F005CC1AE /* MobileBotUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MobileBotUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8BDFADC1BD8B86F005CC1AE /* MobileBotUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobileBotUITests.swift; sourceTree = "<group>"; };
 		B8BDFADE1BD8B86F005CC1AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C52DF3731BEB445700035A15 /* OfficeHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OfficeHelper.swift; sourceTree = "<group>"; };
 		C59D38681BE3694B0081F6E9 /* BotControlTestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BotControlTestViewController.swift; sourceTree = "<group>"; };
 		C59D38701BE3694B0081F6E9 /* TestHardwareController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestHardwareController.swift; sourceTree = "<group>"; };
 		C59D38891BE36B0F0081F6E9 /* BotConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BotConnection.h; sourceTree = "<group>"; };
@@ -137,6 +139,7 @@
 		B8BDFAB91BD8B86F005CC1AE /* MobileBot */ = {
 			isa = PBXGroup;
 			children = (
+				C52DF3701BEB43D000035A15 /* UseCases */,
 				C59D38921BE36B0F0081F6E9 /* MobileBot-Bridging-Header.h */,
 				C59D38851BE369860081F6E9 /* Utility */,
 				C59D38841BE3697B0081F6E9 /* Protocol */,
@@ -170,6 +173,14 @@
 				B8BDFADE1BD8B86F005CC1AE /* Info.plist */,
 			);
 			path = MobileBotUITests;
+			sourceTree = "<group>";
+		};
+		C52DF3701BEB43D000035A15 /* UseCases */ = {
+			isa = PBXGroup;
+			children = (
+				C52DF3731BEB445700035A15 /* OfficeHelper.swift */,
+			);
+			name = UseCases;
 			sourceTree = "<group>";
 		};
 		C59D38821BE369570081F6E9 /* BotConnection */ = {
@@ -357,6 +368,7 @@
 				C59D38A91BE36B0F0081F6E9 /* StreamableLogger.swift in Sources */,
 				C59D389F1BE36B0F0081F6E9 /* BotController.swift in Sources */,
 				B8BDFABB1BD8B86F005CC1AE /* AppDelegate.swift in Sources */,
+				C52DF3741BEB445700035A15 /* OfficeHelper.swift in Sources */,
 				C59D38A61BE36B0F0081F6E9 /* ProtocolCommandExecutionUnit.m in Sources */,
 				C59D38AA1BE36B0F0081F6E9 /* Toaster.swift in Sources */,
 				C59D38A81BE36B0F0081F6E9 /* Stream.swift in Sources */,

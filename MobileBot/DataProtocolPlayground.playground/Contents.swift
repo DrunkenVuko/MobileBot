@@ -26,7 +26,7 @@ let bcm = BotConnectionManager();
 
 bcm.connections.append(BotConnection());
 
-defaults.setObject(bcm.connections, forKey: "BotConnections");
+//defaults.setObject(bcm.connections, forKey: "BotConnections");
 
 defaults.objectForKey("BotConnections");
 

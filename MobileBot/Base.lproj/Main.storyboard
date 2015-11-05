@@ -41,6 +41,15 @@
                                     <segue destination="BRV-1H-4Vs" kind="show" id="6F6-bK-q38"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bfr-CW-lb6">
+                                <rect key="frame" x="161" y="409" width="92" height="30"/>
+                                <animations/>
+                                <color key="backgroundColor" red="0.95547768409433176" green="1" blue="0.41344618252070642" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Office Helper"/>
+                                <connections>
+                                    <segue destination="4kI-am-QTd" kind="show" id="A8B-09-NJX"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -99,6 +108,52 @@
             </objects>
             <point key="canvasLocation" x="736" y="1565"/>
         </scene>
+        <!--Office Helper-->
+        <scene sceneID="gPh-ta-67W">
+            <objects>
+                <viewController id="4kI-am-QTd" customClass="OfficeHelper" customModule="MobileBot" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="okx-RB-xq4"/>
+                        <viewControllerLayoutGuide type="bottom" id="i6D-5H-aYY"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="fvo-vr-uJ6">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H1E-vS-DVy">
+                                <rect key="frame" x="179" y="171" width="57" height="30"/>
+                                <animations/>
+                                <state key="normal" title="Settings"/>
+                                <connections>
+                                    <segue destination="IOf-7S-mOe" kind="show" id="gIK-bw-jDR"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h8o-bj-Lrb">
+                                <rect key="frame" x="143" y="44" width="129" height="30"/>
+                                <animations/>
+                                <color key="backgroundColor" red="1" green="0.76423331305165054" blue="0.49567265442438091" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Start Office Helper"/>
+                                <connections>
+                                    <action selector="startClicked:" destination="4kI-am-QTd" eventType="touchUpInside" id="SUm-Oi-5Ed"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xia-EC-kb0">
+                                <rect key="frame" x="183" y="138" width="49" height="30"/>
+                                <animations/>
+                                <state key="normal" title="Zurück"/>
+                                <connections>
+                                    <segue destination="f9E-4d-Z3P" kind="show" id="qg0-vu-c0A"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Esl-ik-voE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1502" y="1223"/>
+        </scene>
         <!--Bot Control Test View Controller-->
         <scene sceneID="PXb-he-fbD">
             <objects>
@@ -108,11 +163,11 @@
                         <viewControllerLayoutGuide type="bottom" id="oMR-ON-CWn"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8h8-cW-vxr">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uh5-GC-YzU">
-                                <rect key="frame" x="281" y="72" width="38" height="30"/>
+                                <rect key="frame" x="188" y="72" width="38" height="30"/>
                                 <animations/>
                                 <state key="normal" title="move">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -122,7 +177,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FAd-Q6-8MV">
-                                <rect key="frame" x="207" y="110" width="186" height="30"/>
+                                <rect key="frame" x="114" y="110" width="186" height="30"/>
                                 <animations/>
                                 <state key="normal" title="scanRange(min, max, step)">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -184,7 +239,7 @@
                                 <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zmj-qA-uKZ">
-                                <rect key="frame" x="246" y="416" width="108" height="30"/>
+                                <rect key="frame" x="153" y="416" width="108" height="30"/>
                                 <animations/>
                                 <state key="normal" title="current position">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -194,7 +249,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CLD-HR-aeq">
-                                <rect key="frame" x="257" y="454" width="5" height="30"/>
+                                <rect key="frame" x="205" y="454" width="5" height="30"/>
                                 <animations/>
                                 <state key="normal" title="turn to angle">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -231,7 +286,7 @@
                                 </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hiq-9Y-7Eh">
-                                <rect key="frame" x="132" y="503" width="43" height="30"/>
+                                <rect key="frame" x="80" y="503" width="43" height="30"/>
                                 <animations/>
                                 <state key="normal" title="speed">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -241,7 +296,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EVn-Dt-q4X">
-                                <rect key="frame" x="257" y="503" width="83" height="30"/>
+                                <rect key="frame" x="205" y="503" width="83" height="30"/>
                                 <animations/>
                                 <state key="normal" title="turnSpeed">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -343,7 +398,7 @@
                         <viewControllerLayoutGuide type="bottom" id="YNk-BF-Ynd"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Xgt-4Q-bF5">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="IP" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X1K-Ma-bQw">
@@ -353,7 +408,7 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="192.168.43.98" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ktl-Ra-THA">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="wifibee01" borderStyle="roundedRect" placeholder="192.168.43.98" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ktl-Ra-THA">
                                 <rect key="frame" x="148" y="72" width="436" height="30"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -366,7 +421,7 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="2000" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zum-Ec-aXB">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="2000" borderStyle="roundedRect" placeholder="2000" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zum-Ec-aXB">
                                 <rect key="frame" x="148" y="110" width="436" height="30"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -441,7 +496,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="NOx-5B-iMl"/>
+        <segue reference="0Sw-Nd-xoC"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
 </document>
