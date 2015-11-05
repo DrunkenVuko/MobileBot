@@ -27,11 +27,14 @@ class UseCaseManager : NSObject, CLLocationManagerDelegate {
     /* Instanz unseres Use-Cases */
     let baby = Babysitter()
     
-    /** Am Baby */
+    /* Am Baby */
     static var atBaby = true
     
-    /** Im Haus*/
+    /* Im Haus */
     static var atHome = true
+    
+    /* Wache */
+    static var atStation = true
     
     func run() {
         cl.delegate = self
@@ -51,35 +54,62 @@ class UseCaseManager : NSObject, CLLocationManagerDelegate {
         let str :NSString = (idh.object as? NSString)!
         
             switch str {
-                //Tuer Beacon
-                case "3000":
-                    logger.log(.Info, "3000 ist Beacon: Tuer")
-                UseCaseManager.atHome = false
-                // Funktion hier...
+                /* Beacon Babysitter
+                Door Exit   - 3010
+                Door Entry  - 3011
+                At Baby     - 3020
+                Not at baby - 3021
+                Station     - 3030
+                */
+                
+                // Aus dem Haus raus...
+                case "3010":
+                    logger.log(.Info, "3010 ist Beacon: Not at Home")
+                    UseCaseManager.atHome = false
+                    
+                    if(UseCaseManager.atHome == true)
+                    {
+                        // Robo soll an die Station...
+                    }
+                    else if(UseCaseManager.atHome == false && UseCaseManager.atBaby == false)
+                    {
+                        UseCaseManager.atStation = false
+                        // Wenn du aus der Tür bist && nicht am Baby dann -> Action... (homeUC.startAction())
+                    }
                 break
                 
-                case "3000" where !UseCaseManager.atHome == true:
-                    // Robo soll an die Station...
-                break
-                
-                case "3000" where !UseCaseManager.atHome == false && !UseCaseManager.atBaby == false:
-                    // Wenn du aus der Tür bist && nicht am Baby dann -> Action... (homeUC.startAction())
+                // Ins Haus rein...
+                case "3011":
+                    logger.log(.Info, "3011 ist Beacon: At Home")
+                    UseCaseManager.atHome = true
                 break
                 
                 // Baby Beacon
-                case "3001":
-                    logger.log(.Info, "3001 ist Beacon: Baby")
-                break
                 
-                case "3001" where UseCaseManager.atHome == true:
+                // Am Baby
+                case "3020":
+                    logger.log(.Info, "3020 ist Beacon: At Baby")
+                    
                     // Wir sind am Baby
                     UseCaseManager.atBaby = true
                     // Aktion...
+                    if(UseCaseManager.atHome == true)
+                    {
+                        
+                    }
+                break
+                
+                case "3021":
+                    logger.log(.Info, "3021 ist Beacon: Not at Baby")
+                    
+                    // Wir sind nicht am Baby
+                    UseCaseManager.atBaby = false
                 break
                 
                 // Station Beacon
-                case "3002":
-                    logger.log(.Info, "3002 ist Beacon: Station")
+                case "3030":
+                    logger.log(.Info, "3030 ist Beacon: Station")
+                    UseCaseManager.atStation = true
                 break
                 
                 default:
