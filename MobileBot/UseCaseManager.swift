@@ -13,39 +13,35 @@ import UIKit
  * Diese Klasse dient dem Eventmanagement der Beacons bzw. UseCases.
  * Die Flags dienen dem Eventhandling und sind dafür zuständig, dass immer nur 
  * 1 Use Case durchlaufen werden kann (ist momentan so programmiert, kann aber leicht 
- * geändert werden, um bspw. 2 Use Cases gleichzeitig laufen zu lassen)
+ * geändert werden, um bspw. 2 Use Cases gleichzeitig laufen zu lassen)""""
  */
 class UseCaseManager : NSObject, CLLocationManagerDelegate {
     
-    private static var instance: UseCaseManager?;
+    private static var instance: UseCaseManager?
         
-    let nc = NSNotificationCenter.defaultCenter();
-    let cl = CLLocationManager();
-    var beaconRegion: CLBeaconRegion?;
-    let logger = StreamableLogger();
+    let nc = NSNotificationCenter.defaultCenter()
+    let cl = CLLocationManager()
+    var beaconRegion: CLBeaconRegion?
+    let logger = StreamableLogger()
     
-    let bathUC = GuardUserInBath();
-    /** Guard User in Bath flag */
-    static var guibFlag = false;
+    /* Instanz unseres Use-Cases */
+    let baby = Babysitter()
     
-    let homeUC = GuardHouseWhileUserNotHome();
+    /* Am Baby */
+    static var atBaby = true
     
-    /** Guard house while user not home flag */
-    static var ghwunhFlag = false;
+    /* Im Haus */
+    static var atHome = true
     
-    let weatherUC = WarnUserIfWeatherAlarm();
-    /** Warn User if weather alarm flag */
-    static var wuiwaFlag = false;
-    
-    /** Global Enter flag für Eventhandling */
-    static var globalEnter = false;
+    /* Wache */
+    static var atStation = true
     
     func run() {
-        cl.delegate = self;
+        cl.delegate = self
         
-        cl.requestAlwaysAuthorization();
+        cl.requestAlwaysAuthorization()
         
-        nc.addObserver(self, selector: "notification:", name: CustomEvent, object: nil);
+        nc.addObserver(self, selector: "notification:", name: CustomEvent, object: nil)
         
     }
     
@@ -54,57 +50,86 @@ class UseCaseManager : NSObject, CLLocationManagerDelegate {
      * Flags, die entsprechenden UseCases, bzw. beendet diese wieder
      */
     func notification(idh: NSNotification){
-        logger.log(.Info, data: idh);
-        let str :NSString = (idh.object as? NSString)!;
+        logger.log(.Info, data: idh)
+        let str :NSString = (idh.object as? NSString)!
         
             switch str {
-                //Startet Guard House While User Not Home
-                case "1336" where !UseCaseManager.globalEnter && !UseCaseManager.ghwunhFlag:
-                    homeUC.startAction();
-           
-                //Flag wird gesetzt für den Fall, falls das iBeacon ein beenden Event sendet und dann wieder ein Start Event,
-                // obwohl beides nicht gesendet werden dürfte
-                case "1336" where UseCaseManager.globalEnter && UseCaseManager.ghwunhFlag:
-                    GuardHouseWhileUserNotHome.enterWhileLeave = true;
+                /* Beacon Babysitter
+                Door Exit   - 3010
+                Door Entry  - 3011
+                At Baby     - 3020
+                Not at baby - 3021
+                Station     - 3030
+                */
                 
-                //Beendet Guard House While User Not Home
-                case "1337" where UseCaseManager.ghwunhFlag:
-                    homeUC.endAction();
+                // Aus dem Haus raus...
+                case "3010":
+                    logger.log(.Info, "3010 ist Beacon: Not at Home")
+                    UseCaseManager.atHome = false
+                    
+                    if(UseCaseManager.atHome == true)
+                    {
+                        // Robo soll an die Station...
+                    }
+                    else if(UseCaseManager.atHome == false && UseCaseManager.atBaby == false)
+                    {
+                        UseCaseManager.atStation = false
+                        // Wenn du aus der Tür bist && nicht am Baby dann -> Action... (homeUC.startAction())
+                    }
+                break
                 
-                //Startet Guard User In Bath
-                case "1338" where !UseCaseManager.globalEnter && !UseCaseManager.guibFlag:
-                    bathUC.startAction();
+                // Ins Haus rein...
+                case "3011":
+                    logger.log(.Info, "3011 ist Beacon: At Home")
+                    UseCaseManager.atHome = true
+                break
                 
-                //Flag wird gesetzt für den Fall, falls das iBeacon ein beenden Event sendet und dann wieder ein Start Event,
-                // obwohl beides nicht gesendet werden dürfte
-                case "1338" where UseCaseManager.globalEnter && UseCaseManager.guibFlag:
-                    GuardUserInBath.enterWhileLeave = true;
+                // Baby Beacon
                 
-                //Beendet Guard User In Bath
-                case "1339" where UseCaseManager.guibFlag:
-                    bathUC.endAction();
-                /* Beacon als Wetter Event einsetzen: */
-                case "1340" where !UseCaseManager.globalEnter && !UseCaseManager.wuiwaFlag:
-                    weatherUC.startAction()
+                // Am Baby
+                case "3020":
+                    logger.log(.Info, "3020 ist Beacon: At Baby")
+                    
+                    // Wir sind am Baby
+                    UseCaseManager.atBaby = true
+                    // Aktion...
+                    if(UseCaseManager.atHome == true)
+                    {
+                        
+                    }
+                break
+                
+                case "3021":
+                    logger.log(.Info, "3021 ist Beacon: Not at Baby")
+                    
+                    // Wir sind nicht am Baby
+                    UseCaseManager.atBaby = false
+                break
+                
+                // Station Beacon
+                case "3030":
+                    logger.log(.Info, "3030 ist Beacon: Station")
+                    UseCaseManager.atStation = true
+                break
                 
                 default:
-                    logger.log(.Info, data: "No known Event!");
-                    return;
+                    logger.log(.Info, data: "No known Event!")
+                    return
             }
     }
     
     /** Singleton */
     static func sharedInstance() -> UseCaseManager {
         if UseCaseManager.instance == nil {
-            UseCaseManager.instance = UseCaseManager();
+            UseCaseManager.instance = UseCaseManager()
         }
         
-        return UseCaseManager.instance!;
+        return UseCaseManager.instance!
     }
     
     deinit {
-        NSNotificationCenter.defaultCenter().removeObserver(self);
+        NSNotificationCenter.defaultCenter().removeObserver(self)
         
-        logger.log(.Info, data: "✝ (rip) ✝");
+        logger.log(.Info, data: "✝ (rip) ✝")
     }
 }
