@@ -19,9 +19,9 @@ class UseCaseManager : NSObject, CLLocationManagerDelegate {
     
     private static var instance: UseCaseManager?
         
-    let nc = NSNotificationCenter.defaultCenter()
+    //let nc = NSNotificationCenter.defaultCenter()
     let cl = CLLocationManager()
-    var beaconRegion: CLBeaconRegion?
+    //var beaconRegion: CLBeaconRegion?
     let logger = StreamableLogger()
     
     /* Instanz unseres Use-Cases */
@@ -41,7 +41,7 @@ class UseCaseManager : NSObject, CLLocationManagerDelegate {
         
         cl.requestAlwaysAuthorization()
         
-        nc.addObserver(self, selector: "notification:", name: CustomEvent, object: nil)
+        //nc.addObserver(self, selector: "notification:", name: CustomEvent, object: nil)
         
     }
     
@@ -64,7 +64,7 @@ class UseCaseManager : NSObject, CLLocationManagerDelegate {
                 
                 // Aus dem Haus raus...
                 case "3010":
-                    logger.log(.Info, "3010 ist Beacon: Not at Home")
+                    logger.log(.Info, data: "3010 ist Beacon: Not at Home")
                     UseCaseManager.atHome = false
                     
                     if(UseCaseManager.atHome == true)
@@ -80,7 +80,7 @@ class UseCaseManager : NSObject, CLLocationManagerDelegate {
                 
                 // Ins Haus rein...
                 case "3011":
-                    logger.log(.Info, "3011 ist Beacon: At Home")
+                    logger.log(.Info, data: "3011 ist Beacon: At Home")
                     UseCaseManager.atHome = true
                 break
                 
@@ -88,7 +88,7 @@ class UseCaseManager : NSObject, CLLocationManagerDelegate {
                 
                 // Am Baby
                 case "3020":
-                    logger.log(.Info, "3020 ist Beacon: At Baby")
+                    logger.log(.Info, data: "3020 ist Beacon: At Baby")
                     
                     // Wir sind am Baby
                     UseCaseManager.atBaby = true
@@ -100,7 +100,7 @@ class UseCaseManager : NSObject, CLLocationManagerDelegate {
                 break
                 
                 case "3021":
-                    logger.log(.Info, "3021 ist Beacon: Not at Baby")
+                    logger.log(.Info, data: "3021 ist Beacon: Not at Baby")
                     
                     // Wir sind nicht am Baby
                     UseCaseManager.atBaby = false
@@ -108,7 +108,7 @@ class UseCaseManager : NSObject, CLLocationManagerDelegate {
                 
                 // Station Beacon
                 case "3030":
-                    logger.log(.Info, "3030 ist Beacon: Station")
+                    logger.log(.Info, data: "3030 ist Beacon: Station")
                     UseCaseManager.atStation = true
                 break
                 

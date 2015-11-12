@@ -58,11 +58,46 @@ class Babysitter: NSObject {
         UseCaseManager.globalEnter = true;
         
         self.bn?.moveTo(CGPointMake(CGFloat(200), CGFloat(100)), completion: { [weak self] data in
-            self?.bc?.scanRange(30, max: 150, inc: 3, callback: { data in
-                self?.logger.log(.Info, data: "scanning House entry");
+        self?.bc?.scanRange(30, max: 150, inc: 3, callback: { data in
+        self?.logger.log(.Info, data: "scanning House entry");
+        })
+        });
+
+        self.bn?.moveTo(CGPointMake(CGFloat(-200), CGFloat(-50)), completion: { [weak self] data in
+            self.bc?.scanRange(30, max: 20, inc: 3, callback: { data in
+                self?.logger.log(.Info, data: "scanning door baby room");
             })
+        }); */
+        
+        
+        patrolAction();
+    }
+    
+    
+    /**
+     Patrol at the door. and send alarm.
+
+    **/
+    func patrolAction(){
+        
+        var someoneAtDoor = false;
+        
+        while someoneAtDoor == false {
+            
+            /*self.bn?.moveTo(CGPointMake(CGFloat(-200), CGFloat(-100)), completion: { [weak self] data in
+                self?.bc?.scanRange(30, max: 150, inc: 3, callback: { data in
+                    self?.logger.log(.Info, data: "scanning House entry");
+                })
             });
-        */
+            
+            self.bn?.moveTo(CGPointMake(CGFloat(-200), CGFloat(-50)), completion: { [weak self] data in
+                self?.bc?.scanRange(30, max: 150, inc: 3, callback: { data in
+                    self?.logger.log(.Info, data: "scanning House entry");
+                })
+            }); */
+            
+        }
+    
     }
     
     /**
