@@ -20,15 +20,12 @@ class Babysitter: NSObject {
     let logger = StreamableLogger();
     var debounceTimer: NSTimer?
     var notification: UILocalNotification?;
+    var timer = NSTimer()
     
     static var enterWhileLeave = false;
     
     
     override init() {
-        if let bc = bc {
-            bn = BotNavigator(controller: bc);
-        }
-        
         if bcm.connections.count <= 0 {
             Toaster.show("Please provide at minimum a single connection inside the settings.");
         } else {
@@ -38,10 +35,17 @@ class Babysitter: NSObject {
                 if let bc = bc {
                     bn = BotNavigator(controller: bc);
                     
-                    bcm.connect(connection);
+                    /*
+                    speedField.text = String(stringInterpolationSegment: bn!.getSpeed());
+                    turnSpeedField.text = String(stringInterpolationSegment: bn!.getTurnSpeed());
+                    offsetField.text = String(stringInterpolationSegment: bn!.getOffset());
+                    */
                 }
+                
+                bcm.connect(connection);
             }
         }
+                
     }
     
     
@@ -50,28 +54,23 @@ class Babysitter: NSObject {
      *
      */
     func startAction() {
-        /*logger.log(.Info, data: "Start GuardHouseWhileUserNotHome!");
+        logger.log(.Info, data: "Start Action Babysitter");
         
-        scheduleLocalNotification();
+        //scheduleLocalNotification();
         
-        UseCaseManager.guibFlag = true;
-        UseCaseManager.globalEnter = true;
+        //UseCaseManager.guibFlag = true;
+        //UseCaseManager.globalEnter = true;
         
-        self.bn?.moveTo(CGPointMake(CGFloat(200), CGFloat(100)), completion: { [weak self] data in
-        self?.bc?.scanRange(30, max: 150, inc: 3, callback: { data in
-        self?.logger.log(.Info, data: "scanning House entry");
-        })
-        });
+        logger.log(.Info, data: "MOVE TO: -20, -10");
+        self.bn?.moveTo(CGPointMake(CGFloat(-20), CGFloat(-10)), completion: /*){ [weak self] data in
+            self?.bc?.scanRange(30, max: 150, inc: 3, callback: { data in
+            self?.logger.log(.Info, data: "scanning House entry");
+            }
+        }*/ nil);
 
-        self.bn?.moveTo(CGPointMake(CGFloat(-200), CGFloat(-50)), completion: { [weak self] data in
-            self.bc?.scanRange(30, max: 20, inc: 3, callback: { data in
-                self?.logger.log(.Info, data: "scanning door baby room");
-            })
-        }); */
-        
-        
         patrolAction();
     }
+    
     
     
     /**
@@ -79,22 +78,24 @@ class Babysitter: NSObject {
 
     **/
     func patrolAction(){
-        
+        logger.log(.Info, data: "Patrol Action Babysitter");
         var someoneAtDoor = false;
         
         while someoneAtDoor == false {
-            
-            /*self.bn?.moveTo(CGPointMake(CGFloat(-200), CGFloat(-100)), completion: { [weak self] data in
+                    logger.log(.Info, data: "MOVE TO: -20, -5");
+            self.bn?.moveTo(CGPointMake(CGFloat(-20), CGFloat(-5)), completion: /*{ [weak self] data in
                 self?.bc?.scanRange(30, max: 150, inc: 3, callback: { data in
                     self?.logger.log(.Info, data: "scanning House entry");
                 })
-            });
-            
-            self.bn?.moveTo(CGPointMake(CGFloat(-200), CGFloat(-50)), completion: { [weak self] data in
+            }*/ nil);
+                    logger.log(.Info, data: "MOVE TO: -20, -10");
+            self.bn?.moveTo(CGPointMake(CGFloat(-20), CGFloat(-10)), completion: /*{ [weak self] data in
                 self?.bc?.scanRange(30, max: 150, inc: 3, callback: { data in
-                    self?.logger.log(.Info, data: "scanning House entry");
+                self?.logger.log(.Info, data: "scanning House entry");
                 })
-            }); */
+            }*/ nil);
+
+            someoneAtDoor = true
             
         }
     

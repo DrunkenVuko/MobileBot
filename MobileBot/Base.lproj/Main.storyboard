@@ -89,6 +89,15 @@
                                     <segue destination="f9E-4d-Z3P" kind="show" id="NOx-5B-iMl"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Nt-Dx-zIi" userLabel="Babysitter Start">
+                                <rect key="frame" x="141" y="353" width="132" height="30"/>
+                                <animations/>
+                                <color key="backgroundColor" red="0.3456629745" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Babysitter Start"/>
+                                <connections>
+                                    <action selector="testBabysitter:" destination="vbM-Rx-UZO" eventType="touchUpInside" id="o8I-tV-6gu"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

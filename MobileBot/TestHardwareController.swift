@@ -22,6 +22,8 @@ class TestHardwareController: UIViewController {
     let bcm = BotConnectionManager.sharedInstance();
     let logger = StreamableLogger();
     
+    let baby = Babysitter()
+    
     var timer = NSTimer()
     
     override func viewDidLoad() {
@@ -48,6 +50,11 @@ class TestHardwareController: UIViewController {
         }
     }
     
+    @IBAction func testBabysitter(sender: UIButton) {
+        baby.startAction()
+        
+        
+    }
     @IBAction func testMovement(sender: UIButton)
     {
         timer = NSTimer.scheduledTimerWithTimeInterval(0.0, target: self, selector: "testForward", userInfo: nil, repeats: false)
