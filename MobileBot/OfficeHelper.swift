@@ -27,64 +27,51 @@ class OfficeHelper: UIViewController {
                 
                 if let bc = bc {
                     bn = BotNavigator(controller: bc);
-                    
                 }
-                
                 bcm.connect(connection);
             }
         }
-        
-
     }
     
     @IBAction func startClicked(sender: UIButton) {
-        goToCoordinate(CGFloat(100), y: CGFloat(50))
-        bc?.stopMovingWithPositionalUpdate(nil)
-        bc?.resetPosition({
-            self.logger.log(.Info, data: "position reseted");
-            });
+        
+        bc?.resetPosition(nil);
+        buero1()
     }
     
-    func goToCoordinate(x: CGFloat, y: CGFloat) {
+    func buero1(){
+        var steps = [CGPoint]()
+        steps.append(CGPointMake(-50, 0))
+        steps.append(CGPointMake(-50, -60))
+        steps.append(CGPointMake(0, -60))
+        steps.append(CGPointMake(0, 0))
         
-        let point = CGPointMake(x, y)
-        
-        bn?.moveTo(point, completion: nil)
-        
-//        bc?.move(y, omega: 0, completion: {
-//            self.logger.log(.Info, data: "moved \(y) to the front");
-//        });
-        
-        turnLeft()
-        
-//        bc?.resetPosition({
-//            self.logger.log(.Info, data: "position reseted");
-//        });
-        
-//        bc?.move(x, omega: 0, completion: {
-//            self.logger.log(.Info, data: "moved \(x) to the front");
-//        });
+        // Start iteration
+        self.nextStep(0, coordinates: steps)
 
+    }
+    
+    func nextStep(i: Int, coordinates: [CGPoint]){
+        let length = coordinates.count
+        if(i >= length){
+            self.logger.log(.Info, data: "reached end.");
+        } else {
+            self.logger.log(.Info, data: "step \(i)");
+            self.logger.log(.Info, data: "go to [\(coordinates[i])].");
+            
+            goToCoordinate(coordinates[i], completion: {
+                self.nextStep(i+1, coordinates: coordinates)
+            })
+        }
+    }
+    
+    func goToCoordinate(point: CGPoint, completion: (() -> Void)?) {
         
+        bn?.moveToWithoutObstacle(point, completion: { data in
+            completion?()
+        })
     }
-    
-    func turnLeft(){
-        let degrees: Float = 45;
-        if let bn = bn {
-            bn.turnToAngle(degrees, speed: 100, completion: { [weak self] data in
-                self?.logger.log(.Info, data: "turned left");
-                });
-        }
-    }
-    
-    func turnRight(){
-        let degrees: Float = -45;
-        if let bn = bn {
-            bn.turnToAngle(degrees, speed: 100, completion: { [weak self] data in
-                self?.logger.log(.Info, data: "turned right");
-                });
-        }
-    }
+
     
     
 }

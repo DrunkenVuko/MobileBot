@@ -408,7 +408,7 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="wifibee01" borderStyle="roundedRect" placeholder="192.168.43.98" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ktl-Ra-THA">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="wifibee02" borderStyle="roundedRect" placeholder="192.168.43.98" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ktl-Ra-THA">
                                 <rect key="frame" x="148" y="72" width="436" height="30"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -498,5 +498,5 @@
     <inferredMetricsTieBreakers>
         <segue reference="0Sw-Nd-xoC"/>
     </inferredMetricsTieBreakers>
-    <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+    <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
 </document>
