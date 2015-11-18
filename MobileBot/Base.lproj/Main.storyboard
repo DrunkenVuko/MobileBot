@@ -117,42 +117,72 @@
                         <viewControllerLayoutGuide type="bottom" id="i6D-5H-aYY"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="fvo-vr-uJ6">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H1E-vS-DVy">
-                                <rect key="frame" x="179" y="171" width="57" height="30"/>
-                                <animations/>
-                                <state key="normal" title="Settings"/>
-                                <connections>
-                                    <segue destination="IOf-7S-mOe" kind="show" id="gIK-bw-jDR"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h8o-bj-Lrb">
-                                <rect key="frame" x="143" y="44" width="129" height="30"/>
-                                <animations/>
-                                <color key="backgroundColor" red="1" green="0.76423331305165054" blue="0.49567265442438091" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="Start Office Helper"/>
-                                <connections>
-                                    <action selector="startClicked:" destination="4kI-am-QTd" eventType="touchUpInside" id="SUm-Oi-5Ed"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xia-EC-kb0">
-                                <rect key="frame" x="183" y="138" width="49" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xia-EC-kb0">
+                                <rect key="frame" x="276" y="364" width="49" height="30"/>
                                 <animations/>
                                 <state key="normal" title="Zurück"/>
                                 <connections>
                                     <segue destination="f9E-4d-Z3P" kind="show" id="qg0-vu-c0A"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w06-pV-2H3">
+                                <rect key="frame" x="230" y="67" width="139" height="30"/>
+                                <animations/>
+                                <color key="backgroundColor" red="0.70013222838657596" green="1" blue="0.47413272504429493" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Office 1 hin-zurueck"/>
+                                <connections>
+                                    <action selector="officeButtonClicked:" destination="4kI-am-QTd" eventType="touchUpInside" id="ZNb-9r-Ku7"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Km0-vz-gTX">
+                                <rect key="frame" x="230" y="132" width="141" height="30"/>
+                                <animations/>
+                                <color key="backgroundColor" red="1" green="0.82572032111590121" blue="0.41365082256595476" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Office 2 hin-zurueck"/>
+                                <connections>
+                                    <action selector="officeButtonClicked:" destination="4kI-am-QTd" eventType="touchUpInside" id="VBj-hH-v2q"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cbd-Zy-uHx">
+                                <rect key="frame" x="229" y="202" width="141" height="30"/>
+                                <animations/>
+                                <color key="backgroundColor" red="0.53866425115501693" green="0.68081490320054938" blue="0.81262270942408377" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Office 3 hin-zurueck"/>
+                                <connections>
+                                    <action selector="officeButtonClicked:" destination="4kI-am-QTd" eventType="touchUpInside" id="ZWd-6q-2Pz"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H1E-vS-DVy">
+                                <rect key="frame" x="272" y="309" width="57" height="30"/>
+                                <animations/>
+                                <state key="normal" title="Settings"/>
+                                <connections>
+                                    <segue destination="IOf-7S-mOe" kind="show" id="gIK-bw-jDR"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="w06-pV-2H3" firstAttribute="top" secondItem="okx-RB-xq4" secondAttribute="bottom" constant="47" id="KQJ-Yr-VNg"/>
+                            <constraint firstItem="Km0-vz-gTX" firstAttribute="top" secondItem="w06-pV-2H3" secondAttribute="bottom" constant="35" id="NGX-14-Z5Z"/>
+                            <constraint firstItem="H1E-vS-DVy" firstAttribute="top" secondItem="Cbd-Zy-uHx" secondAttribute="bottom" constant="77" id="TBF-d9-NhV"/>
+                            <constraint firstItem="xia-EC-kb0" firstAttribute="centerX" secondItem="fvo-vr-uJ6" secondAttribute="centerX" id="Zhv-qu-8FG"/>
+                            <constraint firstItem="Cbd-Zy-uHx" firstAttribute="centerX" secondItem="fvo-vr-uJ6" secondAttribute="centerX" id="bS4-QX-ZwY"/>
+                            <constraint firstItem="Cbd-Zy-uHx" firstAttribute="top" secondItem="Km0-vz-gTX" secondAttribute="bottom" constant="40" id="e4P-kB-8zv"/>
+                            <constraint firstItem="w06-pV-2H3" firstAttribute="centerX" secondItem="fvo-vr-uJ6" secondAttribute="centerX" id="fRJ-WN-5Pv"/>
+                            <constraint firstItem="H1E-vS-DVy" firstAttribute="centerX" secondItem="fvo-vr-uJ6" secondAttribute="centerX" id="fgo-pd-w20"/>
+                            <constraint firstItem="xia-EC-kb0" firstAttribute="top" secondItem="H1E-vS-DVy" secondAttribute="bottom" constant="25" id="rTA-WL-PDe"/>
+                            <constraint firstItem="Km0-vz-gTX" firstAttribute="centerX" secondItem="fvo-vr-uJ6" secondAttribute="centerX" id="xbY-kV-s2r"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Esl-ik-voE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1502" y="1223"/>
+            <point key="canvasLocation" x="1325" y="1236"/>
         </scene>
         <!--Bot Control Test View Controller-->
         <scene sceneID="PXb-he-fbD">
@@ -163,7 +193,7 @@
                         <viewControllerLayoutGuide type="bottom" id="oMR-ON-CWn"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8h8-cW-vxr">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uh5-GC-YzU">
@@ -398,7 +428,7 @@
                         <viewControllerLayoutGuide type="bottom" id="YNk-BF-Ynd"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Xgt-4Q-bF5">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="IP" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X1K-Ma-bQw">
@@ -496,7 +526,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="0Sw-Nd-xoC"/>
+        <segue reference="qg0-vu-c0A"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
 </document>
