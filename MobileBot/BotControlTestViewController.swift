@@ -44,6 +44,7 @@ class BotControlTestViewController : UIViewController {
             }
         }
     }
+
     
     @IBAction func move(sender: UIButton) {
         logger.log(.Info, data: "going to move forward");

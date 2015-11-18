@@ -7,8 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AF04A8CB1BFCB1F4004CC757 /* beaconmanager.de.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF04A8C91BFCB1F4004CC757 /* beaconmanager.de.framework */; };
+		AF04A8CC1BFCB1F5004CC757 /* beaconmanager.de.res.bundle in Frameworks */ = {isa = PBXBuildFile; fileRef = AF04A8CA1BFCB1F4004CC757 /* beaconmanager.de.res.bundle */; };
 		B801118A1BEB51E4003A2BD2 /* UseCaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B80111891BEB51E4003A2BD2 /* UseCaseManager.swift */; };
-		B801118F1BEB5430003A2BD2 /* Babysitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B801118E1BEB5430003A2BD2 /* Babysitter.swift */; };
+		B801118F1BEB5430003A2BD2 /* BabysitterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B801118E1BEB5430003A2BD2 /* BabysitterViewController.swift */; };
 		B802B8E61BEA4D41009745F6 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B802B8E51BEA4D41009745F6 /* SettingsViewController.swift */; };
 		B8BDFABB1BD8B86F005CC1AE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BDFABA1BD8B86F005CC1AE /* AppDelegate.swift */; };
 		B8BDFAC21BD8B86F005CC1AE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B8BDFAC01BD8B86F005CC1AE /* Main.storyboard */; };
@@ -52,8 +54,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		AF04A8C91BFCB1F4004CC757 /* beaconmanager.de.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = beaconmanager.de.framework; sourceTree = "<group>"; };
+		AF04A8CA1BFCB1F4004CC757 /* beaconmanager.de.res.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = beaconmanager.de.res.bundle; sourceTree = "<group>"; };
 		B80111891BEB51E4003A2BD2 /* UseCaseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UseCaseManager.swift; sourceTree = "<group>"; };
-		B801118E1BEB5430003A2BD2 /* Babysitter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Babysitter.swift; sourceTree = "<group>"; };
+		B801118E1BEB5430003A2BD2 /* BabysitterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BabysitterViewController.swift; sourceTree = "<group>"; };
 		B802B8E51BEA4D41009745F6 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		B8BDFAB71BD8B86F005CC1AE /* MobileBot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MobileBot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8BDFABA1BD8B86F005CC1AE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -98,6 +102,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AF04A8CB1BFCB1F4004CC757 /* beaconmanager.de.framework in Frameworks */,
+				AF04A8CC1BFCB1F5004CC757 /* beaconmanager.de.res.bundle in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -121,7 +127,7 @@
 		B801118B1BEB51E8003A2BD2 /* Use-Cases */ = {
 			isa = PBXGroup;
 			children = (
-				B801118E1BEB5430003A2BD2 /* Babysitter.swift */,
+				B801118E1BEB5430003A2BD2 /* BabysitterViewController.swift */,
 				B80111891BEB51E4003A2BD2 /* UseCaseManager.swift */,
 			);
 			name = "Use-Cases";
@@ -130,6 +136,8 @@
 		B8BDFAAE1BD8B86F005CC1AE = {
 			isa = PBXGroup;
 			children = (
+				AF04A8C91BFCB1F4004CC757 /* beaconmanager.de.framework */,
+				AF04A8CA1BFCB1F4004CC757 /* beaconmanager.de.res.bundle */,
 				B8BDFAB91BD8B86F005CC1AE /* MobileBot */,
 				B8BDFAD01BD8B86F005CC1AE /* MobileBotTests */,
 				B8BDFADB1BD8B86F005CC1AE /* MobileBotUITests */,
@@ -379,7 +387,7 @@
 				C59D387A1BE3694B0081F6E9 /* BotControlTestViewController.swift in Sources */,
 				C59D38A51BE36B0F0081F6E9 /* ProtocolCommand.m in Sources */,
 				C59D389D1BE36B0F0081F6E9 /* BotConnection.m in Sources */,
-				B801118F1BEB5430003A2BD2 /* Babysitter.swift in Sources */,
+				B801118F1BEB5430003A2BD2 /* BabysitterViewController.swift in Sources */,
 				C59D38A21BE36B0F0081F6E9 /* Command.swift in Sources */,
 				C59D38A01BE36B0F0081F6E9 /* BotNavigator.swift in Sources */,
 				C59D38A71BE36B0F0081F6E9 /* ProtocolCommandField.m in Sources */,

@@ -25,7 +25,7 @@ class UseCaseManager : NSObject, CLLocationManagerDelegate {
     let logger = StreamableLogger()
     
     /* Instanz unseres Use-Cases */
-    let baby = Babysitter()
+ //   let baby = Babysitter()
     
     /* Am Baby */
     static var atBaby = true

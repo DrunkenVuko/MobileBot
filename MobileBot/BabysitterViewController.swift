@@ -12,7 +12,7 @@ import UIKit
 /**
  * Diese Klasse dient dem Use Case : Babysitter
  */
-class Babysitter: NSObject {
+class BabysitterViewController: UIViewController {
     
     var bc: BotController?;
     var bn: BotNavigator?;
@@ -25,7 +25,9 @@ class Babysitter: NSObject {
     static var enterWhileLeave = false;
     
     
-    override init() {
+    override func viewDidLoad() {
+        super.viewDidLoad();
+        
         if bcm.connections.count <= 0 {
             Toaster.show("Please provide at minimum a single connection inside the settings.");
         } else {
@@ -45,7 +47,7 @@ class Babysitter: NSObject {
                 bcm.connect(connection);
             }
         }
-                
+
     }
     
     
@@ -62,11 +64,12 @@ class Babysitter: NSObject {
         //UseCaseManager.globalEnter = true;
         
         logger.log(.Info, data: "MOVE TO: -20, -10");
-        self.bn?.moveTo(CGPointMake(CGFloat(-20), CGFloat(-10)), completion: /*){ [weak self] data in
+        self.bn?.moveToWithoutObstacle(CGPointMake(CGFloat(-20), CGFloat(-10)), completion: /*){ [weak self] data in
             self?.bc?.scanRange(30, max: 150, inc: 3, callback: { data in
             self?.logger.log(.Info, data: "scanning House entry");
             }
         }*/ nil);
+        
 
         patrolAction();
     }
@@ -81,19 +84,46 @@ class Babysitter: NSObject {
         logger.log(.Info, data: "Patrol Action Babysitter");
         var someoneAtDoor = false;
         
+        // scanBugFlag = flag welches verhindern soll dass ein Eindringling vom Roboter wahrgenommen wird, wenn keiner vorhanden ist
+        // es muss mehrere male hintereinander vom Roboter gesendet werden, dass sich etwas vor ihm befindet
+        var scanBugFlag = 0.0;
+        
+        // scanen des Tuereingans waehrend der patrolAction
+        // wenn in einer Distanz kleiner als 30 etwas gescant wird, stoppt der Roboter und senden Alarm + Alarmton
+        self.bc?.scanRange(30, max: 150, inc: 3, callback: { scandata in
+            self.logger.log(.Info, data: "scanning room entry");
+            if (scandata.pingDistance < 30) {
+                if (scanBugFlag >= 2.0 && scandata.pingDistance < 30){
+                    self.logger.log(.Info, data: "intruder detected");
+                    self.bc?.stopRangeScan({
+                        self.bc?.stopMovingWithPositionalUpdate({
+                            self.logger.log(.Info, data: "stopped cause intruder detected");
+                        });
+                    });
+                    Toaster.show("Achtung Eindringling!");
+                    // + Alarm an Eltern abschicken als Toast
+                }else{
+                    scanBugFlag++;
+                }
+            }else{
+                scanBugFlag = 0.0;
+            }
+        })
+        
         while someoneAtDoor == false {
                     logger.log(.Info, data: "MOVE TO: -20, -5");
-            self.bn?.moveTo(CGPointMake(CGFloat(-20), CGFloat(-5)), completion: /*{ [weak self] data in
+            self.bn?.moveToWithoutObstacle(CGPointMake(CGFloat(-20), CGFloat(-5)), completion: /*{ [weak self] data in
                 self?.bc?.scanRange(30, max: 150, inc: 3, callback: { data in
                     self?.logger.log(.Info, data: "scanning House entry");
                 })
             }*/ nil);
                     logger.log(.Info, data: "MOVE TO: -20, -10");
-            self.bn?.moveTo(CGPointMake(CGFloat(-20), CGFloat(-10)), completion: /*{ [weak self] data in
+            self.bn?.moveToWithoutObstacle(CGPointMake(CGFloat(-20), CGFloat(-10)), completion: /*{ [weak self] data in
                 self?.bc?.scanRange(30, max: 150, inc: 3, callback: { data in
                 self?.logger.log(.Info, data: "scanning House entry");
                 })
             }*/ nil);
+            
 
             someoneAtDoor = true
             

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="IOf-7S-mOe">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="IOf-7S-mOe">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -41,6 +41,15 @@
                                     <segue destination="BRV-1H-4Vs" kind="show" id="6F6-bK-q38"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Nt-Dx-zIi" userLabel="Babysitter Start">
+                                <rect key="frame" x="86" y="446" width="243" height="39"/>
+                                <animations/>
+                                <color key="backgroundColor" red="0.3456629745" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Babysitter Start"/>
+                                <connections>
+                                    <segue destination="xL3-uL-ftD" kind="show" id="Mtr-3f-eEt"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -50,6 +59,46 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hjJ-qy-2UU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="726" y="784"/>
+        </scene>
+        <!--Babysitter View Controller-->
+        <scene sceneID="6HS-5k-Is6">
+            <objects>
+                <viewController id="xL3-uL-ftD" customClass="BabysitterViewController" customModule="MobileBot" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="vhJ-ma-aih"/>
+                        <viewControllerLayoutGuide type="bottom" id="uWt-rR-rA9"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="qBy-Mh-IbF">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Babysitter is active" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tGS-yz-QUE">
+                                <rect key="frame" x="228" y="227" width="145" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UeK-y5-zVY">
+                                <rect key="frame" x="283" y="371" width="34" height="30"/>
+                                <state key="normal" title="Back"/>
+                                <connections>
+                                    <segue destination="f9E-4d-Z3P" kind="show" id="oEU-cE-tLb"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qhi-S0-XRj">
+                                <rect key="frame" x="272" y="419" width="57" height="30"/>
+                                <state key="normal" title="Settings"/>
+                                <connections>
+                                    <segue destination="IOf-7S-mOe" kind="show" id="ohe-pN-Vdk"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FxM-ed-AKV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1396" y="732"/>
         </scene>
         <!--Test Hardware Controller-->
         <scene sceneID="LiE-VM-2PX">
@@ -84,18 +133,16 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yi7-zr-Syh">
                                 <rect key="frame" x="184" y="412" width="46" height="30"/>
                                 <animations/>
-                                <state key="normal" title="Home"/>
+                                <state key="normal" title="Back"/>
                                 <connections>
                                     <segue destination="f9E-4d-Z3P" kind="show" id="NOx-5B-iMl"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Nt-Dx-zIi" userLabel="Babysitter Start">
-                                <rect key="frame" x="141" y="353" width="132" height="30"/>
-                                <animations/>
-                                <color key="backgroundColor" red="0.3456629745" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="Babysitter Start"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KIp-RH-lUF">
+                                <rect key="frame" x="179" y="462" width="57" height="30"/>
+                                <state key="normal" title="Settings"/>
                                 <connections>
-                                    <action selector="testBabysitter:" destination="vbM-Rx-UZO" eventType="touchUpInside" id="o8I-tV-6gu"/>
+                                    <segue destination="IOf-7S-mOe" kind="show" id="4Fb-FM-bwx"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -106,7 +153,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1s0-MZ-gr7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="736" y="1565"/>
+            <point key="canvasLocation" x="726" y="1725"/>
         </scene>
         <!--Bot Control Test View Controller-->
         <scene sceneID="PXb-he-fbD">
@@ -117,11 +164,11 @@
                         <viewControllerLayoutGuide type="bottom" id="oMR-ON-CWn"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8h8-cW-vxr">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uh5-GC-YzU">
-                                <rect key="frame" x="281" y="72" width="38" height="30"/>
+                                <rect key="frame" x="188" y="72" width="38" height="30"/>
                                 <animations/>
                                 <state key="normal" title="move">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -131,7 +178,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FAd-Q6-8MV">
-                                <rect key="frame" x="207" y="110" width="186" height="30"/>
+                                <rect key="frame" x="114" y="110" width="186" height="30"/>
                                 <animations/>
                                 <state key="normal" title="scanRange(min, max, step)">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -193,7 +240,7 @@
                                 <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zmj-qA-uKZ">
-                                <rect key="frame" x="246" y="416" width="108" height="30"/>
+                                <rect key="frame" x="153" y="416" width="108" height="30"/>
                                 <animations/>
                                 <state key="normal" title="current position">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -203,7 +250,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CLD-HR-aeq">
-                                <rect key="frame" x="257" y="454" width="5" height="30"/>
+                                <rect key="frame" x="205" y="454" width="5" height="30"/>
                                 <animations/>
                                 <state key="normal" title="turn to angle">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -240,7 +287,7 @@
                                 </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hiq-9Y-7Eh">
-                                <rect key="frame" x="132" y="503" width="43" height="30"/>
+                                <rect key="frame" x="80" y="503" width="43" height="30"/>
                                 <animations/>
                                 <state key="normal" title="speed">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -250,7 +297,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EVn-Dt-q4X">
-                                <rect key="frame" x="257" y="503" width="83" height="30"/>
+                                <rect key="frame" x="205" y="503" width="83" height="30"/>
                                 <animations/>
                                 <state key="normal" title="turnSpeed">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -341,7 +388,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="94u-xP-rWg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="672" y="48"/>
+            <point key="canvasLocation" x="744" y="-4"/>
         </scene>
         <!--Settings-->
         <scene sceneID="bkX-NB-xvf">
@@ -450,7 +497,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="NOx-5B-iMl"/>
+        <segue reference="oEU-cE-tLb"/>
+        <segue reference="ohe-pN-Vdk"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
 </document>
