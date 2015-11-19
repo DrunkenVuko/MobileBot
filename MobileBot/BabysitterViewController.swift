@@ -18,11 +18,18 @@ class BabysitterViewController: UIViewController {
     var bn: BotNavigator?;
     let bcm = BotConnectionManager.sharedInstance();
     let logger = StreamableLogger();
+    let testhardware = TestHardwareController();
     var debounceTimer: NSTimer?
     var notification: UILocalNotification?;
     var timer = NSTimer()
     
     static var enterWhileLeave = false;
+    let loadstation1x = 0;
+    let loadstation1y = 0;
+    let doorpoint1x = 20;
+    let doorpoint1y = 30;
+    var doorpoint2x = 20;
+    var doorpoint2y = 80;
     
     
     override func viewDidLoad() {
@@ -50,7 +57,20 @@ class BabysitterViewController: UIViewController {
 
     }
     
+    @IBOutlet weak var Output: UITextView!
     
+    @IBAction func StartBabyPressed(sender: UIButton) {
+        startAction()
+    }
+    
+    @IBAction func StopBabyPressed(sender: UIButton) {
+        bc?.stopRangeScan({ [weak self] in
+            self?.logger.log(.Info, data: "scan stopped")
+            });
+        bc?.stopMovingWithPositionalUpdate({ [weak self] in
+            self?.logger.log(.Info, data: "stopped")});
+        
+    }
     /**
      * Startet den Use Case
      *
@@ -62,16 +82,20 @@ class BabysitterViewController: UIViewController {
         
         //UseCaseManager.guibFlag = true;
         //UseCaseManager.globalEnter = true;
-        
-        logger.log(.Info, data: "MOVE TO: -20, -10");
-        self.bn?.moveToWithoutObstacle(CGPointMake(CGFloat(-20), CGFloat(-10)), completion: /*){ [weak self] data in
-            self?.bc?.scanRange(30, max: 150, inc: 3, callback: { data in
-            self?.logger.log(.Info, data: "scanning House entry");
-            }
-        }*/ nil);
-        
+        logger.log(.Info, data: "baby__________________________");
+        logger.log(.Info, data: "baby:__________________________");
+        logger.log(.Info, data: "baby:__________________________");
+        logger.log(.Info, data: "baby:Start: MOVE TO");
+//        self.bn?.moveTo(CGPointMake(CGFloat(20), CGFloat(10)), completion: {data in self.logger.log(.Info, data: "move finished")});
+        self.bn?.moveToWithoutObstacle(CGPointMake(CGFloat(loadstation1x), CGFloat(loadstation1y)), completion: {data in
+            self.logger.log(.Info, data: "baby::__________________________");
+            self.logger.log(.Info, data: "baby::__________________________");
+            self.logger.log(.Info, data: "baby:__________________________");
+            self.logger.log(.Info, data: "baby:Start: move finished");
+            self.patrolAction();
+        });
 
-        patrolAction();
+        
     }
     
     
@@ -81,7 +105,10 @@ class BabysitterViewController: UIViewController {
 
     **/
     func patrolAction(){
-        logger.log(.Info, data: "Patrol Action Babysitter");
+        logger.log(.Info, data: "baby:__________________________");
+        logger.log(.Info, data: "baby:__________________________");
+        logger.log(.Info, data: "baby:__________________________");
+        logger.log(.Info, data: "baby:Patrol Action baby:sitter");
         var someoneAtDoor = false;
         
         // scanBugFlag = flag welches verhindern soll dass ein Eindringling vom Roboter wahrgenommen wird, wenn keiner vorhanden ist
@@ -90,14 +117,15 @@ class BabysitterViewController: UIViewController {
         
         // scanen des Tuereingans waehrend der patrolAction
         // wenn in einer Distanz kleiner als 30 etwas gescant wird, stoppt der Roboter und senden Alarm + Alarmton
-        self.bc?.scanRange(30, max: 150, inc: 3, callback: { scandata in
-            self.logger.log(.Info, data: "scanning room entry");
-            if (scandata.pingDistance < 30) {
-                if (scanBugFlag >= 2.0 && scandata.pingDistance < 30){
+        self.bc?.scanRange(100, max: 150, inc: 3, callback: { scandata in
+            self.Output.text = "scanning room entry \(scandata.pingDistance)";
+            self.logger.log(.Info, data: "scanning room entry \(scandata.pingDistance)");
+            if (scandata.pingDistance < 40 && scandata.pingDistance > 0) {
+                if (scanBugFlag >= 5.0){
                     self.logger.log(.Info, data: "intruder detected");
                     self.bc?.stopRangeScan({
                         self.bc?.stopMovingWithPositionalUpdate({
-                            self.logger.log(.Info, data: "stopped cause intruder detected");
+                            self.logger.log(.Info, data: "stopped cause intruder detected \(scandata.pingDistance)");
                         });
                     });
                     Toaster.show("Achtung Eindringling!");
@@ -111,19 +139,23 @@ class BabysitterViewController: UIViewController {
         })
         
         while someoneAtDoor == false {
-                    logger.log(.Info, data: "MOVE TO: -20, -5");
-            self.bn?.moveToWithoutObstacle(CGPointMake(CGFloat(-20), CGFloat(-5)), completion: /*{ [weak self] data in
-                self?.bc?.scanRange(30, max: 150, inc: 3, callback: { data in
-                    self?.logger.log(.Info, data: "scanning House entry");
-                })
-            }*/ nil);
-                    logger.log(.Info, data: "MOVE TO: -20, -10");
-            self.bn?.moveToWithoutObstacle(CGPointMake(CGFloat(-20), CGFloat(-10)), completion: /*{ [weak self] data in
-                self?.bc?.scanRange(30, max: 150, inc: 3, callback: { data in
-                self?.logger.log(.Info, data: "scanning House entry");
-                })
-            }*/ nil);
-            
+
+            logger.log(.Info, data: "baby:MOVE TO doorpoint 2");
+            self.bn?.moveToWithoutObstacle(CGPointMake(CGFloat(doorpoint2x), CGFloat(doorpoint2y)), completion: { data in
+                self.logger.log(.Info, data: "baby:MOVE TO doorpoint 2 finished");
+        
+                self.logger.log(.Info, data: "baby:MOVE TO doorpoint 1");
+                self.bn?.moveToWithoutObstacle(CGPointMake(CGFloat(self.doorpoint1x), CGFloat(self.doorpoint1y)), completion: { data in
+                        self.logger.log(.Info, data: "baby:MOVE TO doorpoint 1 finished");
+                    
+                        self.bn?.moveToWithoutObstacle(CGPointMake(CGFloat(self.doorpoint2x), CGFloat(self.doorpoint2y)), completion: { data in
+                        self.logger.log(.Info, data: "baby:MOVE TO doorpoint 2 finished");
+                
+                    })
+                
+                }
+                )
+            })
 
             someoneAtDoor = true
             

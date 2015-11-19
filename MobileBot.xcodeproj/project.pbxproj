@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		AF04A8CB1BFCB1F4004CC757 /* beaconmanager.de.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF04A8C91BFCB1F4004CC757 /* beaconmanager.de.framework */; };
 		AF04A8CC1BFCB1F5004CC757 /* beaconmanager.de.res.bundle in Frameworks */ = {isa = PBXBuildFile; fileRef = AF04A8CA1BFCB1F4004CC757 /* beaconmanager.de.res.bundle */; };
+		AF62E8041BFDBB9800F0966A /* DashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF62E8031BFDBB9800F0966A /* DashViewController.swift */; };
+		AF62E8061BFDCC5900F0966A /* libz.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = AF62E8051BFDCC5900F0966A /* libz.1.dylib */; };
+		AF62E8081BFDCC6C00F0966A /* libxml2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = AF62E8071BFDCC6C00F0966A /* libxml2.2.dylib */; };
 		B801118A1BEB51E4003A2BD2 /* UseCaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B80111891BEB51E4003A2BD2 /* UseCaseManager.swift */; };
 		B801118F1BEB5430003A2BD2 /* BabysitterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B801118E1BEB5430003A2BD2 /* BabysitterViewController.swift */; };
 		B802B8E61BEA4D41009745F6 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B802B8E51BEA4D41009745F6 /* SettingsViewController.swift */; };
@@ -56,6 +59,9 @@
 /* Begin PBXFileReference section */
 		AF04A8C91BFCB1F4004CC757 /* beaconmanager.de.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = beaconmanager.de.framework; sourceTree = "<group>"; };
 		AF04A8CA1BFCB1F4004CC757 /* beaconmanager.de.res.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = beaconmanager.de.res.bundle; sourceTree = "<group>"; };
+		AF62E8031BFDBB9800F0966A /* DashViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashViewController.swift; sourceTree = "<group>"; };
+		AF62E8051BFDCC5900F0966A /* libz.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.dylib; path = ../../../../../usr/lib/libz.1.dylib; sourceTree = "<group>"; };
+		AF62E8071BFDCC6C00F0966A /* libxml2.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.2.dylib; path = ../../../../../usr/lib/libxml2.2.dylib; sourceTree = "<group>"; };
 		B80111891BEB51E4003A2BD2 /* UseCaseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UseCaseManager.swift; sourceTree = "<group>"; };
 		B801118E1BEB5430003A2BD2 /* BabysitterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BabysitterViewController.swift; sourceTree = "<group>"; };
 		B802B8E51BEA4D41009745F6 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
@@ -102,6 +108,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AF62E8081BFDCC6C00F0966A /* libxml2.2.dylib in Frameworks */,
+				AF62E8061BFDCC5900F0966A /* libz.1.dylib in Frameworks */,
 				AF04A8CB1BFCB1F4004CC757 /* beaconmanager.de.framework in Frameworks */,
 				AF04A8CC1BFCB1F5004CC757 /* beaconmanager.de.res.bundle in Frameworks */,
 			);
@@ -136,6 +144,8 @@
 		B8BDFAAE1BD8B86F005CC1AE = {
 			isa = PBXGroup;
 			children = (
+				AF62E8071BFDCC6C00F0966A /* libxml2.2.dylib */,
+				AF62E8051BFDCC5900F0966A /* libz.1.dylib */,
 				AF04A8C91BFCB1F4004CC757 /* beaconmanager.de.framework */,
 				AF04A8CA1BFCB1F4004CC757 /* beaconmanager.de.res.bundle */,
 				B8BDFAB91BD8B86F005CC1AE /* MobileBot */,
@@ -166,6 +176,7 @@
 				C59D38681BE3694B0081F6E9 /* BotControlTestViewController.swift */,
 				C59D38701BE3694B0081F6E9 /* TestHardwareController.swift */,
 				B802B8E51BEA4D41009745F6 /* SettingsViewController.swift */,
+				AF62E8031BFDBB9800F0966A /* DashViewController.swift */,
 				B8BDFABA1BD8B86F005CC1AE /* AppDelegate.swift */,
 				B801118B1BEB51E8003A2BD2 /* Use-Cases */,
 				B8BDFAC01BD8B86F005CC1AE /* Main.storyboard */,
@@ -376,6 +387,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C59D387F1BE3694B0081F6E9 /* TestHardwareController.swift in Sources */,
+				AF62E8041BFDBB9800F0966A /* DashViewController.swift in Sources */,
 				C59D38A91BE36B0F0081F6E9 /* StreamableLogger.swift in Sources */,
 				C59D389F1BE36B0F0081F6E9 /* BotController.swift in Sources */,
 				B801118A1BEB51E4003A2BD2 /* UseCaseManager.swift in Sources */,

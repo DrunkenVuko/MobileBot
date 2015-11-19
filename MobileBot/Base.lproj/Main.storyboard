@@ -5,10 +5,10 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Dash View Controller-->
         <scene sceneID="Qqu-Q9-ndY">
             <objects>
-                <viewController id="f9E-4d-Z3P" sceneMemberID="viewController">
+                <viewController id="f9E-4d-Z3P" customClass="DashViewController" customModule="MobileBot" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="rQg-fi-Loh"/>
                         <viewControllerLayoutGuide type="bottom" id="HFB-Y0-exv"/>
@@ -92,9 +92,32 @@
                                     <segue destination="IOf-7S-mOe" kind="show" id="ohe-pN-Vdk"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GVu-CQ-Y0j">
+                                <rect key="frame" x="259" y="301" width="72" height="30"/>
+                                <state key="normal" title="Start Baby"/>
+                                <connections>
+                                    <action selector="StartBabyPressed:" destination="xL3-uL-ftD" eventType="touchUpInside" id="iyx-tB-fid"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SEx-5X-U8M">
+                                <rect key="frame" x="265" y="476" width="71" height="30"/>
+                                <state key="normal" title="Stop Baby"/>
+                                <connections>
+                                    <action selector="StopBabyPressed:" destination="xL3-uL-ftD" eventType="touchUpInside" id="wm4-7f-O3S"/>
+                                </connections>
+                            </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ek6-CQ-CpE">
+                                <rect key="frame" x="180" y="91" width="240" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="Output" destination="ek6-CQ-CpE" id="rKf-wJ-g0B"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FxM-ed-AKV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -164,7 +187,7 @@
                         <viewControllerLayoutGuide type="bottom" id="oMR-ON-CWn"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8h8-cW-vxr">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uh5-GC-YzU">
