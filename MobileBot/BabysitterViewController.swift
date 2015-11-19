@@ -82,15 +82,9 @@ class BabysitterViewController: UIViewController {
         
         //UseCaseManager.guibFlag = true;
         //UseCaseManager.globalEnter = true;
-        logger.log(.Info, data: "baby__________________________");
-        logger.log(.Info, data: "baby:__________________________");
-        logger.log(.Info, data: "baby:__________________________");
         logger.log(.Info, data: "baby:Start: MOVE TO");
 //        self.bn?.moveTo(CGPointMake(CGFloat(20), CGFloat(10)), completion: {data in self.logger.log(.Info, data: "move finished")});
         self.bn?.moveToWithoutObstacle(CGPointMake(CGFloat(loadstation1x), CGFloat(loadstation1y)), completion: {data in
-            self.logger.log(.Info, data: "baby::__________________________");
-            self.logger.log(.Info, data: "baby::__________________________");
-            self.logger.log(.Info, data: "baby:__________________________");
             self.logger.log(.Info, data: "baby:Start: move finished");
             self.patrolAction();
         });
@@ -105,12 +99,36 @@ class BabysitterViewController: UIViewController {
 
     **/
     func patrolAction(){
-        logger.log(.Info, data: "baby:__________________________");
-        logger.log(.Info, data: "baby:__________________________");
-        logger.log(.Info, data: "baby:__________________________");
         logger.log(.Info, data: "baby:Patrol Action baby:sitter");
         var someoneAtDoor = false;
         
+        while someoneAtDoor == false {
+            
+            scan();
+            logger.log(.Info, data: "baby:MOVE TO doorpoint 2");
+            self.bn?.moveToWithoutObstacle(CGPointMake(CGFloat(doorpoint2x), CGFloat(doorpoint2y)), completion: { data in
+                self.logger.log(.Info, data: "baby:MOVE TO doorpoint 2 finished");
+        
+                self.logger.log(.Info, data: "baby:MOVE TO doorpoint 1");
+                self.bn?.moveToWithoutObstacle(CGPointMake(CGFloat(self.doorpoint1x), CGFloat(self.doorpoint1y)), completion: { data in
+                        self.logger.log(.Info, data: "baby:MOVE TO doorpoint 1 finished");
+                    
+                        self.bn?.moveToWithoutObstacle(CGPointMake(CGFloat(self.doorpoint2x), CGFloat(self.doorpoint2y)), completion: { data in
+                        self.logger.log(.Info, data: "baby:MOVE TO doorpoint 2 finished");
+                
+                    })
+                
+                }
+                )
+            })
+
+            someoneAtDoor = true
+            
+        }
+    
+    }
+    
+    func scan() {
         // scanBugFlag = flag welches verhindern soll dass ein Eindringling vom Roboter wahrgenommen wird, wenn keiner vorhanden ist
         // es muss mehrere male hintereinander vom Roboter gesendet werden, dass sich etwas vor ihm befindet
         var scanBugFlag = 0.0;
@@ -137,30 +155,6 @@ class BabysitterViewController: UIViewController {
                 scanBugFlag = 0.0;
             }
         })
-        
-        while someoneAtDoor == false {
-
-            logger.log(.Info, data: "baby:MOVE TO doorpoint 2");
-            self.bn?.moveToWithoutObstacle(CGPointMake(CGFloat(doorpoint2x), CGFloat(doorpoint2y)), completion: { data in
-                self.logger.log(.Info, data: "baby:MOVE TO doorpoint 2 finished");
-        
-                self.logger.log(.Info, data: "baby:MOVE TO doorpoint 1");
-                self.bn?.moveToWithoutObstacle(CGPointMake(CGFloat(self.doorpoint1x), CGFloat(self.doorpoint1y)), completion: { data in
-                        self.logger.log(.Info, data: "baby:MOVE TO doorpoint 1 finished");
-                    
-                        self.bn?.moveToWithoutObstacle(CGPointMake(CGFloat(self.doorpoint2x), CGFloat(self.doorpoint2y)), completion: { data in
-                        self.logger.log(.Info, data: "baby:MOVE TO doorpoint 2 finished");
-                
-                    })
-                
-                }
-                )
-            })
-
-            someoneAtDoor = true
-            
-        }
-    
     }
     
     /**
