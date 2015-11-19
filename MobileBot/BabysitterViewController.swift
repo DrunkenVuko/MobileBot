@@ -24,12 +24,14 @@ class BabysitterViewController: UIViewController {
     var timer = NSTimer()
     
     static var enterWhileLeave = false;
-    let loadstation1x = 0;
-    let loadstation1y = 0;
-    let doorpoint1x = 20;
-    let doorpoint1y = 30;
-    var doorpoint2x = 20;
-    var doorpoint2y = 80;
+    var posStationX = 0,
+        posStationY = 0;
+    var posDoorLeftX = 30,
+        posDoorLeftY = 50,
+        posDoorRightX = 10,
+        posDoorRightY = 50;
+    
+    var someoneAtDoor = false;
     
     
     override func viewDidLoad() {
@@ -78,56 +80,32 @@ class BabysitterViewController: UIViewController {
     func startAction() {
         logger.log(.Info, data: "Start Action Babysitter");
         
-        //scheduleLocalNotification();
-        
-        //UseCaseManager.guibFlag = true;
-        //UseCaseManager.globalEnter = true;
-        logger.log(.Info, data: "baby:Start: MOVE TO");
-//        self.bn?.moveTo(CGPointMake(CGFloat(20), CGFloat(10)), completion: {data in self.logger.log(.Info, data: "move finished")});
-        self.bn?.moveToWithoutObstacle(CGPointMake(CGFloat(loadstation1x), CGFloat(loadstation1y)), completion: {data in
-            self.logger.log(.Info, data: "baby:Start: move finished");
-            self.patrolAction();
+        reset();
+        goToDoor();
+
+    }
+    
+    
+    func reset(){
+        self.bc?.resetPosition({ () -> Void in
+            self.logger.log(.Info, data: "Reset Robo Position");
         });
-
-        
-    }
-    
-    
-    
-    /**
-     Patrol at the door. and send alarm.
-
-    **/
-    func patrolAction(){
-        logger.log(.Info, data: "baby:Patrol Action baby:sitter");
-        var someoneAtDoor = false;
-        
-        while someoneAtDoor == false {
-            
-            scan();
-            logger.log(.Info, data: "baby:MOVE TO doorpoint 2");
-            self.bn?.moveToWithoutObstacle(CGPointMake(CGFloat(doorpoint2x), CGFloat(doorpoint2y)), completion: { data in
-                self.logger.log(.Info, data: "baby:MOVE TO doorpoint 2 finished");
-        
-                self.logger.log(.Info, data: "baby:MOVE TO doorpoint 1");
-                self.bn?.moveToWithoutObstacle(CGPointMake(CGFloat(self.doorpoint1x), CGFloat(self.doorpoint1y)), completion: { data in
-                        self.logger.log(.Info, data: "baby:MOVE TO doorpoint 1 finished");
-                    
-                        self.bn?.moveToWithoutObstacle(CGPointMake(CGFloat(self.doorpoint2x), CGFloat(self.doorpoint2y)), completion: { data in
-                        self.logger.log(.Info, data: "baby:MOVE TO doorpoint 2 finished");
-                
-                    })
-                
-                }
-                )
-            })
-
-            someoneAtDoor = true
-            
-        }
     
     }
     
+    func goToDoor(){
+        //zuerst zur linkem tuerrand fahren
+        self.bn?.moveToWithoutObstacle(CGPointMake(CGFloat(posDoorLeftX), CGFloat(posDoorLeftY)), completion: { data in
+            self.logger.log(.Info, data: "baby: MOVE TO doorpoint LEFT finished");
+            
+            self.scan();
+            //beginnend von links nach rechts zu patroullieren
+            self.patrol(false);
+        })
+    }
+  
+    //@TODO
+    //nochmal ueber die alarmfunktion nachdenken
     func scan() {
         // scanBugFlag = flag welches verhindern soll dass ein Eindringling vom Roboter wahrgenommen wird, wenn keiner vorhanden ist
         // es muss mehrere male hintereinander vom Roboter gesendet werden, dass sich etwas vor ihm befindet
@@ -141,13 +119,20 @@ class BabysitterViewController: UIViewController {
             if (scandata.pingDistance < 40 && scandata.pingDistance > 0) {
                 if (scanBugFlag >= 5.0){
                     self.logger.log(.Info, data: "intruder detected");
+                    
+                    self.someoneAtDoor = true;
+                    
                     self.bc?.stopRangeScan({
                         self.bc?.stopMovingWithPositionalUpdate({
                             self.logger.log(.Info, data: "stopped cause intruder detected \(scandata.pingDistance)");
+
                         });
                     });
-                    Toaster.show("Achtung Eindringling!");
+                    
                     // + Alarm an Eltern abschicken als Toast
+                    self.sendAlarm("Alarm!");
+                    
+                    
                 }else{
                     scanBugFlag++;
                 }
@@ -155,6 +140,55 @@ class BabysitterViewController: UIViewController {
                 scanBugFlag = 0.0;
             }
         })
+    }
+    
+    func patrol(toLeft: Bool){
+        //nur patroullieren wenn kein eindringling in der nähe
+        if(someoneAtDoor == false){
+            
+            var posDoorX = self.posDoorLeftX
+            var posDoorY = self.posDoorLeftY
+            var strPos = "Right"
+            var toNext = true
+        
+            if(toLeft){
+                posDoorX = self.posDoorRightX
+                posDoorY = self.posDoorRightY
+                strPos = "Left"
+                toNext = false
+            }
+        
+            self.logger.log(.Info, data: "baby: MOVE TO doorpoint "+strPos);
+        
+            self.bn?.moveToWithoutObstacle(CGPointMake(CGFloat(posDoorX), CGFloat(posDoorY)), completion: { data in
+                self.logger.log(.Info, data: "baby: MOVE TO doorpoint "+strPos+" finished");
+            
+                self.patrol(toNext)
+            })
+        }
+        //hier zurueck an die tuer schicken?
+        //oder bei erfolgreichem scan?
+        else{
+            goToStation()
+        
+        }
+    
+    }
+    
+    func goToStation(){
+        
+        self.bn?.moveToWithoutObstacle(CGPointMake(CGFloat(posStationX), CGFloat(posStationY)), completion: { data in
+            self.logger.log(.Info, data: "baby: MOVE TO Station finished");
+            self.sendAlarm("Robo at Station");
+        })
+        
+    }
+    
+    //Eltern benachrichtigen
+    //spaeter mal mit push nachrichten umsetzen
+    //@TODO
+    func sendAlarm(message: String){
+        Toaster.show(message);
     }
     
     /**
