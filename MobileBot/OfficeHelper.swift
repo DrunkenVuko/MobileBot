@@ -17,9 +17,9 @@ class OfficeHelper: UIViewController {
     
     
 //    Hard coded office coordinates
-    var office1: [(CGFloat, CGFloat)] = [(0, 0), (25, 0), (25, 50)]
+    var office1: [(CGFloat, CGFloat)] = [(0, 0), (25, 0), (25, 50), (25, 0), (0, 0)]
     
-    var office2: [(CGFloat, CGFloat)] = [(0, 0), (-15, 0), (-15, 55)]
+    var office2: [(CGFloat, CGFloat)] = [(20, 0), (20, -20), (0, -20), (0, 0)]
     
     var office3: [(CGFloat, CGFloat)] = [(0, 0), (25, 0), (25, 50)]
     

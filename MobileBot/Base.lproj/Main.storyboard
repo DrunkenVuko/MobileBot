@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="IOf-7S-mOe">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="14F1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="IOf-7S-mOe">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -117,11 +117,11 @@
                         <viewControllerLayoutGuide type="bottom" id="i6D-5H-aYY"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="fvo-vr-uJ6">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xia-EC-kb0">
-                                <rect key="frame" x="276" y="364" width="49" height="30"/>
+                                <rect key="frame" x="183" y="364" width="49" height="30"/>
                                 <animations/>
                                 <state key="normal" title="Zurück"/>
                                 <connections>
@@ -129,7 +129,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w06-pV-2H3">
-                                <rect key="frame" x="230" y="67" width="139" height="30"/>
+                                <rect key="frame" x="137" y="67" width="139" height="30"/>
                                 <animations/>
                                 <color key="backgroundColor" red="0.70013222838657596" green="1" blue="0.47413272504429493" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Office 1 hin-zurueck"/>
@@ -138,7 +138,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Km0-vz-gTX">
-                                <rect key="frame" x="230" y="132" width="141" height="30"/>
+                                <rect key="frame" x="137" y="132" width="141" height="30"/>
                                 <animations/>
                                 <color key="backgroundColor" red="1" green="0.82572032111590121" blue="0.41365082256595476" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Office 2 hin-zurueck"/>
@@ -147,7 +147,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cbd-Zy-uHx">
-                                <rect key="frame" x="229" y="202" width="141" height="30"/>
+                                <rect key="frame" x="136" y="202" width="141" height="30"/>
                                 <animations/>
                                 <color key="backgroundColor" red="0.53866425115501693" green="0.68081490320054938" blue="0.81262270942408377" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Office 3 hin-zurueck"/>
@@ -156,7 +156,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H1E-vS-DVy">
-                                <rect key="frame" x="272" y="309" width="57" height="30"/>
+                                <rect key="frame" x="179" y="309" width="57" height="30"/>
                                 <animations/>
                                 <state key="normal" title="Settings"/>
                                 <connections>
@@ -193,7 +193,7 @@
                         <viewControllerLayoutGuide type="bottom" id="oMR-ON-CWn"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8h8-cW-vxr">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uh5-GC-YzU">
@@ -316,7 +316,7 @@
                                 </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hiq-9Y-7Eh">
-                                <rect key="frame" x="80" y="503" width="43" height="30"/>
+                                <rect key="frame" x="80" y="503" width="42.5" height="30"/>
                                 <animations/>
                                 <state key="normal" title="speed">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -336,7 +336,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fl9-0n-TXu">
-                                <rect key="frame" x="435" y="503" width="39" height="30"/>
+                                <rect key="frame" x="301" y="503" width="39" height="30"/>
                                 <animations/>
                                 <state key="normal" title="offset">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -428,7 +428,7 @@
                         <viewControllerLayoutGuide type="bottom" id="YNk-BF-Ynd"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Xgt-4Q-bF5">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="IP" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X1K-Ma-bQw">
@@ -438,7 +438,7 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="wifibee02" borderStyle="roundedRect" placeholder="192.168.43.98" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ktl-Ra-THA">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="192.168.43.147" borderStyle="roundedRect" placeholder="192.168.43.98" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ktl-Ra-THA">
                                 <rect key="frame" x="148" y="72" width="436" height="30"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -526,7 +526,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="qg0-vu-c0A"/>
+        <segue reference="0Sw-Nd-xoC"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
 </document>
