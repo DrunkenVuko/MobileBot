@@ -19,9 +19,9 @@ class UseCaseManager : NSObject, CLLocationManagerDelegate {
     
     private static var instance: UseCaseManager?
         
-    //let nc = NSNotificationCenter.defaultCenter()
+    let nc = NSNotificationCenter.defaultCenter()
     let cl = CLLocationManager()
-    //var beaconRegion: CLBeaconRegion?
+    var beaconRegion: CLBeaconRegion?
     let logger = StreamableLogger()
     
     /* Instanz unseres Use-Cases */
@@ -36,12 +36,15 @@ class UseCaseManager : NSObject, CLLocationManagerDelegate {
     /* Wache */
     static var atStation = true
     
-    func run() {
+    
+    static var xxx = "String"
+    
+    func run(){
         cl.delegate = self
         
         cl.requestAlwaysAuthorization()
         
-        //nc.addObserver(self, selector: "notification:", name: CustomEvent, object: nil)
+        nc.addObserver(self, selector: "notification:", name: CustomEvent, object: nil)
         
     }
     
@@ -52,7 +55,6 @@ class UseCaseManager : NSObject, CLLocationManagerDelegate {
     func notification(idh: NSNotification){
         logger.log(.Info, data: idh)
         let str :NSString = (idh.object as? NSString)!
-        
             switch str {
                 /* Beacon Babysitter
                 Door Exit   - 3010
@@ -61,18 +63,23 @@ class UseCaseManager : NSObject, CLLocationManagerDelegate {
                 Not at baby - 3021
                 Station     - 3030
                 */
-                
                 // Aus dem Haus raus...
                 case "3010":
                     logger.log(.Info, data: "3010 ist Beacon: Not at Home")
                     UseCaseManager.atHome = false
                     
+                    Toaster.show("3010 Beacon erkannt!")
+                    
                     if(UseCaseManager.atHome == true)
                     {
+                        Toaster.show("3010 Beacon erkannt!")
+
                         // Robo soll an die Station...
                     }
                     else if(UseCaseManager.atHome == false && UseCaseManager.atBaby == false)
                     {
+                        Toaster.show("3010 Beacon erkannt!")
+
                         UseCaseManager.atStation = false
                         // Wenn du aus der Tür bist && nicht am Baby dann -> Action... (homeUC.startAction())
                     }

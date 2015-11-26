@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="IOf-7S-mOe">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="IOf-7S-mOe">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -47,7 +47,7 @@
                                 <color key="backgroundColor" red="0.3456629745" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Babysitter Start"/>
                                 <connections>
-                                    <segue destination="xL3-uL-ftD" kind="show" id="Mtr-3f-eEt"/>
+                                    <segue destination="xL3-uL-ftD" kind="show" id="3wi-XZ-efU"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -74,12 +74,14 @@
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Babysitter is active" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tGS-yz-QUE">
                                 <rect key="frame" x="228" y="227" width="145" height="21"/>
+                                <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UeK-y5-zVY">
                                 <rect key="frame" x="283" y="371" width="34" height="30"/>
+                                <animations/>
                                 <state key="normal" title="Back"/>
                                 <connections>
                                     <segue destination="f9E-4d-Z3P" kind="show" id="oEU-cE-tLb"/>
@@ -87,12 +89,14 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qhi-S0-XRj">
                                 <rect key="frame" x="272" y="419" width="57" height="30"/>
+                                <animations/>
                                 <state key="normal" title="Settings"/>
                                 <connections>
                                     <segue destination="IOf-7S-mOe" kind="show" id="ohe-pN-Vdk"/>
                                 </connections>
                             </button>
                         </subviews>
+                        <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                 </viewController>
@@ -140,6 +144,7 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KIp-RH-lUF">
                                 <rect key="frame" x="179" y="462" width="57" height="30"/>
+                                <animations/>
                                 <state key="normal" title="Settings"/>
                                 <connections>
                                     <segue destination="IOf-7S-mOe" kind="show" id="4Fb-FM-bwx"/>
@@ -500,5 +505,5 @@
         <segue reference="oEU-cE-tLb"/>
         <segue reference="ohe-pN-Vdk"/>
     </inferredMetricsTieBreakers>
-    <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+    <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
 </document>

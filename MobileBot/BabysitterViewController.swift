@@ -21,6 +21,7 @@ class BabysitterViewController: UIViewController {
     var debounceTimer: NSTimer?
     var notification: UILocalNotification?;
     var timer = NSTimer()
+    let UC = UseCaseManager.sharedInstance()
     
     static var enterWhileLeave = false;
     
@@ -36,7 +37,6 @@ class BabysitterViewController: UIViewController {
                 
                 if let bc = bc {
                     bn = BotNavigator(controller: bc);
-                    
                     /*
                     speedField.text = String(stringInterpolationSegment: bn!.getSpeed());
                     turnSpeedField.text = String(stringInterpolationSegment: bn!.getTurnSpeed());
@@ -50,18 +50,24 @@ class BabysitterViewController: UIViewController {
 
     }
     
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+
+        
+        UseCaseManager.atHome = true
+        UseCaseManager.atBaby = true
+        
+
+    }
     
     /**
      * Startet den Use Case
      *
      */
     func startAction() {
-        logger.log(.Info, data: "Start Action Babysitter");
+        logger.log(.Info, data: "Start Action Babysitter")
         
-        //scheduleLocalNotification();
-        
-        //UseCaseManager.guibFlag = true;
-        //UseCaseManager.globalEnter = true;
+        scheduleLocalNotification()
         
         logger.log(.Info, data: "MOVE TO: -20, -10");
         self.bn?.moveToWithoutObstacle(CGPointMake(CGFloat(-20), CGFloat(-10)), completion: /*){ [weak self] data in
@@ -135,27 +141,28 @@ class BabysitterViewController: UIViewController {
      * Schedules a local notification only once by canceling any previously scheduled notification
      */
     func scheduleLocalNotification() {
-        /*
+        
+        
         cancelLocalNotification();
         
         let fireDate = NSDate(timeIntervalSinceNow: 5);
         
-        notification = UILocalNotification(title: "Unbefugter Eindringling erkannt", body: "Achtung, es wurde ein unbefugter Eindringling erkannt!", fireDate: fireDate);
+        notification = UILocalNotification()
         
         UIApplication.sharedApplication().scheduleLocalNotification(notification!);
         
         logger.log(.Info, data: "scheduled local notification with fire date: \(fireDate)");
-        */
+       
     }
     
     func cancelLocalNotification() {
-        /*
+        
         if let notification = notification {
             UIApplication.sharedApplication().cancelLocalNotification(notification);
             
             logger.log(.Info, data: "canceled previously scheduled notification: \(notification)");
         }
-        */
+        
     }
     
     // *****

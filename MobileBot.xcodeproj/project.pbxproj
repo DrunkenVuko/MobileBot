@@ -7,11 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		AF04A8CB1BFCB1F4004CC757 /* beaconmanager.de.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF04A8C91BFCB1F4004CC757 /* beaconmanager.de.framework */; };
-		AF04A8CC1BFCB1F5004CC757 /* beaconmanager.de.res.bundle in Frameworks */ = {isa = PBXBuildFile; fileRef = AF04A8CA1BFCB1F4004CC757 /* beaconmanager.de.res.bundle */; };
 		B801118A1BEB51E4003A2BD2 /* UseCaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B80111891BEB51E4003A2BD2 /* UseCaseManager.swift */; };
 		B801118F1BEB5430003A2BD2 /* BabysitterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B801118E1BEB5430003A2BD2 /* BabysitterViewController.swift */; };
 		B802B8E61BEA4D41009745F6 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B802B8E51BEA4D41009745F6 /* SettingsViewController.swift */; };
+		B88062631BFE30110000DF4E /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B88062621BFE30110000DF4E /* CoreData.framework */; };
+		B88062651BFE30410000DF4E /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B88062641BFE30410000DF4E /* Accelerate.framework */; };
+		B88062671BFE304C0000DF4E /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B88062661BFE304C0000DF4E /* CoreLocation.framework */; };
+		B88062691BFE30560000DF4E /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B88062681BFE30560000DF4E /* CoreBluetooth.framework */; };
+		B880626B1BFE30610000DF4E /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B880626A1BFE30610000DF4E /* Security.framework */; };
+		B880626D1BFE30810000DF4E /* libz.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B880626C1BFE30810000DF4E /* libz.1.dylib */; };
+		B880626F1BFE308F0000DF4E /* libxml2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B880626E1BFE308F0000DF4E /* libxml2.2.dylib */; };
+		B88062731BFE30C10000DF4E /* beaconmanager.de.res.bundle in Embed PlugIns */ = {isa = PBXBuildFile; fileRef = B88062721BFE30C10000DF4E /* beaconmanager.de.res.bundle */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B880627B1BFE31E00000DF4E /* beaconmanager.de.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B880627A1BFE31E00000DF4E /* beaconmanager.de.framework */; };
+		B8BB447F1BFDD14200B28FCE /* UILocalNotificationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BB447E1BFDD14200B28FCE /* UILocalNotificationExtension.swift */; };
 		B8BDFABB1BD8B86F005CC1AE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BDFABA1BD8B86F005CC1AE /* AppDelegate.swift */; };
 		B8BDFAC21BD8B86F005CC1AE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B8BDFAC01BD8B86F005CC1AE /* Main.storyboard */; };
 		B8BDFAC41BD8B86F005CC1AE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B8BDFAC31BD8B86F005CC1AE /* Assets.xcassets */; };
@@ -53,12 +61,36 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		B8392C791BFE2EAE00AC1B5F /* Embed PlugIns */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				B88062731BFE30C10000DF4E /* beaconmanager.de.res.bundle in Embed PlugIns */,
+			);
+			name = "Embed PlugIns";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
-		AF04A8C91BFCB1F4004CC757 /* beaconmanager.de.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = beaconmanager.de.framework; sourceTree = "<group>"; };
-		AF04A8CA1BFCB1F4004CC757 /* beaconmanager.de.res.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = beaconmanager.de.res.bundle; sourceTree = "<group>"; };
 		B80111891BEB51E4003A2BD2 /* UseCaseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UseCaseManager.swift; sourceTree = "<group>"; };
 		B801118E1BEB5430003A2BD2 /* BabysitterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BabysitterViewController.swift; sourceTree = "<group>"; };
 		B802B8E51BEA4D41009745F6 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		B88062621BFE30110000DF4E /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		B88062641BFE30410000DF4E /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		B88062661BFE304C0000DF4E /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		B88062681BFE30560000DF4E /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
+		B880626A1BFE30610000DF4E /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		B880626C1BFE30810000DF4E /* libz.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.dylib; path = ../../../usr/lib/libz.1.dylib; sourceTree = "<group>"; };
+		B880626E1BFE308F0000DF4E /* libxml2.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.2.dylib; path = ../../../usr/lib/libxml2.2.dylib; sourceTree = "<group>"; };
+		B88062721BFE30C10000DF4E /* beaconmanager.de.res.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = beaconmanager.de.res.bundle; sourceTree = "<group>"; };
+		B88062771BFE314B0000DF4E /* MobileBot-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MobileBot-Bridging-Header.h"; sourceTree = "<group>"; };
+		B88062781BFE31CD0000DF4E /* beautifulsoup4-4.4.0.tar.gz */ = {isa = PBXFileReference; lastKnownFileType = archive.gzip; name = "beautifulsoup4-4.4.0.tar.gz"; path = "../Downloads/beautifulsoup4-4.4.0.tar.gz"; sourceTree = "<group>"; };
+		B880627A1BFE31E00000DF4E /* beaconmanager.de.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = beaconmanager.de.framework; path = ../Downloads/beaconmanager_sdk/SampleApp/beaconmanager.de.framework; sourceTree = "<group>"; };
+		B8BB447E1BFDD14200B28FCE /* UILocalNotificationExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UILocalNotificationExtension.swift; sourceTree = "<group>"; };
 		B8BDFAB71BD8B86F005CC1AE /* MobileBot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MobileBot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8BDFABA1BD8B86F005CC1AE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B8BDFAC11BD8B86F005CC1AE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -82,7 +114,6 @@
 		C59D388F1BE36B0F0081F6E9 /* BotUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BotUtils.swift; sourceTree = "<group>"; };
 		C59D38901BE36B0F0081F6E9 /* Command.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Command.swift; sourceTree = "<group>"; };
 		C59D38911BE36B0F0081F6E9 /* CommandQueue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandQueue.swift; sourceTree = "<group>"; };
-		C59D38921BE36B0F0081F6E9 /* MobileBot-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MobileBot-Bridging-Header.h"; sourceTree = "<group>"; };
 		C59D38931BE36B0F0081F6E9 /* PersistableRegion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersistableRegion.swift; sourceTree = "<group>"; };
 		C59D38941BE36B0F0081F6E9 /* ProtocolCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProtocolCommand.h; sourceTree = "<group>"; };
 		C59D38951BE36B0F0081F6E9 /* ProtocolCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProtocolCommand.m; sourceTree = "<group>"; };
@@ -102,8 +133,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AF04A8CB1BFCB1F4004CC757 /* beaconmanager.de.framework in Frameworks */,
-				AF04A8CC1BFCB1F5004CC757 /* beaconmanager.de.res.bundle in Frameworks */,
+				B880627B1BFE31E00000DF4E /* beaconmanager.de.framework in Frameworks */,
+				B880626F1BFE308F0000DF4E /* libxml2.2.dylib in Frameworks */,
+				B880626D1BFE30810000DF4E /* libz.1.dylib in Frameworks */,
+				B880626B1BFE30610000DF4E /* Security.framework in Frameworks */,
+				B88062691BFE30560000DF4E /* CoreBluetooth.framework in Frameworks */,
+				B88062671BFE304C0000DF4E /* CoreLocation.framework in Frameworks */,
+				B88062651BFE30410000DF4E /* Accelerate.framework in Frameworks */,
+				B88062631BFE30110000DF4E /* CoreData.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -136,8 +173,16 @@
 		B8BDFAAE1BD8B86F005CC1AE = {
 			isa = PBXGroup;
 			children = (
-				AF04A8C91BFCB1F4004CC757 /* beaconmanager.de.framework */,
-				AF04A8CA1BFCB1F4004CC757 /* beaconmanager.de.res.bundle */,
+				B880627A1BFE31E00000DF4E /* beaconmanager.de.framework */,
+				B88062781BFE31CD0000DF4E /* beautifulsoup4-4.4.0.tar.gz */,
+				B88062721BFE30C10000DF4E /* beaconmanager.de.res.bundle */,
+				B880626E1BFE308F0000DF4E /* libxml2.2.dylib */,
+				B880626C1BFE30810000DF4E /* libz.1.dylib */,
+				B880626A1BFE30610000DF4E /* Security.framework */,
+				B88062681BFE30560000DF4E /* CoreBluetooth.framework */,
+				B88062661BFE304C0000DF4E /* CoreLocation.framework */,
+				B88062641BFE30410000DF4E /* Accelerate.framework */,
+				B88062621BFE30110000DF4E /* CoreData.framework */,
 				B8BDFAB91BD8B86F005CC1AE /* MobileBot */,
 				B8BDFAD01BD8B86F005CC1AE /* MobileBotTests */,
 				B8BDFADB1BD8B86F005CC1AE /* MobileBotUITests */,
@@ -158,13 +203,13 @@
 		B8BDFAB91BD8B86F005CC1AE /* MobileBot */ = {
 			isa = PBXGroup;
 			children = (
-				C59D38921BE36B0F0081F6E9 /* MobileBot-Bridging-Header.h */,
 				C59D38851BE369860081F6E9 /* Utility */,
 				C59D38841BE3697B0081F6E9 /* Protocol */,
 				C59D38831BE3696D0081F6E9 /* BotControl */,
 				C59D38821BE369570081F6E9 /* BotConnection */,
 				C59D38681BE3694B0081F6E9 /* BotControlTestViewController.swift */,
 				C59D38701BE3694B0081F6E9 /* TestHardwareController.swift */,
+				B88062771BFE314B0000DF4E /* MobileBot-Bridging-Header.h */,
 				B802B8E51BEA4D41009745F6 /* SettingsViewController.swift */,
 				B8BDFABA1BD8B86F005CC1AE /* AppDelegate.swift */,
 				B801118B1BEB51E8003A2BD2 /* Use-Cases */,
@@ -235,6 +280,7 @@
 		C59D38851BE369860081F6E9 /* Utility */ = {
 			isa = PBXGroup;
 			children = (
+				B8BB447E1BFDD14200B28FCE /* UILocalNotificationExtension.swift */,
 				C59D38931BE36B0F0081F6E9 /* PersistableRegion.swift */,
 				C59D389A1BE36B0F0081F6E9 /* Stream.swift */,
 				C59D389B1BE36B0F0081F6E9 /* StreamableLogger.swift */,
@@ -253,6 +299,7 @@
 				B8BDFAB31BD8B86F005CC1AE /* Sources */,
 				B8BDFAB41BD8B86F005CC1AE /* Frameworks */,
 				B8BDFAB51BD8B86F005CC1AE /* Resources */,
+				B8392C791BFE2EAE00AC1B5F /* Embed PlugIns */,
 			);
 			buildRules = (
 			);
@@ -306,7 +353,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0710;
-				LastUpgradeCheck = 0700;
+				LastUpgradeCheck = 0710;
 				ORGANIZATIONNAME = "Goran Vukovic";
 				TargetAttributes = {
 					B8BDFAB61BD8B86F005CC1AE = {
@@ -390,6 +437,7 @@
 				B801118F1BEB5430003A2BD2 /* BabysitterViewController.swift in Sources */,
 				C59D38A21BE36B0F0081F6E9 /* Command.swift in Sources */,
 				C59D38A01BE36B0F0081F6E9 /* BotNavigator.swift in Sources */,
+				B8BB447F1BFDD14200B28FCE /* UILocalNotificationExtension.swift in Sources */,
 				C59D38A71BE36B0F0081F6E9 /* ProtocolCommandField.m in Sources */,
 				C59D38A41BE36B0F0081F6E9 /* PersistableRegion.swift in Sources */,
 				C59D389E1BE36B0F0081F6E9 /* BotConnectionManager.m in Sources */,
@@ -489,6 +537,7 @@
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				SWIFT_OBJC_BRIDGING_HEADER = "MobileBot-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -527,6 +576,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OBJC_BRIDGING_HEADER = "MobileBot-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -539,21 +589,27 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/MobileBot",
 				);
 				INFOPLIST_FILE = MobileBot/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/beaconmanager.de.framework/Versions/A",
+					"$(PROJECT_DIR)/MobileBot",
 				);
+				OTHER_LDFLAGS = "-lc++";
 				PRODUCT_BUNDLE_IDENTIFIER = MobileBotTeam.MobileBot;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "MobileBot/MobileBot-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				WARNING_LDFLAGS = "-lc++";
 			};
 			name = Debug;
 		};
@@ -564,20 +620,27 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/MobileBot",
 				);
 				INFOPLIST_FILE = MobileBot/Info.plist;
+				"LD_MAP_FILE_PATH[arch=*]" = "$(TARGET_TEMP_DIR)/$(PRODUCT_NAME)-LinkMap-$(CURRENT_VARIANT)-$(CURRENT_ARCH).txt";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/beaconmanager.de.framework/Versions/A",
+					"$(PROJECT_DIR)/MobileBot",
 				);
+				OTHER_LDFLAGS = "-lc++";
 				PRODUCT_BUNDLE_IDENTIFIER = MobileBotTeam.MobileBot;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "MobileBot/MobileBot-Bridging-Header.h";
+				WARNING_LDFLAGS = "-lc++";
 			};
 			name = Release;
 		};
