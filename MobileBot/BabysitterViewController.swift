@@ -18,12 +18,20 @@ class BabysitterViewController: UIViewController {
     var bn: BotNavigator?;
     let bcm = BotConnectionManager.sharedInstance();
     let logger = StreamableLogger();
+    let testhardware = TestHardwareController();
     var debounceTimer: NSTimer?
     var notification: UILocalNotification?;
     var timer = NSTimer()
-    let UC = UseCaseManager.sharedInstance()
     
     static var enterWhileLeave = false;
+    var posStationX = 0,
+        posStationY = 0;
+    var posDoorLeftX = 30,
+        posDoorLeftY = 50,
+        posDoorRightX = 10,
+        posDoorRightY = 50;
+    
+    var someoneAtDoor = false;
     
     
     override func viewDidLoad() {
@@ -37,6 +45,7 @@ class BabysitterViewController: UIViewController {
                 
                 if let bc = bc {
                     bn = BotNavigator(controller: bc);
+                    
                     /*
                     speedField.text = String(stringInterpolationSegment: bn!.getSpeed());
                     turnSpeedField.text = String(stringInterpolationSegment: bn!.getTurnSpeed());
@@ -50,64 +59,80 @@ class BabysitterViewController: UIViewController {
 
     }
     
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-
-        
-        UseCaseManager.atHome = true
-        UseCaseManager.atBaby = true
-        
-
+    @IBOutlet weak var Output: UITextView!
+    
+    @IBAction func StartBabyPressed(sender: UIButton) {
+        startAction()
     }
     
+    @IBAction func StopBabyPressed(sender: UIButton) {
+        bc?.stopRangeScan({ [weak self] in
+            self?.logger.log(.Info, data: "scan stopped")
+            });
+        bc?.stopMovingWithPositionalUpdate({ [weak self] in
+            self?.logger.log(.Info, data: "stopped")});
+        
+    }
     /**
      * Startet den Use Case
      *
      */
     func startAction() {
-        logger.log(.Info, data: "Start Action Babysitter")
+        logger.log(.Info, data: "Start Action Babysitter");
         
-        scheduleLocalNotification()
-        
-        logger.log(.Info, data: "MOVE TO: -20, -10");
-        self.bn?.moveToWithoutObstacle(CGPointMake(CGFloat(-20), CGFloat(-10)), completion: /*){ [weak self] data in
-            self?.bc?.scanRange(30, max: 150, inc: 3, callback: { data in
-            self?.logger.log(.Info, data: "scanning House entry");
-            }
-        }*/ nil);
-        
+        reset();
+        goToDoor();
 
-        patrolAction();
     }
     
     
+    func reset(){
+        self.bc?.resetPosition({ () -> Void in
+            self.logger.log(.Info, data: "Reset Robo Position");
+        });
     
-    /**
-     Patrol at the door. and send alarm.
-
-    **/
-    func patrolAction(){
-        logger.log(.Info, data: "Patrol Action Babysitter");
-        var someoneAtDoor = false;
-        
+    }
+    
+    func goToDoor(){
+        //zuerst zur linkem tuerrand fahren
+        self.bn?.moveToWithoutObstacle(CGPointMake(CGFloat(posDoorLeftX), CGFloat(posDoorLeftY)), completion: { data in
+            self.logger.log(.Info, data: "baby: MOVE TO doorpoint LEFT finished");
+            
+            self.scan();
+            //beginnend von links nach rechts zu patroullieren
+            self.patrol(false);
+        })
+    }
+  
+    //@TODO
+    //nochmal ueber die alarmfunktion nachdenken
+    func scan() {
         // scanBugFlag = flag welches verhindern soll dass ein Eindringling vom Roboter wahrgenommen wird, wenn keiner vorhanden ist
         // es muss mehrere male hintereinander vom Roboter gesendet werden, dass sich etwas vor ihm befindet
         var scanBugFlag = 0.0;
         
         // scanen des Tuereingans waehrend der patrolAction
         // wenn in einer Distanz kleiner als 30 etwas gescant wird, stoppt der Roboter und senden Alarm + Alarmton
-        self.bc?.scanRange(30, max: 150, inc: 3, callback: { scandata in
-            self.logger.log(.Info, data: "scanning room entry");
-            if (scandata.pingDistance < 30) {
-                if (scanBugFlag >= 2.0 && scandata.pingDistance < 30){
+        self.bc?.scanRange(100, max: 150, inc: 3, callback: { scandata in
+            self.Output.text = "scanning room entry \(scandata.pingDistance)";
+            self.logger.log(.Info, data: "scanning room entry \(scandata.pingDistance)");
+            if (scandata.pingDistance < 40 && scandata.pingDistance > 0) {
+                if (scanBugFlag >= 5.0){
                     self.logger.log(.Info, data: "intruder detected");
+                    
+                    self.someoneAtDoor = true;
+                    
                     self.bc?.stopRangeScan({
                         self.bc?.stopMovingWithPositionalUpdate({
-                            self.logger.log(.Info, data: "stopped cause intruder detected");
+                            self.logger.log(.Info, data: "stopped cause intruder detected \(scandata.pingDistance)");
+
                         });
                     });
-                    Toaster.show("Achtung Eindringling!");
+                    
                     // + Alarm an Eltern abschicken als Toast
+                    self.sendAlarm("Alarm!");
+                    
+                    
                 }else{
                     scanBugFlag++;
                 }
@@ -115,54 +140,82 @@ class BabysitterViewController: UIViewController {
                 scanBugFlag = 0.0;
             }
         })
+    }
+    
+    func patrol(toLeft: Bool){
+        //nur patroullieren wenn kein eindringling in der nähe
+        if(someoneAtDoor == false){
+            
+            var posDoorX = self.posDoorLeftX
+            var posDoorY = self.posDoorLeftY
+            var strPos = "Right"
+            var toNext = true
         
-        while someoneAtDoor == false {
-                    logger.log(.Info, data: "MOVE TO: -20, -5");
-            self.bn?.moveToWithoutObstacle(CGPointMake(CGFloat(-20), CGFloat(-5)), completion: /*{ [weak self] data in
-                self?.bc?.scanRange(30, max: 150, inc: 3, callback: { data in
-                    self?.logger.log(.Info, data: "scanning House entry");
-                })
-            }*/ nil);
-                    logger.log(.Info, data: "MOVE TO: -20, -10");
-            self.bn?.moveToWithoutObstacle(CGPointMake(CGFloat(-20), CGFloat(-10)), completion: /*{ [weak self] data in
-                self?.bc?.scanRange(30, max: 150, inc: 3, callback: { data in
-                self?.logger.log(.Info, data: "scanning House entry");
-                })
-            }*/ nil);
+            if(toLeft){
+                posDoorX = self.posDoorRightX
+                posDoorY = self.posDoorRightY
+                strPos = "Left"
+                toNext = false
+            }
+        
+            self.logger.log(.Info, data: "baby: MOVE TO doorpoint "+strPos);
+        
+            self.bn?.moveToWithoutObstacle(CGPointMake(CGFloat(posDoorX), CGFloat(posDoorY)), completion: { data in
+                self.logger.log(.Info, data: "baby: MOVE TO doorpoint "+strPos+" finished");
             
-
-            someoneAtDoor = true
-            
+                self.patrol(toNext)
+            })
+        }
+        //hier zurueck an die tuer schicken?
+        //oder bei erfolgreichem scan?
+        else{
+            goToStation()
+        
         }
     
+    }
+    
+    func goToStation(){
+        
+        self.bn?.moveToWithoutObstacle(CGPointMake(CGFloat(posStationX), CGFloat(posStationY)), completion: { data in
+            self.logger.log(.Info, data: "baby: MOVE TO Station finished");
+            self.sendAlarm("Robo at Station");
+        })
+        
+    }
+    
+    //Eltern benachrichtigen
+    //spaeter mal mit push nachrichten umsetzen
+    //@TODO
+    func sendAlarm(message: String){
+        Toaster.show(message);
     }
     
     /**
      * Schedules a local notification only once by canceling any previously scheduled notification
      */
     func scheduleLocalNotification() {
-        
-        
+        /*
         cancelLocalNotification();
         
         let fireDate = NSDate(timeIntervalSinceNow: 5);
         
-        notification = UILocalNotification()
+        notification = UILocalNotification(title: "Unbefugter Eindringling erkannt", body: "Achtung, es wurde ein unbefugter Eindringling erkannt!", fireDate: fireDate);
         
         UIApplication.sharedApplication().scheduleLocalNotification(notification!);
         
         logger.log(.Info, data: "scheduled local notification with fire date: \(fireDate)");
-       
+        */
     }
     
     func cancelLocalNotification() {
-        
+        /*
         if let notification = notification {
             UIApplication.sharedApplication().cancelLocalNotification(notification);
             
             logger.log(.Info, data: "canceled previously scheduled notification: \(notification)");
         }
-        
+        */
     }
     
     // *****
