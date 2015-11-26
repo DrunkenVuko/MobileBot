@@ -26,10 +26,12 @@ class BabysitterViewController: UIViewController {
     static var enterWhileLeave = false;
     var posStationX = 0,
         posStationY = 0;
-    var posDoorLeftX = 30,
-        posDoorLeftY = 50,
+    var posDoorLeftX = 101,
+        posDoorLeftY = -180,
         posDoorRightX = 10,
-        posDoorRightY = 50;
+        posDoorRightY = -180;
+    
+    var alreadyStarted = false;
     
     var someoneAtDoor = false;
     
@@ -66,11 +68,14 @@ class BabysitterViewController: UIViewController {
     }
     
     @IBAction func StopBabyPressed(sender: UIButton) {
-        bc?.stopRangeScan({ [weak self] in
+        /*bc?.stopRangeScan({ [weak self] in
             self?.logger.log(.Info, data: "scan stopped")
             });
         bc?.stopMovingWithPositionalUpdate({ [weak self] in
-            self?.logger.log(.Info, data: "stopped")});
+            self?.logger.log(.Info, data: "stopped")});*/
+        
+        
+        goToStation();
         
     }
     /**
@@ -80,9 +85,12 @@ class BabysitterViewController: UIViewController {
     func startAction() {
         logger.log(.Info, data: "Start Action Babysitter");
         
+        if(alreadyStarted == false){
+            //reset();
+        }
         reset();
+        alreadyStarted = true;
         goToDoor();
-
     }
     
     
@@ -90,15 +98,14 @@ class BabysitterViewController: UIViewController {
         self.bc?.resetPosition({ () -> Void in
             self.logger.log(.Info, data: "Reset Robo Position");
         });
-    
     }
     
     func goToDoor(){
         //zuerst zur linkem tuerrand fahren
-        self.bn?.moveToWithoutObstacle(CGPointMake(CGFloat(posDoorLeftX), CGFloat(posDoorLeftY)), completion: { data in
+        self.bn?.moveToWithoutObstacle(CGPointMake(CGFloat(posDoorRightX), CGFloat(posDoorRightY)), completion: { data in
             self.logger.log(.Info, data: "baby: MOVE TO doorpoint LEFT finished");
             
-            self.scan();
+            
             //beginnend von links nach rechts zu patroullieren
             self.patrol(false);
         })
@@ -123,9 +130,11 @@ class BabysitterViewController: UIViewController {
                     self.someoneAtDoor = true;
                     
                     self.bc?.stopRangeScan({
-                        self.bc?.stopMovingWithPositionalUpdate({
-                            self.logger.log(.Info, data: "stopped cause intruder detected \(scandata.pingDistance)");
-
+                        self.bc?.stoptUpdatingPosition();
+                        self.bc?.stop({
+                            self.goToStation();
+                            
+                            
                         });
                     });
                     
@@ -142,22 +151,24 @@ class BabysitterViewController: UIViewController {
         })
     }
     
-    func patrol(toLeft: Bool){
+    func patrol(toRight: Bool){
         //nur patroullieren wenn kein eindringling in der nähe
         if(someoneAtDoor == false){
             
             var posDoorX = self.posDoorLeftX
             var posDoorY = self.posDoorLeftY
-            var strPos = "Right"
+            var strPos = "Left"
             var toNext = true
         
-            if(toLeft){
+            if(toRight){
                 posDoorX = self.posDoorRightX
                 posDoorY = self.posDoorRightY
-                strPos = "Left"
+                strPos = "Right"
                 toNext = false
             }
         
+            self.scan();
+            
             self.logger.log(.Info, data: "baby: MOVE TO doorpoint "+strPos);
         
             self.bn?.moveToWithoutObstacle(CGPointMake(CGFloat(posDoorX), CGFloat(posDoorY)), completion: { data in
@@ -177,8 +188,15 @@ class BabysitterViewController: UIViewController {
     
     func goToStation(){
         
-        self.bn?.moveToWithoutObstacle(CGPointMake(CGFloat(posStationX), CGFloat(posStationY)), completion: { data in
+        /*self.bn?.moveToWithoutObstacle(CGPointMake(CGFloat(posStationX), CGFloat(posStationY)), completion: { data in
             self.logger.log(.Info, data: "baby: MOVE TO Station finished");
+            self.sendAlarm("Robo at Station");
+        })*/
+        
+        let data = self.bc?.posData;
+        self.bn?.moveToWithoutObstacle(CGPointMake(CGFloat(data!.x), CGFloat(data!.y)), completion: { data in
+            self.logger.log(.Info, data: "baby: MOVE TO Station finished");
+            
             self.sendAlarm("Robo at Station");
         })
         
