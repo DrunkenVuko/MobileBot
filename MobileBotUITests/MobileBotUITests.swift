@@ -2,7 +2,7 @@
 //  MobileBotUITests.swift
 //  MobileBotUITests
 //
-//  Created by Goran Vukovic on 22.10.15.
+//  Created by Goran Vukovic on 26.11.15.
 //  Copyright © 2015 Goran Vukovic. All rights reserved.
 //
 
