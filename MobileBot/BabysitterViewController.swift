@@ -209,6 +209,24 @@ class BabysitterViewController: UIViewController {
         Toaster.show(message);
     }
     
+    /*    func pushNotification(){
+    
+    var AlertView = UIAlertController(title: "You won", message: "Ok", preferredStyle: <#T##UIAlertControllerStyle#>.Alert);
+    AlertView.addAction(UIAlertAction(title: "", style: UIAlertActionStyle.Default, handler: nil);
+    self.presentedViewController(AlertView, animated:true, completion:nil);
+    var Notification = UILocalNotification();
+    
+    Notification.alertAction = "Okay"
+    Notification.alertBody = "Achtung Eindringling"
+    Notification.fireDate = NSDate(timeIntervalSinceNow: 5)
+    //UIApplication.sharedApplication().scheduledLocalNotifications(Notification)
+    
+    }*/
+    /**
+    * Startet den Use Case
+    *
+    */
+    
     /**
      * Schedules a local notification only once by canceling any previously scheduled notification
      */
