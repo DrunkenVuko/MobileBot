@@ -23,7 +23,7 @@ class BotNavigator {
     // allgemeine Variablen die die Bewegung des Bots beeinflussen
     var speed: Float = 15;
     var turnSpeed: Float = 20;
-    var offset: Float = 2.5;
+    var offset: Float = 0.5;
     
     // Variablen damit nicht unendlich rekursiv ausgewichen wird
     var countAvoids: Float = 0;
@@ -105,7 +105,7 @@ class BotNavigator {
                     self.logger.log(.Info, data: "current position: \(data)");
                     
                     let angle = atan2f(Float(point.y) - data.y, Float(point.x) - data.x);
-                    let degrees = angle * 180 / 3.14;
+                    let degrees = angle * (180 / 3.14);
                     
                     // Roboter dreht sich in die richtige Richtung
                     self.turnToAngle(degrees, speed: self.speed, completion: { data in
@@ -120,7 +120,7 @@ class BotNavigator {
                             
                             // Berechnung des Rechtecks um den Zielpunkt
                             let angle = atan2f(Float(point.y) - data.y, Float(point.x) - data.x);
-                            let degrees = angle * 180 / 3.14;
+                            let degrees = angle * (180 / 3.14);
                             let currentPoint = CGPointMake(CGFloat(data.x), CGFloat(data.y));
                             let currentDistance = BotUtils.distance(from: point, to: currentPoint);
                             
@@ -221,7 +221,7 @@ class BotNavigator {
 
                     } else {
                         let angle = atan2f(Float(point.y) - data.y, Float(point.x) - data.x);
-                        let degrees = angle * 180 / 3.14;
+                        let degrees = angle * (180 / 3.14);
                         
                         // Roboter dreht sich in die richtige Richtung
                         self.turnToAngle(degrees, speed: self.speed, completion: { data in
@@ -236,7 +236,7 @@ class BotNavigator {
                                 
                                 // Berechnung des Rechtecks um den Zielpunkt
                                 let angle = atan2f(Float(point.y) - data.y, Float(point.x) - data.x);
-                                let degrees = angle * 180 / 3.14;
+                                let degrees = angle * (180 / 3.14);
                                 let currentPoint = CGPointMake(CGFloat(data.x), CGFloat(data.y));
                                 let currentDistance = BotUtils.distance(from: point, to: currentPoint);
                                 
@@ -373,7 +373,7 @@ class BotNavigator {
                                 self.logger.log(.Info, data: "angle reached");
                                 completion(turndata);
                             });
-                    }else{
+                    } else {
                     
                         self.logger.log(.Info, data: "previous angle: \(previousAngle), current angle: \(currentAngle)");
                     
@@ -383,7 +383,7 @@ class BotNavigator {
                         // über den Zielwinkel gedreht hat. Ist das der Fall, wird rekursiv die turnTo-Methode mit verringertem Speed ausgeführt, was dazu führt,
                         // dass erneut die Drehrichtung berechnet wird und der Roboter sich langsam zurück dreht
                         if(omegaTmp < 0){
-                            if(turndata.phi < (angle-10) && turndata.phi > (angle-25)){
+                            if(turndata.phi < (angle-self.offset)){
                                 self.bc.stopMovingWithPositionalUpdate({
 //                                  if(speed < -5){
 //                                      self.turnToAngle(angle, speed: speed+5, completion: completion);
@@ -393,8 +393,8 @@ class BotNavigator {
                                     self.turnToAngle(angle, speed: 15, completion: completion);
                                 });
                             }
-                        }else{
-                            if(turndata.phi > (angle+10) && turndata.phi < (angle+25)){
+                        } else {
+                            if(turndata.phi > (angle+self.offset)){
                                 self.bc.stopMovingWithPositionalUpdate({
 //                                  if(speed > 5){
 //                                      self.turnToAngle(angle, speed: speed-5, completion: completion);
