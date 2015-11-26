@@ -208,46 +208,60 @@ class BotNavigator {
                 self.bc.startUpdatingPosition(true, completion: { data in
                     self.logger.log(.Info, data: "current position: \(data)");
                     
-                    let angle = atan2f(Float(point.y) - data.y, Float(point.x) - data.x);
-                    let degrees = angle * 180 / 3.14;
+                    // Wenn der Roboter bereits im Zielrechteck ist, soll er nicht starten
+                    // Berechnung des Rechtecks um den Zielpunkt
+                    let dest = CGRectMake(point.x, point.y, 0, 0);
+                    let destWithInset = CGRectInset(dest, -1.0, -1.0);
+                    let currentPoint = CGPointMake(CGFloat(data.x), CGFloat(data.y));
+                    let destReached = CGRectContainsPoint(destWithInset, currentPoint);
                     
-                    // Roboter dreht sich in die richtige Richtung
-                    self.turnToAngle(degrees, speed: self.speed, completion: { data in
-                        let startingPoint = CGPointMake(CGFloat(data.x), CGFloat(data.y));
-                        var previousDistance = BotUtils.distance(from: startingPoint, to: point);
-                        let dest = CGRectMake(point.x, point.y, 0, 0);
-                        let destWithInset = CGRectInset(dest, -1.0, -1.0);
+                    if destReached {
+                        self.destinationReached(completion);
+                        self.logger.log(.Info, data: "**** Already in destination area ****");
+
+                    } else {
+                        let angle = atan2f(Float(point.y) - data.y, Float(point.x) - data.x);
+                        let degrees = angle * 180 / 3.14;
                         
-                        self.logger.log(.Info, data: "computed destination area: \(destWithInset), from point: \(point)");
-                        
-                        self.bc.startMovingWithPositionalUpdate(self.speed, omega: 0, callback: { data in
+                        // Roboter dreht sich in die richtige Richtung
+                        self.turnToAngle(degrees, speed: self.speed, completion: { data in
+                            let startingPoint = CGPointMake(CGFloat(data.x), CGFloat(data.y));
+                            var previousDistance = BotUtils.distance(from: startingPoint, to: point);
+                            let dest = CGRectMake(point.x, point.y, 0, 0);
+                            let destWithInset = CGRectInset(dest, -1.0, -1.0);
                             
-                            // Berechnung des Rechtecks um den Zielpunkt
-                            let angle = atan2f(Float(point.y) - data.y, Float(point.x) - data.x);
-                            let degrees = angle * 180 / 3.14;
-                            let currentPoint = CGPointMake(CGFloat(data.x), CGFloat(data.y));
-                            let currentDistance = BotUtils.distance(from: point, to: currentPoint);
+                            self.logger.log(.Info, data: "computed destination area: \(destWithInset), from point: \(point)");
                             
-                            self.logger.log(.Info, data: "****************************************************************************");
-                            self.logger.log(.Info, data: "moving forward: \(data) :: \(point)");
-                            self.logger.log(.Info, data: "angle to point: \(degrees)");
-                            self.logger.log(.Info, data: "current distance: \(currentDistance), previous distance: \(previousDistance)");
-                            self.logger.log(.Info, data: "destination area: \(destWithInset), current point: \(currentPoint)");
-                            
-                            let destReached = CGRectContainsPoint(destWithInset, currentPoint);
-                            
-                            if destReached {
-                                self.destinationReached(completion);
+                            self.bc.startMovingWithPositionalUpdate(self.speed, omega: 0, callback: { data in
                                 
-                            } else if currentDistance > previousDistance {
-                                self.destinationReached(completion);
-                                //                                self.moveTo(point, completion: completion)
-                            }
+                                // Berechnung des Rechtecks um den Zielpunkt
+                                let angle = atan2f(Float(point.y) - data.y, Float(point.x) - data.x);
+                                let degrees = angle * 180 / 3.14;
+                                let currentPoint = CGPointMake(CGFloat(data.x), CGFloat(data.y));
+                                let currentDistance = BotUtils.distance(from: point, to: currentPoint);
+                                
+                                self.logger.log(.Info, data: "****************************************************************************");
+                                self.logger.log(.Info, data: "moving forward: \(data) :: \(point)");
+                                self.logger.log(.Info, data: "angle to point: \(degrees)");
+                                self.logger.log(.Info, data: "current distance: \(currentDistance), previous distance: \(previousDistance)");
+                                self.logger.log(.Info, data: "destination area: \(destWithInset), current point: \(currentPoint)");
+                                
+                                let destReached = CGRectContainsPoint(destWithInset, currentPoint);
+                                
+                                if destReached {
+                                    self.destinationReached(completion);
+                                    
+                                } else if currentDistance > previousDistance {
+                                    self.destinationReached(completion);
+                                    //                                self.moveTo(point, completion: completion)
+                                }
+                                
+                                previousDistance = currentDistance;
+                            });
                             
-                            previousDistance = currentDistance;
                         });
-                        
-                    });
+                    }
+                    
                 });
             });
         })
@@ -376,7 +390,7 @@ class BotNavigator {
 //                                  }else{
 //                                      self.turnToAngle(angle, speed: -5, completion: completion);
 //                                  }
-                                    self.turnToAngle(angle, speed: 5, completion: completion);
+                                    self.turnToAngle(angle, speed: 15, completion: completion);
                                 });
                             }
                         }else{
@@ -387,7 +401,7 @@ class BotNavigator {
 //                                  }else{
 //                                      self.turnToAngle(angle, speed: 5, completion: completion);
 //                                  }
-                                    self.turnToAngle(angle, speed: -5, completion: completion);
+                                    self.turnToAngle(angle, speed: -15, completion: completion);
                                 });
                             }
                         }
