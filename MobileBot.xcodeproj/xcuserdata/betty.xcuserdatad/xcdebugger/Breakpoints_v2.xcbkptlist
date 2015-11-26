@@ -2,4 +2,54 @@
 <Bucket
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MobileBot/OfficeHelper.swift"
+            timestampString = "470225003.297796"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "101"
+            endingLineNumber = "101"
+            landmarkName = "goToOffice(_:completion:)"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MobileBot.OfficeHelper.goToOffice (MobileBot.OfficeHelper)(Swift.Array&lt;(CoreGraphics.CGFloat, CoreGraphics.CGFloat)&gt;, completion : Swift.Optional&lt;() -&gt; ()&gt;) -&gt; ()"
+                  moduleName = "MobileBot"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/betty/Repositories/ios/MobileBot/MobileBot/OfficeHelper.swift"
+                  timestampString = "470225003.314735"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "101"
+                  endingLineNumber = "101"
+                  offsetFromSymbolStart = "31">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MobileBot.OfficeHelper.(goToOffice (MobileBot.OfficeHelper) -&gt; (Swift.Array&lt;(CoreGraphics.CGFloat, CoreGraphics.CGFloat)&gt;, completion : Swift.Optional&lt;() -&gt; ()&gt;) -&gt; ()).(closure #1)"
+                  moduleName = "MobileBot"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/betty/Repositories/ios/MobileBot/MobileBot/OfficeHelper.swift"
+                  timestampString = "470225003.315302"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "101"
+                  endingLineNumber = "101"
+                  offsetFromSymbolStart = "16">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>
