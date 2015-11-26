@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "B8BDFAB61BD8B86F005CC1AE"
+               BlueprintIdentifier = "B84142141C070EED007E4270"
                BuildableName = "MobileBot.app"
                BlueprintName = "MobileBot"
                ReferencedContainer = "container:MobileBot.xcodeproj">
@@ -32,7 +32,7 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "B8BDFACC1BD8B86F005CC1AE"
+               BlueprintIdentifier = "B841422B1C070EEE007E4270"
                BuildableName = "MobileBotTests.xctest"
                BlueprintName = "MobileBotTests"
                ReferencedContainer = "container:MobileBot.xcodeproj">
@@ -42,7 +42,7 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "B8BDFAD71BD8B86F005CC1AE"
+               BlueprintIdentifier = "B84142361C070EEE007E4270"
                BuildableName = "MobileBotUITests.xctest"
                BlueprintName = "MobileBotUITests"
                ReferencedContainer = "container:MobileBot.xcodeproj">
@@ -52,7 +52,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "B8BDFAB61BD8B86F005CC1AE"
+            BlueprintIdentifier = "B84142141C070EED007E4270"
             BuildableName = "MobileBot.app"
             BlueprintName = "MobileBot"
             ReferencedContainer = "container:MobileBot.xcodeproj">
@@ -75,7 +75,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "B8BDFAB61BD8B86F005CC1AE"
+            BlueprintIdentifier = "B84142141C070EED007E4270"
             BuildableName = "MobileBot.app"
             BlueprintName = "MobileBot"
             ReferencedContainer = "container:MobileBot.xcodeproj">
@@ -94,7 +94,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "B8BDFAB61BD8B86F005CC1AE"
+            BlueprintIdentifier = "B84142141C070EED007E4270"
             BuildableName = "MobileBot.app"
             BlueprintName = "MobileBot"
             ReferencedContainer = "container:MobileBot.xcodeproj">
