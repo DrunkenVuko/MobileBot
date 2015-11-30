@@ -581,7 +581,7 @@
 				);
 				INFOPLIST_FILE = MobileBot/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = MobileBotTeam.MobileBot;
+				PRODUCT_BUNDLE_IDENTIFIER = "de.beuth-hochschule.mobilebot";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "MobileBot/MobileBot-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -600,7 +600,7 @@
 				);
 				INFOPLIST_FILE = MobileBot/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = MobileBotTeam.MobileBot;
+				PRODUCT_BUNDLE_IDENTIFIER = "de.beuth-hochschule.mobilebot";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "MobileBot/MobileBot-Bridging-Header.h";
 			};
@@ -673,6 +673,7 @@
 				B84142421C070EEE007E4270 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B84142431C070EEE007E4270 /* Build configuration list for PBXNativeTarget "MobileBotTests" */ = {
 			isa = XCConfigurationList;
@@ -681,6 +682,7 @@
 				B84142451C070EEE007E4270 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B84142461C070EEE007E4270 /* Build configuration list for PBXNativeTarget "MobileBotUITests" */ = {
 			isa = XCConfigurationList;
@@ -689,6 +691,7 @@
 				B84142481C070EEE007E4270 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
