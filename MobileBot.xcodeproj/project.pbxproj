@@ -583,6 +583,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "de.beuth-hochschule.mobilebot";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "4eb5678d-e8ca-40c2-be7d-da9b4ab52901";
 				SWIFT_OBJC_BRIDGING_HEADER = "MobileBot/MobileBot-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -602,6 +603,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "de.beuth-hochschule.mobilebot";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "4eb5678d-e8ca-40c2-be7d-da9b4ab52901";
 				SWIFT_OBJC_BRIDGING_HEADER = "MobileBot/MobileBot-Bridging-Header.h";
 			};
 			name = Release;
