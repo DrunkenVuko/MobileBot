@@ -61,6 +61,7 @@ class BabysitterViewController: UIViewController {
 
     }
     
+
     @IBOutlet weak var Output: UITextView!
     
     @IBAction func StartBabyPressed(sender: UIButton) {

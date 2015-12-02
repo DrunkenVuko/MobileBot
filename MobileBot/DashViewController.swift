@@ -20,6 +20,6 @@ class DashViewController: UIViewController {
 /*   @IBAction func BabyPressed(sender: UIButton) {
         self.logger.log(.Info, data: "Started Babysitter");
         baby.startAction();
-    }*/ 
+    }*/
     
 }
