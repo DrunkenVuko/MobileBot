@@ -16,40 +16,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        
         // Override point for customization after application launch.
-        //beaconManager.setDelegate(self);
-        //beaconManager.start();
-        
-        //logger.log(.Info, data: beaconManager.dbVersion());
-        
-        // loacal notification permission request
-        // siehe Code für IOS 7/8 http://www.cakesolutions.net/teamblogs/push-notifications-in-swift-for-ios-7-8
-        // Anleitung Zertifikat http://quickblox.com/developers/How_to_create_APNS_certificates
-        // http://selise.ch/swift-tutorial-push-notification-dot-net-server/
-        // https://www.youtube.com/watch?v=cKV5csbueHA https://www.youtube.com/watch?v=__zMnlsfwj4
-        
-        //statt
         let types: UIUserNotificationType = [.Badge, .Alert, .Sound];
         let notificationSettings = UIUserNotificationSettings(forTypes: types, categories: nil);
         
         UIApplication.sharedApplication().registerUserNotificationSettings(notificationSettings);
         return true
     }
-    
-    /*    func application(application: UIApplication, didRegisterUserNotificationSettings notificationSettings: UIUserNotificationSettings) {
-    UIApplication.sharedApplication().registerForRemoteNotifications()
-    logger.log(.Info, data: notificationSettings);
-    }
-    
-    func application(application: UIApplication,didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
-    //Process the deviceToken and send it to your server
-    }
-    
-    func application(application: UIApplication,didFailToRegisterForRemoteNotificationsWithError error: NSError) {
-    //Log an error for debugging purposes, user doesn't need to know
-    NSLog("Failed to get token; error: %@", error)
-    }*/
     
     func applicationWillResignActive(application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

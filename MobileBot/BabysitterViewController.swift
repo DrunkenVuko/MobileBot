@@ -8,11 +8,32 @@
 
 import Foundation
 import UIKit
+import CoreLocation
+import NotificationCenter
 
 /**
  * Diese Klasse dient dem Use Case : Babysitter
  */
-class BabysitterViewController: UIViewController {
+class BabysitterViewController: UIViewController, beaconSettingsProtocol {
+    
+    @IBOutlet weak var beaconNear: UILabel!
+    
+    var timer = NSTimer()
+    
+    /* Count Up */
+    var countUP = NSTimer()
+    var counter = 0
+    
+    /* Kontakt beacons */
+    var slBeacon = beaconSettings(proximityUUID: NSUUID(UUIDString: "B8937AE0-DC71-4883-A31B-A0059813159B"))
+    
+    /* BeaconHelper Class */
+    var bh: beaconHelper = beaconHelper()
+    
+    /* Controller Var */
+    private var testBeacon: Int = 0
+    private var leftHome:Bool = false
+    private var fired:Bool = false
     
     var bc: BotController?;
     var bn: BotNavigator?;
@@ -21,15 +42,14 @@ class BabysitterViewController: UIViewController {
     let testhardware = TestHardwareController();
     var debounceTimer: NSTimer?
     var notification: UILocalNotification?;
-    var timer = NSTimer()
     
     static var enterWhileLeave = false;
     var posStationX = 0,
-        posStationY = 0;
+    posStationY = 0;
     var posDoorLeftX = 101,
-        posDoorLeftY = -180,
-        posDoorRightX = 10,
-        posDoorRightY = -180;
+    posDoorLeftY = -180,
+    posDoorRightX = 10,
+    posDoorRightY = -180;
     
     var alreadyStarted = false;
     
@@ -38,7 +58,8 @@ class BabysitterViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad();
-        
+        slBeacon.delegate = self
+
         if bcm.connections.count <= 0 {
             Toaster.show("Please provide at minimum a single connection inside the settings.");
         } else {
@@ -58,10 +79,37 @@ class BabysitterViewController: UIViewController {
                 bcm.connect(connection);
             }
         }
-
+        timer = NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: "whichBeacon:", userInfo: 0, repeats: true)
     }
     
-
+    func updateCounter() {
+        print(String(counter++))
+    }
+    
+    func pushNotification(text: String, titel: String){
+        
+        /* Create the alert controller */
+        let alertController: UIAlertController = UIAlertController(title: titel, message: text, preferredStyle: .Alert)
+        
+        // Create the actions
+        let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default) {
+            UIAlertAction in
+            NSLog("OK Pressed")
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel) {
+            UIAlertAction in
+            NSLog("Cancel Pressed")
+        }
+        
+        // Add the actions
+        alertController.addAction(okAction)
+        alertController.addAction(cancelAction)
+        
+        // Present the controller
+        self.presentViewController(alertController, animated: true, completion: nil)
+    }
+    
+    
     @IBOutlet weak var Output: UITextView!
     
     @IBAction func StartBabyPressed(sender: UIButton) {
@@ -70,10 +118,10 @@ class BabysitterViewController: UIViewController {
     
     @IBAction func StopBabyPressed(sender: UIButton) {
         /*bc?.stopRangeScan({ [weak self] in
-            self?.logger.log(.Info, data: "scan stopped")
-            });
+        self?.logger.log(.Info, data: "scan stopped")
+        });
         bc?.stopMovingWithPositionalUpdate({ [weak self] in
-            self?.logger.log(.Info, data: "stopped")});*/
+        self?.logger.log(.Info, data: "stopped")});*/
         
         
         goToStation();
@@ -111,7 +159,7 @@ class BabysitterViewController: UIViewController {
             self.patrol(false);
         })
     }
-  
+    
     //@TODO
     //nochmal ueber die alarmfunktion nachdenken
     func scan() {
@@ -160,38 +208,38 @@ class BabysitterViewController: UIViewController {
             var posDoorY = self.posDoorLeftY
             var strPos = "Left"
             var toNext = true
-        
+            
             if(toRight){
                 posDoorX = self.posDoorRightX
                 posDoorY = self.posDoorRightY
                 strPos = "Right"
                 toNext = false
             }
-        
+            
             self.scan();
             
             self.logger.log(.Info, data: "baby: MOVE TO doorpoint "+strPos);
-        
+            
             self.bn?.moveToWithoutObstacle(CGPointMake(CGFloat(posDoorX), CGFloat(posDoorY)), completion: { data in
                 self.logger.log(.Info, data: "baby: MOVE TO doorpoint "+strPos+" finished");
-            
+                
                 self.patrol(toNext)
             })
         }
-        //hier zurueck an die tuer schicken?
-        //oder bei erfolgreichem scan?
+            //hier zurueck an die tuer schicken?
+            //oder bei erfolgreichem scan?
         else{
             goToStation()
-        
+            
         }
-    
+        
     }
     
     func goToStation(){
         
         /*self.bn?.moveToWithoutObstacle(CGPointMake(CGFloat(posStationX), CGFloat(posStationY)), completion: { data in
-            self.logger.log(.Info, data: "baby: MOVE TO Station finished");
-            self.sendAlarm("Robo at Station");
+        self.logger.log(.Info, data: "baby: MOVE TO Station finished");
+        self.sendAlarm("Robo at Station");
         })*/
         
         //let data = self.bc?.posData;
@@ -229,8 +277,8 @@ class BabysitterViewController: UIViewController {
     */
     
     /**
-     * Schedules a local notification only once by canceling any previously scheduled notification
-     */
+    * Schedules a local notification only once by canceling any previously scheduled notification
+    */
     func scheduleLocalNotification() {
         /*
         cancelLocalNotification();
@@ -248,9 +296,9 @@ class BabysitterViewController: UIViewController {
     func cancelLocalNotification() {
         /*
         if let notification = notification {
-            UIApplication.sharedApplication().cancelLocalNotification(notification);
-            
-            logger.log(.Info, data: "canceled previously scheduled notification: \(notification)");
+        UIApplication.sharedApplication().cancelLocalNotification(notification);
+        
+        logger.log(.Info, data: "canceled previously scheduled notification: \(notification)");
         }
         */
     }
@@ -270,7 +318,7 @@ class BabysitterViewController: UIViewController {
         GuardHouseWhileUserNotHome.enterWhileLeave = false;
         
         if let timer = debounceTimer {
-            timer.invalidate()
+        timer.invalidate()
         }
         
         debounceTimer = NSTimer(timeInterval: 20.0, target: self, selector: Selector("startEndAction"), userInfo: nil, repeats: false)
@@ -286,22 +334,123 @@ class BabysitterViewController: UIViewController {
      *
      */
     func startEndAction(){
-//        if !GuardHouseWhileUserNotHome.enterWhileLeave {
-//            
-//            cancelLocalNotification();
-//            
-//            UseCaseManager.ghwunhFlag = false;
-//            UseCaseManager.globalEnter=false;
-//            
-//            self.bc?.stopRangeScan({ [weak self] in
-//                self?.bn?.moveTo(CGPointMake(CGFloat(0), CGFloat(0)), completion: nil);
-//                })
-//            
-//            logger.log(.Info, data: "End GuardHouseWhileUserNotHome!")
-//        }
+        //        if !GuardHouseWhileUserNotHome.enterWhileLeave {
+        //
+        //            cancelLocalNotification();
+        //
+        //            UseCaseManager.ghwunhFlag = false;
+        //            UseCaseManager.globalEnter=false;
+        //
+        //            self.bc?.stopRangeScan({ [weak self] in
+        //                self?.bn?.moveTo(CGPointMake(CGFloat(0), CGFloat(0)), completion: nil);
+        //                })
+        //
+        //            logger.log(.Info, data: "End GuardHouseWhileUserNotHome!")
+        //        }
+    }
+    
+    /*****************************************************************************************************/
+     /**************************************** Beacons Cases *********************************************/
+     /*****************************************************************************************************/
+    func leftHouse()
+    {
+        self.testBeacon = bh.getNear()
+        //if(tempBeaconVar as! Int == beaconNearVar)
+        if( self.bh.getNear() == 2) && (self.bh.getProxy() == 1) && (self.leftHome == false)// (beaconAccu > 0.05) && (beaconAccu < 1.5)
+        {
+            self.pushNotification("Du bist aus dem Haus raus", titel: "Achtung")
+            self.leftHome = true
+        }
+    }
+    
+    func enteredHouse()
+    {
+        if( self.bh.getNear() == 2) && (self.bh.getProxy() == 1) && (self.leftHome == true)// (beaconAccu > 0.05) && (beaconAccu < 1.5)
+        {
+            self.pushNotification("Du bist wieder im Haus", titel: "Achtung")
+            self.leftHome = false
+        }
+    }
+    
+    func whichBeacon(timer: NSTimer)
+    {
+        let tempBeaconVar = timer.userInfo!
+        
+        //print("Beacon: ", self.bh.getNear(), " Proxy: " , self.bh.getProxy(), " Accu: ", self.bh.getAccur())
+        
+        //print("LeftHome: ", leftHome, " Fired:", fired)
+        //print(beaconNearVar)
+        
+        switch bh.getNear()
+        {
+        case 1:
+            print("Case: Beacon Near: 1")
+            //startAction()
+            break
+        case 2:
+            print("Case: Beacon Near: 2")
+            switch leftHome
+            {
+            case true:
+                test()
+                print("                  Case: LeftHome: True")
+                enteredHouse()
+                test()
+                break
+            case false:
+                test()
+                print("                  Case: LeftHome: False")
+                leftHouse()
+                test()
+                break
+            default:
+                break
+            }
+            break
+        case 3:
+            print("Beacon 3")
+            //startAction()
+            break
+        default:
+            print("Nix gefunden")
+            break
+        }
+    }
+    
+    func test()
+    {
+        print("::::::::::::::::::::::::::::::::::::::::::::::::::::::::::")
+        print("::::::::::::::::::::::::::::::::::::::::::::::::::::::::::")
+    }
+    
+    
+    /*****************************************************************************************************/
+     /**************************************** Beacons Delegate ******************************************/
+     /*****************************************************************************************************/
+     
+     // MyCoreLocationProtocol delegate
+    func didUpateLocation(location: CLLocation) {
+        NSLog("VC Did Update Location: \(location)")
+    }
+    
+    // MyBeaconProtocol delegate
+    func rangedBeacons(beacons: [AnyObject]) {
+        let idx = beacons.endIndex
+ 
+        // Muss korrigiert werden..
+        bh.updateValues(Int(slBeacon.nearBeacon.minor), accu: Float(slBeacon.nearBeacon.accuracy), proxi: Float(slBeacon.nearBeacon.proximity.rawValue))
+        //print(bh.getNear())
+        beaconNear.text = String(Int(slBeacon.nearBeacon!.minor))
+        //NSLog("Closest beacon: \(beacon.minor)")
+    }
+    
+    func didDetermineState(state: CLRegionState) {
+        if (state == .Unknown) {
+            NSLog("No more beacon(s)")
+        }
     }
     
     deinit {
-        logger.log(.Info, data: "++++++");
+        logger.log(.Info, data: "++++++")
     }
 }

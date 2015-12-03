@@ -24,6 +24,7 @@ import UIKit
     var proximityUUID = NSUUID()
     var delegate: beaconSettingsProtocol?
     var recentMajor: Int?
+    var nearBeacon: CLBeacon!
     
     init(proximityUUID: NSUUID?) {
         super.init()
@@ -74,30 +75,50 @@ import UIKit
         self.delegate?.didExitRegion!(region, major: recentMajor!)
         self.recentMajor = nil
     }
+    func getNear(beacons: [CLBeacon])
+    {
+        var beacon: CLBeacon = CLBeacon()
+        
+        if(beacons[0].proximity.rawValue < beacons[1].proximity.rawValue && beacons[0].proximity.rawValue < beacons[2].proximity.rawValue)
+        {
+            beacon = beacons[0] 
+        }
+        else if(beacons[1].proximity.rawValue < beacons[0].proximity.rawValue && beacons[1].proximity.rawValue < beacons[2].proximity.rawValue)
+        {
+            beacon = beacons[1] 
+        }
+        else
+        {
+            beacon = beacons[2]
+        }
+        nearBeacon = beacon
+    }
     
     // Beacon Delegates -- responding to ranging events
     func locationManager(manager: CLLocationManager, didRangeBeacons beacons: [CLBeacon], inRegion region: CLBeaconRegion) {
         //print("Found \(beacons.count) beacons")
         //print("Major: \(beacons[0].major), Minor: \(beacons[0].minor), Proximity: \(beacons[0].proximity.rawValue), Accuracy: \(beacons[0].accuracy)")
         
+        getNear(beacons)
+        
         if (beacons.count > 0) {
             var goodBeacons: Array<CLBeacon> = []
             for b in beacons {
-                //print("Major: \(beacons[0].major), Minor: \(beacons[0].minor), Proximity: \(beacons[0].proximity.rawValue), Accuracy: \(beacons[0].accuracy)")
+                //print("Major: \(b.major), Minor: \(b.minor), Proximity: \(b.proximity.rawValue), Accuracy: \(b.accuracy)")
                 if (b.proximity == CLProximity.Unknown)
                 {
-                    //print("Nix", b.minor)
+                    //print("Nix - Beacon: ", b.minor)
                 } else if (b.proximity == CLProximity.Immediate)
                 {
-                    //print("Nah", b.minor)
+                    //print("Nah - Beacon: ", b.minor)
                     
                 } else if (b.proximity == CLProximity.Near)
                 {
-                    //print("Mittel", b.minor)
+                    //print("Mittel - Beacon: ", b.minor)
                     
                 } else if (b.proximity == CLProximity.Far)
                 {
-                    //print("Fern", b.minor)
+                    //print("Fern - Beacon: ", b.minor)
                     
                 }
                 

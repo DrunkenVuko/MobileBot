@@ -1,0 +1,735 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		B83E86651C10888C003D5F44 /* beaconHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83E86641C10888C003D5F44 /* beaconHelper.swift */; };
+		B84142191C070EED007E4270 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84142181C070EED007E4270 /* AppDelegate.swift */; };
+		B84142211C070EED007E4270 /* MobileBot.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B841421F1C070EED007E4270 /* MobileBot.xcdatamodeld */; };
+		B84142231C070EED007E4270 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B84142221C070EED007E4270 /* Assets.xcassets */; };
+		B84142261C070EED007E4270 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B84142241C070EED007E4270 /* LaunchScreen.storyboard */; };
+		B84142311C070EEE007E4270 /* MobileBotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84142301C070EEE007E4270 /* MobileBotTests.swift */; };
+		B841423C1C070EEE007E4270 /* MobileBotUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B841423B1C070EEE007E4270 /* MobileBotUITests.swift */; };
+		B841428D1C070FB5007E4270 /* BabysitterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B841426B1C070FB5007E4270 /* BabysitterViewController.swift */; };
+		B841428E1C070FB5007E4270 /* beaconSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = B841426C1C070FB5007E4270 /* beaconSettings.swift */; };
+		B841428F1C070FB5007E4270 /* BotConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = B841426E1C070FB5007E4270 /* BotConnection.m */; };
+		B84142901C070FB5007E4270 /* BotConnectionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B84142701C070FB5007E4270 /* BotConnectionManager.m */; };
+		B84142911C070FB5007E4270 /* BotController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84142711C070FB5007E4270 /* BotController.swift */; };
+		B84142921C070FB5007E4270 /* BotControlTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84142731C070FB5007E4270 /* BotControlTestViewController.swift */; };
+		B84142931C070FB5007E4270 /* BotNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84142741C070FB5007E4270 /* BotNavigator.swift */; };
+		B84142941C070FB5007E4270 /* BotUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84142751C070FB5007E4270 /* BotUtils.swift */; };
+		B84142951C070FB5007E4270 /* Command.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84142761C070FB5007E4270 /* Command.swift */; };
+		B84142961C070FB5007E4270 /* CommandQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84142771C070FB5007E4270 /* CommandQueue.swift */; };
+		B84142971C070FB5007E4270 /* DashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84142781C070FB5007E4270 /* DashViewController.swift */; };
+		B84142991C070FB5007E4270 /* MobileBot.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B841427C1C070FB5007E4270 /* MobileBot.xcdatamodeld */; };
+		B841429A1C070FB5007E4270 /* PersistableRegion.swift in Sources */ = {isa = PBXBuildFile; fileRef = B841427E1C070FB5007E4270 /* PersistableRegion.swift */; };
+		B841429B1C070FB5007E4270 /* ProtocolCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = B84142801C070FB5007E4270 /* ProtocolCommand.m */; };
+		B841429C1C070FB5007E4270 /* ProtocolCommandExecutionUnit.m in Sources */ = {isa = PBXBuildFile; fileRef = B84142821C070FB5007E4270 /* ProtocolCommandExecutionUnit.m */; };
+		B841429D1C070FB5007E4270 /* ProtocolCommandField.m in Sources */ = {isa = PBXBuildFile; fileRef = B84142841C070FB5007E4270 /* ProtocolCommandField.m */; };
+		B841429F1C070FB5007E4270 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84142861C070FB5007E4270 /* SettingsViewController.swift */; };
+		B84142A01C070FB5007E4270 /* Stream.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84142871C070FB5007E4270 /* Stream.swift */; };
+		B84142A11C070FB5007E4270 /* StreamableLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84142881C070FB5007E4270 /* StreamableLogger.swift */; };
+		B84142A21C070FB5007E4270 /* TestHardwareController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84142891C070FB5007E4270 /* TestHardwareController.swift */; };
+		B84142A31C070FB5007E4270 /* Toaster.swift in Sources */ = {isa = PBXBuildFile; fileRef = B841428A1C070FB5007E4270 /* Toaster.swift */; };
+		B84142A41C070FB5007E4270 /* UILocalNotificationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B841428B1C070FB5007E4270 /* UILocalNotificationExtension.swift */; };
+		B84142CA1C071178007E4270 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B84142C51C071178007E4270 /* CoreGraphics.framework */; };
+		B84142CB1C071178007E4270 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B84142C61C071178007E4270 /* UIKit.framework */; };
+		B84142CC1C071178007E4270 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B84142C71C071178007E4270 /* CoreLocation.framework */; };
+		B84142CD1C071178007E4270 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B84142C81C071178007E4270 /* CoreBluetooth.framework */; };
+		B84142CE1C071178007E4270 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B84142C91C071178007E4270 /* Foundation.framework */; };
+		B84142D01C071196007E4270 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B84142CF1C071196007E4270 /* AVFoundation.framework */; };
+		B84142D21C071287007E4270 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B84142D11C071287007E4270 /* Accelerate.framework */; };
+		B84142D41C0713B6007E4270 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B84142D31C0713B6007E4270 /* Main.storyboard */; };
+		B877F6CC1C103D150086D31E /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B877F6CB1C103D150086D31E /* NotificationCenter.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		B841422D1C070EEE007E4270 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B841420D1C070EED007E4270 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B84142141C070EED007E4270;
+			remoteInfo = MobileBot;
+		};
+		B84142381C070EEE007E4270 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B841420D1C070EED007E4270 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B84142141C070EED007E4270;
+			remoteInfo = MobileBot;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		B83E86641C10888C003D5F44 /* beaconHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = beaconHelper.swift; sourceTree = "<group>"; };
+		B84142151C070EED007E4270 /* de.beuth-hochschule.mobilebot.temp_caseinsensitive_rename.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "de.beuth-hochschule.mobilebot.temp_caseinsensitive_rename.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B84142181C070EED007E4270 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		B84142201C070EED007E4270 /* MobileBot.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MobileBot.xcdatamodel; sourceTree = "<group>"; };
+		B84142221C070EED007E4270 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B84142251C070EED007E4270 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		B84142271C070EED007E4270 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B841422C1C070EEE007E4270 /* de.beuth-hochschule.mobilebot.temp_caseinsensitive_rename.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "de.beuth-hochschule.mobilebot.temp_caseinsensitive_rename.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B84142301C070EEE007E4270 /* MobileBotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobileBotTests.swift; sourceTree = "<group>"; };
+		B84142321C070EEE007E4270 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B84142371C070EEE007E4270 /* de.beuth-hochschule.mobilebot.temp_caseinsensitive_rename.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "de.beuth-hochschule.mobilebot.temp_caseinsensitive_rename.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B841423B1C070EEE007E4270 /* MobileBotUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobileBotUITests.swift; sourceTree = "<group>"; };
+		B841423D1C070EEE007E4270 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B841426A1C070FB5007E4270 /* MobileBot-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MobileBot-Bridging-Header.h"; sourceTree = "<group>"; };
+		B841426B1C070FB5007E4270 /* BabysitterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BabysitterViewController.swift; sourceTree = "<group>"; };
+		B841426C1C070FB5007E4270 /* beaconSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = beaconSettings.swift; sourceTree = "<group>"; };
+		B841426D1C070FB5007E4270 /* BotConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BotConnection.h; sourceTree = "<group>"; };
+		B841426E1C070FB5007E4270 /* BotConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BotConnection.m; sourceTree = "<group>"; };
+		B841426F1C070FB5007E4270 /* BotConnectionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BotConnectionManager.h; sourceTree = "<group>"; };
+		B84142701C070FB5007E4270 /* BotConnectionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BotConnectionManager.m; sourceTree = "<group>"; };
+		B84142711C070FB5007E4270 /* BotController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BotController.swift; sourceTree = "<group>"; };
+		B84142721C070FB5007E4270 /* BotControlPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = BotControlPlayground.playground; sourceTree = "<group>"; };
+		B84142731C070FB5007E4270 /* BotControlTestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BotControlTestViewController.swift; sourceTree = "<group>"; };
+		B84142741C070FB5007E4270 /* BotNavigator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BotNavigator.swift; sourceTree = "<group>"; };
+		B84142751C070FB5007E4270 /* BotUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BotUtils.swift; sourceTree = "<group>"; };
+		B84142761C070FB5007E4270 /* Command.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Command.swift; sourceTree = "<group>"; };
+		B84142771C070FB5007E4270 /* CommandQueue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandQueue.swift; sourceTree = "<group>"; };
+		B84142781C070FB5007E4270 /* DashViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashViewController.swift; sourceTree = "<group>"; };
+		B84142791C070FB5007E4270 /* DataProtocolPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = DataProtocolPlayground.playground; sourceTree = "<group>"; };
+		B841427B1C070FB5007E4270 /* MobileBot-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MobileBot-Bridging-Header.h"; sourceTree = "<group>"; };
+		B841427D1C070FB5007E4270 /* MobileBot.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MobileBot.xcdatamodel; sourceTree = "<group>"; };
+		B841427E1C070FB5007E4270 /* PersistableRegion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersistableRegion.swift; sourceTree = "<group>"; };
+		B841427F1C070FB5007E4270 /* ProtocolCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProtocolCommand.h; sourceTree = "<group>"; };
+		B84142801C070FB5007E4270 /* ProtocolCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProtocolCommand.m; sourceTree = "<group>"; };
+		B84142811C070FB5007E4270 /* ProtocolCommandExecutionUnit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProtocolCommandExecutionUnit.h; sourceTree = "<group>"; };
+		B84142821C070FB5007E4270 /* ProtocolCommandExecutionUnit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProtocolCommandExecutionUnit.m; sourceTree = "<group>"; };
+		B84142831C070FB5007E4270 /* ProtocolCommandField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProtocolCommandField.h; sourceTree = "<group>"; };
+		B84142841C070FB5007E4270 /* ProtocolCommandField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProtocolCommandField.m; sourceTree = "<group>"; };
+		B84142861C070FB5007E4270 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		B84142871C070FB5007E4270 /* Stream.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Stream.swift; sourceTree = "<group>"; };
+		B84142881C070FB5007E4270 /* StreamableLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StreamableLogger.swift; sourceTree = "<group>"; };
+		B84142891C070FB5007E4270 /* TestHardwareController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestHardwareController.swift; sourceTree = "<group>"; };
+		B841428A1C070FB5007E4270 /* Toaster.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Toaster.swift; sourceTree = "<group>"; };
+		B841428B1C070FB5007E4270 /* UILocalNotificationExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UILocalNotificationExtension.swift; sourceTree = "<group>"; };
+		B84142C51C071178007E4270 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		B84142C61C071178007E4270 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		B84142C71C071178007E4270 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		B84142C81C071178007E4270 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
+		B84142C91C071178007E4270 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		B84142CF1C071196007E4270 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		B84142D11C071287007E4270 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		B84142D31C0713B6007E4270 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		B877F6CB1C103D150086D31E /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B84142121C070EED007E4270 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B877F6CC1C103D150086D31E /* NotificationCenter.framework in Frameworks */,
+				B84142D21C071287007E4270 /* Accelerate.framework in Frameworks */,
+				B84142D01C071196007E4270 /* AVFoundation.framework in Frameworks */,
+				B84142CA1C071178007E4270 /* CoreGraphics.framework in Frameworks */,
+				B84142CB1C071178007E4270 /* UIKit.framework in Frameworks */,
+				B84142CC1C071178007E4270 /* CoreLocation.framework in Frameworks */,
+				B84142CD1C071178007E4270 /* CoreBluetooth.framework in Frameworks */,
+				B84142CE1C071178007E4270 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B84142291C070EEE007E4270 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B84142341C070EEE007E4270 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		B841420C1C070EED007E4270 = {
+			isa = PBXGroup;
+			children = (
+				B877F6CB1C103D150086D31E /* NotificationCenter.framework */,
+				B84142D11C071287007E4270 /* Accelerate.framework */,
+				B84142CF1C071196007E4270 /* AVFoundation.framework */,
+				B84142C51C071178007E4270 /* CoreGraphics.framework */,
+				B84142C61C071178007E4270 /* UIKit.framework */,
+				B84142C71C071178007E4270 /* CoreLocation.framework */,
+				B84142C81C071178007E4270 /* CoreBluetooth.framework */,
+				B84142C91C071178007E4270 /* Foundation.framework */,
+				B84142171C070EED007E4270 /* MobileBot */,
+				B841422F1C070EEE007E4270 /* MobileBotTests */,
+				B841423A1C070EEE007E4270 /* MobileBotUITests */,
+				B84142161C070EED007E4270 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		B84142161C070EED007E4270 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B84142151C070EED007E4270 /* de.beuth-hochschule.mobilebot.temp_caseinsensitive_rename.app */,
+				B841422C1C070EEE007E4270 /* de.beuth-hochschule.mobilebot.temp_caseinsensitive_rename.xctest */,
+				B84142371C070EEE007E4270 /* de.beuth-hochschule.mobilebot.temp_caseinsensitive_rename.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B84142171C070EED007E4270 /* MobileBot */ = {
+			isa = PBXGroup;
+			children = (
+				B84142D31C0713B6007E4270 /* Main.storyboard */,
+				B84142AB1C07103F007E4270 /* Use-Cases */,
+				B84142AA1C07102C007E4270 /* BotConnection */,
+				B84142A91C07101D007E4270 /* BotControl */,
+				B84142781C070FB5007E4270 /* DashViewController.swift */,
+				B84142791C070FB5007E4270 /* DataProtocolPlayground.playground */,
+				B841427B1C070FB5007E4270 /* MobileBot-Bridging-Header.h */,
+				B841427C1C070FB5007E4270 /* MobileBot.xcdatamodeld */,
+				B84142A71C070FE3007E4270 /* Utility */,
+				B84142A81C070FFC007E4270 /* Protocol */,
+				B84142861C070FB5007E4270 /* SettingsViewController.swift */,
+				B84142891C070FB5007E4270 /* TestHardwareController.swift */,
+				B84142AC1C07104E007E4270 /* Beacons */,
+				B841428B1C070FB5007E4270 /* UILocalNotificationExtension.swift */,
+				B84142181C070EED007E4270 /* AppDelegate.swift */,
+				B84142221C070EED007E4270 /* Assets.xcassets */,
+				B84142241C070EED007E4270 /* LaunchScreen.storyboard */,
+				B84142271C070EED007E4270 /* Info.plist */,
+				B841421F1C070EED007E4270 /* MobileBot.xcdatamodeld */,
+				B841426A1C070FB5007E4270 /* MobileBot-Bridging-Header.h */,
+			);
+			path = MobileBot;
+			sourceTree = "<group>";
+		};
+		B841422F1C070EEE007E4270 /* MobileBotTests */ = {
+			isa = PBXGroup;
+			children = (
+				B84142301C070EEE007E4270 /* MobileBotTests.swift */,
+				B84142321C070EEE007E4270 /* Info.plist */,
+			);
+			path = MobileBotTests;
+			sourceTree = "<group>";
+		};
+		B841423A1C070EEE007E4270 /* MobileBotUITests */ = {
+			isa = PBXGroup;
+			children = (
+				B841423B1C070EEE007E4270 /* MobileBotUITests.swift */,
+				B841423D1C070EEE007E4270 /* Info.plist */,
+			);
+			path = MobileBotUITests;
+			sourceTree = "<group>";
+		};
+		B84142A71C070FE3007E4270 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				B841427E1C070FB5007E4270 /* PersistableRegion.swift */,
+				B84142871C070FB5007E4270 /* Stream.swift */,
+				B84142881C070FB5007E4270 /* StreamableLogger.swift */,
+				B841428A1C070FB5007E4270 /* Toaster.swift */,
+			);
+			name = Utility;
+			sourceTree = "<group>";
+		};
+		B84142A81C070FFC007E4270 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				B841427F1C070FB5007E4270 /* ProtocolCommand.h */,
+				B84142801C070FB5007E4270 /* ProtocolCommand.m */,
+				B84142811C070FB5007E4270 /* ProtocolCommandExecutionUnit.h */,
+				B84142821C070FB5007E4270 /* ProtocolCommandExecutionUnit.m */,
+				B84142831C070FB5007E4270 /* ProtocolCommandField.h */,
+				B84142841C070FB5007E4270 /* ProtocolCommandField.m */,
+			);
+			name = Protocol;
+			sourceTree = "<group>";
+		};
+		B84142A91C07101D007E4270 /* BotControl */ = {
+			isa = PBXGroup;
+			children = (
+				B84142711C070FB5007E4270 /* BotController.swift */,
+				B84142721C070FB5007E4270 /* BotControlPlayground.playground */,
+				B84142731C070FB5007E4270 /* BotControlTestViewController.swift */,
+				B84142741C070FB5007E4270 /* BotNavigator.swift */,
+				B84142751C070FB5007E4270 /* BotUtils.swift */,
+				B84142761C070FB5007E4270 /* Command.swift */,
+				B84142771C070FB5007E4270 /* CommandQueue.swift */,
+			);
+			name = BotControl;
+			sourceTree = "<group>";
+		};
+		B84142AA1C07102C007E4270 /* BotConnection */ = {
+			isa = PBXGroup;
+			children = (
+				B841426D1C070FB5007E4270 /* BotConnection.h */,
+				B841426E1C070FB5007E4270 /* BotConnection.m */,
+				B841426F1C070FB5007E4270 /* BotConnectionManager.h */,
+				B84142701C070FB5007E4270 /* BotConnectionManager.m */,
+			);
+			name = BotConnection;
+			sourceTree = "<group>";
+		};
+		B84142AB1C07103F007E4270 /* Use-Cases */ = {
+			isa = PBXGroup;
+			children = (
+				B841426B1C070FB5007E4270 /* BabysitterViewController.swift */,
+			);
+			name = "Use-Cases";
+			sourceTree = "<group>";
+		};
+		B84142AC1C07104E007E4270 /* Beacons */ = {
+			isa = PBXGroup;
+			children = (
+				B841426C1C070FB5007E4270 /* beaconSettings.swift */,
+				B83E86641C10888C003D5F44 /* beaconHelper.swift */,
+			);
+			name = Beacons;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		B84142141C070EED007E4270 /* de.beuth-hochschule.mobilebot */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B84142401C070EEE007E4270 /* Build configuration list for PBXNativeTarget "de.beuth-hochschule.mobilebot" */;
+			buildPhases = (
+				B84142111C070EED007E4270 /* Sources */,
+				B84142121C070EED007E4270 /* Frameworks */,
+				B84142131C070EED007E4270 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "de.beuth-hochschule.mobilebot";
+			productName = MobileBot;
+			productReference = B84142151C070EED007E4270 /* de.beuth-hochschule.mobilebot.temp_caseinsensitive_rename.app */;
+			productType = "com.apple.product-type.application";
+		};
+		B841422B1C070EEE007E4270 /* de.beuth-hochschule.mobilebotTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B84142431C070EEE007E4270 /* Build configuration list for PBXNativeTarget "de.beuth-hochschule.mobilebotTests" */;
+			buildPhases = (
+				B84142281C070EEE007E4270 /* Sources */,
+				B84142291C070EEE007E4270 /* Frameworks */,
+				B841422A1C070EEE007E4270 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B841422E1C070EEE007E4270 /* PBXTargetDependency */,
+			);
+			name = "de.beuth-hochschule.mobilebotTests";
+			productName = MobileBotTests;
+			productReference = B841422C1C070EEE007E4270 /* de.beuth-hochschule.mobilebot.temp_caseinsensitive_rename.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		B84142361C070EEE007E4270 /* de.beuth-hochschule.mobilebotUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B84142461C070EEE007E4270 /* Build configuration list for PBXNativeTarget "de.beuth-hochschule.mobilebotUITests" */;
+			buildPhases = (
+				B84142331C070EEE007E4270 /* Sources */,
+				B84142341C070EEE007E4270 /* Frameworks */,
+				B84142351C070EEE007E4270 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B84142391C070EEE007E4270 /* PBXTargetDependency */,
+			);
+			name = "de.beuth-hochschule.mobilebotUITests";
+			productName = MobileBotUITests;
+			productReference = B84142371C070EEE007E4270 /* de.beuth-hochschule.mobilebot.temp_caseinsensitive_rename.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B841420D1C070EED007E4270 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0710;
+				LastUpgradeCheck = 0710;
+				ORGANIZATIONNAME = "Goran Vukovic";
+				TargetAttributes = {
+					B84142141C070EED007E4270 = {
+						CreatedOnToolsVersion = 7.1.1;
+						DevelopmentTeam = 9E5M8J88K8;
+					};
+					B841422B1C070EEE007E4270 = {
+						CreatedOnToolsVersion = 7.1.1;
+						TestTargetID = B84142141C070EED007E4270;
+					};
+					B84142361C070EEE007E4270 = {
+						CreatedOnToolsVersion = 7.1.1;
+						TestTargetID = B84142141C070EED007E4270;
+					};
+				};
+			};
+			buildConfigurationList = B84142101C070EED007E4270 /* Build configuration list for PBXProject "de.beuth-hochschule.mobilebot" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = B841420C1C070EED007E4270;
+			productRefGroup = B84142161C070EED007E4270 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B84142141C070EED007E4270 /* de.beuth-hochschule.mobilebot */,
+				B841422B1C070EEE007E4270 /* de.beuth-hochschule.mobilebotTests */,
+				B84142361C070EEE007E4270 /* de.beuth-hochschule.mobilebotUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B84142131C070EED007E4270 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B84142D41C0713B6007E4270 /* Main.storyboard in Resources */,
+				B84142261C070EED007E4270 /* LaunchScreen.storyboard in Resources */,
+				B84142231C070EED007E4270 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B841422A1C070EEE007E4270 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B84142351C070EEE007E4270 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B84142111C070EED007E4270 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B84142A21C070FB5007E4270 /* TestHardwareController.swift in Sources */,
+				B84142901C070FB5007E4270 /* BotConnectionManager.m in Sources */,
+				B84142211C070EED007E4270 /* MobileBot.xcdatamodeld in Sources */,
+				B841428D1C070FB5007E4270 /* BabysitterViewController.swift in Sources */,
+				B84142961C070FB5007E4270 /* CommandQueue.swift in Sources */,
+				B841428E1C070FB5007E4270 /* beaconSettings.swift in Sources */,
+				B841429D1C070FB5007E4270 /* ProtocolCommandField.m in Sources */,
+				B84142A31C070FB5007E4270 /* Toaster.swift in Sources */,
+				B84142921C070FB5007E4270 /* BotControlTestViewController.swift in Sources */,
+				B841429A1C070FB5007E4270 /* PersistableRegion.swift in Sources */,
+				B84142941C070FB5007E4270 /* BotUtils.swift in Sources */,
+				B84142971C070FB5007E4270 /* DashViewController.swift in Sources */,
+				B84142191C070EED007E4270 /* AppDelegate.swift in Sources */,
+				B841429F1C070FB5007E4270 /* SettingsViewController.swift in Sources */,
+				B84142991C070FB5007E4270 /* MobileBot.xcdatamodeld in Sources */,
+				B83E86651C10888C003D5F44 /* beaconHelper.swift in Sources */,
+				B84142A01C070FB5007E4270 /* Stream.swift in Sources */,
+				B84142931C070FB5007E4270 /* BotNavigator.swift in Sources */,
+				B84142A11C070FB5007E4270 /* StreamableLogger.swift in Sources */,
+				B841428F1C070FB5007E4270 /* BotConnection.m in Sources */,
+				B84142A41C070FB5007E4270 /* UILocalNotificationExtension.swift in Sources */,
+				B84142911C070FB5007E4270 /* BotController.swift in Sources */,
+				B84142951C070FB5007E4270 /* Command.swift in Sources */,
+				B841429C1C070FB5007E4270 /* ProtocolCommandExecutionUnit.m in Sources */,
+				B841429B1C070FB5007E4270 /* ProtocolCommand.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B84142281C070EEE007E4270 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B84142311C070EEE007E4270 /* MobileBotTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B84142331C070EEE007E4270 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B841423C1C070EEE007E4270 /* MobileBotUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B841422E1C070EEE007E4270 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B84142141C070EED007E4270 /* de.beuth-hochschule.mobilebot */;
+			targetProxy = B841422D1C070EEE007E4270 /* PBXContainerItemProxy */;
+		};
+		B84142391C070EEE007E4270 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B84142141C070EED007E4270 /* de.beuth-hochschule.mobilebot */;
+			targetProxy = B84142381C070EEE007E4270 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		B84142241C070EED007E4270 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B84142251C070EED007E4270 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		B841423E1C070EEE007E4270 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		B841423F1C070EEE007E4270 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		B84142411C070EEE007E4270 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/MobileBot",
+				);
+				INFOPLIST_FILE = MobileBot/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "de.beuth-hochschule.mobilebot";
+				PRODUCT_NAME = "de.beuth-hochschule.mobilebot.temp_caseinsensitive_rename";
+				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "MobileBot/MobileBot-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		B84142421C070EEE007E4270 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/MobileBot",
+				);
+				INFOPLIST_FILE = MobileBot/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "de.beuth-hochschule.mobilebot";
+				PRODUCT_NAME = "de.beuth-hochschule.mobilebot.temp_caseinsensitive_rename";
+				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "MobileBot/MobileBot-Bridging-Header.h";
+			};
+			name = Release;
+		};
+		B84142441C070EEE007E4270 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = MobileBotTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = MobileBotTeam.MobileBotTests;
+				PRODUCT_NAME = "de.beuth-hochschule.mobilebot.temp_caseinsensitive_rename";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/de.beuth-hochschule.mobilebot.temp_caseinsensitive_rename.app/de.beuth-hochschule.mobilebot.temp_caseinsensitive_rename";
+			};
+			name = Debug;
+		};
+		B84142451C070EEE007E4270 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = MobileBotTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = MobileBotTeam.MobileBotTests;
+				PRODUCT_NAME = "de.beuth-hochschule.mobilebot.temp_caseinsensitive_rename";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/de.beuth-hochschule.mobilebot.temp_caseinsensitive_rename.app/de.beuth-hochschule.mobilebot.temp_caseinsensitive_rename";
+			};
+			name = Release;
+		};
+		B84142471C070EEE007E4270 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = MobileBotUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = MobileBotTeam.MobileBotUITests;
+				PRODUCT_NAME = "de.beuth-hochschule.mobilebot.temp_caseinsensitive_rename";
+				TEST_TARGET_NAME = MobileBot;
+				USES_XCTRUNNER = YES;
+			};
+			name = Debug;
+		};
+		B84142481C070EEE007E4270 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = MobileBotUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = MobileBotTeam.MobileBotUITests;
+				PRODUCT_NAME = "de.beuth-hochschule.mobilebot.temp_caseinsensitive_rename";
+				TEST_TARGET_NAME = MobileBot;
+				USES_XCTRUNNER = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B84142101C070EED007E4270 /* Build configuration list for PBXProject "de.beuth-hochschule.mobilebot" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B841423E1C070EEE007E4270 /* Debug */,
+				B841423F1C070EEE007E4270 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B84142401C070EEE007E4270 /* Build configuration list for PBXNativeTarget "de.beuth-hochschule.mobilebot" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B84142411C070EEE007E4270 /* Debug */,
+				B84142421C070EEE007E4270 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B84142431C070EEE007E4270 /* Build configuration list for PBXNativeTarget "de.beuth-hochschule.mobilebotTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B84142441C070EEE007E4270 /* Debug */,
+				B84142451C070EEE007E4270 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B84142461C070EEE007E4270 /* Build configuration list for PBXNativeTarget "de.beuth-hochschule.mobilebotUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B84142471C070EEE007E4270 /* Debug */,
+				B84142481C070EEE007E4270 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		B841421F1C070EED007E4270 /* MobileBot.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				B84142201C070EED007E4270 /* MobileBot.xcdatamodel */,
+			);
+			currentVersion = B84142201C070EED007E4270 /* MobileBot.xcdatamodel */;
+			path = MobileBot.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+		B841427C1C070FB5007E4270 /* MobileBot.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				B841427D1C070FB5007E4270 /* MobileBot.xcdatamodel */,
+			);
+			currentVersion = B841427D1C070FB5007E4270 /* MobileBot.xcdatamodel */;
+			path = MobileBot.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = B841420D1C070EED007E4270 /* Project object */;
+}
