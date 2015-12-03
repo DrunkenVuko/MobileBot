@@ -23,7 +23,7 @@ class BotNavigator {
     // allgemeine Variablen die die Bewegung des Bots beeinflussen
     var speed: Float = 15;
     var turnSpeed: Float = 20;
-    var offset: Float = 0.5;
+    var offset: Float = 2.5;
     
     // Variablen damit nicht unendlich rekursiv ausgewichen wird
     var countAvoids: Float = 0;
@@ -105,7 +105,7 @@ class BotNavigator {
                     self.logger.log(.Info, data: "current position: \(data)");
                     
                     let angle = atan2f(Float(point.y) - data.y, Float(point.x) - data.x);
-                    let degrees = angle * (180 / 3.14);
+                    let degrees = angle * 180 / 3.14;
                     
                     // Roboter dreht sich in die richtige Richtung
                     self.turnToAngle(degrees, speed: self.speed, completion: { data in
@@ -120,7 +120,7 @@ class BotNavigator {
                             
                             // Berechnung des Rechtecks um den Zielpunkt
                             let angle = atan2f(Float(point.y) - data.y, Float(point.x) - data.x);
-                            let degrees = angle * (180 / 3.14);
+                            let degrees = angle * 180 / 3.14;
                             let currentPoint = CGPointMake(CGFloat(data.x), CGFloat(data.y));
                             let currentDistance = BotUtils.distance(from: point, to: currentPoint);
                             
@@ -194,12 +194,6 @@ class BotNavigator {
         })
     }
     
-    
-    /**
-     *
-     * Diese Funktion lässt den Roboter zu einer Bestimmten Position in seinem Koordinatensystem fahren.
-     * Hindernisse werden nicht umfahren.
-     **/
     func moveToWithoutObstacle(point: CGPoint, completion: ((ForwardKinematicsData) -> ())? ) {
         self.bc.stopRangeScan({
             self.bc.stopMovingWithPositionalUpdate({
@@ -208,65 +202,50 @@ class BotNavigator {
                 self.bc.startUpdatingPosition(true, completion: { data in
                     self.logger.log(.Info, data: "current position: \(data)");
                     
-                    // Wenn der Roboter bereits im Zielrechteck ist, soll er nicht starten
-                    // Berechnung des Rechtecks um den Zielpunkt
-                    let dest = CGRectMake(point.x, point.y, 0, 0);
-                    let destWithInset = CGRectInset(dest, -1.0, -1.0);
-                    let currentPoint = CGPointMake(CGFloat(data.x), CGFloat(data.y));
-                    let destReached = CGRectContainsPoint(destWithInset, currentPoint);
+                    let angle = atan2f(Float(point.y) - data.y, Float(point.x) - data.x);
+                    let degrees = angle * 180 / 3.14;
                     
-                    if destReached {
-                        self.destinationReached(completion);
-                        self.logger.log(.Info, data: "**** Already in destination area ****");
-
-                    } else {
-                        let angle = atan2f(Float(point.y) - data.y, Float(point.x) - data.x);
-                        let degrees = angle * (180 / 3.14);
+                    // Roboter dreht sich in die richtige Richtung
+                    self.turnToAngle(degrees, speed: self.speed, completion: { data in
+                        let startingPoint = CGPointMake(CGFloat(data.x), CGFloat(data.y));
+                        var previousDistance = BotUtils.distance(from: startingPoint, to: point);
+                        let dest = CGRectMake(point.x, point.y, 0, 0);
+                        let destWithInset = CGRectInset(dest, -1.0, -1.0);
                         
-                        // Roboter dreht sich in die richtige Richtung
-                        self.turnToAngle(degrees, speed: self.speed, completion: { data in
-                            let startingPoint = CGPointMake(CGFloat(data.x), CGFloat(data.y));
-                            var previousDistance = BotUtils.distance(from: startingPoint, to: point);
-                            let dest = CGRectMake(point.x, point.y, 0, 0);
-                            let destWithInset = CGRectInset(dest, -1.0, -1.0);
+                        self.logger.log(.Info, data: "computed destination area: \(destWithInset), from point: \(point)");
+                        
+                        self.bc.startMovingWithPositionalUpdate(self.speed, omega: 0, callback: { data in
                             
-                            self.logger.log(.Info, data: "computed destination area: \(destWithInset), from point: \(point)");
+                            // Berechnung des Rechtecks um den Zielpunkt
+                            let angle = atan2f(Float(point.y) - data.y, Float(point.x) - data.x);
+                            let degrees = angle * 180 / 3.14;
+                            let currentPoint = CGPointMake(CGFloat(data.x), CGFloat(data.y));
+                            let currentDistance = BotUtils.distance(from: point, to: currentPoint);
                             
-                            self.bc.startMovingWithPositionalUpdate(self.speed, omega: 0, callback: { data in
-                                
-                                // Berechnung des Rechtecks um den Zielpunkt
-                                let angle = atan2f(Float(point.y) - data.y, Float(point.x) - data.x);
-                                let degrees = angle * (180 / 3.14);
-                                let currentPoint = CGPointMake(CGFloat(data.x), CGFloat(data.y));
-                                let currentDistance = BotUtils.distance(from: point, to: currentPoint);
-                                
-                                self.logger.log(.Info, data: "****************************************************************************");
-                                self.logger.log(.Info, data: "moving forward: \(data) :: \(point)");
-                                self.logger.log(.Info, data: "angle to point: \(degrees)");
-                                self.logger.log(.Info, data: "current distance: \(currentDistance), previous distance: \(previousDistance)");
-                                self.logger.log(.Info, data: "destination area: \(destWithInset), current point: \(currentPoint)");
-                                
-                                let destReached = CGRectContainsPoint(destWithInset, currentPoint);
-                                
-                                if destReached {
-                                    self.destinationReached(completion);
-                                    
-                                } else if currentDistance > previousDistance {
-                                    self.destinationReached(completion);
-                                    //                                self.moveTo(point, completion: completion)
-                                }
-                                
-                                previousDistance = currentDistance;
-                            });
+                            self.logger.log(.Info, data: "****************************************************************************");
+                            self.logger.log(.Info, data: "moving forward: \(data) :: \(point)");
+                            self.logger.log(.Info, data: "angle to point: \(degrees)");
+                            self.logger.log(.Info, data: "current distance: \(currentDistance), previous distance: \(previousDistance)");
+                            self.logger.log(.Info, data: "destination area: \(destWithInset), current point: \(currentPoint)");
                             
+                            let destReached = CGRectContainsPoint(destWithInset, currentPoint);
+                            
+                            if destReached {
+                                self.destinationReached(completion);
+                                
+                            } else if currentDistance > previousDistance {
+                                self.destinationReached(completion);
+                                //                                self.moveTo(point, completion: completion)
+                            }
+                            
+                            previousDistance = currentDistance;
                         });
-                    }
-                    
+                        
+                    });
                 });
             });
         })
     }
-
     
     // der Roboter hat seine Zielposition erreicht. Es wird die Endaktion ausgeführt
     func destinationReached(completion: ((ForwardKinematicsData) -> ())?) {
@@ -373,7 +352,7 @@ class BotNavigator {
                                 self.logger.log(.Info, data: "angle reached");
                                 completion(turndata);
                             });
-                    } else {
+                    }else{
                     
                         self.logger.log(.Info, data: "previous angle: \(previousAngle), current angle: \(currentAngle)");
                     
@@ -383,25 +362,25 @@ class BotNavigator {
                         // über den Zielwinkel gedreht hat. Ist das der Fall, wird rekursiv die turnTo-Methode mit verringertem Speed ausgeführt, was dazu führt,
                         // dass erneut die Drehrichtung berechnet wird und der Roboter sich langsam zurück dreht
                         if(omegaTmp < 0){
-                            if(turndata.phi < (angle-self.offset)){
+                            if(turndata.phi < (angle-10) && turndata.phi > (angle-25)){
                                 self.bc.stopMovingWithPositionalUpdate({
 //                                  if(speed < -5){
 //                                      self.turnToAngle(angle, speed: speed+5, completion: completion);
 //                                  }else{
 //                                      self.turnToAngle(angle, speed: -5, completion: completion);
 //                                  }
-                                    self.turnToAngle(angle, speed: 15, completion: completion);
+                                    self.turnToAngle(angle, speed: 5, completion: completion);
                                 });
                             }
-                        } else {
-                            if(turndata.phi > (angle+self.offset)){
+                        }else{
+                            if(turndata.phi > (angle+10) && turndata.phi < (angle+25)){
                                 self.bc.stopMovingWithPositionalUpdate({
 //                                  if(speed > 5){
 //                                      self.turnToAngle(angle, speed: speed-5, completion: completion);
 //                                  }else{
 //                                      self.turnToAngle(angle, speed: 5, completion: completion);
 //                                  }
-                                    self.turnToAngle(angle, speed: -15, completion: completion);
+                                    self.turnToAngle(angle, speed: -5, completion: completion);
                                 });
                             }
                         }

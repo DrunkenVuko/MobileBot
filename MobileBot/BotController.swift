@@ -15,6 +15,8 @@ class BotController {
         
     let logger = StreamableLogger();
     
+    var posData:ForwardKinematicsData = (0.0,0.0,0.0);
+    
     var connectionStatus: BotConnectionConnectionStatus {
         get {
             return connection.connectionStatus;
@@ -163,7 +165,9 @@ class BotController {
             
             let data: ForwardKinematicsData = (x:xtField.value.floatValue, y: ytField.value.floatValue, phi: phitField.value.floatValue);
             
-//            self.logger.log(.Info, data: "GetForwardKinematics: \(data)");
+            self.posData = data;
+
+            self.logger.log(.Info, data: "GetForwardKinematics: \(data)");
             
             completion(data);
             
