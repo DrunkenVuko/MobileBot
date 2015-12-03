@@ -122,7 +122,7 @@ class BabysitterViewController: UIViewController {
         // scanen des Tuereingans waehrend der patrolAction
         // wenn in einer Distanz kleiner als 30 etwas gescant wird, stoppt der Roboter und senden Alarm + Alarmton
         self.bc?.scanRange(100, max: 150, inc: 3, callback: { scandata in
-            self.Output.text = "scanning room entry \(scandata.pingDistance)";
+            //self.Output.text = "scanning room entry \(scandata.pingDistance)";
             self.logger.log(.Info, data: "scanning room entry \(scandata.pingDistance)");
             if (scandata.pingDistance < 40 && scandata.pingDistance > 0) {
                 if (scanBugFlag >= 5.0){
@@ -194,8 +194,8 @@ class BabysitterViewController: UIViewController {
             self.sendAlarm("Robo at Station");
         })*/
         
-        let data = self.bc?.posData;
-        self.bn?.moveToWithoutObstacle(CGPointMake(CGFloat(data!.x), CGFloat(data!.y)), completion: { data in
+        //let data = self.bc?.posData;
+        self.bn?.moveToWithoutObstacle(CGPointMake(CGFloat(posStationX), CGFloat(posStationY)), completion: { data in
             self.logger.log(.Info, data: "baby: MOVE TO Station finished");
             
             self.sendAlarm("Robo at Station");
