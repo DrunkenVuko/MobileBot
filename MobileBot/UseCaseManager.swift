@@ -24,20 +24,21 @@ class UseCaseManager : NSObject, CLLocationManagerDelegate {
     var beaconRegion: CLBeaconRegion?;
     let logger = StreamableLogger();
     
-    //let bathUC = GuardUserInBath();
-    /** Guard User in Bath flag */
-    static var guibFlag = false;
+    //let babySitterUC = Babysitter();
+
+    // Kontrollvariablen
+    //-------------------
+    // Der Benutzer ist per Default im Haus
+    static var atHome = false
     
-    //let homeUC = GuardHouseWhileUserNotHome();
-    /** Guard house while user not home flag */
-    static var ghwunhFlag = false;
+    // Der Benutzer ist per Default nicht am Baby
+    static var atBaby = false
     
-    //let weatherUC = WarnUserIfWeatherAlarm();
-    /** Warn User if weather alarm flag */
-    static var wuiwaFlag = false;
+    // Der Roboter soll nur 1x aufgerufen werden
+    static var robotRunning = false
     
-    /** Global Enter flag für Eventhandling */
-    static var globalEnter = false;
+    // Doppelte Nachrichten sind Tabu
+    static var alreadyPushed = false
     
     func run() {
         cl.delegate = self;
@@ -55,52 +56,79 @@ class UseCaseManager : NSObject, CLLocationManagerDelegate {
     func notification(idh: NSNotification){
         logger.log(.Info, data: idh);
         let str :NSString = (idh.object as? NSString)!;
-        
-            switch str {
-                //Startet Guard House While User Not Home
-                case "3020" where !UseCaseManager.globalEnter && !UseCaseManager.ghwunhFlag:
-                    print("Case 3020 - At Baby")
-                    //homeUC.startAction();
-                    UseCaseManager.guibFlag = true;
-                    UseCaseManager.globalEnter = true;
-           
-                //Flag wird gesetzt für den Fall, falls das iBeacon ein beenden Event sendet und dann wieder ein Start Event,
-                // obwohl beides nicht gesendet werden dürfte
-                case "3021" where UseCaseManager.globalEnter && UseCaseManager.ghwunhFlag:
-                    print("Case 3021 - Not At Baby")
-                    UseCaseManager.guibFlag = false;
-                    UseCaseManager.globalEnter = false;
-                    //GuardHouseWhileUserNotHome.enterWhileLeave = true;
-                
-                //Beendet Guard House While User Not Home
-                case "1337" where UseCaseManager.ghwunhFlag:
-                    print("")
-                    //homeUC.endAction();
-                
-                //Startet Guard User In Bath
-            case "1338" where !UseCaseManager.globalEnter && !UseCaseManager.guibFlag:
-                print("")
-                    //bathUC.startAction();
-                
-                //Flag wird gesetzt für den Fall, falls das iBeacon ein beenden Event sendet und dann wieder ein Start Event,
-                // obwohl beides nicht gesendet werden dürfte
-            case "1338" where UseCaseManager.globalEnter && UseCaseManager.guibFlag:
-                print("")
-                    //GuardUserInBath.enterWhileLeave = true;
-                
-                //Beendet Guard User In Bath
-            case "1339" where UseCaseManager.guibFlag:
-                print("")
-                    //bathUC.endAction();
-                /* Beacon als Wetter Event einsetzen: */
-            case "1340" where !UseCaseManager.globalEnter && !UseCaseManager.wuiwaFlag:
-                print("")
-                    //weatherUC.startAction()
-                
-                default:
-                    logger.log(.Info, data: "No known Event!");
-                    return;
-            }
+        switch str {
+            /* Beacon Babysitter
+            Door Exit   - 3010
+            Door Entry  - 3011
+            At Baby     - 3020
+            Not at baby - 3021
+            */
+            
+            /*************************************************************************************************/
+            /***** - Fall: Haus betreten / verlassen *********************************************************/
+            /*************************************************************************************************/
+            
+            // Wird beim Verlassen des Beacons aktiviert
+        case "3010" where UseCaseManager.robotRunning == false && UseCaseManager.atHome == true && UseCaseManager.atBaby == false:
+            printLog("3010 ist Beacon: Ich bin aus dem Haus raus - Roboter startet nun")
+            
+            // 1) Funktion des Robos starten
+            // 2) atHome auf false setzen
+            // 3) robotRunning beim Start auf true setzen
+            
+            //UseCaseManager.atHome = false
+            //UseCaseManager.robotRunning = true
+            break
+            
+            // Wird beim Betreten des Beacons aktiviert
+        case "3011" where UseCaseManager.robotRunning == true && UseCaseManager.atHome == false && UseCaseManager.atBaby == false:
+            printLog("3011 ist Beacon: Ich bin wieder im Haus  - Roboter faehrt wieder zur Station")
+            
+            // 1) Funktion zum Beenden des Robos aufrufen
+            // 2) atHome auf true setzen
+            // 3) robotRunning auf false setzen
+            
+            //UseCaseManager.atHome = true
+            //UseCaseManager.robotRunning = false
+            break
+            
+            
+            /*************************************************************************************************/
+            /***** - Fall: Baby betreten / verlassen *********************************************************/
+            /*************************************************************************************************/
+            
+            // Wird beim Betreten des Beacons aktiviert
+        case "3020" where UseCaseManager.robotRunning == false && UseCaseManager.atHome == true && UseCaseManager.atBaby == false:
+            printLog("3020 ist Beacon: Ich bin am Baby")
+            
+            // 1) Funktion zum Beenden des Robos aufrufen
+            // 2) atBaby auf true setzen
+
+            UseCaseManager.atBaby = true
+            break
+            
+            // Wird beim Verlassen des Beacons aktiviert
+        case "3021" where UseCaseManager.robotRunning == false && UseCaseManager.atHome == true && UseCaseManager.atBaby == true:
+            printLog("3020 ist Beacon: Ich bin nicht mehr am Baby")
+            
+            // 1) Funktion zum Beenden des Robos aufrufen
+            // 2) atBaby auf false setzen
+
+            UseCaseManager.atBaby = false
+            break
+
+        default:
+            logger.log(.Info, data: "No known Event!")
+            return
+        }
+    }
+    
+    
+    func printLog(var temp: String)
+    {
+        print("/******************************************************************************************/")
+        print(temp)
+        print("/******************************************************************************************/")
     }
     
     /** Singleton */

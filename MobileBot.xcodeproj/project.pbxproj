@@ -45,6 +45,7 @@
 		B895E9AE1C21B47300BDFE04 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B895E9AD1C21B47300BDFE04 /* CoreLocation.framework */; };
 		B895E9B11C21B5DD00BDFE04 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B895E9AF1C21B5DD00BDFE04 /* libz.dylib */; };
 		B895E9B21C21B5DD00BDFE04 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B895E9B01C21B5DD00BDFE04 /* libxml2.dylib */; };
+		B8BF80E81C21C41D00FA890C /* beaconmanager.de.res.bundle in Resources */ = {isa = PBXBuildFile; fileRef = B8BF80E71C21C41D00FA890C /* beaconmanager.de.res.bundle */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -108,7 +109,6 @@
 		B841428B1C070FB5007E4270 /* UILocalNotificationExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UILocalNotificationExtension.swift; sourceTree = "<group>"; };
 		B84142D31C0713B6007E4270 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		B895E98A1C21B1EA00BDFE04 /* UseCaseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UseCaseManager.swift; sourceTree = "<group>"; };
-		B895E99D1C21B42C00BDFE04 /* beaconmanager_sdk */ = {isa = PBXFileReference; lastKnownFileType = folder; path = beaconmanager_sdk; sourceTree = "<group>"; };
 		B895E99F1C21B43B00BDFE04 /* beaconmanager.de.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = beaconmanager.de.framework; path = beaconmanager_sdk/Framework/beaconmanager.de.framework; sourceTree = "<group>"; };
 		B895E9A11C21B44D00BDFE04 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
 		B895E9A31C21B45300BDFE04 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
@@ -119,6 +119,7 @@
 		B895E9AD1C21B47300BDFE04 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		B895E9AF1C21B5DD00BDFE04 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SOURCE_ROOT; };
 		B895E9B01C21B5DD00BDFE04 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SOURCE_ROOT; };
+		B8BF80E71C21C41D00FA890C /* beaconmanager.de.res.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = beaconmanager.de.res.bundle; path = beaconmanager_sdk/Framework/beaconmanager.de.res.bundle; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,6 +160,7 @@
 		B841420C1C070EED007E4270 = {
 			isa = PBXGroup;
 			children = (
+				B8BF80E71C21C41D00FA890C /* beaconmanager.de.res.bundle */,
 				B895E9AF1C21B5DD00BDFE04 /* libz.dylib */,
 				B895E9B01C21B5DD00BDFE04 /* libxml2.dylib */,
 				B895E9AD1C21B47300BDFE04 /* CoreLocation.framework */,
@@ -169,7 +171,6 @@
 				B895E9A31C21B45300BDFE04 /* CoreData.framework */,
 				B895E9A11C21B44D00BDFE04 /* CoreBluetooth.framework */,
 				B895E99F1C21B43B00BDFE04 /* beaconmanager.de.framework */,
-				B895E99D1C21B42C00BDFE04 /* beaconmanager_sdk */,
 				B84142171C070EED007E4270 /* MobileBot */,
 				B841422F1C070EEE007E4270 /* MobileBotTests */,
 				B841423A1C070EEE007E4270 /* MobileBotUITests */,
@@ -415,6 +416,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B84142D41C0713B6007E4270 /* Main.storyboard in Resources */,
+				B8BF80E81C21C41D00FA890C /* beaconmanager.de.res.bundle in Resources */,
 				B84142261C070EED007E4270 /* LaunchScreen.storyboard in Resources */,
 				B84142231C070EED007E4270 /* Assets.xcassets in Resources */,
 			);
