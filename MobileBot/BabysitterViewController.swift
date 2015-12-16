@@ -14,26 +14,10 @@ import NotificationCenter
 /**
  * Diese Klasse dient dem Use Case : Babysitter
  */
-class BabysitterViewController: UIViewController, beaconSettingsProtocol {
-    
-    @IBOutlet weak var beaconNear: UILabel!
+class BabysitterViewController: UIViewController {
     
     var timer = NSTimer()
-    
-    /* Count Up */
-    var countUP = NSTimer()
-    var counter = 0
-    
-    /* Kontakt beacons */
-    var slBeacon = beaconSettings(proximityUUID: NSUUID(UUIDString: "B8937AE0-DC71-4883-A31B-A0059813159B"))
-    
-    /* BeaconHelper Class */
-    var bh: beaconHelper = beaconHelper()
-    
-    /* Controller Var */
-    private var testBeacon: Int = 0
-    private var leftHome:Bool = false
-    private var fired:Bool = false
+
     
     var bc: BotController?;
     var bn: BotNavigator?;
@@ -58,7 +42,6 @@ class BabysitterViewController: UIViewController, beaconSettingsProtocol {
     
     override func viewDidLoad() {
         super.viewDidLoad();
-        slBeacon.delegate = self
 
         if bcm.connections.count <= 0 {
             Toaster.show("Please provide at minimum a single connection inside the settings.");
@@ -81,12 +64,7 @@ class BabysitterViewController: UIViewController, beaconSettingsProtocol {
         }
         timer = NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: "whichBeacon:", userInfo: 0, repeats: true)
     }
-    
-    func updateCounter() {
-        print(String(counter++))
-    }
-    
-    func pushNotification(text: String, titel: String){
+        func pushNotification(text: String, titel: String){
         
         /* Create the alert controller */
         let alertController: UIAlertController = UIAlertController(title: titel, message: text, preferredStyle: .Alert)
@@ -352,70 +330,6 @@ class BabysitterViewController: UIViewController, beaconSettingsProtocol {
     /*****************************************************************************************************/
      /**************************************** Beacons Cases *********************************************/
      /*****************************************************************************************************/
-    func leftHouse()
-    {
-        self.testBeacon = bh.getNear()
-        //if(tempBeaconVar as! Int == beaconNearVar)
-        if( self.bh.getNear() == 2) && (self.bh.getProxy() == 1) && (self.leftHome == false)// (beaconAccu > 0.05) && (beaconAccu < 1.5)
-        {
-            self.pushNotification("Du bist aus dem Haus raus", titel: "Achtung")
-            self.leftHome = true
-        }
-    }
-    
-    func enteredHouse()
-    {
-        if( self.bh.getNear() == 2) && (self.bh.getProxy() == 1) && (self.leftHome == true)// (beaconAccu > 0.05) && (beaconAccu < 1.5)
-        {
-            self.pushNotification("Du bist wieder im Haus", titel: "Achtung")
-            self.leftHome = false
-        }
-    }
-    
-    func whichBeacon(timer: NSTimer)
-    {
-        let tempBeaconVar = timer.userInfo!
-        
-        //print("Beacon: ", self.bh.getNear(), " Proxy: " , self.bh.getProxy(), " Accu: ", self.bh.getAccur())
-        
-        //print("LeftHome: ", leftHome, " Fired:", fired)
-        //print(beaconNearVar)
-        
-        switch bh.getNear()
-        {
-        case 1:
-            print("Case: Beacon Near: 1")
-            //startAction()
-            break
-        case 2:
-            print("Case: Beacon Near: 2")
-            switch leftHome
-            {
-            case true:
-                test()
-                print("                  Case: LeftHome: True")
-                enteredHouse()
-                test()
-                break
-            case false:
-                test()
-                print("                  Case: LeftHome: False")
-                leftHouse()
-                test()
-                break
-            default:
-                break
-            }
-            break
-        case 3:
-            print("Beacon 3")
-            //startAction()
-            break
-        default:
-            print("Nix gefunden")
-            break
-        }
-    }
     
     func test()
     {
@@ -424,33 +338,7 @@ class BabysitterViewController: UIViewController, beaconSettingsProtocol {
     }
     
     
-    /*****************************************************************************************************/
-     /**************************************** Beacons Delegate ******************************************/
-     /*****************************************************************************************************/
-     
-     // MyCoreLocationProtocol delegate
-    func didUpateLocation(location: CLLocation) {
-        NSLog("VC Did Update Location: \(location)")
-    }
-    
-    // MyBeaconProtocol delegate
-    func rangedBeacons(beacons: [AnyObject]) {
-        let idx = beacons.endIndex
- 
-        // Muss korrigiert werden..
-        bh.updateValues(Int(slBeacon.nearBeacon.minor), accu: Float(slBeacon.nearBeacon.accuracy), proxi: Float(slBeacon.nearBeacon.proximity.rawValue))
-        //print(bh.getNear())
-        beaconNear.text = String(Int(slBeacon.nearBeacon!.minor))
-        //NSLog("Closest beacon: \(beacon.minor)")
-    }
-    
-    func didDetermineState(state: CLRegionState) {
-        if (state == .Unknown) {
-            NSLog("No more beacon(s)")
-        }
-    }
-    
-    deinit {
+     deinit {
         logger.log(.Info, data: "++++++")
     }
 }
