@@ -26,6 +26,7 @@ class UseCaseManager : NSObject, CLLocationManagerDelegate {
     
     //let babySitterUC = Babysitter();
 
+    var timer: NSTimer!
     // Kontrollvariablen
     //-------------------
     // Der Benutzer ist per Default im Haus
@@ -69,27 +70,31 @@ class UseCaseManager : NSObject, CLLocationManagerDelegate {
             /*************************************************************************************************/
             
             // Wird beim Verlassen des Beacons aktiviert
-        case "3010" where UseCaseManager.robotRunning == false && UseCaseManager.atHome == true && UseCaseManager.atBaby == false:
-            printLog("3010 ist Beacon: Ich bin aus dem Haus raus - Roboter startet nun")
+        case "3010" where UseCaseManager.robotRunning == false && UseCaseManager.atHome == true:
+            printLog("3010 ist Beacon: Sie haben das Haus verlassen! - Roboter startet nun")
             
             // 1) Funktion des Robos starten
             // 2) atHome auf false setzen
             // 3) robotRunning beim Start auf true setzen
             
-            //UseCaseManager.atHome = false
-            //UseCaseManager.robotRunning = true
+            UseCaseManager.atHome = false
+            UseCaseManager.robotRunning = true
             break
             
             // Wird beim Betreten des Beacons aktiviert
-        case "3011" where UseCaseManager.robotRunning == true && UseCaseManager.atHome == false && UseCaseManager.atBaby == false:
-            printLog("3011 ist Beacon: Ich bin wieder im Haus  - Roboter faehrt wieder zur Station")
+        case "3011" where UseCaseManager.robotRunning == true && UseCaseManager.atHome == false:
+            printLog("3011 ist Beacon: Sie sind im Haus!  - Roboter faehrt wieder zur Station")
+            
+            // Test nach 10 Sekunden simulieren..
+            timer = NSTimer.scheduledTimerWithTimeInterval(10, target: self, selector: "back:", userInfo: 0, repeats: true)
+
             
             // 1) Funktion zum Beenden des Robos aufrufen
             // 2) atHome auf true setzen
             // 3) robotRunning auf false setzen
             
-            //UseCaseManager.atHome = true
-            //UseCaseManager.robotRunning = false
+            UseCaseManager.atHome = true
+            UseCaseManager.robotRunning = false
             break
             
             
@@ -113,7 +118,7 @@ class UseCaseManager : NSObject, CLLocationManagerDelegate {
             
             // 1) Funktion zum Beenden des Robos aufrufen
             // 2) atBaby auf false setzen
-
+            
             UseCaseManager.atBaby = false
             break
 
@@ -122,8 +127,7 @@ class UseCaseManager : NSObject, CLLocationManagerDelegate {
             return
         }
     }
-    
-    
+
     func printLog(var temp: String)
     {
         print("/******************************************************************************************/")
