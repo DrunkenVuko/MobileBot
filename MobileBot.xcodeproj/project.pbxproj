@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		B84142191C070EED007E4270 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84142181C070EED007E4270 /* AppDelegate.swift */; };
-		B84142211C070EED007E4270 /* MobileBot.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B841421F1C070EED007E4270 /* MobileBot.xcdatamodeld */; };
 		B84142231C070EED007E4270 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B84142221C070EED007E4270 /* Assets.xcassets */; };
 		B84142261C070EED007E4270 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B84142241C070EED007E4270 /* LaunchScreen.storyboard */; };
 		B84142311C070EEE007E4270 /* MobileBotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84142301C070EEE007E4270 /* MobileBotTests.swift */; };
@@ -68,7 +67,6 @@
 /* Begin PBXFileReference section */
 		B84142151C070EED007E4270 /* MobileBot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MobileBot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B84142181C070EED007E4270 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		B84142201C070EED007E4270 /* MobileBot.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MobileBot.xcdatamodel; sourceTree = "<group>"; };
 		B84142221C070EED007E4270 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B84142251C070EED007E4270 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B84142271C070EED007E4270 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -211,7 +209,6 @@
 				B84142221C070EED007E4270 /* Assets.xcassets */,
 				B84142241C070EED007E4270 /* LaunchScreen.storyboard */,
 				B84142271C070EED007E4270 /* Info.plist */,
-				B841421F1C070EED007E4270 /* MobileBot.xcdatamodeld */,
 				B841426A1C070FB5007E4270 /* MobileBot-Bridging-Header.h */,
 			);
 			path = MobileBot;
@@ -446,7 +443,6 @@
 			files = (
 				B84142A21C070FB5007E4270 /* TestHardwareController.swift in Sources */,
 				B84142901C070FB5007E4270 /* BotConnectionManager.m in Sources */,
-				B84142211C070EED007E4270 /* MobileBot.xcdatamodeld in Sources */,
 				B841428D1C070FB5007E4270 /* BabysitterViewController.swift in Sources */,
 				B84142961C070FB5007E4270 /* CommandQueue.swift in Sources */,
 				B841429D1C070FB5007E4270 /* ProtocolCommandField.m in Sources */,
@@ -742,16 +738,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		B841421F1C070EED007E4270 /* MobileBot.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				B84142201C070EED007E4270 /* MobileBot.xcdatamodel */,
-			);
-			currentVersion = B84142201C070EED007E4270 /* MobileBot.xcdatamodel */;
-			path = MobileBot.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
 		B841427C1C070FB5007E4270 /* MobileBot.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
