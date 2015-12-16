@@ -25,7 +25,8 @@ import UIKit
     var delegate: beaconSettingsProtocol?
     var recentMajor: Int?
     var nearBeacon: CLBeacon!
-    
+    var beaconLastSeen: NSMutableDictionary!
+
     init(proximityUUID: NSUUID?) {
         super.init()
         if (proximityUUID != nil) {
@@ -39,6 +40,7 @@ import UIKit
         beaconRegion = CLBeaconRegion(proximityUUID: proximityUUID!, identifier: "beaconmanager") // beaconmanager
         beaconRegion.notifyEntryStateOnDisplay = true
         locationManager.startMonitoringForRegion(beaconRegion)
+        beaconLastSeen = NSMutableDictionary()
     }
     
     // Beacon Delegates -- responding to region events
@@ -127,6 +129,36 @@ import UIKit
                 }
             }
             
+            
+        for beacon in beacons {
+            var shouldSendNotification: Bool  = false
+            var now: NSDate = NSDate()
+            var beaconKey: NSString = String(beacon.minor)
+            NSLog("Ranged UUID: %@ Major:%ld Minor:%ld RSSI:%ld", beacon.proximityUUID.UUIDString, beacon.major, beacon.minor, beacon.rssi)
+            
+            if beaconLastSeen.objectForKey(beaconKey) == nil {
+                NSLog("This beacon has never been seen before")
+                shouldSendNotification = true;
+                beaconLastSeen.objectForKey(beaconKey)?.setValue("found", forKey: beaconKey as String)
+                print("if Key : ", beaconLastSeen.objectForKey(beaconKey))
+                print(now)
+            }
+            else {
+                print("else Key : ", beaconLastSeen.objectForKey(beaconKey))
+                var lastSeen: NSDate = NSDate()
+                lastSeen.setValue(beaconLastSeen.objectForKey(beaconKey), forKey: String(lastSeen.timeIntervalSinceNow))
+                
+                var secondsSinceLastSeen: NSTimeInterval  = now.timeIntervalSinceDate(lastSeen)
+                NSLog("This beacon was last seen at %@, which was %.0f seconds ago", lastSeen, secondsSinceLastSeen);
+                if (secondsSinceLastSeen < 3600*24 /* one day in seconds */) {
+                    shouldSendNotification = true;
+                }
+            }
+            
+//            if (shouldSendNotification) {
+//                [self sendLocalNotification];
+//            }
+        }
             
             if (goodBeacons.count > 0) {
                 self.recentMajor = goodBeacons.first?.major as? Int
