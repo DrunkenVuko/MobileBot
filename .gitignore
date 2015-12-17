@@ -1,6 +1,8 @@
 .DS_Store
 .localize
 
+# Xcode
+
 ## Build generated
 build/
 DerivedData
@@ -25,3 +27,15 @@ xcuserdata
 ## Obj-C/Swift specific
 *.hmap
 *.ipa
+
+# Carthage/Checkouts
+
+Carthage/Build
+
+# fastlane
+#
+# It is recommended to not store the screenshots in the git repo. Instead, use fastlane to re-generate the
+# screenshots whenever they are needed.
+
+fastlane/report.xml
+fastlane/screenshots

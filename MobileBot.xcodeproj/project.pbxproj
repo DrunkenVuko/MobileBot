@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B801118A1BEB51E4003A2BD2 /* UseCaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B80111891BEB51E4003A2BD2 /* UseCaseManager.swift */; };
+		B801118F1BEB5430003A2BD2 /* Babysitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B801118E1BEB5430003A2BD2 /* Babysitter.swift */; };
 		B802B8E61BEA4D41009745F6 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B802B8E51BEA4D41009745F6 /* SettingsViewController.swift */; };
 		B8BDFABB1BD8B86F005CC1AE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BDFABA1BD8B86F005CC1AE /* AppDelegate.swift */; };
 		B8BDFAC21BD8B86F005CC1AE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B8BDFAC01BD8B86F005CC1AE /* Main.storyboard */; };
@@ -50,6 +52,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B80111891BEB51E4003A2BD2 /* UseCaseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UseCaseManager.swift; sourceTree = "<group>"; };
+		B801118E1BEB5430003A2BD2 /* Babysitter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Babysitter.swift; sourceTree = "<group>"; };
 		B802B8E51BEA4D41009745F6 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		B8BDFAB71BD8B86F005CC1AE /* MobileBot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MobileBot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8BDFABA1BD8B86F005CC1AE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -114,6 +118,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B801118B1BEB51E8003A2BD2 /* Use-Cases */ = {
+			isa = PBXGroup;
+			children = (
+				B801118E1BEB5430003A2BD2 /* Babysitter.swift */,
+				B80111891BEB51E4003A2BD2 /* UseCaseManager.swift */,
+			);
+			name = "Use-Cases";
+			sourceTree = "<group>";
+		};
 		B8BDFAAE1BD8B86F005CC1AE = {
 			isa = PBXGroup;
 			children = (
@@ -146,6 +159,7 @@
 				C59D38701BE3694B0081F6E9 /* TestHardwareController.swift */,
 				B802B8E51BEA4D41009745F6 /* SettingsViewController.swift */,
 				B8BDFABA1BD8B86F005CC1AE /* AppDelegate.swift */,
+				B801118B1BEB51E8003A2BD2 /* Use-Cases */,
 				B8BDFAC01BD8B86F005CC1AE /* Main.storyboard */,
 				B8BDFAC31BD8B86F005CC1AE /* Assets.xcassets */,
 				B8BDFAC51BD8B86F005CC1AE /* LaunchScreen.storyboard */,
@@ -356,6 +370,7 @@
 				C59D387F1BE3694B0081F6E9 /* TestHardwareController.swift in Sources */,
 				C59D38A91BE36B0F0081F6E9 /* StreamableLogger.swift in Sources */,
 				C59D389F1BE36B0F0081F6E9 /* BotController.swift in Sources */,
+				B801118A1BEB51E4003A2BD2 /* UseCaseManager.swift in Sources */,
 				B8BDFABB1BD8B86F005CC1AE /* AppDelegate.swift in Sources */,
 				C59D38A61BE36B0F0081F6E9 /* ProtocolCommandExecutionUnit.m in Sources */,
 				C59D38AA1BE36B0F0081F6E9 /* Toaster.swift in Sources */,
@@ -364,6 +379,7 @@
 				C59D387A1BE3694B0081F6E9 /* BotControlTestViewController.swift in Sources */,
 				C59D38A51BE36B0F0081F6E9 /* ProtocolCommand.m in Sources */,
 				C59D389D1BE36B0F0081F6E9 /* BotConnection.m in Sources */,
+				B801118F1BEB5430003A2BD2 /* Babysitter.swift in Sources */,
 				C59D38A21BE36B0F0081F6E9 /* Command.swift in Sources */,
 				C59D38A01BE36B0F0081F6E9 /* BotNavigator.swift in Sources */,
 				C59D38A71BE36B0F0081F6E9 /* ProtocolCommandField.m in Sources */,
