@@ -14,10 +14,15 @@ import UIKit
  */
 class ParkingBot: NSObject {
     
+    // Office coordinates
+    internal static let STREET_POINT_1: (CGFloat, CGFloat) = (0, 0)
+    internal static let STREET_POINT_2: (CGFloat, CGFloat) = (100, 0)
+    
     var bc: BotController?;
     var bn: BotNavigator?;
     let bcm = BotConnectionManager.sharedInstance();
     let logger = StreamableLogger();
+    
     var debounceTimer: NSTimer?
     var notification: UILocalNotification?;
     
@@ -25,14 +30,16 @@ class ParkingBot: NSObject {
     
     
     override init() {
-        connect()
+        createConnection()
+        
+        bc?.resetPosition(nil);
     }
     
-    func connect() {
-        if let bc = bc {
-            bn = BotNavigator(controller: bc);
-        }
-        
+    /**
+     * Looks for connections in BotConnectionManager
+     * Creates BotController and BotNavigator for the connection and calls connect() on BotConnectionManager
+     **/
+    func createConnection(){
         if bcm.connections.count <= 0 {
             Toaster.show("Please provide at minimum a single connection inside the settings.");
         } else {
@@ -41,11 +48,18 @@ class ParkingBot: NSObject {
                 
                 if let bc = bc {
                     bn = BotNavigator(controller: bc);
-                    
-                    bcm.connect(connection);
                 }
+                bcm.connect(connection);
             }
         }
+    }
+    
+    /**
+     * Checks if BotConnection is initialized and connected
+     **/
+    func isConnected() -> Bool {
+        let connectedStatus: BotConnectionConnectionStatus = .Connected
+        return (bc?.connectionStatus == connectedStatus)
     }
     
     
