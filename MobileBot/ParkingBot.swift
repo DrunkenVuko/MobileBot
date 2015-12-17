@@ -1,8 +1,8 @@
 //
-//  Babysitter.swift
+//  ParkingBot.swift
 //  MobileBot
 //
-//  Created by Goran Vukovic on 05.11.15.
+//  Created by Betty van Aken on 17.12.15.
 //  Copyright © 2015 Goran Vukovic. All rights reserved.
 //
 
@@ -10,9 +10,9 @@ import Foundation
 import UIKit
 
 /**
- * Diese Klasse dient dem Use Case : Babysitter
+ * Diese Klasse dient dem Use Case : ParkingBot
  */
-class Babysitter: NSObject {
+class ParkingBot: NSObject {
     
     var bc: BotController?;
     var bn: BotNavigator?;
@@ -25,6 +25,10 @@ class Babysitter: NSObject {
     
     
     override init() {
+        connect()
+    }
+    
+    func connect() {
         if let bc = bc {
             bn = BotNavigator(controller: bc);
         }
