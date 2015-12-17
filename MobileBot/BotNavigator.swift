@@ -120,7 +120,7 @@ class BotNavigator {
                             
                             // Berechnung des Rechtecks um den Zielpunkt
                             let angle = atan2f(Float(point.y) - data.y, Float(point.x) - data.x);
-                            let degrees = angle * (180 / 3.14);
+                            let degrees = angle * (180 / Float(M_PI));
                             let currentPoint = CGPointMake(CGFloat(data.x), CGFloat(data.y));
                             let currentDistance = BotUtils.distance(from: point, to: currentPoint);
                             
