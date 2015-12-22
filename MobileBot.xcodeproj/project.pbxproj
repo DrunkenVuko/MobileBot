@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AF9782AB1C29530C00222CC0 /* RaumvermesserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9782AA1C29530C00222CC0 /* RaumvermesserViewController.swift */; };
 		B801118A1BEB51E4003A2BD2 /* UseCaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B80111891BEB51E4003A2BD2 /* UseCaseManager.swift */; };
 		B801118F1BEB5430003A2BD2 /* Babysitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B801118E1BEB5430003A2BD2 /* Babysitter.swift */; };
 		B802B8E61BEA4D41009745F6 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B802B8E51BEA4D41009745F6 /* SettingsViewController.swift */; };
@@ -52,6 +53,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		AF9782AA1C29530C00222CC0 /* RaumvermesserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RaumvermesserViewController.swift; sourceTree = "<group>"; };
 		B80111891BEB51E4003A2BD2 /* UseCaseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UseCaseManager.swift; sourceTree = "<group>"; };
 		B801118E1BEB5430003A2BD2 /* Babysitter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Babysitter.swift; sourceTree = "<group>"; };
 		B802B8E51BEA4D41009745F6 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
@@ -123,6 +125,7 @@
 			children = (
 				B801118E1BEB5430003A2BD2 /* Babysitter.swift */,
 				B80111891BEB51E4003A2BD2 /* UseCaseManager.swift */,
+				AF9782AA1C29530C00222CC0 /* RaumvermesserViewController.swift */,
 			);
 			name = "Use-Cases";
 			sourceTree = "<group>";
@@ -373,6 +376,7 @@
 				B801118A1BEB51E4003A2BD2 /* UseCaseManager.swift in Sources */,
 				B8BDFABB1BD8B86F005CC1AE /* AppDelegate.swift in Sources */,
 				C59D38A61BE36B0F0081F6E9 /* ProtocolCommandExecutionUnit.m in Sources */,
+				AF9782AB1C29530C00222CC0 /* RaumvermesserViewController.swift in Sources */,
 				C59D38AA1BE36B0F0081F6E9 /* Toaster.swift in Sources */,
 				C59D38A81BE36B0F0081F6E9 /* Stream.swift in Sources */,
 				C59D38A31BE36B0F0081F6E9 /* CommandQueue.swift in Sources */,
