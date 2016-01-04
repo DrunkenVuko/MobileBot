@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B801118A1BEB51E4003A2BD2 /* UseCaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B80111891BEB51E4003A2BD2 /* UseCaseManager.swift */; };
 		B802B8E61BEA4D41009745F6 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B802B8E51BEA4D41009745F6 /* SettingsViewController.swift */; };
 		B8BDFABB1BD8B86F005CC1AE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BDFABA1BD8B86F005CC1AE /* AppDelegate.swift */; };
 		B8BDFAC21BD8B86F005CC1AE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B8BDFAC01BD8B86F005CC1AE /* Main.storyboard */; };
@@ -52,7 +51,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		B80111891BEB51E4003A2BD2 /* UseCaseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UseCaseManager.swift; sourceTree = "<group>"; };
 		B802B8E51BEA4D41009745F6 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		B8BDFAB71BD8B86F005CC1AE /* MobileBot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MobileBot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8BDFABA1BD8B86F005CC1AE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -122,7 +120,6 @@
 			isa = PBXGroup;
 			children = (
 				C571A4A71C22C0F3006F22D0 /* ParkingBot.swift */,
-				B80111891BEB51E4003A2BD2 /* UseCaseManager.swift */,
 			);
 			name = "Use-Cases";
 			sourceTree = "<group>";
@@ -370,7 +367,6 @@
 				C59D387F1BE3694B0081F6E9 /* TestHardwareController.swift in Sources */,
 				C59D38A91BE36B0F0081F6E9 /* StreamableLogger.swift in Sources */,
 				C59D389F1BE36B0F0081F6E9 /* BotController.swift in Sources */,
-				B801118A1BEB51E4003A2BD2 /* UseCaseManager.swift in Sources */,
 				B8BDFABB1BD8B86F005CC1AE /* AppDelegate.swift in Sources */,
 				C59D38A61BE36B0F0081F6E9 /* ProtocolCommandExecutionUnit.m in Sources */,
 				C571A4A81C22C0F3006F22D0 /* ParkingBot.swift in Sources */,

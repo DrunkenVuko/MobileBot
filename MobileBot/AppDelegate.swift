@@ -12,16 +12,16 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
-    let beaconManager = BeaconManager(hash: "824905c09824e47314f2db7d8e7795f0");
+//    let beaconManager = BeaconManager(hash: "824905c09824e47314f2db7d8e7795f0");
     let logger = StreamableLogger();
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
         // Override point for customization after application launch.
-        beaconManager.setDelegate(self);
-        beaconManager.start();
-        
-        logger.log(.Info, data: beaconManager.dbVersion());
+//        beaconManager.setDelegate(self);
+//        beaconManager.start();
+//        
+//        logger.log(.Info, data: beaconManager.dbVersion());
         
         // loacal notification permission request
         let types: UIUserNotificationType = [.Badge, .Alert, .Sound];
@@ -30,7 +30,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UIApplication.sharedApplication().registerUserNotificationSettings(notificationSettings);
         // loacal notification permission request
         
-        UseCaseManager.sharedInstance().run();
+//        UseCaseManager.sharedInstance().run();
         
         return true
     }
@@ -40,7 +40,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(application: UIApplication, performFetchWithCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void) {
-        beaconManager.startBackgroundFetch(completionHandler);
+//        beaconManager.startBackgroundFetch(completionHandler);
     }
     
     func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {

@@ -6,15 +6,14 @@
 //  Copyright © 2015 Goran Vukovic. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
 /**
  * Diese Klasse dient dem Use Case : ParkingBot
  */
-class ParkingBot: NSObject {
+class ParkingBot: UIViewController {
     
-    // Office coordinates
+    // Street coordinates
     internal static let STREET_POINT_1: (CGFloat, CGFloat) = (0, 0)
     internal static let STREET_POINT_2: (CGFloat, CGFloat) = (100, 0)
     
@@ -23,15 +22,20 @@ class ParkingBot: NSObject {
     let bcm = BotConnectionManager.sharedInstance();
     let logger = StreamableLogger();
     
-    var debounceTimer: NSTimer?
-    var notification: UILocalNotification?;
+    var stopped = false
     
-    static var enterWhileLeave = false;
+    @IBAction func startPressed(sender: AnyObject) {
+        self.startAction()
+    }
     
+    @IBAction func stopPressed(sender: AnyObject) {
+        self.stopAction()
+    }
     
-    override init() {
-        createConnection()
+    override func viewDidLoad() {
+        super.viewDidLoad();
         
+        createConnection()
         bc?.resetPosition(nil);
     }
     
@@ -62,101 +66,95 @@ class ParkingBot: NSObject {
         return (bc?.connectionStatus == connectedStatus)
     }
     
+    func scan() {
+        // scanBugFlag = flag to make sure not one single "buggy" value was send
+        // value of zero distance (== empty space) must be sent 5 times in a row
+        
+        var scanBugFlag = 0.0;
+        
+        // scan with a fixed angle of 0°
+        self.bc?.scanRange(0, max: 0, inc: 0, callback: { scandata in
+
+            self.logger.log(.Info, data: "scanning parking lot \(scandata.pingDistance)");
+            
+            if(scandata.pingDistance == 0) {
+                if(scanBugFlag >= 5.0){
+                    self.logger.log(.Info, data: "empty parkinglot detected");
+                    
+                    self.sendAlarm("Empty Parkinglot!");
+                    
+                }else {
+                    scanBugFlag++;
+                }
+            }else {
+                scanBugFlag = 0.0;
+            }
+        })
+    }
+    
+    func patrol(back: Bool){
+        
+        var coordinate = ParkingBot.STREET_POINT_2
+        
+        if(back){
+            self.logger.log(.Info, data: "parkingbot: MOVE back");
+            coordinate = ParkingBot.STREET_POINT_1
+            
+        } else {
+            self.logger.log(.Info, data: "parkingbot: MOVE forth");
+        }
+        
+        self.scan();
+        
+        self.bn?.moveToWithoutObstacle(CGPointMake(coordinate.0, coordinate.1), completion: { data in
+            self.logger.log(.Info, data: "parkingbot: streetpoint reached.");
+            
+            self.patrol(!back)
+        })
+        
+    }
+    
+    func patrolWithInternalScan(back: Bool){
+        
+        var coordinate = ParkingBot.STREET_POINT_2
+        
+        if(back){
+            self.logger.log(.Info, data: "parkingbot: MOVE back");
+            coordinate = ParkingBot.STREET_POINT_1
+            
+        } else {
+            self.logger.log(.Info, data: "parkingbot: MOVE forth");
+        }
+        
+        self.bn?.moveToWithScan(CGPointMake(coordinate.0, coordinate.1), completion: { data in
+            self.logger.log(.Info, data: "parkingbot: streetpoint reached.");
+            
+            if(!self.stopped){
+                self.patrol(!back)
+            }
+        })
+        
+    }
+    
+    //spaeter mal mit push nachrichten umsetzen
+    //@TODO
+    func sendAlarm(message: String){
+        Toaster.show(message);
+    }
+    
     
     /**
      * Startet den Use Case
-     *
      */
     func startAction() {
-        /*logger.log(.Info, data: "Start GuardHouseWhileUserNotHome!");
-        
-        scheduleLocalNotification();
-        
-        UseCaseManager.guibFlag = true;
-        UseCaseManager.globalEnter = true;
-        
-        self.bn?.moveTo(CGPointMake(CGFloat(200), CGFloat(100)), completion: { [weak self] data in
-            self?.bc?.scanRange(30, max: 150, inc: 3, callback: { data in
-                self?.logger.log(.Info, data: "scanning House entry");
-            })
-            });
-        */
+        patrol(false)
     }
     
     /**
-     * Schedules a local notification only once by canceling any previously scheduled notification
+     * Startet den Use Case
      */
-    func scheduleLocalNotification() {
-        /*
-        cancelLocalNotification();
-        
-        let fireDate = NSDate(timeIntervalSinceNow: 5);
-        
-        notification = UILocalNotification(title: "Unbefugter Eindringling erkannt", body: "Achtung, es wurde ein unbefugter Eindringling erkannt!", fireDate: fireDate);
-        
-        UIApplication.sharedApplication().scheduleLocalNotification(notification!);
-        
-        logger.log(.Info, data: "scheduled local notification with fire date: \(fireDate)");
-        */
+    func stopAction() {
+        self.stopped = true
     }
-    
-    func cancelLocalNotification() {
-        /*
-        if let notification = notification {
-            UIApplication.sharedApplication().cancelLocalNotification(notification);
-            
-            logger.log(.Info, data: "canceled previously scheduled notification: \(notification)");
-        }
-        */
-    }
-    
-    // *****
-    // http://stackoverflow.com/questions/28411644/search-as-you-type-swift/28412321#28412321
-    // *****
-    /**
-    * Diese Funktion wird aufgerufen, sobald das End-Event vom Beacon gesendet wurde.
-    * Dann wird ein Timer von 20 Sekunden gestartet und erst danach wird die startEndAction()
-    * aufgerufen. Wird das End-Event öfter gesendet, startet der Timer von 0 und ruft startEndAction()
-    * erst auf, wenn die 20 Sekunden durchlaufen wurden.
-    */
-    func endAction() {
-        
-        /*
-        GuardHouseWhileUserNotHome.enterWhileLeave = false;
-        
-        if let timer = debounceTimer {
-            timer.invalidate()
-        }
-        
-        debounceTimer = NSTimer(timeInterval: 20.0, target: self, selector: Selector("startEndAction"), userInfo: nil, repeats: false)
-        
-        NSRunLoop.currentRunLoop().addTimer(debounceTimer!, forMode: "NSDefaultRunLoopMode")
-        */
-    }
-    
-    /**
-     * Diese Funktion beendet den UseCase und führt entsprechende Operationen durch.
-     * Sollte während der 20 Wartesekunden ein Start-Event aufgerufen worden sein, so wird im
-     * UseCaseManager die Variable enterWhileLeave auf true gesetzt und der Use Case wird nicht beendet.
-     *
-     */
-    func startEndAction(){
-//        if !GuardHouseWhileUserNotHome.enterWhileLeave {
-//            
-//            cancelLocalNotification();
-//            
-//            UseCaseManager.ghwunhFlag = false;
-//            UseCaseManager.globalEnter=false;
-//            
-//            self.bc?.stopRangeScan({ [weak self] in
-//                self?.bn?.moveTo(CGPointMake(CGFloat(0), CGFloat(0)), completion: nil);
-//                })
-//            
-//            logger.log(.Info, data: "End GuardHouseWhileUserNotHome!")
-//        }
-    }
-    
-    deinit {
-        logger.log(.Info, data: "++++++");
-    }
+
 }

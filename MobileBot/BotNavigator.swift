@@ -266,6 +266,83 @@ class BotNavigator {
         })
     }
     
+    /**
+     *
+     * Diese Funktion lässt den Roboter zu einer Bestimmten Position in seinem Koordinatensystem fahren.
+     * Falls auf dem Weg ein Hindernis auftaucht, wird es umfahren.
+     **/
+    func moveToWithScan(point: CGPoint, completion: ((ForwardKinematicsData) -> ())? ) {
+        self.bc.stopRangeScan({
+            self.bc.stopMovingWithPositionalUpdate({
+                self.logger.log(.Info, data: "\(point)");
+                
+                self.bc.startUpdatingPosition(true, completion: { data in
+                    self.logger.log(.Info, data: "current position: \(data)");
+                    
+                    let angle = atan2f(Float(point.y) - data.y, Float(point.x) - data.x);
+                    let degrees = angle * 180 / 3.14;
+                    
+                    // Roboter dreht sich in die richtige Richtung
+                    self.turnToAngle(degrees, speed: self.speed, completion: { data in
+                        let startingPoint = CGPointMake(CGFloat(data.x), CGFloat(data.y));
+                        var previousDistance = BotUtils.distance(from: startingPoint, to: point);
+                        let dest = CGRectMake(point.x, point.y, 0, 0);
+                        let destWithInset = CGRectInset(dest, -1.0, -1.0);
+                        
+                        self.logger.log(.Info, data: "computed destination area: \(destWithInset), from point: \(point)");
+                        
+                        self.bc.startMovingWithPositionalUpdate(self.speed, omega: 0, callback: { data in
+                            
+                            // Berechnung des Rechtecks um den Zielpunkt
+                            let angle = atan2f(Float(point.y) - data.y, Float(point.x) - data.x);
+                            let degrees = angle * 180 / 3.14;
+                            let currentPoint = CGPointMake(CGFloat(data.x), CGFloat(data.y));
+                            let currentDistance = BotUtils.distance(from: point, to: currentPoint);
+                            
+                            self.logger.log(.Info, data: "****************************************************************************");
+                            self.logger.log(.Info, data: "moving forward: \(data) :: \(point)");
+                            self.logger.log(.Info, data: "angle to point: \(degrees)");
+                            self.logger.log(.Info, data: "current distance: \(currentDistance), previous distance: \(previousDistance)");
+                            self.logger.log(.Info, data: "destination area: \(destWithInset), current point: \(currentPoint)");
+                            
+                            let destReached = CGRectContainsPoint(destWithInset, currentPoint);
+                            
+                            if destReached {
+                                self.destinationReached(completion);
+                                
+                            } else if currentDistance > previousDistance {
+                                self.destinationReached(completion);
+                            }
+                            
+                            previousDistance = currentDistance;
+                        });
+                        
+                        // flag welches verhindern soll dass ein Hindernis vom Roboter wahrgenommen wird, wenn keines vorhanden ist
+                        // es muss mehrere male hintereinander vom Roboter gesendet werden, dass sich etwas vor ihm befindet
+                        var scanBugFlag = 0.0;
+                        
+                        self.bc.scanRange(0, max: 0, inc: 0, callback: { scandata in
+                            
+                            if(scandata.pingDistance > 0 && scanBugFlag >= 5.0) {
+                                self.logger.log(.Info, data: "EMPTY PARKING SPACE ENDED AT \(data)");
+                            }
+                            
+                            else if(scandata.pingDistance == 0) {
+                                if(scanBugFlag >= 5.0){
+                                    self.logger.log(.Info, data: "EMPTY PARKING SPACE STARTED AT \(data)");
+                                }else{
+                                    scanBugFlag++;
+                                }
+                            }else{
+                                scanBugFlag = 0;
+                            }
+                        });
+                    });
+                });
+            });
+        })
+    }
+    
     // der Roboter hat seine Zielposition erreicht. Es wird die Endaktion ausgeführt
     func destinationReached(completion: ((ForwardKinematicsData) -> ())?) {
         self.bc.stopMovingWithPositionalUpdate({

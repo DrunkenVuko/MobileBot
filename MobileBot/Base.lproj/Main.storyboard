@@ -17,10 +17,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rdH-U4-03i">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rdH-U4-03i">
                                 <rect key="frame" x="86" y="184" width="243" height="30"/>
                                 <animations/>
                                 <color key="backgroundColor" red="0.34566297448047534" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="FKy-WI-whd"/>
+                                </constraints>
                                 <state key="normal" title="Test Hardware">
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" red="1" green="0.98360094255078123" blue="0.97779292811518415" alpha="1" colorSpace="calibratedRGB"/>
@@ -29,7 +32,7 @@
                                     <segue destination="vbM-Rx-UZO" kind="show" id="YZB-Ou-dUq"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v8o-5H-NjD">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v8o-5H-NjD">
                                 <rect key="frame" x="86" y="324" width="243" height="34"/>
                                 <animations/>
                                 <color key="backgroundColor" red="0.0" green="0.61201751336662236" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -41,15 +44,119 @@
                                     <segue destination="BRV-1H-4Vs" kind="show" id="6F6-bK-q38"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GNN-uE-UQX">
+                                <rect key="frame" x="86" y="438" width="243" height="30"/>
+                                <animations/>
+                                <color key="backgroundColor" red="1" green="0.78104777504564304" blue="0.28856273547384947" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Parking Bot"/>
+                                <connections>
+                                    <segue destination="AGd-zy-lvC" kind="show" id="4P0-hn-bgb"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="HFB-Y0-exv" firstAttribute="top" secondItem="GNN-uE-UQX" secondAttribute="bottom" constant="268" id="9Hu-Ig-xuW"/>
+                            <constraint firstItem="GNN-uE-UQX" firstAttribute="top" secondItem="v8o-5H-NjD" secondAttribute="bottom" constant="80" id="FyR-eX-JOc"/>
+                            <constraint firstItem="rdH-U4-03i" firstAttribute="top" secondItem="rQg-fi-Loh" secondAttribute="bottom" constant="164" id="Gq4-t0-8n5"/>
+                            <constraint firstItem="GNN-uE-UQX" firstAttribute="centerX" secondItem="v8o-5H-NjD" secondAttribute="centerX" id="HeZ-H4-sbT"/>
+                            <constraint firstItem="rdH-U4-03i" firstAttribute="leading" secondItem="7H2-74-5aE" secondAttribute="leadingMargin" constant="66" id="VYe-bQ-2LX"/>
+                            <constraint firstItem="GNN-uE-UQX" firstAttribute="width" secondItem="v8o-5H-NjD" secondAttribute="width" id="ngQ-mm-PaK"/>
+                            <constraint firstItem="rdH-U4-03i" firstAttribute="leading" secondItem="v8o-5H-NjD" secondAttribute="leading" id="qmT-Xn-PqA"/>
+                            <constraint firstItem="GNN-uE-UQX" firstAttribute="centerX" secondItem="7H2-74-5aE" secondAttribute="centerX" id="wdz-cg-T2J"/>
+                            <constraint firstItem="GNN-uE-UQX" firstAttribute="centerX" secondItem="rdH-U4-03i" secondAttribute="centerX" id="zam-SA-BEk"/>
+                        </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hjJ-qy-2UU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="726" y="784"/>
+        </scene>
+        <!--Parking Bot-->
+        <scene sceneID="hif-LF-xKX">
+            <objects>
+                <viewController id="AGd-zy-lvC" customClass="ParkingBot" customModule="MobileBot" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="X8l-YE-BEE"/>
+                        <viewControllerLayoutGuide type="bottom" id="IKc-oQ-oPo"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="gmh-Wv-FX8">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SNa-bj-h12">
+                                <rect key="frame" x="126" y="85" width="162" height="30"/>
+                                <animations/>
+                                <color key="backgroundColor" red="0.70379076959765174" green="0.41961465934201858" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="162" id="72K-gr-3Lp"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="162" id="e7e-jT-xhC"/>
+                                </constraints>
+                                <state key="normal" title="Start Action"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="e7e-jT-xhC"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <action selector="startPressed:" destination="AGd-zy-lvC" eventType="touchUpInside" id="uw0-sm-G8F"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PARKING BOT" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KeT-40-RV2">
+                                <rect key="frame" x="153" y="33" width="109" height="21"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zOQ-gD-Yby">
+                                <rect key="frame" x="183" y="430" width="49" height="30"/>
+                                <animations/>
+                                <state key="normal" title="Zurück"/>
+                                <connections>
+                                    <segue destination="f9E-4d-Z3P" kind="show" id="8lk-k9-lx7"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BUQ-pG-Xqd">
+                                <rect key="frame" x="179" y="493" width="57" height="30"/>
+                                <animations/>
+                                <state key="normal" title="Settings"/>
+                                <connections>
+                                    <segue destination="IOf-7S-mOe" kind="show" id="a1g-b5-rKg"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iGG-JF-JZ0">
+                                <rect key="frame" x="126" y="174" width="162" height="30"/>
+                                <animations/>
+                                <color key="backgroundColor" red="1" green="0.45369814998949165" blue="0.3494865674871751" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Stop Action"/>
+                                <connections>
+                                    <action selector="stopPressed:" destination="AGd-zy-lvC" eventType="touchUpInside" id="aVZ-om-ySN"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="KeT-40-RV2" firstAttribute="top" secondItem="X8l-YE-BEE" secondAttribute="bottom" constant="13" id="9cQ-a5-kSB"/>
+                            <constraint firstItem="SNa-bj-h12" firstAttribute="centerX" secondItem="gmh-Wv-FX8" secondAttribute="centerX" id="Dyx-R7-PJx"/>
+                            <constraint firstItem="KeT-40-RV2" firstAttribute="centerX" secondItem="SNa-bj-h12" secondAttribute="centerX" id="bDP-PY-Wbf"/>
+                            <constraint firstItem="IKc-oQ-oPo" firstAttribute="top" secondItem="BUQ-pG-Xqd" secondAttribute="bottom" constant="213" id="cTc-iS-HnJ"/>
+                            <constraint firstItem="SNa-bj-h12" firstAttribute="top" secondItem="X8l-YE-BEE" secondAttribute="bottom" constant="65" id="dtF-PC-lUt"/>
+                            <constraint firstItem="BUQ-pG-Xqd" firstAttribute="centerX" secondItem="zOQ-gD-Yby" secondAttribute="centerX" id="eu6-4w-lgI"/>
+                            <constraint firstItem="iGG-JF-JZ0" firstAttribute="leading" secondItem="SNa-bj-h12" secondAttribute="leading" id="l7p-02-xYu"/>
+                            <constraint firstItem="zOQ-gD-Yby" firstAttribute="centerX" secondItem="SNa-bj-h12" secondAttribute="centerX" id="mXe-dN-SuI"/>
+                            <constraint firstItem="BUQ-pG-Xqd" firstAttribute="top" secondItem="zOQ-gD-Yby" secondAttribute="bottom" constant="33" id="rUy-Md-NDY"/>
+                            <constraint firstItem="iGG-JF-JZ0" firstAttribute="top" secondItem="SNa-bj-h12" secondAttribute="bottom" constant="59" id="u8r-wg-Upt"/>
+                            <constraint firstItem="iGG-JF-JZ0" firstAttribute="width" secondItem="SNa-bj-h12" secondAttribute="width" id="ypp-el-eR7"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0zJ-wA-Ler" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1325" y="765"/>
         </scene>
         <!--Test Hardware Controller-->
         <scene sceneID="LiE-VM-2PX">
@@ -108,11 +215,11 @@
                         <viewControllerLayoutGuide type="bottom" id="oMR-ON-CWn"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8h8-cW-vxr">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uh5-GC-YzU">
-                                <rect key="frame" x="281" y="72" width="38" height="30"/>
+                                <rect key="frame" x="188" y="72" width="38" height="30"/>
                                 <animations/>
                                 <state key="normal" title="move">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -122,7 +229,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FAd-Q6-8MV">
-                                <rect key="frame" x="207" y="110" width="186" height="30"/>
+                                <rect key="frame" x="114" y="110" width="186" height="30"/>
                                 <animations/>
                                 <state key="normal" title="scanRange(min, max, step)">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -184,7 +291,7 @@
                                 <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zmj-qA-uKZ">
-                                <rect key="frame" x="246" y="416" width="108" height="30"/>
+                                <rect key="frame" x="153" y="416" width="108" height="30"/>
                                 <animations/>
                                 <state key="normal" title="current position">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -194,7 +301,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CLD-HR-aeq">
-                                <rect key="frame" x="257" y="454" width="5" height="30"/>
+                                <rect key="frame" x="205" y="454" width="5" height="30"/>
                                 <animations/>
                                 <state key="normal" title="turn to angle">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -231,7 +338,7 @@
                                 </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hiq-9Y-7Eh">
-                                <rect key="frame" x="132" y="503" width="43" height="30"/>
+                                <rect key="frame" x="80" y="503" width="43" height="30"/>
                                 <animations/>
                                 <state key="normal" title="speed">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -241,7 +348,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EVn-Dt-q4X">
-                                <rect key="frame" x="257" y="503" width="83" height="30"/>
+                                <rect key="frame" x="205" y="503" width="83" height="30"/>
                                 <animations/>
                                 <state key="normal" title="turnSpeed">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -441,7 +548,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="NOx-5B-iMl"/>
+        <segue reference="8lk-k9-lx7"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
 </document>
