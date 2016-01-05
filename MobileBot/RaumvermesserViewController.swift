@@ -7,7 +7,9 @@
 //
 
 import Foundation
-class RaumvermesserViewController: NSObject {
+import UIKit
+
+class RaumvermesserViewController: UIViewController {
     
     var bc: BotController?;
     var bn: BotNavigator?;
@@ -22,7 +24,9 @@ class RaumvermesserViewController: NSObject {
     var alreadyStarted = false;
     
     
-    override init() {
+    override func viewDidLoad() {
+        super.viewDidLoad();
+        logger.log(.Info, data: "INIT Raumvermesser");
         if let bc = bc {
             bn = BotNavigator(controller: bc);
         }
@@ -44,7 +48,7 @@ class RaumvermesserViewController: NSObject {
     
     // Raumvermesser App wird über Button "Vermessen" gestartet
     @IBAction func startMeasure(sender: AnyObject) {
-        logger.log(.Info, data: "Start Action Babysitter");
+        logger.log(.Info, data: "Start Action Raumvermesser");
         
         if(alreadyStarted == false){
             //reset();
