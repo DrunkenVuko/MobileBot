@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A64878F91C3BEBE9005CF25D /* beaconmanager.de.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A64878F71C3BEBE9005CF25D /* beaconmanager.de.framework */; };
+		A64878FA1C3BEBE9005CF25D /* beaconmanager.de.res.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A64878F81C3BEBE9005CF25D /* beaconmanager.de.res.bundle */; };
 		AF9782AB1C29530C00222CC0 /* RaumvermesserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9782AA1C29530C00222CC0 /* RaumvermesserViewController.swift */; };
 		B801118A1BEB51E4003A2BD2 /* UseCaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B80111891BEB51E4003A2BD2 /* UseCaseManager.swift */; };
 		B801118F1BEB5430003A2BD2 /* Babysitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B801118E1BEB5430003A2BD2 /* Babysitter.swift */; };
@@ -53,6 +55,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A64878F71C3BEBE9005CF25D /* beaconmanager.de.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = beaconmanager.de.framework; sourceTree = "<group>"; };
+		A64878F81C3BEBE9005CF25D /* beaconmanager.de.res.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = beaconmanager.de.res.bundle; sourceTree = "<group>"; };
 		AF9782AA1C29530C00222CC0 /* RaumvermesserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RaumvermesserViewController.swift; sourceTree = "<group>"; };
 		B80111891BEB51E4003A2BD2 /* UseCaseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UseCaseManager.swift; sourceTree = "<group>"; };
 		B801118E1BEB5430003A2BD2 /* Babysitter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Babysitter.swift; sourceTree = "<group>"; };
@@ -100,6 +104,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A64878F91C3BEBE9005CF25D /* beaconmanager.de.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -133,6 +138,8 @@
 		B8BDFAAE1BD8B86F005CC1AE = {
 			isa = PBXGroup;
 			children = (
+				A64878F71C3BEBE9005CF25D /* beaconmanager.de.framework */,
+				A64878F81C3BEBE9005CF25D /* beaconmanager.de.res.bundle */,
 				B8BDFAB91BD8B86F005CC1AE /* MobileBot */,
 				B8BDFAD01BD8B86F005CC1AE /* MobileBotTests */,
 				B8BDFADB1BD8B86F005CC1AE /* MobileBotUITests */,
@@ -344,6 +351,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B8BDFAC71BD8B86F005CC1AE /* LaunchScreen.storyboard in Resources */,
+				A64878FA1C3BEBE9005CF25D /* beaconmanager.de.res.bundle in Resources */,
 				B8BDFAC41BD8B86F005CC1AE /* Assets.xcassets in Resources */,
 				B8BDFAC21BD8B86F005CC1AE /* Main.storyboard in Resources */,
 			);
@@ -535,6 +543,10 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = MobileBot/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = MobileBotTeam.MobileBot;
@@ -552,6 +564,10 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = MobileBot/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = MobileBotTeam.MobileBot;

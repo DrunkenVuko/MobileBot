@@ -14,10 +14,12 @@ class RaumvermesserViewController: NSObject {
     let bcm = BotConnectionManager.sharedInstance();
     let logger = StreamableLogger();
     var debounceTimer: NSTimer?
-    var notification: UILocalNotification?;
+    //var notification: UILocalNotification?;
     
     var startPointX = 10;
     var startPointY = 10;
+    
+    var alreadyStarted = false;
     
     
     override init() {
@@ -66,17 +68,19 @@ class RaumvermesserViewController: NSObject {
     
     func moveAlongWall(){
         self.bn?.moveToWithoutObstacle(CGPointMake(CGFloat(startPointX), CGFloat(startPointY)), completion: { data in
-            self.logger.log(.Info, data: "start measuring  \(ForwardKinematicsData.x)\(ForwardKinematicsData.y)");
+            //self.logger.log(.Info, data: "start measuring  \(ForwardKinematicsData.x)\(ForwardKinematicsData.y)");
             self.measure(false);
         })
         
     }
-    func measure(){
+    func measure(isSomething: Bool){
         // in scane Range angegeben über min und max das auf der rechten Seite des Roboters immer ein Hindernis zu erkennen sein soll
-        self.bc?.scanRange(<#T##min: UInt8##UInt8#>, max: <#T##UInt8#>, inc: <#T##UInt8#>, callback: { scandata in
-            self.logger.log(.Info, data: "scanning room entry \(PingSensorData)");
+        self.bc?.scanRange(100, max: 180, inc: 20, callback: { scandata in
+            //self.logger.log(.Info, data: "scanning room entry \(PingSensorData)");
                     });
             
-        self.saveMeasurment();
+        self.saveMeasurment(true);
     }
+    
+    
 }

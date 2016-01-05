@@ -19,7 +19,7 @@ class Babysitter: NSObject {
     let bcm = BotConnectionManager.sharedInstance();
     let logger = StreamableLogger();
     var debounceTimer: NSTimer?
-    var notification: UILocalNotification?;
+    //var notification: UILocalNotification?;
     
     static var enterWhileLeave = false;
     
