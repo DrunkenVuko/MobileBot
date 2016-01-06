@@ -62,3 +62,11 @@ let dest = CGRectMake(p1.x, p1.y, 0, 0);
 let destWithInset = CGRectInset(dest, -1.0, -1.0)
 
 -5 > -4
+
+let userInfo:Dictionary<String,Float!> = ["parkingStartX":4,
+    "parkingStartY":4,
+    "parkingEndX":4,
+    "parkingEndY":4]
+let parkingStartY = userInfo["parkingStartY"]
+
+let parkingEndY = userInfo["parkingEndY"]

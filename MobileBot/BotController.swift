@@ -238,7 +238,7 @@ class BotController {
      * - parameter callback: Funktion to be called everytime a new value is received
      */
     func scanRange(min: UInt8, max: UInt8, inc: UInt8, callback: PingSensorData -> Void) {
-        logger.log(.Info, data: "starting range scan...");
+        logger.log(.Info, data: "starting range scan... with min: \(min), max: \(max), inc: \(inc)");
         
         // raw servo command
         let ssar = ProtocolCommand(
