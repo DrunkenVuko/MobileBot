@@ -35,12 +35,14 @@ class RaumvermesserViewController: UIViewController {
     var foundWallFront: Bool = false
     var pingFront: Float = 0.0
     var whichWall: Int = 0
+    var velocity: Float = 2
 
     struct Wall {
         var ping: Float = 0
         var name: String = "No Name"
         var wall: Int = 0
         var wallChecked: Bool = false
+        var length: Float = 0
         
         init(number: Int)
         {
@@ -212,6 +214,7 @@ class RaumvermesserViewController: UIViewController {
                 tempWall.name = String(self.whichWall)
                 tempWall.ping = data.pingDistance
                 tempWall.wallChecked = true
+                tempWall.length = self.calcWallLength()
                 //self.updateWallValue(tempWall, i: self.whichWall)
                 self.turnLeft()
             }
@@ -238,9 +241,9 @@ class RaumvermesserViewController: UIViewController {
         switch(move)
         {
             case "yes":
-                bc?.move(2, omega: 0, completion: nil);
+                bc?.move(velocity, omega: 0, completion: nil);
             break
-            
+
             case "no":
                 bc?.move(0, omega: 0, completion: nil);
             break
@@ -274,8 +277,26 @@ class RaumvermesserViewController: UIViewController {
         print("Wall Checked: " + String(self.walls[i].wallChecked))
         print("Next Wall ->" + String(self.whichWall))
     }
+    
+    
+    func calcWallLength()-> Float{
+        //annhame: velocity: (float, cm/s)
+
+        var length: Float = self.velocity * Float(self.counter)
+        print("Wall Length: "+String(length))
+        
+        return length
+    }
+    
+    
 
 }
+
+/*extension NSTimer {
+    var floatValue: Float {
+        return (self as NSTimer).floatValue
+    }
+}*/
 
 //timer = NSTimer.scheduledTimerWithTimeInterval(16.0, target: self, selector: "testScan", userInfo: nil, repeats: false)
 //
