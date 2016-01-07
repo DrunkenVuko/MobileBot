@@ -9,12 +9,15 @@
 /* Begin PBXBuildFile section */
 		A64878F91C3BEBE9005CF25D /* beaconmanager.de.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A64878F71C3BEBE9005CF25D /* beaconmanager.de.framework */; };
 		A64878FA1C3BEBE9005CF25D /* beaconmanager.de.res.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A64878F81C3BEBE9005CF25D /* beaconmanager.de.res.bundle */; };
+		AF6B68BE1C3E65C000AEACE6 /* RaumLayoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6B68BD1C3E65C000AEACE6 /* RaumLayoutViewController.swift */; };
+		AF6B68C01C3E661800AEACE6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF6B68BF1C3E661800AEACE6 /* Main.storyboard */; };
+		AF6B68C21C3E68AB00AEACE6 /* DashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6B68C11C3E68AB00AEACE6 /* DashViewController.swift */; };
+		AF6B68C41C3E6A3C00AEACE6 /* TestumgebungViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6B68C31C3E6A3C00AEACE6 /* TestumgebungViewController.swift */; };
 		AF9782AB1C29530C00222CC0 /* RaumvermesserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9782AA1C29530C00222CC0 /* RaumvermesserViewController.swift */; };
 		B801118A1BEB51E4003A2BD2 /* UseCaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B80111891BEB51E4003A2BD2 /* UseCaseManager.swift */; };
 		B801118F1BEB5430003A2BD2 /* Babysitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B801118E1BEB5430003A2BD2 /* Babysitter.swift */; };
 		B802B8E61BEA4D41009745F6 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B802B8E51BEA4D41009745F6 /* SettingsViewController.swift */; };
 		B8BDFABB1BD8B86F005CC1AE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BDFABA1BD8B86F005CC1AE /* AppDelegate.swift */; };
-		B8BDFAC21BD8B86F005CC1AE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B8BDFAC01BD8B86F005CC1AE /* Main.storyboard */; };
 		B8BDFAC41BD8B86F005CC1AE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B8BDFAC31BD8B86F005CC1AE /* Assets.xcassets */; };
 		B8BDFAC71BD8B86F005CC1AE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B8BDFAC51BD8B86F005CC1AE /* LaunchScreen.storyboard */; };
 		B8BDFAD21BD8B86F005CC1AE /* MobileBotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BDFAD11BD8B86F005CC1AE /* MobileBotTests.swift */; };
@@ -57,13 +60,16 @@
 /* Begin PBXFileReference section */
 		A64878F71C3BEBE9005CF25D /* beaconmanager.de.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = beaconmanager.de.framework; sourceTree = "<group>"; };
 		A64878F81C3BEBE9005CF25D /* beaconmanager.de.res.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = beaconmanager.de.res.bundle; sourceTree = "<group>"; };
+		AF6B68BD1C3E65C000AEACE6 /* RaumLayoutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RaumLayoutViewController.swift; sourceTree = "<group>"; };
+		AF6B68BF1C3E661800AEACE6 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		AF6B68C11C3E68AB00AEACE6 /* DashViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashViewController.swift; sourceTree = "<group>"; };
+		AF6B68C31C3E6A3C00AEACE6 /* TestumgebungViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestumgebungViewController.swift; sourceTree = "<group>"; };
 		AF9782AA1C29530C00222CC0 /* RaumvermesserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RaumvermesserViewController.swift; sourceTree = "<group>"; };
 		B80111891BEB51E4003A2BD2 /* UseCaseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UseCaseManager.swift; sourceTree = "<group>"; };
 		B801118E1BEB5430003A2BD2 /* Babysitter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Babysitter.swift; sourceTree = "<group>"; };
 		B802B8E51BEA4D41009745F6 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		B8BDFAB71BD8B86F005CC1AE /* MobileBot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MobileBot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8BDFABA1BD8B86F005CC1AE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		B8BDFAC11BD8B86F005CC1AE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B8BDFAC31BD8B86F005CC1AE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B8BDFAC61BD8B86F005CC1AE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B8BDFAC81BD8B86F005CC1AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -128,9 +134,11 @@
 		B801118B1BEB51E8003A2BD2 /* Use-Cases */ = {
 			isa = PBXGroup;
 			children = (
+				AF6B68BD1C3E65C000AEACE6 /* RaumLayoutViewController.swift */,
 				B801118E1BEB5430003A2BD2 /* Babysitter.swift */,
 				B80111891BEB51E4003A2BD2 /* UseCaseManager.swift */,
 				AF9782AA1C29530C00222CC0 /* RaumvermesserViewController.swift */,
+				AF6B68C11C3E68AB00AEACE6 /* DashViewController.swift */,
 			);
 			name = "Use-Cases";
 			sourceTree = "<group>";
@@ -170,7 +178,8 @@
 				B802B8E51BEA4D41009745F6 /* SettingsViewController.swift */,
 				B8BDFABA1BD8B86F005CC1AE /* AppDelegate.swift */,
 				B801118B1BEB51E8003A2BD2 /* Use-Cases */,
-				B8BDFAC01BD8B86F005CC1AE /* Main.storyboard */,
+				AF6B68BF1C3E661800AEACE6 /* Main.storyboard */,
+				AF6B68C31C3E6A3C00AEACE6 /* TestumgebungViewController.swift */,
 				B8BDFAC31BD8B86F005CC1AE /* Assets.xcassets */,
 				B8BDFAC51BD8B86F005CC1AE /* LaunchScreen.storyboard */,
 				B8BDFAC81BD8B86F005CC1AE /* Info.plist */,
@@ -351,9 +360,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				B8BDFAC71BD8B86F005CC1AE /* LaunchScreen.storyboard in Resources */,
+				AF6B68C01C3E661800AEACE6 /* Main.storyboard in Resources */,
 				A64878FA1C3BEBE9005CF25D /* beaconmanager.de.res.bundle in Resources */,
 				B8BDFAC41BD8B86F005CC1AE /* Assets.xcassets in Resources */,
-				B8BDFAC21BD8B86F005CC1AE /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -387,17 +396,20 @@
 				AF9782AB1C29530C00222CC0 /* RaumvermesserViewController.swift in Sources */,
 				C59D38AA1BE36B0F0081F6E9 /* Toaster.swift in Sources */,
 				C59D38A81BE36B0F0081F6E9 /* Stream.swift in Sources */,
+				AF6B68BE1C3E65C000AEACE6 /* RaumLayoutViewController.swift in Sources */,
 				C59D38A31BE36B0F0081F6E9 /* CommandQueue.swift in Sources */,
 				C59D387A1BE3694B0081F6E9 /* BotControlTestViewController.swift in Sources */,
 				C59D38A51BE36B0F0081F6E9 /* ProtocolCommand.m in Sources */,
 				C59D389D1BE36B0F0081F6E9 /* BotConnection.m in Sources */,
 				B801118F1BEB5430003A2BD2 /* Babysitter.swift in Sources */,
 				C59D38A21BE36B0F0081F6E9 /* Command.swift in Sources */,
+				AF6B68C41C3E6A3C00AEACE6 /* TestumgebungViewController.swift in Sources */,
 				C59D38A01BE36B0F0081F6E9 /* BotNavigator.swift in Sources */,
 				C59D38A71BE36B0F0081F6E9 /* ProtocolCommandField.m in Sources */,
 				C59D38A41BE36B0F0081F6E9 /* PersistableRegion.swift in Sources */,
 				C59D389E1BE36B0F0081F6E9 /* BotConnectionManager.m in Sources */,
 				C59D38A11BE36B0F0081F6E9 /* BotUtils.swift in Sources */,
+				AF6B68C21C3E68AB00AEACE6 /* DashViewController.swift in Sources */,
 				B802B8E61BEA4D41009745F6 /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -434,14 +446,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		B8BDFAC01BD8B86F005CC1AE /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				B8BDFAC11BD8B86F005CC1AE /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		B8BDFAC51BD8B86F005CC1AE /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

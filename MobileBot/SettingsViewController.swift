@@ -17,6 +17,12 @@ class SettingsViewController : UIViewController, UITextFieldDelegate {
     
     private let logger = StreamableLogger()
     
+    @IBAction func AutoLogIn(sender: AnyObject)
+    {
+        //ipTextField.text = "192.168.43.98"
+        ipTextField.text = "wifibee03"
+        portTextField.text = "2000"
+    }
     override func viewDidLoad() {
         prepareForDisplay()
         
