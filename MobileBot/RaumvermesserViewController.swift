@@ -48,6 +48,12 @@ class RaumvermesserViewController: UIViewController {
         var wall: Int = 0
         var wallChecked: Bool = false
         var length: Float = 0
+        var points: [(x: Float,y: Float)] = Array()
+        
+        // gibt an ob sich Robo nach rechts oder links gedreht hat
+        // wird benoetigt um aus den laengen punkte zu berechnen (fuer den grundriss)
+        // wird in lengthToPoint benoetigt
+        var turnLeft: Bool = true
         
         init(number: Int)
         {
@@ -254,6 +260,8 @@ class RaumvermesserViewController: UIViewController {
         });
     }
     
+    //@todo benoetigen turntoright funktion
+    // die dann den wert wall.turntoleft auf false setzt
     func turnLeft( )
     {
         if let bn = bn {                   //bn.turnSpeed
@@ -272,7 +280,7 @@ class RaumvermesserViewController: UIViewController {
         {
             case "yes":
                 printText("stopOrDrive() yes");
-                bc?.move(2, omega: 0, completion: nil);
+                bc?.move(self.velocity, omega: 0, completion: nil);
             break
 
             case "no":
@@ -351,21 +359,18 @@ class RaumvermesserViewController: UIViewController {
         //CGContextStrokeRect(context, bounds)
         
         CGContextBeginPath(context)
+        
         CGContextMoveToPoint(context, 0, 0)
-        CGContextAddLineToPoint(context, 100,0)
-        //CGContextMoveToPoint(context, 100, 0)
-        CGContextAddLineToPoint(context, 100, 100)
-        //CGContextMoveToPoint(context, 100, 100)
-        CGContextAddLineToPoint(context, 50, 100)
-        //CGContextMoveToPoint(context, 50, 100)
-        CGContextAddLineToPoint(context, 50, 50)
-        //CGContextMoveToPoint(context, 50, 50)
-        CGContextAddLineToPoint(context, 0, 50)
-        //CGContextMoveToPoint(context, 0, 50)
-        CGContextAddLineToPoint(context, 0, 0)
-        CGContextMoveToPoint(context, 0, 25)
-        CGContextAddLineToPoint(context, 50, 25)
-
+        
+        for var i = 0; i < self.walls.count; ++i {
+            
+            let length: Float = self.walls[i].length
+            
+            
+            //CGContextAddLineToPoint(context, 100,0)
+            
+        }
+        
         CGContextStrokePath(context)
         
         // Drawing complete, retrieve the finished image and cleanup
@@ -374,6 +379,10 @@ class RaumvermesserViewController: UIViewController {
         return image
     }
     
+    //@todo fertig machen
+    func lengthToPoint(wall: Wall){
+        //wall.length
+    }
     
     
     func printText(message: String){
