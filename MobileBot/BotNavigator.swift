@@ -274,8 +274,7 @@ class BotNavigator {
     
     /**
      *
-     * Diese Funktion lässt den Roboter zu einer Bestimmten Position in seinem Koordinatensystem fahren.
-     * Falls auf dem Weg ein Hindernis auftaucht, wird es umfahren.
+     * Diese Funktion dient dem ParkingBot Use Case
      **/
     func moveToWithScan(point: CGPoint, scanAngle: UInt8, completion: ((ForwardKinematicsData) -> ())? ) {
         self.bc.stopRangeScan({
