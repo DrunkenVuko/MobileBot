@@ -35,6 +35,22 @@ class BabysitterViewController: UIViewController {
     posDoorRightX = 10,
     posDoorRightY = -180;
     
+    var timerCounter: NSTimer = NSTimer()
+    
+    var velocity:Float = 10,
+    a_velocity:Float = 15,
+    stationRight:Float = 181,
+    rightLeft:Float = 101,
+    leftStation:Float = 206,
+    
+    a_stationRight:Float = -86,
+    a_rightLeft:Float = 86,
+    a_leftRight:Float = 180,
+    
+    t_stationRight:Double = 1.81,
+    t_rightLeft:Double = 1.01
+    
+    
     var alreadyStarted = false;
     
     var someoneAtDoor = false;
@@ -62,7 +78,7 @@ class BabysitterViewController: UIViewController {
                 bcm.connect(connection);
             }
         }
-        timer = NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: "whichBeacon:", userInfo: 0, repeats: true)
+//        timer = NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: "whichBeacon:", userInfo: 0, repeats: true)
     }
         func pushNotification(text: String, titel: String){
         
@@ -128,14 +144,20 @@ class BabysitterViewController: UIViewController {
     }
     
     func goToDoor(){
+        self.logger.log(.Info, data: "goToDoor");
         //zuerst zur linkem tuerrand fahren
-        self.bn?.moveToWithoutObstacle(CGPointMake(CGFloat(posDoorRightX), CGFloat(posDoorRightY)), completion: { data in
+//        self.bn?.moveToWithoutObstacle(CGPointMake(CGFloat(posDoorRightX), CGFloat(posDoorRightY)), completion: { data in
+//            self.logger.log(.Info, data: "baby: MOVE TO doorpoint LEFT finished");
+        self.bn?.turnToAngle(self.a_stationRight, speed: self.a_velocity, completion: { data in
+            
+            self.bc?.move(self.velocity, omega: 0, completion: { data in
             self.logger.log(.Info, data: "baby: MOVE TO doorpoint LEFT finished");
-            
-            
-            //beginnend von links nach rechts zu patroullieren
-            self.patrol(false);
+            self.timerCounter = NSTimer.scheduledTimerWithTimeInterval(self.t_stationRight, target:self, selector: Selector("patrol:"), userInfo: false, repeats: false)
+            })
         })
+            //beginnend von links nach rechts zu patroullieren
+            //self.patrol(false);
+        //})
     }
     
     //@TODO
@@ -179,30 +201,42 @@ class BabysitterViewController: UIViewController {
     }
     
     func patrol(toRight: Bool){
+        self.bc?.stop({});
+        
         //nur patroullieren wenn kein eindringling in der nähe
         if(someoneAtDoor == false){
             
-            var posDoorX = self.posDoorLeftX
-            var posDoorY = self.posDoorLeftY
+            
+            //var posDoorX = self.posDoorLeftX
+            //var posDoorY = self.posDoorLeftY
             var strPos = "Left"
             var toNext = true
             
+            var a_pos = self.a_rightLeft
+            
             if(toRight){
-                posDoorX = self.posDoorRightX
-                posDoorY = self.posDoorRightY
+                //posDoorX = self.posDoorRightX
+                //posDoorY = self.posDoorRightY
                 strPos = "Right"
                 toNext = false
+                a_pos = self.a_leftRight
             }
             
-            self.scan();
+            //self.scan();
             
             self.logger.log(.Info, data: "baby: MOVE TO doorpoint "+strPos);
             
-            self.bn?.moveToWithoutObstacle(CGPointMake(CGFloat(posDoorX), CGFloat(posDoorY)), completion: { data in
-                self.logger.log(.Info, data: "baby: MOVE TO doorpoint "+strPos+" finished");
-                
-                self.patrol(toNext)
+            self.bc?.move(Float(self.velocity), omega: 0, completion: { data in
+                self.logger.log(.Info, data: "baby: MOVE TO doorpoint LEFT finished");
+                self.timerCounter = NSTimer.scheduledTimerWithTimeInterval(self.t_rightLeft, target:self, selector: Selector("patrol:"), userInfo: toNext, repeats: true);
+                //self.patrol(toNext)
             })
+            
+//            self.bn?.moveToWithoutObstacle(CGPointMake(CGFloat(posDoorX), CGFloat(posDoorY)), completion: { data in
+//                self.logger.log(.Info, data: "baby: MOVE TO doorpoint "+strPos+" finished");
+            
+            
+           // })
         }
             //hier zurueck an die tuer schicken?
             //oder bei erfolgreichem scan?

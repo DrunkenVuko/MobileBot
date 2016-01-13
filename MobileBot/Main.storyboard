@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="IOf-7S-mOe">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="IOf-7S-mOe">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Dash View Controller-->
         <scene sceneID="Qqu-Q9-ndY">
             <objects>
-                <viewController id="f9E-4d-Z3P" customClass="DashViewController" customModule="de_beuth_hochschule_mobilebot_temp_caseinsensitive_rename" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="f9E-4d-Z3P" customClass="DashViewController" customModule="MobileBot" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="rQg-fi-Loh"/>
                         <viewControllerLayoutGuide type="bottom" id="HFB-Y0-exv"/>
@@ -64,7 +64,7 @@
         <!--Babysitter View Controller-->
         <scene sceneID="6HS-5k-Is6">
             <objects>
-                <viewController id="xL3-uL-ftD" customClass="BabysitterViewController" customModule="de_beuth_hochschule_mobilebot_temp_caseinsensitive_rename" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="xL3-uL-ftD" customClass="BabysitterViewController" customModule="MobileBot" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="vhJ-ma-aih"/>
                         <viewControllerLayoutGuide type="bottom" id="uWt-rR-rA9"/>
@@ -137,9 +137,6 @@
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <connections>
-                        <outlet property="beaconNear" destination="jvf-HY-rr2" id="9Ft-Or-KLH"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FxM-ed-AKV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -148,7 +145,7 @@
         <!--Test Hardware Controller-->
         <scene sceneID="LiE-VM-2PX">
             <objects>
-                <viewController id="vbM-Rx-UZO" customClass="TestHardwareController" customModule="de_beuth_hochschule_mobilebot_temp_caseinsensitive_rename" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="vbM-Rx-UZO" customClass="TestHardwareController" customModule="MobileBot" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="piL-BR-zxT"/>
                         <viewControllerLayoutGuide type="bottom" id="gl1-JN-790"/>
@@ -204,7 +201,7 @@
         <!--Bot Control Test View Controller-->
         <scene sceneID="PXb-he-fbD">
             <objects>
-                <viewController id="BRV-1H-4Vs" customClass="BotControlTestViewController" customModule="de_beuth_hochschule_mobilebot_temp_caseinsensitive_rename" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BRV-1H-4Vs" customClass="BotControlTestViewController" customModule="MobileBot" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="MTW-8C-JCh"/>
                         <viewControllerLayoutGuide type="bottom" id="oMR-ON-CWn"/>
@@ -439,7 +436,7 @@
         <!--Settings-->
         <scene sceneID="bkX-NB-xvf">
             <objects>
-                <viewController id="IOf-7S-mOe" customClass="SettingsViewController" customModule="de_beuth_hochschule_mobilebot_temp_caseinsensitive_rename" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="IOf-7S-mOe" customClass="SettingsViewController" customModule="MobileBot" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="c76-NS-nrQ"/>
                         <viewControllerLayoutGuide type="bottom" id="YNk-BF-Ynd"/>
