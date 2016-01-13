@@ -21,6 +21,7 @@ class TestHardwareController: UIViewController {
     var bn: BotNavigator?;
     let bcm = BotConnectionManager.sharedInstance();
     let logger = StreamableLogger();
+
     
     var timer = NSTimer()
     
@@ -48,6 +49,7 @@ class TestHardwareController: UIViewController {
         }
     }
     
+
     @IBAction func testMovement(sender: UIButton)
     {
         timer = NSTimer.scheduledTimerWithTimeInterval(0.0, target: self, selector: "testForward", userInfo: nil, repeats: false)

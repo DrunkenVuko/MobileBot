@@ -11,7 +11,7 @@ import UIKit
 class DashViewController: UIViewController {
     
     let logger = StreamableLogger();
-    //let baby = BabysitterViewController()
+    let baby = BabysitterViewController()
     override func viewDidLoad() {
         super.viewDidLoad();
 
