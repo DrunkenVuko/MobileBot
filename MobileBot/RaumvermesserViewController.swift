@@ -42,6 +42,9 @@ class RaumvermesserViewController: UIViewController {
     var velocity: Float = 2
     var finished: Bool = false
     var log: Bool = true
+    var roboDirection = "N"
+    var directions: [String] = ["N", "O", "S", "W"]
+    var directionIndex: Int = 0
 
     struct Wall {
         var ping: Float = 0
@@ -50,6 +53,7 @@ class RaumvermesserViewController: UIViewController {
         var wallChecked: Bool = false
         var length: Float = 0
         var points: [(x: Float,y: Float)] = Array()
+        var direction: String = "N"
         
         // gibt an ob sich Robo nach rechts oder links gedreht hat
         // wird benoetigt um aus den laengen punkte zu berechnen (fuer den grundriss)
@@ -198,13 +202,16 @@ class RaumvermesserViewController: UIViewController {
         if(stopMoving == true)
         {
             // Check first Wall
-            if(self.whichWall <= 3)
+            if(self.whichWall < 4)
             {
                 self.stopOrDrive("yes")
                 //scanWallAndFront(walls[0].wallChecked)
                 self.timerScanFront = NSTimer.scheduledTimerWithTimeInterval(1, target:self, selector: Selector("checkFront"),
                     userInfo: nil, repeats: false)
 
+            }else{
+                self.finished = true
+                self.drawFloorPlan()
             }
         }
 
@@ -253,6 +260,9 @@ class RaumvermesserViewController: UIViewController {
                 self!.labelPingDistance.text = String(data.pingDistance)
 
                 // Wand gefunden -> Aktuelle Wand updaten (walls[x]....)
+                //muss vor dem timerreset gemacht werden //damit timer nicht gleich 0 ist
+                tempWall.length = self!.calcWallLength()
+                    
                 self!.foundWallFront = true
                 self!.stopTimerScan()
                 self!.stopRangeScan()
@@ -260,7 +270,8 @@ class RaumvermesserViewController: UIViewController {
                 tempWall.name = String(self!.whichWall)
                 tempWall.ping = data.pingDistance
                 tempWall.wallChecked = true
-                tempWall.length = self!.calcWallLength()
+
+                
                 
                 self!.updateWallValue(tempWall, i: self!.whichWall)
                 
@@ -281,14 +292,6 @@ class RaumvermesserViewController: UIViewController {
                         });
                     
                     
-                }else{
-                    self.finished = true
-                    //self.draw()
-                    
-                    for x in self.walls
-                    {
-                        print(x)
-                    }
                 }
                 
             }
@@ -319,6 +322,10 @@ class RaumvermesserViewController: UIViewController {
     // die dann den wert wall.turntoleft auf false setzt
     func turnLeft( )
     {
+        if(directionIndex > 0){
+            roboDirection = directions[directionIndex - 1]
+        }
+        
         if let bn = bn {                   //bn.turnSpeed
             bn.turnToAngle(Float(90), speed: Float(15), completion: { [weak self] data in
                 self!.bc?.resetPosition({[weak self] data in  });
@@ -330,6 +337,11 @@ class RaumvermesserViewController: UIViewController {
     
     func turnRight( )
     {
+        
+        if(directionIndex < 4){
+            roboDirection = directions[directionIndex + 1]
+        }
+        
         if let bn = bn {                   //bn.turnSpeed
             bn.turnToAngle(Float(-150), speed: Float(15), completion: { [weak self] data in
                 self!.bc?.resetPosition({[weak self] data in  });
@@ -391,11 +403,15 @@ class RaumvermesserViewController: UIViewController {
         printText("updateWallValue int: "+String(i));
         if(self.whichWall <= 3){
             walls.append(wall)
+            
+            self.walls[i].points = self.calcWallPoints(i)
+            
             printText("Wall Updated!")
             printText("Wall: " + self.walls[i].name)
             printText("Distance: " + String(self.walls[i].ping))
             printText("Wall Number: " + String(self.walls[i].wall))
             printText("Wall Checked: " + String(self.walls[i].wallChecked))
+            printText("Wall Length: " + String(self.walls[i].length))
             self.whichWall++
             printText("Next Wall ->" + String(self.whichWall))
         }
@@ -404,26 +420,32 @@ class RaumvermesserViewController: UIViewController {
     func calcWallLength()-> Float{
         //annhame: velocity: (float, cm/s)
         //@todo pingdistance hinzufügen
+        printText("calcWallLength() velocity: "+String(self.velocity))
+        printText("calcWallLength() countersingle: "+String(self.counterSingle))
         var length: Float = self.velocity * Float(self.counterSingle)
-        printText("Wall Length: "+String(length))
+        printText("calcWallLength() Wall Length: "+String(length))
         
         return length
     }
     
     
     
-    func draw(){
+    func drawFloorPlan(){
+        printText("drawFloorPlan: Start" )
         let imageSize = CGSize(width: 100, height: 200)
-        let imageView = UIImageView(frame: CGRect(origin: CGPoint(x: 100, y: 100), size: imageSize))
+        
+        let imageView = UIImageView(frame: CGRect(origin: CGPoint(x: 0, y: 0), size: imageSize))
         //self.view.addSubview(imageView)
         let image = drawCustomImage(imageSize)
         imageView.image = image
         
         self.containerFloorPlan.addSubview(imageView)
+        
     }
     
     
     func drawCustomImage(size: CGSize) -> UIImage {
+        printText("drawCustomImage Start" );
         // Setup our context
         let bounds = CGRect(origin: CGPoint.zero, size: size)
         let opaque = false
@@ -441,15 +463,16 @@ class RaumvermesserViewController: UIViewController {
         
         CGContextMoveToPoint(context, 0, 0)
         
+        //iterierung ueber alle waende
         for var i = 0; i < self.walls.count; ++i {
+            //zeichnen einer linie
+            //mit hilfe des zweiten wand-punktes
+            CGContextAddLineToPoint(context, CGFloat(self.walls[i].points[1].x), CGFloat(self.walls[i].points[1].y))
             
-            let length: Float = self.walls[i].length
-            
-            
-            //CGContextAddLineToPoint(context, 100,0)
-            
+            printText("drawCustomImage: X:"+String(self.walls[i].points[1].x) + " Y: " + String(self.walls[i].points[1].y) )
         }
         
+        //CGAffineTransformRotate();
         CGContextStrokePath(context)
         
         // Drawing complete, retrieve the finished image and cleanup
@@ -458,9 +481,149 @@ class RaumvermesserViewController: UIViewController {
         return image
     }
     
-    //@todo fertig machen
-    func lengthToPoint(wall: Wall){
-        //wall.length
+    /*
+    func testDrawCustomImage(size: CGSize) -> UIImage {
+    // Setup our context
+    //let bounds = CGRect(origin: CGPoint.zero, size: size)
+    let opaque = false
+    let scale: CGFloat = 0
+    UIGraphicsBeginImageContextWithOptions(size, opaque, scale)
+    let context = UIGraphicsGetCurrentContext()
+    
+    // Setup complete, do drawing here
+    CGContextSetStrokeColorWithColor(context, UIColor.redColor().CGColor)
+    CGContextSetLineWidth(context, 2.0)
+    
+    //CGContextStrokeRect(context, bounds)
+    
+    CGContextBeginPath(context)
+    
+    CGContextMoveToPoint(context, 0, 0)
+    
+    //iterierung ueber alle waende
+    /*for var i = 0; i < self.walls.count; ++i {
+    //zeichnen einer linie
+    //mit hilfe des zweiten wand-punktes
+    CGContextAddLineToPoint(context, CGFloat(self.walls[i].points[1].x), CGFloat(self.walls[i].points[1].y))
+    
+    }*/
+    
+    CGContextAddLineToPoint(context, 0,50)
+    CGContextAddLineToPoint(context, 10,50)
+    CGContextAddLineToPoint(context, 10,20)
+    CGContextAddLineToPoint(context, -20,20)
+    CGContextAddLineToPoint(context, -20,1)
+    CGContextAddLineToPoint(context, 100,1)
+    CGContextAddLineToPoint(context, 100,0)
+    CGContextAddLineToPoint(context, 0,0)
+    
+    var rect:CGRect = CGContextGetPathBoundingBox(context)
+    //var aff: CGAffineTransform = CGContextGetUserSpaceToDeviceSpaceTransform(context)
+    //CGContextTranslateCTM(context,rect.width)
+    //CGContextConvertRectToDeviceSpace(context, rect)
+    CGContextStrokePath(context)
+    
+    
+    var transformX: CGFloat = 0
+    var transformY: CGFloat = 0
+    if(rect.minX < 0){
+    transformX = (CGFloat(-1) * rect.minX)
+    }
+    
+    if(rect.minY < 0){
+    transformY = (CGFloat(-1) * rect.minY)
+    }
+    
+    if(transformX != 0 || transformY != 0){
+    CGContextTranslateCTM (context, transformX, transformY);
+    //Transorm-Function
+    }
+    
+    // Drawing complete, retrieve the finished image and cleanup
+    let image = UIGraphicsGetImageFromCurrentImageContext()
+    UIGraphicsEndImageContext()
+    return image
+    }*/
+    
+    func calcAllPoints(){
+        for var i = 0; i < self.walls.count; ++i {
+            //self.walls[i].points = lengthToPoint(i)
+        }
+    }
+    
+    //berechnet aus der wand-laenge 2 punkte fuer den floor plan
+    func  calcWallPoints(wallIndex: Int) -> [(x: Float, y: Float)]{
+        printText("length for : "+String(wallIndex))
+        let length: Float = self.walls[wallIndex].length
+        var points: [(x: Float, y: Float)] = Array()
+        
+        //berechnen des Startpunktes
+        //handelt es sich um die erste Wall?
+        if(wallIndex != 0){
+            //Startpunkt ermitteln aus dem Endpunkt der vorigen Wall
+            points.append((x: self.walls[wallIndex-1].points[1].x, y: self.walls[wallIndex-1].points[1].y))
+            
+            var lastTurnWasLeft: Bool = self.walls[wallIndex-1].turnLeft;
+            
+            /*if(walls.count == 4){
+                // bei 4 waenden
+                if(wallIndex == 1){
+                    points.append((x: self.walls[wallIndex-1].points[1].x +  length, y: self.walls[wallIndex-1].points[1].y))
+                }
+                else if(wallIndex == 2){
+                    points.append((x: self.walls[wallIndex-1].points[1].x, y: self.walls[wallIndex-1].points[1].y - length))
+                }
+                else if(wallIndex == 3){
+                    points.append((x: self.walls[wallIndex-1].points[1].x - length, y: self.walls[wallIndex-1].points[1].y))
+                }
+                
+                
+            }else{*/
+                //@todo mehr als 4 waende
+                
+                var newX: Float = self.walls[wallIndex-1].points[1].x
+                var newY: Float = self.walls[wallIndex-1].points[1].y
+                
+                
+                //@todo change with roboDirection
+                var newDirection = self.roboDirection
+                //var newDirection = self.walls[wallIndex].direction
+                
+                if (wallIndex % 2) == 1 {
+                    if(newDirection == "N" || newDirection == "O"){
+                        newX = newX + length
+                    }
+                    else{
+                        newX = newX - length
+                    }
+                    
+                }else{
+                    if(newDirection == "N" || newDirection == "O"){
+                        newY = newY + length
+                    }
+                    else{
+                        newY = newY - length
+                    }
+                }
+                printText("X: " + String(newX) + " Y: " + String(newY) );
+                points.append((x: newX, y: newY))
+                
+            //}
+        }else{
+            // wenn erste wall, dann ist der Startpunkt 0,0
+            points.append((x: 0, y: 0))
+            // zweite punkt ergibt sich aus der laenge der wand
+            points.append((x: 0, y: length))
+        }
+        
+        for p in points{
+            printText("Print Points:")
+            printText("X: " + String(p.x) + " Y: " + String(p.y) );
+        }
+        
+        
+        return points;
+        
     }
     
     
