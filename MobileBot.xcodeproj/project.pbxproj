@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A6CC24EF1C46C04000B7C9D4 /* WatchdogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6CC24EE1C46C04000B7C9D4 /* WatchdogViewController.swift */; };
 		B84142191C070EED007E4270 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84142181C070EED007E4270 /* AppDelegate.swift */; };
 		B84142231C070EED007E4270 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B84142221C070EED007E4270 /* Assets.xcassets */; };
 		B84142261C070EED007E4270 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B84142241C070EED007E4270 /* LaunchScreen.storyboard */; };
@@ -66,6 +67,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A6CC24EE1C46C04000B7C9D4 /* WatchdogViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchdogViewController.swift; sourceTree = "<group>"; };
 		B84142151C070EED007E4270 /* MobileBot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MobileBot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B84142181C070EED007E4270 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B84142221C070EED007E4270 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -287,6 +289,7 @@
 			children = (
 				B895E98A1C21B1EA00BDFE04 /* UseCaseManager.swift */,
 				B841426B1C070FB5007E4270 /* BabysitterViewController.swift */,
+				A6CC24EE1C46C04000B7C9D4 /* WatchdogViewController.swift */,
 			);
 			name = "Use-Cases";
 			sourceTree = "<group>";
@@ -450,6 +453,7 @@
 				B841429D1C070FB5007E4270 /* ProtocolCommandField.m in Sources */,
 				B895E98B1C21B1EA00BDFE04 /* UseCaseManager.swift in Sources */,
 				B84142A31C070FB5007E4270 /* Toaster.swift in Sources */,
+				A6CC24EF1C46C04000B7C9D4 /* WatchdogViewController.swift in Sources */,
 				B84142921C070FB5007E4270 /* BotControlTestViewController.swift in Sources */,
 				B841429A1C070FB5007E4270 /* PersistableRegion.swift in Sources */,
 				B84142941C070FB5007E4270 /* BotUtils.swift in Sources */,

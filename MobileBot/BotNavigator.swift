@@ -246,7 +246,7 @@ class BotNavigator {
         })
     }
     
-    func moveToWithoutObstacle(point: CGPoint, completion: ((ForwardKinematicsData) -> ())? ) {
+    /*func moveToWithoutObstacle(point: CGPoint, completion: ((ForwardKinematicsData) -> ())? ) {
         self.bc.stopRangeScan({
             self.bc.stopMovingWithPositionalUpdate({
                 self.logger.log(.Info, data: "\(point)");
@@ -297,7 +297,7 @@ class BotNavigator {
                 });
             });
         })
-    }
+    }*/
     
     // der Roboter hat seine Zielposition erreicht. Es wird die Endaktion ausgeführt
     func destinationReached(completion: ((ForwardKinematicsData) -> ())?) {
