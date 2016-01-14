@@ -14,10 +14,12 @@ import UIKit
 class ParkingBot: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     // Street coordinates
-    internal static let STREET_POINT_1: (CGFloat, CGFloat) = (0, 0)
-    internal static let STREET_POINT_2: (CGFloat, CGFloat) = (100, 0)
+    let STREET_POINT_1: (Float, Float) = (0, 0)
+    var STREET_POINT_2: (Float, Float) = (100, 0)
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var distanceToScanField: UITextField!
+    @IBOutlet weak var parkingLotSizeField:UITextField!
     
     var bc: BotController?;
     var bn: BotNavigator?;
@@ -26,6 +28,8 @@ class ParkingBot: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     var parkingLots: [(Float, Float)] = []
     var stopped = false
+    
+    var parkingLotSize: Int32 = 20
     
     var positiondata: (Float, Float, Float) = (0, 0, 0)
     var parkStart: (Float, Float, Float) = (0, 0, 0)
@@ -84,19 +88,19 @@ class ParkingBot: UIViewController, UITableViewDelegate, UITableViewDataSource {
      */
     func patrol(back: Bool){
         
-        var coordinate = ParkingBot.STREET_POINT_2
+        var coordinate = self.STREET_POINT_2
         var angle:UInt8 = 0
         
         if(back){
             self.logger.log(.Info, data: "parkingbot: MOVE back");
-            coordinate = ParkingBot.STREET_POINT_1
+            coordinate = self.STREET_POINT_1
             angle = 180
             
         } else {
             self.logger.log(.Info, data: "parkingbot: MOVE forth");
         }
         
-        self.moveToWithScan(CGPointMake(coordinate.0, coordinate.1), scanAngle: angle, completion: { data in
+        self.moveToWithScan(CGPointMake(CGFloat(coordinate.0), CGFloat(coordinate.1)), scanAngle: angle, completion: { data in
             self.logger.log(.Info, data: "parkingbot: streetpoint reached.");
             
             // unless stop was called, go to next streetpoint
@@ -123,16 +127,27 @@ class ParkingBot: UIViewController, UITableViewDelegate, UITableViewDataSource {
         let parkingStartX = userInfo["parkingStartX"]!
         let parkingEndX = userInfo["parkingEndX"]!
         
-        self.parkingLots.append((parkingStartX, parkingEndX))
-        self.logger.log(.Info, data: "Parking Lot size: \(self.parkingLots.count)");
-
-        self.tableView?.reloadData()
+        
+        if(abs(parkingStartX-parkingEndX) >= Float(self.parkingLotSize)){
+            self.parkingLots.append((parkingStartX, parkingEndX))
+            self.logger.log(.Info, data: "Parking Lot size: \(self.parkingLots.count)");
+            
+            self.tableView?.reloadData()
+        }
     }
     
     /**
      * Starts patroling
      */
     func startAction() {
+        
+        if(self.distanceToScanField.text != ""){
+            self.STREET_POINT_2 = ((self.distanceToScanField.text! as NSString).floatValue, 0)
+        }
+        if(self.parkingLotSizeField.text != ""){
+            self.parkingLotSize = (self.parkingLotSizeField.text! as NSString).intValue
+        }
+        
         self.stopped = false
         patrol(false)
     }
