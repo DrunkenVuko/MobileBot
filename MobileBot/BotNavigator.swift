@@ -114,8 +114,8 @@ class BotNavigator {
                     // Roboter dreht sich in die richtige Richtung
                     self.turnToAngle(degrees, speed: self.speed, completion: { data in
                         let startingPoint = CGPointMake(CGFloat(data.x), CGFloat(data.y));
-//                        var previousDistance = BotUtils.distance(from: startingPoint, to: point);
-                        var previousDistance = Float(10000000)
+                        var previousDistance = BotUtils.distance(from: startingPoint, to: point);
+//                        var previousDistance = Float(10000000)
 
                         let dest = CGRectMake(point.x, point.y, 0, 0);
                         let destWithInset = CGRectInset(dest, -1.0, -1.0);
