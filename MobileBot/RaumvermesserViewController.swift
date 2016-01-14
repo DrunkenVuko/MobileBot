@@ -25,7 +25,6 @@ class RaumvermesserViewController: UIViewController {
     var timerScanFront: NSTimer = NSTimer()
     var timerScanRight: NSTimer = NSTimer()
     var timerDrive: NSTimer = NSTimer()
-    var timerX: NSTimer = NSTimer()
 
     // Zeit
     var counter = 0
@@ -39,7 +38,7 @@ class RaumvermesserViewController: UIViewController {
     var foundWallFront: Bool = false
     var pingFront: Float = 0.0
     var whichWall: Int = 0
-    var velocity: Float = 3
+    var velocity: Float = 2
     var finished: Bool = false
     var log: Bool = true
 
@@ -153,12 +152,11 @@ class RaumvermesserViewController: UIViewController {
     @IBAction func startMeasure(sender: AnyObject) {
         if(finished == false){
             logger.log(.Info, data: "Start Action Raumvermesser");
-            //self.whichWall = 0
+            self.whichWall = 0
         
             self.timerCounter = NSTimer.scheduledTimerWithTimeInterval(1, target:self, selector: Selector("updateCounter"), userInfo: nil, repeats: true)
         
             driveAndDetectWalls()
-            
         }else{
             Toaster.show("Scan-Vorgang noch nicht beendet")
         }
@@ -167,7 +165,6 @@ class RaumvermesserViewController: UIViewController {
     
     @IBAction func stopMeasure(sender: AnyObject) {
         bc?.stopRangeScan({});
-        bc?.stop({})
         timerCounter.invalidate()
         timerDrive.invalidate()
         timerScanRight.invalidate()
@@ -182,21 +179,17 @@ class RaumvermesserViewController: UIViewController {
     
     func driveAndDetectWalls(){
         // in scane Range angegeben über min und max das auf der rechten Seite des Roboters immer ein Hindernis zu erkennen sein soll
-        self.stopOrDrive("yes")
-
         if(stopMoving == true)
         {
             // Check first Wall
             if(self.whichWall < walls.count && walls[self.whichWall].wallChecked == false)
             {
                 self.stopOrDrive("yes")
-
                 //scanWallAndFront(walls[0].wallChecked)
                 self.timerScanFront = NSTimer.scheduledTimerWithTimeInterval(1, target:self, selector: Selector("checkFront"),
                     userInfo: nil, repeats: true)
                 self.timerScanRight = NSTimer.scheduledTimerWithTimeInterval(4, target:self, selector: Selector("checkRight"),
                     userInfo: nil, repeats: true)
-
             }
         }
 
@@ -209,12 +202,11 @@ class RaumvermesserViewController: UIViewController {
     - Ping wird nur für Vorne aktualisiert
     - Bei Wand -> Stop */
 
-    
     func checkRight()
     {
         printText("checkRight()");
         //bc?.scanRange(75, max: 90, inc: 3, callback: { [weak self] data in
-        self.bc?.scanRange(170, max: 180, inc: 10, callback: { data in
+        self.bc?.scanRange(160, max: 180, inc: 10, callback: { data in
             
             self.labelDistanceFront.text = String(data.pingDistance)
             self.labelServoAngle.text = String(data.servoAngle)
@@ -226,14 +218,14 @@ class RaumvermesserViewController: UIViewController {
     {
         printText("checkFront()");
         //var tempWall: Wall = Wall(number: whichWall)
-        printText(String(self.whichWall))
+        var tempWall: Wall = walls[self.whichWall]
         
         self.bc?.scanRange(65, max: 90, inc: 10, callback: { data in
             
             self.labelDistanceFront.text = String(data.pingDistance)
             self.labelServoAngle.text = String(data.servoAngle)
             
-            if(data.pingDistance <= 15 && data.pingDistance > 5)
+            if(data.pingDistance <= 10 && data.pingDistance > 3)
             {
                 self.labelPingDistance.text = String(data.pingDistance)
 
@@ -242,40 +234,30 @@ class RaumvermesserViewController: UIViewController {
                 self.stopTimerScan()
                 self.stopRangeScan()
                 self.stopOrDrive("no")
-                self.timerX = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: Selector("delayedMovement"), userInfo: nil, repeats: false)
+                tempWall.name = String(self.whichWall)
+                tempWall.ping = data.pingDistance
+                tempWall.wallChecked = true
+                tempWall.length = self.calcWallLength()
+                
+                self.updateWallValue(tempWall, i: self.whichWall)
+                
+                self.turnLeft()
+                self.stopOrDrive("yes")
+
+                if(self.whichWall < 4){
+                    NSTimer.scheduledTimerWithTimeInterval(8, target:self, selector: Selector("driveAndDetectWalls"),
+                        userInfo: nil, repeats: false)
+                }else{
+                    self.finished = true
+                    //self.draw()
+                }
+                
             }
             else
             {
                 
             }
         });
-    }
-    
-    func delayedMovement()
-    {
-        if(self.whichWall < self.walls.count){
-            var tempWall: Wall = walls[self.whichWall]
-            
-            tempWall.name = String(self.whichWall)
-            //tempWall.ping = data.pingDistance
-            tempWall.wallChecked = true
-            tempWall.length = self.calcWallLength()
-            
-            self.updateWallValue(tempWall, i: self.whichWall)
-            
-            self.turnLeft()
-            //                self.stopOrDrive("yes")
-            
-            if(self.whichWall < 4){
-                NSTimer.scheduledTimerWithTimeInterval(10, target:self, selector: Selector("driveAndDetectWalls"),
-                    userInfo: nil, repeats: false)
-                
-            }else{
-                self.finished = true
-                self.draw()
-            }
-            
-        }
     }
     
     //@todo benoetigen turntoright funktion
@@ -331,14 +313,6 @@ class RaumvermesserViewController: UIViewController {
         if(i < self.walls.count){
             self.walls[i] =  wall
             self.whichWall++
-            Toaster.show(String(self.whichWall))
-            printText("*********************************************************************************")
-            printText("*********************************************************************************")
-            printText("*********************************************************************************")
-            printText("*********************************************************************************")
-            printText("*********************************************************************************")
-            printText("*********************************************************************************")
-            printText("*********************************************************************************")
             printText("Wall Updated!")
             printText("Wall: " + self.walls[i].name)
             printText("Distance: " + String(self.walls[i].ping))
