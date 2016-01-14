@@ -4,7 +4,7 @@
 //
 //  Created by Betty van Aken on 17.12.15.
 //  Copyright © 2015 Goran Vukovic. All rights reserved.
-//<
+//
 
 import UIKit
 
@@ -24,7 +24,7 @@ class ParkingBot: UIViewController, UITableViewDelegate, UITableViewDataSource {
     let bcm = BotConnectionManager.sharedInstance();
     let logger = StreamableLogger();
     
-    var parkingLots: [(Float, Float)] = [(100, 200), (0, 10)]
+    var parkingLots: [(Float, Float)] = []
     var stopped = false
     
     @IBAction func startPressed(sender: AnyObject) {
@@ -152,7 +152,7 @@ class ParkingBot: UIViewController, UITableViewDelegate, UITableViewDataSource {
         let cell: UITableViewCell = self.tableView.dequeueReusableCellWithIdentifier("cell")! as UITableViewCell
         
         let coordinates = self.parkingLots[indexPath.row]
-        cell.textLabel?.text = "PARKINGLOT \(indexPath.row+1): \(coordinates.0) -> \(coordinates.1)"
+        cell.textLabel?.text = "PARKINGLOT \(indexPath.row+1): \(Int(coordinates.0)) -> \(Int(coordinates.1))"
         return cell;
     }
     
