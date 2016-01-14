@@ -43,8 +43,8 @@ class BabysitterViewController: UIViewController {
     rightLeft:Float = 101,
     leftStation:Float = 206,
     
-    a_stationRight:Float = -90,
-    a_rightLeft:Float = 90,
+    a_stationRight:Float = -86,
+    a_rightLeft:Float = 86,
     a_leftRight:Float = 180,
     
     t_stationRight:Double = 1.81,
@@ -145,17 +145,21 @@ class BabysitterViewController: UIViewController {
     
     func goToDoor(){
         self.logger.log(.Info, data: "goToDoor");
+        self.bn?.turnToAngle(self.a_stationRight, speed: self.a_velocity, completion: { data in
+            self.logger.log(.Info, data: "baby: turning finished")
+            self.bc?.stop({
+                self.bc?.move(self.velocity, omega: 0, completion: { data in
+                self.logger.log(.Info, data: "baby: MOVE TO doorpoint LEFT finished");
+                self.timerCounter = NSTimer.scheduledTimerWithTimeInterval(self.t_stationRight, target:self, selector: Selector("patrol:"), userInfo: false, repeats: false)
+            })
+            
+            });
+
+            self.sendAlarm("rechten Tuerpfosten erreicht");
         //zuerst zur linkem tuerrand fahren
 //        self.bn?.moveToWithoutObstacle(CGPointMake(CGFloat(posDoorRightX), CGFloat(posDoorRightY)), completion: { data in
 //            self.logger.log(.Info, data: "baby: MOVE TO doorpoint LEFT finished");
-        self.bn?.turnToAngle(self.a_stationRight, speed: self.a_velocity, completion: { data in
-            self.logger.log(.Info, data: "baby: turning finished")
-            //self.view.makeToast("Account created Successfully")
-            //self.bc?.stop()
-            self.bc?.move(self.velocity, omega: 0, completion: { data in
-            self.logger.log(.Info, data: "baby: MOVE TO doorpoint LEFT finished");
-            self.timerCounter = NSTimer.scheduledTimerWithTimeInterval(self.t_stationRight, target:self, selector: Selector("patrol:"), userInfo: false, repeats: false)
-            })
+            
         })
             //beginnend von links nach rechts zu patroullieren
             //self.patrol(false);
@@ -209,7 +213,7 @@ class BabysitterViewController: UIViewController {
         self.reset()
         self.bn?.turnToAngle(self.a_rightLeft, speed: self.a_velocity, completion: { data in
             self.logger.log(.Info, data: "baby: turning finished")
-                //self.view.makeToast("Account created Successfully")
+            self.sendAlarm("gedreht rechter Tuerpfosten");
 //                self.bc?.move(self.velocity, omega: 0, completion: { data in
 //                    self.logger.log(.Info, data: "baby: MOVE TO doorpoint RIGHT finished");
 //                    self.timerCounter = NSTimer.scheduledTimerWithTimeInterval(self.t_rightLeft, target:self, selector: Selector("stop:"), userInfo: false, repeats: false)
@@ -217,7 +221,6 @@ class BabysitterViewController: UIViewController {
 //            })
         })
         
-
     
         //nur patroullieren wenn kein eindringling in der nähe
 //        if(someoneAtDoor == false){
@@ -242,14 +245,15 @@ class BabysitterViewController: UIViewController {
 //            self.bc?.move(Float(self.velocity), omega: 0, completion: { data in
 //                self.logger.log(.Info, data: "baby: MOVE TO doorpoint LEFT finished");
 //                self.timerCounter = NSTimer.scheduledTimerWithTimeInterval(self.t_rightLeft, target:self, selector: Selector("patrol:"), userInfo: toNext, repeats: true);
+//                self.sendAlarm("linken Tuerpfosten erreicht");
 //                //self.patrol(toNext)
 //            })
-//            
-////            self.bn?.moveToWithoutObstacle(CGPointMake(CGFloat(posDoorX), CGFloat(posDoorY)), completion: { data in
-////                self.logger.log(.Info, data: "baby: MOVE TO doorpoint "+strPos+" finished");
-//            
-//            
-//           // })
+        
+//            self.bn?.moveToWithoutObstacle(CGPointMake(CGFloat(posDoorX), CGFloat(posDoorY)), completion: { data in
+//                self.logger.log(.Info, data: "baby: MOVE TO doorpoint "+strPos+" finished");
+            
+            
+           // })
 //        }
 //            //hier zurueck an die tuer schicken?
 //            //oder bei erfolgreichem scan?
@@ -257,7 +261,7 @@ class BabysitterViewController: UIViewController {
 //            goToStation()
 //            
 //        }
-        
+//        
     }
     
     func goToStation(){
