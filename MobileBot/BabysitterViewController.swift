@@ -43,8 +43,8 @@ class BabysitterViewController: UIViewController {
     rightLeft:Float = 101,
     leftStation:Float = 206,
     
-    a_stationRight:Float = -86,
-    a_rightLeft:Float = 86,
+    a_stationRight:Float = -90,
+    a_rightLeft:Float = 90,
     a_leftRight:Float = 180,
     
     t_stationRight:Double = 1.81,
@@ -149,7 +149,9 @@ class BabysitterViewController: UIViewController {
 //        self.bn?.moveToWithoutObstacle(CGPointMake(CGFloat(posDoorRightX), CGFloat(posDoorRightY)), completion: { data in
 //            self.logger.log(.Info, data: "baby: MOVE TO doorpoint LEFT finished");
         self.bn?.turnToAngle(self.a_stationRight, speed: self.a_velocity, completion: { data in
-            
+            self.logger.log(.Info, data: "baby: turning finished")
+            //self.view.makeToast("Account created Successfully")
+            //self.bc?.stop()
             self.bc?.move(self.velocity, omega: 0, completion: { data in
             self.logger.log(.Info, data: "baby: MOVE TO doorpoint LEFT finished");
             self.timerCounter = NSTimer.scheduledTimerWithTimeInterval(self.t_stationRight, target:self, selector: Selector("patrol:"), userInfo: false, repeats: false)
@@ -159,6 +161,7 @@ class BabysitterViewController: UIViewController {
             //self.patrol(false);
         //})
     }
+    
     
     //@TODO
     //nochmal ueber die alarmfunktion nachdenken
@@ -201,49 +204,59 @@ class BabysitterViewController: UIViewController {
     }
     
     func patrol(toRight: Bool){
-        self.bc?.stop({});
+        self.bc?.stop({ data in
+            self.logger.log(.Info, data: "stopped")            })
+        self.reset()
+        self.bn?.turnToAngle(self.a_rightLeft, speed: self.a_velocity, completion: { data in
+            self.logger.log(.Info, data: "baby: turning finished")
+                //self.view.makeToast("Account created Successfully")
+//                self.bc?.move(self.velocity, omega: 0, completion: { data in
+//                    self.logger.log(.Info, data: "baby: MOVE TO doorpoint RIGHT finished");
+//                    self.timerCounter = NSTimer.scheduledTimerWithTimeInterval(self.t_rightLeft, target:self, selector: Selector("stop:"), userInfo: false, repeats: false)
+//                })
+//            })
+        })
         
+
+    
         //nur patroullieren wenn kein eindringling in der nähe
-        if(someoneAtDoor == false){
-            
-            
-            //var posDoorX = self.posDoorLeftX
-            //var posDoorY = self.posDoorLeftY
-            var strPos = "Left"
-            var toNext = true
-            
-            var a_pos = self.a_rightLeft
-            
-            if(toRight){
-                //posDoorX = self.posDoorRightX
-                //posDoorY = self.posDoorRightY
-                strPos = "Right"
-                toNext = false
-                a_pos = self.a_leftRight
-            }
-            
-            //self.scan();
-            
-            self.logger.log(.Info, data: "baby: MOVE TO doorpoint "+strPos);
-            
-            self.bc?.move(Float(self.velocity), omega: 0, completion: { data in
-                self.logger.log(.Info, data: "baby: MOVE TO doorpoint LEFT finished");
-                self.timerCounter = NSTimer.scheduledTimerWithTimeInterval(self.t_rightLeft, target:self, selector: Selector("patrol:"), userInfo: toNext, repeats: true);
-                //self.patrol(toNext)
-            })
-            
-//            self.bn?.moveToWithoutObstacle(CGPointMake(CGFloat(posDoorX), CGFloat(posDoorY)), completion: { data in
-//                self.logger.log(.Info, data: "baby: MOVE TO doorpoint "+strPos+" finished");
-            
-            
-           // })
-        }
-            //hier zurueck an die tuer schicken?
-            //oder bei erfolgreichem scan?
-        else{
-            goToStation()
-            
-        }
+//        if(someoneAtDoor == false){
+//            //var posDoorX = self.posDoorLeftX
+//            //var posDoorY = self.posDoorLeftY
+//            var strPos = "Left"
+//            var toNext = true
+//            
+//            var a_pos = self.a_rightLeft
+//            
+//            if(toRight){
+//                //posDoorX = self.posDoorRightX
+//                //posDoorY = self.posDoorRightY
+//                strPos = "Right"
+//                toNext = false
+//                a_pos = self.a_leftRight
+//            }
+//            //self.scan();
+//            
+//            self.logger.log(.Info, data: "baby: MOVE TO doorpoint "+strPos);
+//            
+//            self.bc?.move(Float(self.velocity), omega: 0, completion: { data in
+//                self.logger.log(.Info, data: "baby: MOVE TO doorpoint LEFT finished");
+//                self.timerCounter = NSTimer.scheduledTimerWithTimeInterval(self.t_rightLeft, target:self, selector: Selector("patrol:"), userInfo: toNext, repeats: true);
+//                //self.patrol(toNext)
+//            })
+//            
+////            self.bn?.moveToWithoutObstacle(CGPointMake(CGFloat(posDoorX), CGFloat(posDoorY)), completion: { data in
+////                self.logger.log(.Info, data: "baby: MOVE TO doorpoint "+strPos+" finished");
+//            
+//            
+//           // })
+//        }
+//            //hier zurueck an die tuer schicken?
+//            //oder bei erfolgreichem scan?
+//        else{
+//            goToStation()
+//            
+//        }
         
     }
     

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		A6CC24EF1C46C04000B7C9D4 /* WatchdogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6CC24EE1C46C04000B7C9D4 /* WatchdogViewController.swift */; };
+		AF6504E81C47A52D009EF956 /* BabyDogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6504E71C47A52D009EF956 /* BabyDogViewController.swift */; };
 		B84142191C070EED007E4270 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84142181C070EED007E4270 /* AppDelegate.swift */; };
 		B84142231C070EED007E4270 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B84142221C070EED007E4270 /* Assets.xcassets */; };
 		B84142261C070EED007E4270 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B84142241C070EED007E4270 /* LaunchScreen.storyboard */; };
@@ -68,6 +69,7 @@
 
 /* Begin PBXFileReference section */
 		A6CC24EE1C46C04000B7C9D4 /* WatchdogViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchdogViewController.swift; sourceTree = "<group>"; };
+		AF6504E71C47A52D009EF956 /* BabyDogViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BabyDogViewController.swift; sourceTree = "<group>"; };
 		B84142151C070EED007E4270 /* MobileBot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MobileBot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B84142181C070EED007E4270 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B84142221C070EED007E4270 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -290,6 +292,7 @@
 				B895E98A1C21B1EA00BDFE04 /* UseCaseManager.swift */,
 				B841426B1C070FB5007E4270 /* BabysitterViewController.swift */,
 				A6CC24EE1C46C04000B7C9D4 /* WatchdogViewController.swift */,
+				AF6504E71C47A52D009EF956 /* BabyDogViewController.swift */,
 			);
 			name = "Use-Cases";
 			sourceTree = "<group>";
@@ -460,6 +463,7 @@
 				B84142971C070FB5007E4270 /* DashViewController.swift in Sources */,
 				B84142191C070EED007E4270 /* AppDelegate.swift in Sources */,
 				B841429F1C070FB5007E4270 /* SettingsViewController.swift in Sources */,
+				AF6504E81C47A52D009EF956 /* BabyDogViewController.swift in Sources */,
 				B84142991C070FB5007E4270 /* MobileBot.xcdatamodeld in Sources */,
 				B84142A01C070FB5007E4270 /* Stream.swift in Sources */,
 				B84142931C070FB5007E4270 /* BotNavigator.swift in Sources */,
