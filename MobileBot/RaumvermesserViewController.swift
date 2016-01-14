@@ -59,6 +59,11 @@ class RaumvermesserViewController: UIViewController {
         {
             self.wall = number
         }
+        
+        init()
+        {
+            
+        }
     }
     
     struct ScanData
@@ -76,12 +81,12 @@ class RaumvermesserViewController: UIViewController {
         var wall: String = ""
     }
     
-    var walls: [Wall] = [Wall.init(number: 1), Wall.init(number: 2), Wall.init(number: 3), Wall.init(number: 4)]
-    
+    var walls: [Wall] = []
     var scanData:ScanData = ScanData()
     
     var scanDirections:[ScanValues] = [ScanValues.init(min: 65, max: 90, inc: 2, wall: "Front"), ScanValues.init(min: 157, max: 180, inc: 2, wall: "Right")]
    
+    
     @IBOutlet weak var labelFrontModulo: UILabel!
     @IBOutlet weak var labelCounter: UILabel!
     
@@ -179,17 +184,26 @@ class RaumvermesserViewController: UIViewController {
     
     func driveAndDetectWalls(){
         // in scane Range angegeben über min und max das auf der rechten Seite des Roboters immer ein Hindernis zu erkennen sein soll
+        if(self.walls.count == 0)
+        {
+            self.whichWall = 0
+        }
+        else
+        {
+            self.whichWall = Int(self.walls.count)
+        }
+        
+        print(self.walls.count)
         if(stopMoving == true)
         {
             // Check first Wall
-            if(self.whichWall < walls.count && walls[self.whichWall].wallChecked == false)
+            if(self.whichWall <= 3)
             {
                 self.stopOrDrive("yes")
                 //scanWallAndFront(walls[0].wallChecked)
                 self.timerScanFront = NSTimer.scheduledTimerWithTimeInterval(1, target:self, selector: Selector("checkFront"),
-                    userInfo: nil, repeats: true)
-                self.timerScanRight = NSTimer.scheduledTimerWithTimeInterval(4, target:self, selector: Selector("checkRight"),
-                    userInfo: nil, repeats: true)
+                    userInfo: nil, repeats: false)
+
             }
         }
 
@@ -213,12 +227,16 @@ class RaumvermesserViewController: UIViewController {
         });
     }
     
+    
+    let mainQueue = dispatch_get_main_queue()
+    let taskGroup = dispatch_group_create()
+
     func checkFront()
     
     {
         printText("checkFront()");
         //var tempWall: Wall = Wall(number: whichWall)
-        var tempWall: Wall = walls[self.whichWall]
+        var tempWall: Wall = Wall()
         
         self.bc?.scanRange(65, max: 90, inc: 10, callback: { data in
             
@@ -227,29 +245,49 @@ class RaumvermesserViewController: UIViewController {
             
             if(data.pingDistance <= 10 && data.pingDistance > 3)
             {
-                self.labelPingDistance.text = String(data.pingDistance)
+                
+                dispatch_group_async(self.taskGroup, self.mainQueue, {[weak self] in
+
+                
+                self!.labelPingDistance.text = String(data.pingDistance)
 
                 // Wand gefunden -> Aktuelle Wand updaten (walls[x]....)
-                self.foundWallFront = true
-                self.stopTimerScan()
-                self.stopRangeScan()
-                self.stopOrDrive("no")
-                tempWall.name = String(self.whichWall)
+                self!.foundWallFront = true
+                self!.stopTimerScan()
+                self!.stopRangeScan()
+                self!.stopOrDrive("no")
+                tempWall.name = String(self!.whichWall)
                 tempWall.ping = data.pingDistance
                 tempWall.wallChecked = true
-                tempWall.length = self.calcWallLength()
+                tempWall.length = self!.calcWallLength()
                 
-                self.updateWallValue(tempWall, i: self.whichWall)
+                self!.updateWallValue(tempWall, i: self!.whichWall)
                 
-                self.turnLeft()
-                self.stopOrDrive("yes")
+                self!.turnLeft()
+                self!.stopOrDrive("yes")
 
+                           });
+            
                 if(self.whichWall < 4){
-                    NSTimer.scheduledTimerWithTimeInterval(8, target:self, selector: Selector("driveAndDetectWalls"),
-                        userInfo: nil, repeats: false)
+                    
+
+                    
+                    
+                    dispatch_group_async(self.taskGroup, self.mainQueue, {[weak self] in
+                            self!.timerDrive = NSTimer.scheduledTimerWithTimeInterval(8, target:self!, selector: Selector("driveAndDetectWalls"),
+                                userInfo: nil, repeats: false)
+                        
+                        });
+                    
+                    
                 }else{
                     self.finished = true
                     //self.draw()
+                    
+                    for x in self.walls
+                    {
+                        print(x)
+                    }
                 }
                 
             }
@@ -303,6 +341,7 @@ class RaumvermesserViewController: UIViewController {
     func stopTimerScan()
     {
         self.timerScanRight.invalidate()
+        self.timerDrive.invalidate()
         self.timerScanFront.invalidate()
         self.counterSingle = 0
     }
@@ -310,14 +349,14 @@ class RaumvermesserViewController: UIViewController {
     func updateWallValue(wall: Wall, i: Int)
     {
         printText("updateWallValue int: "+String(i));
-        if(i < self.walls.count){
-            self.walls[i] =  wall
-            self.whichWall++
+        if(self.whichWall <= 3){
+            walls.append(wall)
             printText("Wall Updated!")
             printText("Wall: " + self.walls[i].name)
             printText("Distance: " + String(self.walls[i].ping))
             printText("Wall Number: " + String(self.walls[i].wall))
             printText("Wall Checked: " + String(self.walls[i].wallChecked))
+            self.whichWall++
             printText("Next Wall ->" + String(self.whichWall))
         }
     }

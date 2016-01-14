@@ -614,14 +614,6 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="gaz-64-9e0">
-                                <rect key="frame" x="195" y="172" width="101" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Ausgabe Array"/>
-                                <connections>
-                                    <action selector="ausgabe:" destination="WPZ-Y4-Vef" eventType="touchUpInside" id="Spk-Zd-7Mu"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -636,7 +628,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m13-Cw-a6u" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="737.60000000000002" y="4.7333333333333334"/>
+            <point key="canvasLocation" x="737" y="4"/>
         </scene>
         <!--Testumgebung View Controller-->
         <scene sceneID="nQ5-ri-7Sz">
@@ -797,13 +789,6 @@
                                     <action selector="sliderAngleTurn:" destination="09C-1Y-MgR" eventType="valueChanged" id="3qu-cS-imR"/>
                                 </connections>
                             </slider>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="za5-wg-JX7">
-                                <rect key="frame" x="337" y="357" width="77" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Speed:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="abr-RR-MSW">
                                 <rect key="frame" x="23" y="401" width="54" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -859,6 +844,13 @@
                                     <action selector="doM90:" destination="09C-1Y-MgR" eventType="touchUpInside" id="gBg-u1-koY"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="za5-wg-JX7">
+                                <rect key="frame" x="338" y="348" width="77" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -880,7 +872,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nrm-4g-BPv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1057.5999999999999" y="-97.506666666666661"/>
+            <point key="canvasLocation" x="1317" y="-103"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="ctO-VI-E9Y">
@@ -1081,8 +1073,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="peM-3x-ZnU"/>
         <segue reference="vlJ-yV-qkn"/>
-        <segue reference="sbK-vM-qBZ"/>
         <segue reference="i3L-jv-8SR"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
