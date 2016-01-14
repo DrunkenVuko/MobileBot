@@ -238,12 +238,12 @@ class RaumvermesserViewController: UIViewController {
         //var tempWall: Wall = Wall(number: whichWall)
         var tempWall: Wall = Wall()
         
-        self.bc?.scanRange(65, max: 90, inc: 10, callback: { data in
+        self.bc?.scanRange(45, max: 180, inc: 7, callback: { data in
             
             self.labelDistanceFront.text = String(data.pingDistance)
             self.labelServoAngle.text = String(data.servoAngle)
             
-            if(data.pingDistance <= 10 && data.pingDistance > 3)
+            if(data.pingDistance <= 10 && data.pingDistance > 3 && data.servoAngle <= 80 && data.servoAngle >= 45)
             {
                 
                 dispatch_group_async(self.taskGroup, self.mainQueue, {[weak self] in
