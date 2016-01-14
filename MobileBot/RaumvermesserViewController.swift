@@ -25,6 +25,7 @@ class RaumvermesserViewController: UIViewController {
     var timerScanFront: NSTimer = NSTimer()
     var timerScanRight: NSTimer = NSTimer()
     var timerDrive: NSTimer = NSTimer()
+    var timerDriveForSpace: NSTimer = NSTimer()
 
     // Zeit
     var counter = 0
@@ -238,7 +239,7 @@ class RaumvermesserViewController: UIViewController {
         //var tempWall: Wall = Wall(number: whichWall)
         var tempWall: Wall = Wall()
         
-        self.bc?.scanRange(45, max: 180, inc: 7, callback: { data in
+        self.bc?.scanRange(45, max: 200, inc: 2, callback: { data in
             
             self.labelDistanceFront.text = String(data.pingDistance)
             self.labelServoAngle.text = String(data.servoAngle)
@@ -291,8 +292,24 @@ class RaumvermesserViewController: UIViewController {
                 }
                 
             }
-            else
+            
+            // @TODO
+            if (data.servoAngle >= 150 && data.pingDistance >= 50 && data.pingDistance > 3)
             {
+                // Biege rechts ab.....
+                
+//                Toaster.show("Gefunden")
+//                self.driveForwardForSpace()
+//                self.timerDriveForSpace = NSTimer.scheduledTimerWithTimeInterval(10, target:self, selector: Selector("stopSpaceDriving"),userInfo: nil, repeats: false)
+//                //self.stopTimerScan()
+//                self.stopRangeScan()
+//
+//                self.turnRight()
+//                
+//                self.driveForwardForSpace()
+//
+//                // Rechte Wand....
+                
                 
             }
         });
@@ -309,6 +326,29 @@ class RaumvermesserViewController: UIViewController {
                 });
         }
 
+    }
+    
+    func turnRight( )
+    {
+        if let bn = bn {                   //bn.turnSpeed
+            bn.turnToAngle(Float(-150), speed: Float(15), completion: { [weak self] data in
+                self!.bc?.resetPosition({[weak self] data in  });
+                //self!.bc?.resetForwardKincematics({[weak self] data in  });
+                });
+        }
+        
+    }
+    
+    func driveForwardForSpace()
+    {
+        bc?.move(self.velocity, omega: 0, completion: nil);
+        
+        
+    }
+    
+    func stopSpaceDriving()
+    {
+        bc?.move(0, omega: 0, completion: nil);
     }
     
     func stopOrDrive(move: String)

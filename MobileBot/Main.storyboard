@@ -782,7 +782,7 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="180" minValue="1" maxValue="360" id="eMW-0d-pyD">
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="90" minValue="-180" maxValue="180" id="eMW-0d-pyD">
                                 <rect key="frame" x="81" y="353" width="257" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <connections>
@@ -1073,9 +1073,9 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="peM-3x-ZnU"/>
-        <segue reference="vlJ-yV-qkn"/>
+        <segue reference="NeQ-uD-Ydc"/>
         <segue reference="i3L-jv-8SR"/>
+        <segue reference="vlJ-yV-qkn"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
 </document>
