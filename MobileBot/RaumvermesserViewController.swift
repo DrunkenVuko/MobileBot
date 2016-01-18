@@ -40,7 +40,7 @@ class RaumvermesserViewController: UIViewController {
     var pingFront: Float = 0.0
     var whichWall: Int = 0
     var velocity: Float = 2
-    var finished: Bool = false
+    var finished: Bool = true
     var log: Bool = true
     var roboDirection:String = "N"
     var directions: [String] = ["N", "O", "S", "W"]
@@ -58,12 +58,20 @@ class RaumvermesserViewController: UIViewController {
         // gibt an ob sich Robo nach rechts oder links gedreht hat
         // wird benoetigt um aus den laengen punkte zu berechnen (fuer den grundriss)
         // wird in lengthToPoint benoetigt
-        //var turnLeft: Bool = true
+        var turnLeft: Bool = true
         
-        init(number: Int)
+        init(number: Int, length: Float, point1: (x: Float,y: Float), point2: (x: Float,y: Float), turnLeft: Bool, direction: String)
         {
             self.wall = number
+            self.length = length
+            self.turnLeft = turnLeft
+            self.direction = direction
+            self.points.append(point1)
+            self.points.append(point2)
+            
+            
         }
+    
         
         init()
         {
@@ -86,7 +94,24 @@ class RaumvermesserViewController: UIViewController {
         var wall: String = ""
     }
     
-    var walls: [Wall] = []
+    //var walls: [Wall] = []
+    //nur zum testen
+    var walls: [Wall] = [
+        Wall.init(number: 1,length: 30, point1:(0,0), point2:(0,30), turnLeft: false, direction: "N"),
+        Wall.init(number: 2, length: 20, point1:(0,30), point2:(20,30), turnLeft: true, direction: "O"),
+        Wall.init(number: 3, length: 30, point1:(20,30), point2:(20,60), turnLeft: false, direction: "N"),
+        Wall.init(number: 4, length: 70, point1:(20,60), point2:(-50,60), turnLeft: false, direction: "W"),
+        Wall.init(number: 5, length: 30, point1:(-50,60), point2:(-50,90), turnLeft: false, direction: "N"),
+        Wall.init(number: 6, length: 100, point1:(-50,90), point2:(50,90), turnLeft: true, direction: "O"),
+        Wall.init(number: 7, length: 10, point1:(50,90), point2:(50,80), turnLeft: false, direction: "S"),
+        Wall.init(number: 8, length: 10, point1:(50,80), point2:(40,80), turnLeft: false, direction: "W"),
+        Wall.init(number: 8, length: 40, point1:(40,80), point2:(40,40), turnLeft: false, direction: "S"),
+        Wall.init(number: 8, length: 30, point1:(40,40), point2:(70,40), turnLeft: false, direction: "O"),
+        Wall.init(number: 8, length: 30, point1:(70,40), point2:(70,10), turnLeft: false, direction: "S"),
+        Wall.init(number: 8, length: 60, point1:(70,10), point2:(10,10), turnLeft: false, direction: "W"),
+        Wall.init(number: 8, length: 10, point1:(10,10), point2:(0,10), turnLeft: false, direction: "S"),
+        Wall.init(number: 8, length: 10, point1:(0,10), point2:(0,0), turnLeft: false, direction: "W")
+    ]
     var scanData:ScanData = ScanData()
     
     var scanDirections:[ScanValues] = [ScanValues.init(min: 65, max: 90, inc: 2, wall: "Front"), ScanValues.init(min: 157, max: 180, inc: 2, wall: "Right")]
@@ -141,7 +166,7 @@ class RaumvermesserViewController: UIViewController {
                 //bc?.setLogger(false)
             }
         }
-        
+        drawFloorPlan()
         //draw()
         
     }
@@ -160,10 +185,13 @@ class RaumvermesserViewController: UIViewController {
 
     // Raumvermesser App wird über Button "Vermessen" gestartet
     @IBAction func startMeasure(sender: AnyObject) {
-        if(finished == false){
+        if(finished == true){
+            finished = false
             logger.log(.Info, data: "Start Action Raumvermesser");
+            self.walls = Array()
             self.whichWall = 0
-        
+            clearFloorPlan()
+            
             self.timerCounter = NSTimer.scheduledTimerWithTimeInterval(1, target:self, selector: Selector("updateCounter"), userInfo: nil, repeats: true)
         
             driveAndDetectWalls()
@@ -184,6 +212,8 @@ class RaumvermesserViewController: UIViewController {
         counterMod = 0
         labelCounter.text = String(counter)
         labelFrontModulo.text = String(counter)
+        
+        finished = true
         
     }
     
@@ -313,12 +343,13 @@ class RaumvermesserViewController: UIViewController {
     
     func turnLeft( )
     {
+        //@todo nochmal anschauen ob indices stimmen
         if(directionIndex > 0){
             roboDirection = directions[directionIndex - 1]
             directionIndex--
         }else{
             roboDirection = directions[directions.count - 1]
-            directionIndex = 3
+            directionIndex = directions.count - 1
         }
         
         if let bn = bn {                   //bn.turnSpeed
@@ -332,13 +363,13 @@ class RaumvermesserViewController: UIViewController {
     
     func turnRight( )
     {
-        
+        //@todo nochmal anschauen ob indices stimmen
         if(directionIndex < 4){
             roboDirection = directions[directionIndex + 1]
             directionIndex++
         }else{
             roboDirection = directions[0]
-            directionIndex = 1
+            directionIndex = 0
         }
         
         
@@ -422,10 +453,17 @@ class RaumvermesserViewController: UIViewController {
     func calcWallLength()-> Float{
         //annhame: velocity: (float, cm/s)
         //@todo pingdistance hinzufügen
-        var length: Float = self.velocity * Float(self.counterSingle)
+        let length: Float = self.velocity * Float(self.counterSingle)
         return length
     }
     
+    func clearFloorPlan(){
+        while let subview = containerFloorPlan.subviews.last {
+            subview.removeFromSuperview()
+        }
+        
+        containerFloorPlan.backgroundColor = UIColor.whiteColor();
+    }
     
     
     func drawFloorPlan(){
@@ -443,9 +481,9 @@ class RaumvermesserViewController: UIViewController {
     
     
     func drawCustomImage(size: CGSize) -> UIImage {
-        printText("drawCustomImage Start" );
+        printText("drawCustomImage Start ");
         // Setup our context
-        let bounds = CGRect(origin: CGPoint.zero, size: size)
+        //let bounds = CGRect(origin: CGPoint.zero, size: size)
         let opaque = false
         let scale: CGFloat = 0
         UIGraphicsBeginImageContextWithOptions(size, opaque, scale)
@@ -463,6 +501,7 @@ class RaumvermesserViewController: UIViewController {
         
         //iterierung ueber alle waende
         for var i = 0; i < self.walls.count; ++i {
+            
             //zeichnen einer linie
             //mit hilfe des zweiten wand-punktes
             CGContextAddLineToPoint(context, CGFloat(self.walls[i].points[1].x), CGFloat(self.walls[i].points[1].y))
@@ -471,10 +510,10 @@ class RaumvermesserViewController: UIViewController {
         }
         
         //CGAffineTransformRotate();
-        CGContextStrokePath(context)
+        //CGContextStrokePath(context)
         
-        /*@todo transform (spiegeln und transformieren
-        var rect:CGRect = CGContextGetPathBoundingBox(context)
+        //@todo transform (spiegeln und transformieren
+        let rect:CGRect = CGContextGetPathBoundingBox(context)
         //var aff: CGAffineTransform = CGContextGetUserSpaceToDeviceSpaceTransform(context)
         //CGContextTranslateCTM(context,rect.width)
         //CGContextConvertRectToDeviceSpace(context, rect)
@@ -491,10 +530,15 @@ class RaumvermesserViewController: UIViewController {
             transformY = (CGFloat(-1) * rect.minY)
         }
         
+        printText("min X: \(transformX)")
+        printText("min Y: \(transformY)")
+        
         if(transformX != 0 || transformY != 0){
             CGContextTranslateCTM (context, transformX, transformY);
             //Transorm-Function
-        }*/
+        }
+        
+        
         
         // Drawing complete, retrieve the finished image and cleanup
         let image = UIGraphicsGetImageFromCurrentImageContext()
