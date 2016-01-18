@@ -166,7 +166,7 @@ class RaumvermesserViewController: UIViewController {
                 //bc?.setLogger(false)
             }
         }
-        drawFloorPlan()
+        //drawFloorPlan()
         //draw()
         
     }
@@ -242,6 +242,8 @@ class RaumvermesserViewController: UIViewController {
             }else{
                 self.finished = true
                 self.drawFloorPlan()
+                /* @todo ausgabe der flaeche */
+                self.calcArea()
             }
         }
 
@@ -519,7 +521,6 @@ class RaumvermesserViewController: UIViewController {
         //CGContextConvertRectToDeviceSpace(context, rect)
         CGContextStrokePath(context)
         
-        
         var transformX: CGFloat = 0
         var transformY: CGFloat = 0
         if(rect.minX < 0){
@@ -546,7 +547,21 @@ class RaumvermesserViewController: UIViewController {
         return image
     }
     
-    
+    func calcArea() -> Float{
+        var areaSize: Float = 0
+        //ist ein rechteck
+        if(walls.count == 4){
+            areaSize = walls[0].length * walls[1].length
+        
+        }else{
+            /*@Todo */
+            areaSize = 0;
+        }
+        
+        Toaster.show("Flaeche:  \(areaSize)")
+        
+        return areaSize;
+    }
     
     
     //berechnet aus der wand-laenge 2 punkte fuer den floor plan
