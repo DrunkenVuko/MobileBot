@@ -19,9 +19,9 @@ class UseCaseManager : NSObject, CLLocationManagerDelegate {
     
     private static var instance: UseCaseManager?
         
-    //let nc = NSNotificationCenter.defaultCenter()
+    let nc = NSNotificationCenter.defaultCenter()
     let cl = CLLocationManager()
-    //var beaconRegion: CLBeaconRegion?
+    var beaconRegion: CLBeaconRegion?
     let logger = StreamableLogger()
     
     /* Instanz unseres Use-Cases */
@@ -41,7 +41,7 @@ class UseCaseManager : NSObject, CLLocationManagerDelegate {
         
         cl.requestAlwaysAuthorization()
         
-        //nc.addObserver(self, selector: "notification:", name: CustomEvent, object: nil)
+        nc.addObserver(self, selector: "notification:", name: CustomEvent, object: nil)
         
     }
     
@@ -107,9 +107,14 @@ class UseCaseManager : NSObject, CLLocationManagerDelegate {
                 break
                 
                 // Station Beacon
-                case "3030":
-                    logger.log(.Info, data: "3030 ist Beacon: Station")
-                    UseCaseManager.atStation = true
+            case "3030":
+                logger.log(.Info, data: "3030 ist Beacon: Station")
+                UseCaseManager.atStation = true
+                break
+                
+                // Station Beacon
+            case "4010":
+                logger.log(.Info, data: "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
                 break
                 
                 default:
