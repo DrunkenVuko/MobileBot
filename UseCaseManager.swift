@@ -97,22 +97,31 @@ class UseCaseManager : NSObject, CLLocationManagerDelegate {
                     }
                 break
                 
-                case "3021":
-                    logger.log(.Info, data: "3021 ist Beacon: Not at Baby")
-                    
-                    // Wir sind nicht am Baby
-                    UseCaseManager.atBaby = false
+            case "4010":
+                
+                logger.log(.Info, data: "4010 ist Beacon: Not Home")
+                
+                
+                
                 break
+                
+                
                 
                 // Station Beacon
-                case "3030":
-                    logger.log(.Info, data: "3030 ist Beacon: Station")
-                    UseCaseManager.atStation = true
+                
+            case "4020":
+                
+                logger.log(.Info, data: "4020 ist Beacon: Home")
+                
                 break
                 
-                default:
-                    logger.log(.Info, data: "No known Event!")
-                    return
+                
+                
+            default:
+                
+                logger.log(.Info, data: "No known Event!")
+                
+                return
             }
     }
     
