@@ -31,6 +31,18 @@
 		C59D38A81BE36B0F0081F6E9 /* Stream.swift in Sources */ = {isa = PBXBuildFile; fileRef = C59D389A1BE36B0F0081F6E9 /* Stream.swift */; };
 		C59D38A91BE36B0F0081F6E9 /* StreamableLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = C59D389B1BE36B0F0081F6E9 /* StreamableLogger.swift */; };
 		C59D38AA1BE36B0F0081F6E9 /* Toaster.swift in Sources */ = {isa = PBXBuildFile; fileRef = C59D389C1BE36B0F0081F6E9 /* Toaster.swift */; };
+		C5D09A031C4E777400CC5AF3 /* UseCaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D09A021C4E777400CC5AF3 /* UseCaseManager.swift */; };
+		C5D09A051C4E788F00CC5AF3 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5D09A041C4E788F00CC5AF3 /* CoreLocation.framework */; };
+		C5D09A071C4E789A00CC5AF3 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5D09A061C4E789A00CC5AF3 /* MapKit.framework */; };
+		C5D09A091C4E78A400CC5AF3 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5D09A081C4E78A400CC5AF3 /* NotificationCenter.framework */; };
+		C5D09A0B1C4E78AB00CC5AF3 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5D09A0A1C4E78AB00CC5AF3 /* Security.framework */; };
+		C5D09A0D1C4E78B300CC5AF3 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5D09A0C1C4E78B300CC5AF3 /* Accelerate.framework */; };
+		C5D09A0F1C4E78BA00CC5AF3 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5D09A0E1C4E78BA00CC5AF3 /* CoreData.framework */; };
+		C5D09A111C4E78C300CC5AF3 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5D09A101C4E78C300CC5AF3 /* CoreBluetooth.framework */; };
+		C5D09A141C4E793700CC5AF3 /* libxml2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C5D09A121C4E793700CC5AF3 /* libxml2.2.dylib */; };
+		C5D09A151C4E793700CC5AF3 /* libz.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C5D09A131C4E793700CC5AF3 /* libz.1.dylib */; };
+		C5D09A181C4E7D1A00CC5AF3 /* beaconmanager.de.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5D099FE1C4E773E00CC5AF3 /* beaconmanager.de.framework */; };
+		C5D09A191C4E7D4400CC5AF3 /* beaconmanager.de.res.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C5D099FF1C4E773E00CC5AF3 /* beaconmanager.de.res.bundle */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -89,6 +101,18 @@
 		C59D389C1BE36B0F0081F6E9 /* Toaster.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Toaster.swift; sourceTree = "<group>"; };
 		C5CE0A3C1BE36FCE00E1E875 /* DataProtocolPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = DataProtocolPlayground.playground; sourceTree = "<group>"; };
 		C5CE0A3D1BE3706F00E1E875 /* BotControlPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = BotControlPlayground.playground; sourceTree = "<group>"; };
+		C5D099FE1C4E773E00CC5AF3 /* beaconmanager.de.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = beaconmanager.de.framework; sourceTree = "<group>"; };
+		C5D099FF1C4E773E00CC5AF3 /* beaconmanager.de.res.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = beaconmanager.de.res.bundle; sourceTree = "<group>"; };
+		C5D09A021C4E777400CC5AF3 /* UseCaseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UseCaseManager.swift; path = ../UseCaseManager.swift; sourceTree = "<group>"; };
+		C5D09A041C4E788F00CC5AF3 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		C5D09A061C4E789A00CC5AF3 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		C5D09A081C4E78A400CC5AF3 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
+		C5D09A0A1C4E78AB00CC5AF3 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		C5D09A0C1C4E78B300CC5AF3 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		C5D09A0E1C4E78BA00CC5AF3 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		C5D09A101C4E78C300CC5AF3 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
+		C5D09A121C4E793700CC5AF3 /* libxml2.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.2.dylib; path = ../../../../../usr/lib/libxml2.2.dylib; sourceTree = "<group>"; };
+		C5D09A131C4E793700CC5AF3 /* libz.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.dylib; path = ../../../../../usr/lib/libz.1.dylib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +120,16 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C5D09A181C4E7D1A00CC5AF3 /* beaconmanager.de.framework in Frameworks */,
+				C5D09A141C4E793700CC5AF3 /* libxml2.2.dylib in Frameworks */,
+				C5D09A151C4E793700CC5AF3 /* libz.1.dylib in Frameworks */,
+				C5D09A111C4E78C300CC5AF3 /* CoreBluetooth.framework in Frameworks */,
+				C5D09A0F1C4E78BA00CC5AF3 /* CoreData.framework in Frameworks */,
+				C5D09A0D1C4E78B300CC5AF3 /* Accelerate.framework in Frameworks */,
+				C5D09A0B1C4E78AB00CC5AF3 /* Security.framework in Frameworks */,
+				C5D09A091C4E78A400CC5AF3 /* NotificationCenter.framework in Frameworks */,
+				C5D09A071C4E789A00CC5AF3 /* MapKit.framework in Frameworks */,
+				C5D09A051C4E788F00CC5AF3 /* CoreLocation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -127,6 +161,17 @@
 		B8BDFAAE1BD8B86F005CC1AE = {
 			isa = PBXGroup;
 			children = (
+				C5D09A121C4E793700CC5AF3 /* libxml2.2.dylib */,
+				C5D09A131C4E793700CC5AF3 /* libz.1.dylib */,
+				C5D09A101C4E78C300CC5AF3 /* CoreBluetooth.framework */,
+				C5D09A0E1C4E78BA00CC5AF3 /* CoreData.framework */,
+				C5D09A0C1C4E78B300CC5AF3 /* Accelerate.framework */,
+				C5D09A0A1C4E78AB00CC5AF3 /* Security.framework */,
+				C5D09A081C4E78A400CC5AF3 /* NotificationCenter.framework */,
+				C5D09A061C4E789A00CC5AF3 /* MapKit.framework */,
+				C5D09A041C4E788F00CC5AF3 /* CoreLocation.framework */,
+				C5D099FE1C4E773E00CC5AF3 /* beaconmanager.de.framework */,
+				C5D099FF1C4E773E00CC5AF3 /* beaconmanager.de.res.bundle */,
 				B8BDFAB91BD8B86F005CC1AE /* MobileBot */,
 				B8BDFAD01BD8B86F005CC1AE /* MobileBotTests */,
 				B8BDFADB1BD8B86F005CC1AE /* MobileBotUITests */,
@@ -159,6 +204,7 @@
 				B801118B1BEB51E8003A2BD2 /* Use-Cases */,
 				B8BDFAC01BD8B86F005CC1AE /* Main.storyboard */,
 				B8BDFAC31BD8B86F005CC1AE /* Assets.xcassets */,
+				C5D09A021C4E777400CC5AF3 /* UseCaseManager.swift */,
 				B8BDFAC51BD8B86F005CC1AE /* LaunchScreen.storyboard */,
 				B8BDFAC81BD8B86F005CC1AE /* Info.plist */,
 			);
@@ -301,6 +347,11 @@
 					B8BDFAB61BD8B86F005CC1AE = {
 						CreatedOnToolsVersion = 7.0;
 						DevelopmentTeam = E77F9MWGA7;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 					B8BDFACC1BD8B86F005CC1AE = {
 						CreatedOnToolsVersion = 7.0;
@@ -337,6 +388,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C5D09A191C4E7D4400CC5AF3 /* beaconmanager.de.res.bundle in Resources */,
 				B8BDFAC71BD8B86F005CC1AE /* LaunchScreen.storyboard in Resources */,
 				B8BDFAC41BD8B86F005CC1AE /* Assets.xcassets in Resources */,
 				B8BDFAC21BD8B86F005CC1AE /* Main.storyboard in Resources */,
@@ -371,6 +423,7 @@
 				C59D38A61BE36B0F0081F6E9 /* ProtocolCommandExecutionUnit.m in Sources */,
 				C571A4A81C22C0F3006F22D0 /* ParkingBot.swift in Sources */,
 				C59D38AA1BE36B0F0081F6E9 /* Toaster.swift in Sources */,
+				C5D09A031C4E777400CC5AF3 /* UseCaseManager.swift in Sources */,
 				C59D38A81BE36B0F0081F6E9 /* Stream.swift in Sources */,
 				C59D38A31BE36B0F0081F6E9 /* CommandQueue.swift in Sources */,
 				C59D387A1BE3694B0081F6E9 /* BotControlTestViewController.swift in Sources */,
@@ -527,6 +580,10 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = MobileBot/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = MobileBotTeam.MobileBot;
@@ -544,6 +601,10 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = MobileBot/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = MobileBotTeam.MobileBot;

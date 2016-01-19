@@ -185,8 +185,7 @@ class ParkingBot: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     
     /**
-    *
-    * Diese Funktion dient dem ParkingBot Use Case
+    * Diese Bewegungs-Funktion dient dem ParkingBot Use Case
     **/
     func moveToWithScan(point: CGPoint, scanAngle: UInt8, completion: ((ForwardKinematicsData) -> ())? ) {
         self.bc?.stopRangeScan({

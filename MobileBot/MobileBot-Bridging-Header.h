@@ -10,5 +10,5 @@
 #import "ProtocolCommandField.h"
 
 
-//#import <beaconmanager.de/BeaconManager.h>
-//#import <beaconmanager.de/Notifications.h>
+#import <beaconmanager.de/BeaconManager.h>
+#import <beaconmanager.de/Notifications.h>
