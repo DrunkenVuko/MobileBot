@@ -19,7 +19,7 @@ class SettingsViewController : UIViewController, UITextFieldDelegate {
     
     @IBAction func AutoLogIn(sender: AnyObject)
     {
-        ipTextField.text = "192.168.43.98"
+        ipTextField.text = "192.168.43.22"
         //ipTextField.text = "wifibee03"
         portTextField.text = "2000"
     }

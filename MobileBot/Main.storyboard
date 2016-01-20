@@ -61,7 +61,7 @@
                                 <color key="backgroundColor" red="0.3456629745" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="BabyDog"/>
                                 <connections>
-                                    <segue destination="jJ5-ga-LFh" kind="show" id="xVR-pA-WR8"/>
+                                    <segue destination="jJ5-ga-LFh" kind="show" id="MAu-36-4G5"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zuY-yt-ofC">
@@ -89,7 +89,7 @@
                         <viewControllerLayoutGuide type="bottom" id="uWt-rR-rA9"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="qBy-Mh-IbF">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Babysitter is active" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tGS-yz-QUE">
@@ -264,7 +264,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HoQ-w2-7aC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1684" y="1716"/>
+            <point key="canvasLocation" x="1794" y="1828"/>
         </scene>
         <!--Bot Control Test View Controller-->
         <scene sceneID="PXb-he-fbD">
@@ -275,7 +275,7 @@
                         <viewControllerLayoutGuide type="bottom" id="oMR-ON-CWn"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8h8-cW-vxr">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uh5-GC-YzU">
@@ -403,7 +403,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fl9-0n-TXu">
-                                <rect key="frame" x="435" y="503" width="39" height="30"/>
+                                <rect key="frame" x="302" y="503" width="39" height="30"/>
                                 <state key="normal" title="offset">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -589,7 +589,7 @@
         <!--Baby Dog View Controller-->
         <scene sceneID="0SH-J2-9JY">
             <objects>
-                <viewController id="jJ5-ga-LFh" customClass="BabyDogViewController" sceneMemberID="viewController">
+                <viewController id="jJ5-ga-LFh" customClass="BabyDogViewController" customModule="MobileBot" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="zOg-ZY-jD4"/>
                         <viewControllerLayoutGuide type="bottom" id="Km7-T1-RLK"/>
@@ -605,18 +605,11 @@
                                     <action selector="startGuard:" destination="jJ5-ga-LFh" eventType="touchUpInside" id="TVG-AT-lg1"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sxR-yr-7Cf">
-                                <rect key="frame" x="10" y="7" width="34" height="30"/>
-                                <state key="normal" title="back"/>
-                                <connections>
-                                    <segue destination="f9E-4d-Z3P" kind="show" id="PuR-k6-W45"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dB4-dL-xc8">
                                 <rect key="frame" x="261" y="234" width="108" height="30"/>
                                 <state key="normal" title="Scan and Patrol"/>
                                 <connections>
-                                    <action selector="startGuardPatrol:" destination="jJ5-ga-LFh" eventType="touchUpInside" id="TcX-x8-y5x"/>
+                                    <action selector="startGuardPatrol:" destination="jJ5-ga-LFh" eventType="touchUpInside" id="eYs-Ji-a7t"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -626,12 +619,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vnm-1f-uzo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1199" y="1711"/>
+            <point key="canvasLocation" x="1193" y="1711"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="PuR-k6-W45"/>
-        <segue reference="WtB-i4-f2b"/>
+        <segue reference="oEU-cE-tLb"/>
+        <segue reference="ohe-pN-Vdk"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
 </document>

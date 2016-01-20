@@ -8,7 +8,7 @@
 
 import Foundation
 
-class BabyDogViewController:UIViewController{
+class BabyDogViewController: UIViewController{
     var bc: BotController?;
     var bn: BotNavigator?;
     let bcm = BotConnectionManager.sharedInstance();
@@ -51,13 +51,12 @@ class BabyDogViewController:UIViewController{
     a_rightLeft:Float = 86,
     a_leftRight:Float = 180,
     
-    t_stationRight:Double = 1.81,
-    t_rightLeft:Double = 1.01
+    t_stationRight:Double = 6,
+    t_rightLeft:Double = 6
     
     @IBAction func startGuard(sender: AnyObject) {
-
+        drive()
     }
-    
     
     @IBAction func startGuardPatrol(sender: AnyObject) {
         if(finished == false){
@@ -66,12 +65,13 @@ class BabyDogViewController:UIViewController{
             //self.whichWall = 0
             
             turnRight90()
-            self.timerScanRight = NSTimer.scheduledTimerWithTimeInterval(1, target:self, selector: Selector("partolAndScan"), userInfo: nil, repeats: false)
+            self.timerScanRight = NSTimer.scheduledTimerWithTimeInterval(8, target:self, selector: Selector("patrolAndScan"), userInfo: nil, repeats: false)
             
         }else{
             Toaster.show("Guard and Patrol did not start")
         }
     }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad();
@@ -110,16 +110,24 @@ class BabyDogViewController:UIViewController{
     }
     
     func patrolAndScan(){
-        partol()
-        timerDriveRight = NSTimer.scheduledTimerWithTimeInterval(2.0, target: self, selector: "turnLeft", userInfo: nil, repeats: false)
-        partol()
-        timerDriveRight = NSTimer.scheduledTimerWithTimeInterval(2.0, target: self, selector: "turnRight", userInfo: nil, repeats: false)
+        patrol()
+        logger.log(.Info, data: "baby moved");
+        timerCounter = NSTimer.scheduledTimerWithTimeInterval(1, target:self, selector: Selector("scan"), userInfo: false, repeats: false)
+        timerCounter = NSTimer.scheduledTimerWithTimeInterval(8, target: self, selector: "stop", userInfo: nil, repeats: false)
+        timerCounter = NSTimer.scheduledTimerWithTimeInterval(8, target: self, selector: "stopRangeScan", userInfo: nil, repeats: false)
+        timerCounter = NSTimer.scheduledTimerWithTimeInterval(9, target: self, selector: "turnLeft", userInfo: nil, repeats: false)
+        logger.log(.Info, data: "turned left");
+        timerCounter = NSTimer.scheduledTimerWithTimeInterval(14, target:self, selector: Selector("patrol"), userInfo: false, repeats: false)
+        timerCounter = NSTimer.scheduledTimerWithTimeInterval(15, target:self, selector: Selector("scan"), userInfo: false, repeats: false)
+        timerCounter = NSTimer.scheduledTimerWithTimeInterval(22, target: self, selector: "stop", userInfo: nil, repeats: false)
+        timerCounter = NSTimer.scheduledTimerWithTimeInterval(22, target: self, selector: "stopRangeScan", userInfo: nil, repeats: false)
+        timerDriveRight = NSTimer.scheduledTimerWithTimeInterval(23, target: self, selector: "turnRight", userInfo: nil, repeats: false)
         }
     
-    func partol(){
+    func patrol(){
         self.bc?.move(self.velocity, omega: 0, completion: { data in
             self.logger.log(.Info, data: "baby move");
-            self.timerCounter = NSTimer.scheduledTimerWithTimeInterval(self.t_stationRight, target:self, selector: Selector("stop"), userInfo: false, repeats: false)
+//            self.timerCounter = NSTimer.scheduledTimerWithTimeInterval(self.t_stationRight, target:self, selector: Selector("stop"), userInfo: false, repeats: false)
         })
         
     }
@@ -134,9 +142,7 @@ class BabyDogViewController:UIViewController{
                     self.someoneAtDoor = true;
                     self.bc?.stopRangeScan({
                         self.bc?.stoptUpdatingPosition();
-                        self.bc?.stop({
-                            self.driveHome();
-                        });
+                        self.stop();
                     });
                     self.sendAlarm("Alarm!");
                     
@@ -186,7 +192,7 @@ class BabyDogViewController:UIViewController{
     func turnLeft( )
     {
         if let bn = bn {                   //bn.turnSpeed
-            bn.turnToAngle(Float(90), speed: Float(15), completion: { [weak self] data in
+            bn.turnToAngle(Float(180), speed: Float(15), completion: { [weak self] data in
                 self!.bc?.resetPosition({[weak self] data in  });
                 //self!.bc?.resetForwardKincematics({[weak self] data in  });
                 });
