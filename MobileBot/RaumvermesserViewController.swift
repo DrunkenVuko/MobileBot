@@ -7,7 +7,9 @@
 //
 
 import Foundation
-class RaumvermesserViewController: UIViewController {
+import MessageUI
+
+class RaumvermesserViewController: UIViewController, MFMailComposeViewControllerDelegate {
     
     var bc: BotController?;
     var bn: BotNavigator?;
@@ -100,9 +102,9 @@ class RaumvermesserViewController: UIViewController {
         Wall.init(number: 1,length: 30, point1:(0,0), point2:(0,30), turnLeft: false, direction: "N"),
         Wall.init(number: 2, length: 20, point1:(0,30), point2:(20,30), turnLeft: true, direction: "O"),
         Wall.init(number: 3, length: 30, point1:(20,30), point2:(20,60), turnLeft: false, direction: "N"),
-        Wall.init(number: 4, length: 70, point1:(20,60), point2:(-50,60), turnLeft: false, direction: "W"),
-        Wall.init(number: 5, length: 30, point1:(-50,60), point2:(-50,90), turnLeft: false, direction: "N"),
-        Wall.init(number: 6, length: 100, point1:(-50,90), point2:(50,90), turnLeft: true, direction: "O"),
+        Wall.init(number: 4, length: 70, point1:(20,60), point2:(0,60), turnLeft: false, direction: "W"),
+        Wall.init(number: 5, length: 30, point1:(0,60), point2:(0,90), turnLeft: false, direction: "N"),
+        Wall.init(number: 6, length: 100, point1:(0,90), point2:(50,90), turnLeft: true, direction: "O"),
         Wall.init(number: 7, length: 10, point1:(50,90), point2:(50,80), turnLeft: false, direction: "S"),
         Wall.init(number: 8, length: 10, point1:(50,80), point2:(40,80), turnLeft: false, direction: "W"),
         Wall.init(number: 8, length: 40, point1:(40,80), point2:(40,40), turnLeft: false, direction: "S"),
@@ -166,8 +168,10 @@ class RaumvermesserViewController: UIViewController {
                 //bc?.setLogger(false)
             }
         }
-        //drawFloorPlan()
+        drawFloorPlan()
         //draw()
+        
+        //sendMail()
         
     }
     
@@ -663,7 +667,44 @@ class RaumvermesserViewController: UIViewController {
         }
     }
     
+    /*func sendMail(){
+        let mailComposeViewController = configureMail()
+        if MFMailComposeViewController.canSendMail() {
+            //MFMailComposeViewController.presentViewController(mailComposeViewController)
+            printText("can send mails")
+            self.presentViewController(mailComposeViewController, animated: true, completion: nil)
+        } else {
+            printText("can't send mails")
+            self.showSendMailErrorAlert()
+        }
+    }
     
+    func configureMail() -> MFMailComposeViewController{
+        var picker = MFMailComposeViewController()
+        var subject: String = "Raumvermesser-App"
+        var body: String = "Das ist der Inhalt der Email"
+        var to: [String] = ["bianca-baier@gmx.de"]
+        
+        //picker.mailComposeDelegate = self
+        picker.setSubject(subject)
+        //picker.setMessageBody(body, isHTML: true)
+       // picker.setToRecipients(to)
+
+    
+        //presentViewController(picker, animated: true, completion: nil)
+        return picker;
+    }
+    
+    func showSendMailErrorAlert() {
+        let sendMailErrorAlert = UIAlertView(title: "Could Not Send Email", message: "Your device could not send e-mail.  Please check e-mail configuration and try again.", delegate: self, cancelButtonTitle: "OK")
+        sendMailErrorAlert.show()
+    }
+    
+    // MARK: MFMailComposeViewControllerDelegate Method
+    func mailComposeController(controller: MFMailComposeViewController!, didFinishWithResult result: MFMailComposeResult, error: NSError!) {
+        controller.dismissViewControllerAnimated(true, completion: nil)
+    }
+    */
     
     
 
