@@ -587,10 +587,14 @@ class RaumvermesserViewController: UIViewController {
                     newX = newX + length
                 }
                 else if(wallIndex == 2){
-                    newY = newY - length
+                    //alt: berechnung vom roboter war zu ungenau
+                    //newY = newY - length
+                    newY = newY - self.walls[0].length
                 }
                 else if(wallIndex == 3){
-                    newX = newX - length
+                    //alt: berechnung vom roboter war zu ungenau
+                    //newX = newX - length
+                    newX = newX - self.walls[1].length
                 }
             
                 printText("X: " + String(newX) + " Y: " + String(newY) );
