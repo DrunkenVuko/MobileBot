@@ -110,15 +110,17 @@ class BabyDogViewController:UIViewController{
     }
     
     func patrolAndScan(){
-        //partol()
-        timerDriveRight = NSTimer.scheduledTimerWithTimeInterval(8.0, target: self, selector: "drive", userInfo: nil, repeats: false)
-        turnLeft()
-        //partol()
-        timerDriveRight = NSTimer.scheduledTimerWithTimeInterval(8.0, target: self, selector: "drive", userInfo: nil, repeats: false)
-        turnRight()
+        partol()
+        timerDriveRight = NSTimer.scheduledTimerWithTimeInterval(2.0, target: self, selector: "turnLeft", userInfo: nil, repeats: false)
+        partol()
+        timerDriveRight = NSTimer.scheduledTimerWithTimeInterval(2.0, target: self, selector: "turnRight", userInfo: nil, repeats: false)
         }
     
     func partol(){
+        self.bc?.move(self.velocity, omega: 0, completion: { data in
+            self.logger.log(.Info, data: "baby move");
+            self.timerCounter = NSTimer.scheduledTimerWithTimeInterval(self.t_stationRight, target:self, selector: Selector("stop"), userInfo: false, repeats: false)
+        })
         
     }
     
