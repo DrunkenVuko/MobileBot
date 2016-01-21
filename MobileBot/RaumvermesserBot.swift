@@ -43,7 +43,7 @@ class RaumvermesserBot: UIViewController {
     var foundWallFront: Bool = false
     var pingFront: Float = 0.0
     var whichWall: Int = 0
-    var velocity: Float = 2
+    var velocity: Float = 5
     var finished: Bool = true
     var log: Bool = true
     var roboDirection:String = "N"
@@ -221,6 +221,10 @@ class RaumvermesserBot: UIViewController {
     }
     
     @IBAction func stopMeasure(sender: AnyObject) {
+        self.stop()
+    }
+    
+    func stop(){
         bc?.stopRangeScan({});
         timerCounter.invalidate()
         timerDrive.invalidate()
@@ -233,7 +237,6 @@ class RaumvermesserBot: UIViewController {
         labelFrontModulo.text = String(counter)
         
         finished = true
-        
     }
     
     func driveAndDetectWalls(){
@@ -261,8 +264,8 @@ class RaumvermesserBot: UIViewController {
             }else{
                 self.finished = true
                 self.drawFloorPlan()
-                /* @todo ausgabe der flaeche */
                 self.calcArea()
+                self.stop()
             }
         }
         
@@ -297,12 +300,12 @@ class RaumvermesserBot: UIViewController {
         //var tempWall: Wall = Wall(number: whichWall)
         var tempWall: Wall = Wall()
         
-        self.bc?.scanRange(45, max: 200, inc: 2, callback: { data in
+        self.bc?.scanRange(45, max: 120, inc: 2, callback: { data in
             
             self.labelDistanceFront.text = String(data.pingDistance)
             self.labelServoAngle.text = String(data.servoAngle)
             
-            if(data.pingDistance <= 10 && data.pingDistance > 3 && data.servoAngle <= 80 && data.servoAngle >= 45)
+            if(data.pingDistance <= 15 && data.pingDistance > 3 && data.servoAngle <= 80 && data.servoAngle >= 45)
             {
                 
                 dispatch_group_async(self.taskGroup, self.mainQueue, {[weak self] in
@@ -473,8 +476,8 @@ class RaumvermesserBot: UIViewController {
     
     func calcWallLength()-> Float{
         //annhame: velocity: (float, cm/s)
-        //@todo pingdistance hinzufügen
-        let length: Float = self.velocity * Float(self.counterSingle)
+        /*@todo pingdistance */
+        let length: Float = ( self.velocity * Float(self.counterSingle) )
         return length
     }
     
@@ -568,9 +571,12 @@ class RaumvermesserBot: UIViewController {
     
     func calcArea() -> Float{
         var areaSize: Float = 0
+        var areaSizeToMeter: Float = 0
         //ist ein rechteck
         if(walls.count == 4){
             areaSize = walls[0].length * walls[1].length
+            areaSizeToMeter = areaSize * 0.01
+            labelAreaSize.text = String(areaSizeToMeter) + " m2"
             
         }else{
             /*@Todo */
@@ -587,6 +593,7 @@ class RaumvermesserBot: UIViewController {
     func  calcWallPoints(wallIndex: Int) -> [(x: Float, y: Float)]{
         printText("length for : "+String(wallIndex))
         let length: Float = self.walls[wallIndex].length
+        let lengthToMeter = length * 0.01
         var points: [(x: Float, y: Float)] = Array()
         
         //berechnen des Startpunktes
@@ -604,17 +611,22 @@ class RaumvermesserBot: UIViewController {
             // bei 4 waenden
             if(wallIndex == 1){
                 newX = newX + length
+                
+                labelLengthB.text = String(lengthToMeter) + " m"
             }
             else if(wallIndex == 2){
                 newY = newY - length
+                labelLengthC.text = String(lengthToMeter) + " m"
             }
             else if(wallIndex == 3){
                 newX = newX - length
+                labelLengthD.text = String(lengthToMeter) + " m"
             }
             
             printText("X: " + String(newX) + " Y: " + String(newY) );
             printText("Direction: " + newDirection );
             points.append((x: newX, y: newY))
+            
             
             
             //}else{
@@ -659,6 +671,7 @@ class RaumvermesserBot: UIViewController {
             points.append((x: 0, y: 0))
             // zweite punkt ergibt sich aus der laenge der wand
             points.append((x: 0, y: length))
+            labelLengthA.text = String(lengthToMeter) + " m"
         }
         
         /*for p in points{
