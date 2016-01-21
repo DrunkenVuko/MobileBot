@@ -595,7 +595,7 @@
                             <containerView opaque="NO" contentMode="scaleToFill" id="uvG-gd-10l">
                                 <rect key="frame" x="47" y="275" width="510" height="251"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <segue destination="Csq-iB-omF" kind="embed" id="B3T-PF-lYB"/>
                                 </connections>
@@ -1073,8 +1073,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="NeQ-uD-Ydc"/>
         <segue reference="i3L-jv-8SR"/>
+        <segue reference="peM-3x-ZnU"/>
         <segue reference="vlJ-yV-qkn"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>

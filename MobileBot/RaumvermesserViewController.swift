@@ -14,6 +14,10 @@ class RaumvermesserViewController: UIViewController {
     let bcm = BotConnectionManager.sharedInstance();
     let logger = StreamableLogger();
     
+    
+    // NSUserDefaults
+    let prefs = NSUserDefaults.standardUserDefaults()
+    
     var debounceTimer: NSTimer?
     var notification: UILocalNotification?;
     
@@ -126,7 +130,6 @@ class RaumvermesserViewController: UIViewController {
 
     @IBOutlet weak var containerFloorPlan: UIView!
     
-    
     func updateCounter() {
         counter++
         counterMod = counter % 4
@@ -168,6 +171,16 @@ class RaumvermesserViewController: UIViewController {
         }
         //drawFloorPlan()
         //draw()
+        
+        // So wird offline gespeichert ->
+        //              - Dein Wert -          - Feldname -
+        prefs.setValue("IchBinEinWert", forKey: "Testwert")
+        
+        // So wird es aufgerufen ->
+        //                             - Feldname -
+        //let temp = prefs.stringForKey("Testwert")
+        // Inhalt temp: "IchBinEinWert"
+
         
     }
     
