@@ -13,9 +13,13 @@ import UIKit
  */
 class ParkingBot: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    let BEACON_OFFICE = "4020"
+    let BEACON_HOME = "4010"
+    
     // Street coordinates
     let STREET_POINT_1: (Float, Float) = (0, 0)
     var STREET_POINT_2: (Float, Float) = (100, 0)
+    let DISTANCE = 100
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var distanceToScanField: UITextField!
@@ -27,13 +31,22 @@ class ParkingBot: UIViewController, UITableViewDelegate, UITableViewDataSource {
     let logger = StreamableLogger();
     
     var parkingLots: [(Float, Float)] = []
-    var stopped = false
+    var stopped = true
     
     var parkingLotSize: Int32 = 20
     
     var positiondata: (Float, Float, Float) = (0, 0, 0)
     var parkStart: (Float, Float, Float) = (0, 0, 0)
     var inParkingLot = false
+    
+    var beaconStarted = false
+    
+    @IBAction func startWithBeaconPressed(sender: AnyObject) {
+        if(stopped){
+            beaconStarted = true
+            self.logger.log(.Info, data: "Start Beacon Notifications");
+        }
+    }
     
     @IBAction func startPressed(sender: AnyObject) {
         self.startAction()
@@ -51,8 +64,14 @@ class ParkingBot: UIViewController, UITableViewDelegate, UITableViewDataSource {
         
         self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
         
+        let notificationCenter = NSNotificationCenter.defaultCenter()
+        
         // listens for PARKINGLOT_END notification
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "insertParkingLot:", name: "PARKINGLOT_END", object: nil)
+        notificationCenter.addObserver(self, selector: "insertParkingLot:", name: "PARKINGLOT_END", object: nil)
+        
+        // listens for "CustomEvent" (Beacon specific SDK Event) notification
+        notificationCenter.addObserver(self, selector: "beaconNotification:", name: CustomEvent, object: nil)
+
     }
     
     /**
@@ -141,11 +160,18 @@ class ParkingBot: UIViewController, UITableViewDelegate, UITableViewDataSource {
      */
     func startAction() {
         
+        // Check distance input field
         if(self.distanceToScanField.text != ""){
             self.STREET_POINT_2 = ((self.distanceToScanField.text! as NSString).floatValue, 0)
+        } else {
+            self.distanceToScanField.text = String(self.DISTANCE)
         }
+        
+        // Check parking lot size input field
         if(self.parkingLotSizeField.text != ""){
             self.parkingLotSize = (self.parkingLotSizeField.text! as NSString).intValue
+        } else {
+            self.parkingLotSizeField.text = String(self.parkingLotSize)
         }
         
         self.stopped = false
@@ -314,5 +340,36 @@ class ParkingBot: UIViewController, UITableViewDelegate, UITableViewDataSource {
                     "parkingEndY":self.positiondata.1])
         }
     }
+    
+    /**
+     * Gets called when Beacon Event occurs
+     */
+    func beaconNotification(idh: NSNotification){
+
+        if(beaconStarted){
+            let beaconId :NSString = (idh.object as? NSString)!
+            
+            switch beaconId {
+                
+            case BEACON_OFFICE:
+                logger.log(.Info, data: "BEACON_OFFICE in range. Start UseCase!")
+                if(stopped){
+                    startAction()
+                }
+                break
+                
+            case BEACON_HOME:
+                logger.log(.Info, data: "BEACON_HOME in range. Stop UseCase!")
+                stopAction()
+                beaconStarted = false
+                break
+                
+            default:
+                return
+                
+            }
+        }
+    }
+
 
 }

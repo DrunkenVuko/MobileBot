@@ -135,31 +135,7 @@ class UseCaseManager : NSObject, CLLocationManagerDelegate {
             break
             
             
-            // Leave Home Beacon
-        case "4010":
-            
-            logger.log(.Info, data: "4010 ist Beacon: Not Home")
-            
-            
-            
-            break
-            
-            
-            
-            // Station Beacon
-            
-        case "4020":
-            
-            logger.log(.Info, data: "4020 ist Beacon: Home")
-            
-            break
-            
-            
-            
         default:
-            
-            logger.log(.Info, data: "No known Event!")
-            
             return        }
     }
     
