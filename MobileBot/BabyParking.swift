@@ -121,6 +121,13 @@ class BabyParking: UIViewController {
     
     
 
+    func beaconStartAction()
+    {
+        
+        createConnection()
+        bc?.resetPosition(nil);
+        startAction()
+    }
     
     /**
      * Starts patroling

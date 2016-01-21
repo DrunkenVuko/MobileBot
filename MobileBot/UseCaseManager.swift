@@ -11,42 +11,37 @@ import UIKit
 
 /**
  * Diese Klasse dient dem Eventmanagement der Beacons bzw. UseCases.
- * Die Flags dienen dem Eventhandling und sind dafür zuständig, dass immer nur 
- * 1 Use Case durchlaufen werden kann (ist momentan so programmiert, kann aber leicht 
- * geändert werden, um bspw. 2 Use Cases gleichzeitig laufen zu lassen)
+ * Die Flags dienen dem Eventhandling und sind dafür zuständig, dass immer nur
+ * 1 Use Case durchlaufen werden kann (ist momentan so programmiert, kann aber leicht
+ * geändert werden, um bspw. 2 Use Cases gleichzeitig laufen zu lassen)""""
  */
 class UseCaseManager : NSObject, CLLocationManagerDelegate {
     
-    private static var instance: UseCaseManager?;
-        
-    let nc = NSNotificationCenter.defaultCenter();
-    let cl = CLLocationManager();
-    var beaconRegion: CLBeaconRegion?;
-    let logger = StreamableLogger();
+    private static var instance: UseCaseManager?
     
-    //let babySitterUC = Babysitter();
-
-    var timer: NSTimer!
-    // Kontrollvariablen
-    //-------------------
-    // Der Benutzer ist per Default im Haus
-    static var atHome = false
+    let nc = NSNotificationCenter.defaultCenter()
+    let cl = CLLocationManager()
+    var beaconRegion: CLBeaconRegion?
+    let logger = StreamableLogger()
     
-    // Der Benutzer ist per Default nicht am Baby
-    static var atBaby = false
+    /* Instanz unseres Use-Cases */
+    let baby: BabyParking = BabyParking()
     
-    // Der Roboter soll nur 1x aufgerufen werden
-    static var robotRunning = false
+    /* Am Baby */
+    static var atBaby = true
     
-    // Doppelte Nachrichten sind Tabu
-    static var alreadyPushed = false
+    /* Im Haus */
+    static var atHome = true
+    
+    /* Wache */
+    static var atStation = true
     
     func run() {
-        cl.delegate = self;
+        cl.delegate = self
         
-        cl.requestAlwaysAuthorization();
+        cl.requestAlwaysAuthorization()
         
-        nc.addObserver(self, selector: "notification:", name: CustomEvent, object: nil);
+        nc.addObserver(self, selector: "notification:", name: CustomEvent, object: nil)
         
     }
     
@@ -55,98 +50,92 @@ class UseCaseManager : NSObject, CLLocationManagerDelegate {
      * Flags, die entsprechenden UseCases, bzw. beendet diese wieder
      */
     func notification(idh: NSNotification){
-        logger.log(.Info, data: idh);
-        let str :NSString = (idh.object as? NSString)!;
+        logger.log(.Info, data: idh)
+        let str :NSString = (idh.object as? NSString)!
+        
         switch str {
             /* Beacon Babysitter
             Door Exit   - 3010
             Door Entry  - 3011
             At Baby     - 3020
             Not at baby - 3021
+            Station     - 3030
             */
             
-            /*************************************************************************************************/
-            /***** - Fall: Haus betreten / verlassen *********************************************************/
-            /*************************************************************************************************/
-            
-            // Wird beim Verlassen des Beacons aktiviert
-        case "3010" where UseCaseManager.robotRunning == false && UseCaseManager.atHome == true:
-            printLog("3010 ist Beacon: Sie haben das Haus verlassen! - Roboter startet nun")
-            
-            // 1) Funktion des Robos starten
-            // 2) atHome auf false setzen
-            // 3) robotRunning beim Start auf true setzen
-            
+            // Aus dem Haus raus...
+        case "3010":
+            logger.log(.Info, data: "3010 ist Beacon: Not at Home")
             UseCaseManager.atHome = false
-            UseCaseManager.robotRunning = true
+            
+            if(UseCaseManager.atHome == true)
+            {
+                // Robo soll an die Station...
+            }
+            else if(UseCaseManager.atHome == false && UseCaseManager.atBaby == false)
+            {
+                UseCaseManager.atStation = false
+                // Wenn du aus der Tür bist && nicht am Baby dann -> Action... (homeUC.startAction())
+            }
             break
             
-            // Wird beim Betreten des Beacons aktiviert
-        case "3011" where UseCaseManager.robotRunning == true && UseCaseManager.atHome == false:
-            printLog("3011 ist Beacon: Sie sind im Haus!  - Roboter faehrt wieder zur Station")
-            
-            // Test nach 10 Sekunden simulieren..
-            timer = NSTimer.scheduledTimerWithTimeInterval(10, target: self, selector: "back:", userInfo: 0, repeats: true)
-
-            
-            // 1) Funktion zum Beenden des Robos aufrufen
-            // 2) atHome auf true setzen
-            // 3) robotRunning auf false setzen
-            
+            // Ins Haus rein...
+        case "3011":
+            logger.log(.Info, data: "3011 ist Beacon: At Home")
             UseCaseManager.atHome = true
-            UseCaseManager.robotRunning = false
+            baby.beaconStartAction()
             break
             
+            // Baby Beacon
             
-            /*************************************************************************************************/
-            /***** - Fall: Baby betreten / verlassen *********************************************************/
-            /*************************************************************************************************/
+            // Am Baby
+        case "3020":
+            logger.log(.Info, data: "3020 ist Beacon: At Baby")
             
-            // Wird beim Betreten des Beacons aktiviert
-        case "3020" where UseCaseManager.robotRunning == false && UseCaseManager.atHome == true && UseCaseManager.atBaby == false:
-            printLog("3020 ist Beacon: Ich bin am Baby")
-            
-            // 1) Funktion zum Beenden des Robos aufrufen
-            // 2) atBaby auf true setzen
-
+            // Wir sind am Baby
             UseCaseManager.atBaby = true
+            // Aktion...
+            if(UseCaseManager.atHome == true)
+            {
+                
+            }
             break
             
-            // Wird beim Verlassen des Beacons aktiviert
-        case "3021" where UseCaseManager.robotRunning == false && UseCaseManager.atHome == true && UseCaseManager.atBaby == true:
-            printLog("3020 ist Beacon: Ich bin nicht mehr am Baby")
+        case "3021":
+            logger.log(.Info, data: "3021 ist Beacon: Not at Baby")
             
-            // 1) Funktion zum Beenden des Robos aufrufen
-            // 2) atBaby auf false setzen
-            
+            // Wir sind nicht am Baby
             UseCaseManager.atBaby = false
             break
-
+            
+            // Station Beacon
+        case "3030":
+            logger.log(.Info, data: "3030 ist Beacon: Station")
+            UseCaseManager.atStation = true
+            break
+            
+            // Station Beacon
+        case "4010":
+            logger.log(.Info, data: "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
+            break
+            
         default:
             logger.log(.Info, data: "No known Event!")
             return
         }
     }
-
-    func printLog(var temp: String)
-    {
-        print("/******************************************************************************************/")
-        print(temp)
-        print("/******************************************************************************************/")
-    }
     
     /** Singleton */
     static func sharedInstance() -> UseCaseManager {
         if UseCaseManager.instance == nil {
-            UseCaseManager.instance = UseCaseManager();
+            UseCaseManager.instance = UseCaseManager()
         }
         
-        return UseCaseManager.instance!;
+        return UseCaseManager.instance!
     }
     
     deinit {
-        NSNotificationCenter.defaultCenter().removeObserver(self);
+        NSNotificationCenter.defaultCenter().removeObserver(self)
         
-        logger.log(.Info, data: "✝ (rip) ✝");
+        logger.log(.Info, data: "✝ (rip) ✝")
     }
 }
