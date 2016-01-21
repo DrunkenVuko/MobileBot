@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="IOf-7S-mOe">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="IOf-7S-mOe">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
@@ -18,9 +18,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rdH-U4-03i">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rdH-U4-03i">
                                 <rect key="frame" x="86" y="184" width="243" height="30"/>
                                 <color key="backgroundColor" red="0.34566297448047534" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="kSG-Po-kJh"/>
+                                </constraints>
                                 <state key="normal" title="Test Hardware">
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" red="1" green="0.98360094255078123" blue="0.97779292811518415" alpha="1" colorSpace="calibratedRGB"/>
@@ -29,7 +32,7 @@
                                     <segue destination="vbM-Rx-UZO" kind="show" id="YZB-Ou-dUq"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v8o-5H-NjD">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v8o-5H-NjD">
                                 <rect key="frame" x="86" y="324" width="243" height="34"/>
                                 <color key="backgroundColor" red="0.0" green="0.61201751336662236" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Old Test">
@@ -40,40 +43,52 @@
                                     <segue destination="BRV-1H-4Vs" kind="show" id="6F6-bK-q38"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Nt-Dx-zIi" userLabel="Babysitter Start">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Nt-Dx-zIi" userLabel="Babysitter Start">
                                 <rect key="frame" x="86" y="496" width="243" height="39"/>
                                 <color key="backgroundColor" red="0.3456629745" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="39" id="QzE-l1-e0m"/>
+                                </constraints>
                                 <state key="normal" title="Babysitter Start"/>
                                 <connections>
                                     <segue destination="xL3-uL-ftD" kind="show" id="3wi-XZ-efU"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bfX-Jx-FRW" userLabel="Babysitter Start">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bfX-Jx-FRW" userLabel="Babysitter Start">
                                 <rect key="frame" x="86" y="551" width="243" height="39"/>
                                 <color key="backgroundColor" red="0.3456629745" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="39" id="FQt-9o-CI1"/>
+                                </constraints>
                                 <state key="normal" title="Watchdog"/>
                                 <connections>
                                     <segue destination="fo1-Tc-HSK" kind="show" id="GDS-QU-pfJ"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qV9-9T-SKT" userLabel="Babysitter Start">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qV9-9T-SKT" userLabel="Babysitter Start">
                                 <rect key="frame" x="86" y="630" width="243" height="39"/>
                                 <color key="backgroundColor" red="0.3456629745" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="39" id="LWA-si-f3h"/>
+                                </constraints>
                                 <state key="normal" title="BabyDog"/>
                                 <connections>
                                     <segue destination="jJ5-ga-LFh" kind="show" id="MAu-36-4G5"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zuY-yt-ofC">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zuY-yt-ofC">
                                 <rect key="frame" x="26" y="692" width="34" height="30"/>
                                 <state key="normal" title="back"/>
                                 <connections>
                                     <segue destination="IOf-7S-mOe" kind="show" id="WtB-i4-f2b"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CIc-P2-2dy" userLabel="Babysitter Start">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CIc-P2-2dy" userLabel="Babysitter Start">
                                 <rect key="frame" x="86" y="241" width="243" height="39"/>
                                 <color key="backgroundColor" red="0.3456629745" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="39" id="f6Z-iN-Ewk"/>
+                                </constraints>
                                 <state key="normal" title="BabyParking Start"/>
                                 <connections>
                                     <segue destination="wGc-ko-QeX" kind="show" id="BfY-T8-Ja4"/>
@@ -81,6 +96,28 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="CIc-P2-2dy" firstAttribute="top" secondItem="rdH-U4-03i" secondAttribute="bottom" constant="27" id="4v8-SI-4Nu"/>
+                            <constraint firstItem="v8o-5H-NjD" firstAttribute="trailing" secondItem="CIc-P2-2dy" secondAttribute="trailing" id="6MF-Ip-NNt"/>
+                            <constraint firstItem="zuY-yt-ofC" firstAttribute="leading" secondItem="7H2-74-5aE" secondAttribute="leadingMargin" constant="6" id="8me-lY-76o"/>
+                            <constraint firstItem="9Nt-Dx-zIi" firstAttribute="leading" secondItem="v8o-5H-NjD" secondAttribute="leading" id="AzU-k5-5az"/>
+                            <constraint firstItem="CIc-P2-2dy" firstAttribute="trailing" secondItem="rdH-U4-03i" secondAttribute="trailing" id="CcA-k5-SL3"/>
+                            <constraint firstItem="CIc-P2-2dy" firstAttribute="leading" secondItem="v8o-5H-NjD" secondAttribute="leading" id="G89-xN-Kry"/>
+                            <constraint firstItem="qV9-9T-SKT" firstAttribute="top" secondItem="bfX-Jx-FRW" secondAttribute="bottom" constant="40" id="GyP-eq-fZa"/>
+                            <constraint firstItem="CIc-P2-2dy" firstAttribute="leading" secondItem="rdH-U4-03i" secondAttribute="leading" id="H0n-b3-mU6"/>
+                            <constraint firstItem="CIc-P2-2dy" firstAttribute="centerX" secondItem="7H2-74-5aE" secondAttribute="centerX" id="IRA-uw-XDC"/>
+                            <constraint firstItem="v8o-5H-NjD" firstAttribute="top" secondItem="CIc-P2-2dy" secondAttribute="bottom" constant="44" id="Mw5-4a-bm9"/>
+                            <constraint firstItem="HFB-Y0-exv" firstAttribute="top" secondItem="zuY-yt-ofC" secondAttribute="bottom" constant="14" id="Uhb-Cw-c0S"/>
+                            <constraint firstItem="bfX-Jx-FRW" firstAttribute="trailing" secondItem="qV9-9T-SKT" secondAttribute="trailing" id="VAd-Wq-nSt"/>
+                            <constraint firstItem="rdH-U4-03i" firstAttribute="leading" secondItem="7H2-74-5aE" secondAttribute="leadingMargin" constant="66" id="a9P-zf-wnC"/>
+                            <constraint firstItem="9Nt-Dx-zIi" firstAttribute="trailing" secondItem="bfX-Jx-FRW" secondAttribute="trailing" id="aca-E0-aYi"/>
+                            <constraint firstItem="HFB-Y0-exv" firstAttribute="top" secondItem="qV9-9T-SKT" secondAttribute="bottom" constant="67" id="bTd-m0-0Cs"/>
+                            <constraint firstItem="9Nt-Dx-zIi" firstAttribute="leading" secondItem="bfX-Jx-FRW" secondAttribute="leading" id="fgm-1k-4cw"/>
+                            <constraint firstItem="v8o-5H-NjD" firstAttribute="trailing" secondItem="9Nt-Dx-zIi" secondAttribute="trailing" id="h4i-uV-xS2"/>
+                            <constraint firstItem="qV9-9T-SKT" firstAttribute="leading" secondItem="bfX-Jx-FRW" secondAttribute="leading" id="kfe-Af-BpB"/>
+                            <constraint firstItem="rdH-U4-03i" firstAttribute="top" secondItem="rQg-fi-Loh" secondAttribute="bottom" constant="164" id="rq3-Q3-ROH"/>
+                            <constraint firstItem="bfX-Jx-FRW" firstAttribute="top" secondItem="9Nt-Dx-zIi" secondAttribute="bottom" constant="16" id="vs0-40-VPh"/>
+                        </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                 </viewController>
@@ -272,7 +309,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HoQ-w2-7aC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1794" y="1828"/>
+            <point key="canvasLocation" x="1730" y="1688"/>
         </scene>
         <!--Bot Control Test View Controller-->
         <scene sceneID="PXb-he-fbD">
@@ -648,46 +685,38 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yde-KS-p1M">
-                                <rect key="frame" x="272" y="419" width="57" height="30"/>
+                                <rect key="frame" x="26" y="424" width="57" height="30"/>
                                 <state key="normal" title="Settings"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DFH-Y0-LI1">
-                                <rect key="frame" x="257" y="234" width="72" height="30"/>
+                                <rect key="frame" x="104" y="240" width="132" height="30"/>
+                                <color key="backgroundColor" red="1" green="0.44440686616864666" blue="0.93536463813991266" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Start Baby"/>
                                 <connections>
                                     <action selector="start:" destination="wGc-ko-QeX" eventType="touchUpInside" id="GcA-3o-XvK"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Nearest Beacon: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CSF-6b-IXk">
-                                <rect key="frame" x="50" y="70" width="131" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eXg-HC-rkb">
-                                <rect key="frame" x="279" y="58" width="42" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A3D-mv-936">
-                                <rect key="frame" x="258" y="272" width="71" height="30"/>
+                                <rect key="frame" x="105" y="278" width="131" height="30"/>
+                                <color key="backgroundColor" red="0.36864971217737397" green="0.98001035098926714" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Stop Baby"/>
                                 <connections>
                                     <action selector="stop:" destination="wGc-ko-QeX" eventType="touchUpInside" id="LHg-cV-FVh"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b3R-Uc-7KN">
-                                <rect key="frame" x="188" y="70" width="11" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tJg-0y-iYa">
-                                <rect key="frame" x="265" y="370" width="70" height="30"/>
+                                <rect key="frame" x="20" y="391" width="43" height="30"/>
                                 <state key="normal" title="Back"/>
                                 <connections>
                                     <segue destination="f9E-4d-Z3P" kind="show" id="epf-xT-H2v"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TYn-uW-MeH">
+                                <rect key="frame" x="251" y="240" width="136" height="30"/>
+                                <color key="backgroundColor" red="0.32651318033533061" green="1" blue="0.21423689079559516" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Start Scan Baby"/>
+                                <connections>
+                                    <action selector="startWatch:" destination="wGc-ko-QeX" eventType="touchUpInside" id="3wE-Gx-9Xb"/>
                                 </connections>
                             </button>
                         </subviews>

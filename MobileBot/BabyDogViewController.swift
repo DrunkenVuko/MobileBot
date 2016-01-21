@@ -202,7 +202,7 @@ class BabyDogViewController: UIViewController{
     
     func stop()
     {
-        printText("stopOrDrive() no");
+        self.logger.log(.Info, data: "stopOrDrive() no");
         bc?.move(0, omega: 0, completion: nil);
         
     }
@@ -210,7 +210,7 @@ class BabyDogViewController: UIViewController{
     func drive()
     {
         
-        printText("stopOrDrive() yes");
+        self.logger.log(.Info, data: "stopOrDrive() yes");
         bc?.move(self.velocity, omega: 0, completion: nil);
         
     }

@@ -41,10 +41,44 @@ class BabyParking: UIViewController {
     var parkingLotSize: Int32 = 20
     
     var positiondata: (Float, Float, Float) = (0, 0, 0)
-    var parkStart: (Float, Float, Float) = (0, 0, 0)
-    var inParkingLot = false
+    var timerCounter: NSTimer = NSTimer()
     
+    // Kontrollvariablen
+    var frontScan: Bool = true
+    var stopMoving: Bool = true
+    var foundWallFront: Bool = false
+    var pingFront: Float = 0.0
+    var whichWall: Int = 0
+    var finished: Bool = false
+    var log: Bool = true
     
+    // Neue 100% Sichere Vars
+    var posDoorRightX: Int = 50
+    var posDoorRightY: Int = -180
+    var timerDriveRight: NSTimer = NSTimer()
+    var velocity: Float = 10
+    
+    func reset(){
+        self.bc?.resetPosition({ () -> Void in
+            self.logger.log(.Info, data: "Reset Robo Position");
+        });
+    }
+    
+    @IBAction func startWatch(sender: AnyObject) {
+        if(finished == false){
+            reset()
+            logger.log(.Info, data: "Start Action Watchdog");
+            //self.whichWall = 0
+            
+//            self.timerCounter = NSTimer.scheduledTimerWithTimeInterval(1, target:self, selector: Selector("updateCounter"), userInfo: nil, repeats: true)
+            
+            driveAndDetect()
+            
+        }else{
+            Toaster.show("Scan-Vorgang noch nicht beendet")
+        }
+        
+    }
     
     @IBAction func start(sender: AnyObject) {
         self.startAction()
@@ -117,12 +151,8 @@ class BabyParking: UIViewController {
         })
         
     }
-    
-    
-    
 
-    func beaconStartAction()
-    {
+    func beaconStartAction(){
         
         createConnection()
         bc?.resetPosition(nil);
@@ -227,9 +257,6 @@ class BabyParking: UIViewController {
 
                                     if(scanBugFlag >= 5.0){
                                         self.logger.log(.Info, data: "BabyParking: intruder detected");
-                                        
-                                        
-                                        //self.inParkingLot = true
                                         self.someoneAtDoor = true
                                         
                                         self.bc?.stopRangeScan({
@@ -240,10 +267,6 @@ class BabyParking: UIViewController {
                                                 
                                             });
                                         });
-
-                                        
-                                        
-                                        //self.parkStart = self.positiondata
                                         
                                         self.sendAlarm("Alarm!");
                                         
@@ -290,16 +313,6 @@ class BabyParking: UIViewController {
     
     func goToDoor(){
         self.logger.log(.Info, data: "goToDoor");
-        
-        //zuerst zur linkem tuerrand fahren
-        /*self.bn?.moveToWithoutObstacle(CGPointMake(CGFloat(POINT_1.0), CGFloat(POINT_1.0)), completion: { data in
-        self.logger.log(.Info, data: "baby: MOVE TO doorpoint LEFT finished");
-        //beginnend von links nach rechts zu patroullieren
-        self.alarm
-        self.patrol(false);
-        
-        })*/
-        
         self.patrol(false)
         
         
@@ -307,6 +320,97 @@ class BabyParking: UIViewController {
     
     func sendAlarm(message: String){
         Toaster.show(message);
+    }
+    
+    func driveAndDetect(){
+
+        if(stopMoving == true)
+        {
+            drive()
+            self.timerCounter = NSTimer.scheduledTimerWithTimeInterval(1, target:self, selector: Selector("checkFrontToDoor"),userInfo: nil, repeats: true)
+        }
+        
+    }
+    
+    func drive(){
+        self.logger.log(.Info, data: "drive()");
+        bc?.move(self.velocity, omega: 0, completion: nil);
+        
+    }
+    func checkFrontToDoor(){
+        self.logger.log(.Info, data: "checkFrontToDoor()");
+        self.bc?.scanRange(85, max: 95, inc: 5, callback: { data in
+            
+            if(data.pingDistance <= 20 && data.pingDistance > 5)
+            {
+                self.stop()
+                self.stopRangeScan()
+                self.turnLeft()
+                self.timerDriveRight = NSTimer.scheduledTimerWithTimeInterval(8.0, target: self, selector: "checkFrontForEvent", userInfo: nil, repeats: false)
+                
+            }
+        });
+    }
+    
+    func turnRight( ){
+        if let bn = bn {                   //bn.turnSpeed
+            bn.turnToAngle(Float(-180), speed: Float(15), completion: { [weak self] data in
+                self!.bc?.resetPosition({[weak self] data in  });
+                //self!.bc?.resetForwardKincematics({[weak self] data in  });
+                });
+        }
+    }
+    
+    func turnLeft( ){
+        if let bn = bn {                   //bn.turnSpeed
+            bn.turnToAngle(Float(90), speed: Float(15), completion: { [weak self] data in
+                self!.bc?.resetPosition({[weak self] data in  });
+                //self!.bc?.resetForwardKincematics({[weak self] data in  });
+                });
+        }
+        
+    }
+    func stopRangeScan(){
+        self.bc?.stopRangeScan({ [weak self] in
+            self?.logger.log(.Info, data: "scan stopped")
+            });
+    }
+    func checkFrontForEvent(){
+        self.logger.log(.Info, data: "checkFrontForEvent()");
+        self.bc?.scanRange(85, max: 95, inc: 5, callback: { data in
+            
+            if(data.pingDistance <= 50 && data.pingDistance > 5)
+            {
+                self.stopRangeScan()
+                self.driveHome()
+                
+            }
+        });
+    }
+    func driveHome(){
+        if(stopMoving == true)
+        {
+            turnLeft()
+            timerDriveRight = NSTimer.scheduledTimerWithTimeInterval(8.0, target: self, selector: "drive", userInfo: nil, repeats: false)
+            self.timerCounter = NSTimer.scheduledTimerWithTimeInterval(3, target:self, selector: Selector("checkFrontToHome"),userInfo: nil, repeats: true)
+        }
+    }
+    func checkFrontToHome()
+    {
+        self.logger.log(.Info, data: "checkFrontToHome()");
+        self.bc?.scanRange(85, max: 95, inc: 5, callback: { data in
+            if(data.pingDistance <= 20 && data.pingDistance > 5)
+            {
+                self.stop()
+                self.stopRangeScan()
+                self.turnRight()
+            }
+        });
+    }
+    func stop() {
+        self.logger.log(.Info, data: "stop");
+        bc?.move(0, omega: 0, completion: nil);
+        
     }
     
 }
