@@ -1,27 +1,18 @@
 //
-//  BabyParking.swift
+//  BabysitterBot.swift
 //  MobileBot
 //
-//  Created by Bianca Baier on 20.01.16.
-//  Copyright © 2016 Goran Vukovic. All rights reserved.
+//  Created by Bianca Ciuperca-Baier, Leonie Wismeth, Goran Vukovic on 10.10.15.
+//
 //
 
 import Foundation
-
-//
-//  ParkingBot.swift
-//  MobileBot
-//
-//  Created by Betty van Aken on 17.12.15.
-//  Copyright © 2015 Goran Vukovic. All rights reserved.
-//
-
 import UIKit
 
 /**
- * Diese Klasse dient dem Use Case : ParkingBot
+ * Diese Klasse dient dem Use Case : BabysitterBot
  */
-class BabyParking: UIViewController {
+class BabysitterBot: UIViewController {
     
     // Point coordinates
     
@@ -38,10 +29,14 @@ class BabyParking: UIViewController {
     var stopped = false
     var someoneAtDoor: Bool = false
     
-    var parkingLotSize: Int32 = 20
-    
     var positiondata: (Float, Float, Float) = (0, 0, 0)
+    
+    // Timer
     var timerCounter: NSTimer = NSTimer()
+    var timerScanFront: NSTimer = NSTimer()
+    var timerScanRight: NSTimer = NSTimer()
+    var timerDrive: NSTimer = NSTimer()
+    var timerX: NSTimer = NSTimer()
     
     // Kontrollvariablen
     var frontScan: Bool = true
@@ -63,14 +58,20 @@ class BabyParking: UIViewController {
             self.logger.log(.Info, data: "Reset Robo Position");
         });
     }
-    
+    func updateCounter() {
+        //        counter++
+        //        counterMod = counter % 4
+        //        counterSingle++
+        //        labelCounter.text = String(counter)
+        //        labelFrontModulo.text = String(counterMod)
+    }
     @IBAction func startWatch(sender: AnyObject) {
         if(finished == false){
             reset()
             logger.log(.Info, data: "Start Action Watchdog");
             //self.whichWall = 0
             
-//            self.timerCounter = NSTimer.scheduledTimerWithTimeInterval(1, target:self, selector: Selector("updateCounter"), userInfo: nil, repeats: true)
+            self.timerCounter = NSTimer.scheduledTimerWithTimeInterval(1, target:self, selector: Selector("updateCounter"), userInfo: nil, repeats: true)
             
             driveAndDetect()
             
@@ -327,7 +328,7 @@ class BabyParking: UIViewController {
         if(stopMoving == true)
         {
             drive()
-            self.timerCounter = NSTimer.scheduledTimerWithTimeInterval(1, target:self, selector: Selector("checkFrontToDoor"),userInfo: nil, repeats: true)
+            self.timerScanFront = NSTimer.scheduledTimerWithTimeInterval(1, target:self, selector: Selector("checkFrontToDoor"),userInfo: nil, repeats: true)
         }
         
     }
@@ -344,6 +345,7 @@ class BabyParking: UIViewController {
             if(data.pingDistance <= 20 && data.pingDistance > 5)
             {
                 self.stop()
+                self.stopTimerScan()
                 self.stopRangeScan()
                 self.turnLeft()
                 self.timerDriveRight = NSTimer.scheduledTimerWithTimeInterval(8.0, target: self, selector: "checkFrontForEvent", userInfo: nil, repeats: false)
@@ -381,6 +383,7 @@ class BabyParking: UIViewController {
             
             if(data.pingDistance <= 50 && data.pingDistance > 5)
             {
+                self.stopTimerScan()
                 self.stopRangeScan()
                 self.driveHome()
                 
@@ -392,7 +395,7 @@ class BabyParking: UIViewController {
         {
             turnLeft()
             timerDriveRight = NSTimer.scheduledTimerWithTimeInterval(8.0, target: self, selector: "drive", userInfo: nil, repeats: false)
-            self.timerCounter = NSTimer.scheduledTimerWithTimeInterval(3, target:self, selector: Selector("checkFrontToHome"),userInfo: nil, repeats: true)
+            self.timerScanFront = NSTimer.scheduledTimerWithTimeInterval(9.0, target:self, selector: Selector("checkFrontToHome"),userInfo: nil, repeats: true)
         }
     }
     func checkFrontToHome()
@@ -402,11 +405,20 @@ class BabyParking: UIViewController {
             if(data.pingDistance <= 20 && data.pingDistance > 5)
             {
                 self.stop()
+                self.stopTimerScan()
                 self.stopRangeScan()
                 self.turnRight()
+                
+                
             }
         });
     }
+    
+    func stopTimerScan(){
+        self.timerScanFront.invalidate()
+        self.timerDriveRight.invalidate()
+    }
+    
     func stop() {
         self.logger.log(.Info, data: "stop");
         bc?.move(0, omega: 0, completion: nil);

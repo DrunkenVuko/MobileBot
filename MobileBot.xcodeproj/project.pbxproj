@@ -7,15 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A66C92691C4FE9C7009E9CAF /* BabyParking.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66C92681C4FE9C7009E9CAF /* BabyParking.swift */; };
-		A6CC24EF1C46C04000B7C9D4 /* WatchdogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6CC24EE1C46C04000B7C9D4 /* WatchdogViewController.swift */; };
-		AF6504E81C47A52D009EF956 /* BabyDogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6504E71C47A52D009EF956 /* BabyDogViewController.swift */; };
+		A66C92691C4FE9C7009E9CAF /* BabysitterBot.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66C92681C4FE9C7009E9CAF /* BabysitterBot.swift */; };
+		AF632AC41C5117F700270027 /* RaumvermesserBot.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF632AC31C5117F700270027 /* RaumvermesserBot.swift */; };
 		B84142191C070EED007E4270 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84142181C070EED007E4270 /* AppDelegate.swift */; };
 		B84142231C070EED007E4270 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B84142221C070EED007E4270 /* Assets.xcassets */; };
 		B84142261C070EED007E4270 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B84142241C070EED007E4270 /* LaunchScreen.storyboard */; };
 		B84142311C070EEE007E4270 /* MobileBotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84142301C070EEE007E4270 /* MobileBotTests.swift */; };
 		B841423C1C070EEE007E4270 /* MobileBotUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B841423B1C070EEE007E4270 /* MobileBotUITests.swift */; };
-		B841428D1C070FB5007E4270 /* BabysitterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B841426B1C070FB5007E4270 /* BabysitterViewController.swift */; };
 		B841428F1C070FB5007E4270 /* BotConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = B841426E1C070FB5007E4270 /* BotConnection.m */; };
 		B84142901C070FB5007E4270 /* BotConnectionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B84142701C070FB5007E4270 /* BotConnectionManager.m */; };
 		B84142911C070FB5007E4270 /* BotController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84142711C070FB5007E4270 /* BotController.swift */; };
@@ -69,9 +67,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		A66C92681C4FE9C7009E9CAF /* BabyParking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BabyParking.swift; sourceTree = "<group>"; };
-		A6CC24EE1C46C04000B7C9D4 /* WatchdogViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchdogViewController.swift; sourceTree = "<group>"; };
-		AF6504E71C47A52D009EF956 /* BabyDogViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BabyDogViewController.swift; sourceTree = "<group>"; };
+		A66C92681C4FE9C7009E9CAF /* BabysitterBot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BabysitterBot.swift; sourceTree = "<group>"; };
+		AF632AC31C5117F700270027 /* RaumvermesserBot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RaumvermesserBot.swift; sourceTree = "<group>"; };
 		B84142151C070EED007E4270 /* MobileBot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MobileBot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B84142181C070EED007E4270 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B84142221C070EED007E4270 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -84,7 +81,6 @@
 		B841423B1C070EEE007E4270 /* MobileBotUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobileBotUITests.swift; sourceTree = "<group>"; };
 		B841423D1C070EEE007E4270 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B841426A1C070FB5007E4270 /* MobileBot-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MobileBot-Bridging-Header.h"; sourceTree = "<group>"; };
-		B841426B1C070FB5007E4270 /* BabysitterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BabysitterViewController.swift; sourceTree = "<group>"; };
 		B841426D1C070FB5007E4270 /* BotConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BotConnection.h; sourceTree = "<group>"; };
 		B841426E1C070FB5007E4270 /* BotConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BotConnection.m; sourceTree = "<group>"; };
 		B841426F1C070FB5007E4270 /* BotConnectionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BotConnectionManager.h; sourceTree = "<group>"; };
@@ -292,10 +288,8 @@
 			isa = PBXGroup;
 			children = (
 				B895E98A1C21B1EA00BDFE04 /* UseCaseManager.swift */,
-				B841426B1C070FB5007E4270 /* BabysitterViewController.swift */,
-				A6CC24EE1C46C04000B7C9D4 /* WatchdogViewController.swift */,
-				AF6504E71C47A52D009EF956 /* BabyDogViewController.swift */,
-				A66C92681C4FE9C7009E9CAF /* BabyParking.swift */,
+				A66C92681C4FE9C7009E9CAF /* BabysitterBot.swift */,
+				AF632AC31C5117F700270027 /* RaumvermesserBot.swift */,
 			);
 			name = "Use-Cases";
 			sourceTree = "<group>";
@@ -454,21 +448,19 @@
 			files = (
 				B84142A21C070FB5007E4270 /* TestHardwareController.swift in Sources */,
 				B84142901C070FB5007E4270 /* BotConnectionManager.m in Sources */,
-				B841428D1C070FB5007E4270 /* BabysitterViewController.swift in Sources */,
 				B84142961C070FB5007E4270 /* CommandQueue.swift in Sources */,
 				B841429D1C070FB5007E4270 /* ProtocolCommandField.m in Sources */,
 				B895E98B1C21B1EA00BDFE04 /* UseCaseManager.swift in Sources */,
 				B84142A31C070FB5007E4270 /* Toaster.swift in Sources */,
-				A6CC24EF1C46C04000B7C9D4 /* WatchdogViewController.swift in Sources */,
 				B84142921C070FB5007E4270 /* BotControlTestViewController.swift in Sources */,
+				AF632AC41C5117F700270027 /* RaumvermesserBot.swift in Sources */,
 				B841429A1C070FB5007E4270 /* PersistableRegion.swift in Sources */,
 				B84142941C070FB5007E4270 /* BotUtils.swift in Sources */,
 				B84142971C070FB5007E4270 /* DashViewController.swift in Sources */,
 				B84142191C070EED007E4270 /* AppDelegate.swift in Sources */,
 				B841429F1C070FB5007E4270 /* SettingsViewController.swift in Sources */,
-				AF6504E81C47A52D009EF956 /* BabyDogViewController.swift in Sources */,
 				B84142991C070FB5007E4270 /* MobileBot.xcdatamodeld in Sources */,
-				A66C92691C4FE9C7009E9CAF /* BabyParking.swift in Sources */,
+				A66C92691C4FE9C7009E9CAF /* BabysitterBot.swift in Sources */,
 				B84142A01C070FB5007E4270 /* Stream.swift in Sources */,
 				B84142931C070FB5007E4270 /* BotNavigator.swift in Sources */,
 				B84142A11C070FB5007E4270 /* StreamableLogger.swift in Sources */,
