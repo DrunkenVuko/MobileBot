@@ -9,7 +9,7 @@
 import UIKit
 
 /**
- * Diese Klasse dient dem Use Case : ParkingBot
+ * Class for Use Case : ParkingBot
  */
 class ParkingBot: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -56,6 +56,13 @@ class ParkingBot: UIViewController, UITableViewDelegate, UITableViewDataSource {
         self.stopAction()
     }
     
+    /**
+     * When view did load:
+     * - Create connection
+     * - Reset robo connection
+     * - Setup notifications
+     * - Setup Table View
+     **/
     override func viewDidLoad() {
         super.viewDidLoad();
         
@@ -211,7 +218,9 @@ class ParkingBot: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     
     /**
-    * Diese Bewegungs-Funktion dient dem ParkingBot Use Case
+    * Move Robo to coordinate while scanning at specific angle
+    * Saves Parking Lot Start Position, when detected
+    * and sends Notifications to Observers when a parking lot ended
     **/
     func moveToWithScan(point: CGPoint, scanAngle: UInt8, completion: ((ForwardKinematicsData) -> ())? ) {
         self.bc?.stopRangeScan({
@@ -221,8 +230,7 @@ class ParkingBot: UIViewController, UITableViewDelegate, UITableViewDataSource {
                 self.bc?.startUpdatingPosition(true, completion: { data in
                     self.logger.log(.Info, data: "current position: \(data)");
                     
-                    // Wenn der Roboter bereits im Zielrechteck ist, soll er nicht starten
-                    // Berechnung des Rechtecks um den Zielpunkt
+                    // Don't move when already in destination rectangle
                     let dest = CGRectMake(point.x, point.y, 0, 0);
                     let destWithInset = CGRectInset(dest, -1.0, -1.0);
                     let currentPoint = CGPointMake(CGFloat(data.x), CGFloat(data.y));
@@ -237,7 +245,7 @@ class ParkingBot: UIViewController, UITableViewDelegate, UITableViewDataSource {
                         let angle = atan2f(Float(point.y) - data.y, Float(point.x) - data.x);
                         let degrees = angle * 180 / 3.14;
                         
-                        // Roboter dreht sich in die richtige Richtung
+                        // Roboter turns to angle
                         self.bn?.turnToAngle(degrees, speed: (self.bn?.speed)!, completion: { data in
                             let startingPoint = CGPointMake(CGFloat(data.x), CGFloat(data.y));
                             var previousDistance = BotUtils.distance(from: startingPoint, to: point);
@@ -248,7 +256,8 @@ class ParkingBot: UIViewController, UITableViewDelegate, UITableViewDataSource {
                             
                             self.bc?.startMovingWithPositionalUpdate((self.bn?.speed)!, omega: 0, callback: { data in
                                 self.positiondata = data
-                                // Berechnung des Rechtecks um den Zielpunkt
+                                
+                                // Calculation of destination rectangle
                                 let angle = atan2f(Float(point.y) - data.y, Float(point.x) - data.x);
                                 let degrees = angle * 180 / 3.14;
                                 let currentPoint = CGPointMake(CGFloat(data.x), CGFloat(data.y));
@@ -272,8 +281,8 @@ class ParkingBot: UIViewController, UITableViewDelegate, UITableViewDataSource {
                                 previousDistance = currentDistance;
                             });
                             
-                            // flag welches verhindern soll dass ein Hindernis vom Roboter wahrgenommen wird, wenn keines vorhanden ist
-                            // es muss mehrere male hintereinander vom Roboter gesendet werden, dass sich etwas vor ihm befindet
+                            // Flag that prevents saving buggy distance values
+                            // Distance needs to be over a threshold more than 2 times to be counted
                             var scanBugFlag = 0.0
                             
                             self.bc?.scanRange(scanAngle, max: scanAngle, inc: 0, callback: { scandata in
@@ -319,7 +328,7 @@ class ParkingBot: UIViewController, UITableViewDelegate, UITableViewDataSource {
         })
     }
     
-    // der Roboter hat seine Zielposition erreicht. Es wird die Endaktion ausgeführt
+    // Robo reached end position
     func destinationReached(completion: ((ForwardKinematicsData) -> ())?) {
         self.bc?.stopMovingWithPositionalUpdate({
             self.bc?.startUpdatingPosition(true, completion: { data in
@@ -330,6 +339,7 @@ class ParkingBot: UIViewController, UITableViewDelegate, UITableViewDataSource {
         
         self.bc?.stopRangeScan({});
         
+        // Ends the current parking lot
         if(self.inParkingLot){
             self.logger.log(.Info, data: "EMPTY PARKING SPACE ENDED AT \(self.positiondata)");
             
