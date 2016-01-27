@@ -125,8 +125,9 @@ class BabysitterBot: UIViewController {
     }
     
     /**
-     * Sends the roboter from one street point to the other
-     * Scans for empty parking lots in between
+     * Sends the roboter from door point one to door point 2 
+     * door point 1 <-----> door point 2
+     * During the patrol, the roboter scans if an intruder was detected
      */
     func patrol(back: Bool){
         
@@ -184,7 +185,7 @@ class BabysitterBot: UIViewController {
     
     
     /**
-    * Diese Bewegungs-Funktion dient dem ParkingBot Use Case
+    * Diese Bewegungs-Funktion dient dem BabysitterBot Use Case
     **/
     func moveToWithScan(point: CGPoint, scanAngle: UInt8, completion: ((ForwardKinematicsData) -> ())? ) {
         self.bc?.stopRangeScan({
@@ -257,7 +258,7 @@ class BabysitterBot: UIViewController {
                                 if(scandata.pingDistance > 0 && scandata.pingDistance < 35) {
 
                                     if(scanBugFlag >= 5.0){
-                                        self.logger.log(.Info, data: "BabyParking: intruder detected");
+                                        self.logger.log(.Info, data: "BabysitterBot: intruder detected");
                                         self.someoneAtDoor = true
                                         
                                         self.bc?.stopRangeScan({
