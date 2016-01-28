@@ -7,14 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A66C92691C4FE9C7009E9CAF /* BabysitterBot.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66C92681C4FE9C7009E9CAF /* BabysitterBot.swift */; };
+		AF632AC41C5117F700270027 /* RaumvermesserBot.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF632AC31C5117F700270027 /* RaumvermesserBot.swift */; };
 		B84142191C070EED007E4270 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84142181C070EED007E4270 /* AppDelegate.swift */; };
-		B84142211C070EED007E4270 /* MobileBot.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B841421F1C070EED007E4270 /* MobileBot.xcdatamodeld */; };
 		B84142231C070EED007E4270 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B84142221C070EED007E4270 /* Assets.xcassets */; };
 		B84142261C070EED007E4270 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B84142241C070EED007E4270 /* LaunchScreen.storyboard */; };
 		B84142311C070EEE007E4270 /* MobileBotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84142301C070EEE007E4270 /* MobileBotTests.swift */; };
 		B841423C1C070EEE007E4270 /* MobileBotUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B841423B1C070EEE007E4270 /* MobileBotUITests.swift */; };
-		B841428D1C070FB5007E4270 /* BabysitterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B841426B1C070FB5007E4270 /* BabysitterViewController.swift */; };
-		B841428E1C070FB5007E4270 /* beaconSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = B841426C1C070FB5007E4270 /* beaconSettings.swift */; };
 		B841428F1C070FB5007E4270 /* BotConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = B841426E1C070FB5007E4270 /* BotConnection.m */; };
 		B84142901C070FB5007E4270 /* BotConnectionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B84142701C070FB5007E4270 /* BotConnectionManager.m */; };
 		B84142911C070FB5007E4270 /* BotController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84142711C070FB5007E4270 /* BotController.swift */; };
@@ -35,14 +34,19 @@
 		B84142A21C070FB5007E4270 /* TestHardwareController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84142891C070FB5007E4270 /* TestHardwareController.swift */; };
 		B84142A31C070FB5007E4270 /* Toaster.swift in Sources */ = {isa = PBXBuildFile; fileRef = B841428A1C070FB5007E4270 /* Toaster.swift */; };
 		B84142A41C070FB5007E4270 /* UILocalNotificationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B841428B1C070FB5007E4270 /* UILocalNotificationExtension.swift */; };
-		B84142CA1C071178007E4270 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B84142C51C071178007E4270 /* CoreGraphics.framework */; };
-		B84142CB1C071178007E4270 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B84142C61C071178007E4270 /* UIKit.framework */; };
-		B84142CC1C071178007E4270 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B84142C71C071178007E4270 /* CoreLocation.framework */; };
-		B84142CD1C071178007E4270 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B84142C81C071178007E4270 /* CoreBluetooth.framework */; };
-		B84142CE1C071178007E4270 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B84142C91C071178007E4270 /* Foundation.framework */; };
-		B84142D01C071196007E4270 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B84142CF1C071196007E4270 /* AVFoundation.framework */; };
-		B84142D21C071287007E4270 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B84142D11C071287007E4270 /* Accelerate.framework */; };
 		B84142D41C0713B6007E4270 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B84142D31C0713B6007E4270 /* Main.storyboard */; };
+		B895E98B1C21B1EA00BDFE04 /* UseCaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B895E98A1C21B1EA00BDFE04 /* UseCaseManager.swift */; };
+		B895E9A01C21B43B00BDFE04 /* beaconmanager.de.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B895E99F1C21B43B00BDFE04 /* beaconmanager.de.framework */; };
+		B895E9A21C21B44D00BDFE04 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B895E9A11C21B44D00BDFE04 /* CoreBluetooth.framework */; };
+		B895E9A41C21B45300BDFE04 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B895E9A31C21B45300BDFE04 /* CoreData.framework */; };
+		B895E9A61C21B45900BDFE04 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B895E9A51C21B45900BDFE04 /* Accelerate.framework */; };
+		B895E9A81C21B45F00BDFE04 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B895E9A71C21B45F00BDFE04 /* Security.framework */; };
+		B895E9AA1C21B46800BDFE04 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B895E9A91C21B46800BDFE04 /* NotificationCenter.framework */; };
+		B895E9AC1C21B46D00BDFE04 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B895E9AB1C21B46D00BDFE04 /* MapKit.framework */; };
+		B895E9AE1C21B47300BDFE04 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B895E9AD1C21B47300BDFE04 /* CoreLocation.framework */; };
+		B895E9B11C21B5DD00BDFE04 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B895E9AF1C21B5DD00BDFE04 /* libz.dylib */; };
+		B895E9B21C21B5DD00BDFE04 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B895E9B01C21B5DD00BDFE04 /* libxml2.dylib */; };
+		B8BF80E81C21C41D00FA890C /* beaconmanager.de.res.bundle in Resources */ = {isa = PBXBuildFile; fileRef = B8BF80E71C21C41D00FA890C /* beaconmanager.de.res.bundle */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,9 +67,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A66C92681C4FE9C7009E9CAF /* BabysitterBot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BabysitterBot.swift; sourceTree = "<group>"; };
+		AF632AC31C5117F700270027 /* RaumvermesserBot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RaumvermesserBot.swift; sourceTree = "<group>"; };
 		B84142151C070EED007E4270 /* MobileBot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MobileBot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B84142181C070EED007E4270 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		B84142201C070EED007E4270 /* MobileBot.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MobileBot.xcdatamodel; sourceTree = "<group>"; };
 		B84142221C070EED007E4270 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B84142251C070EED007E4270 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B84142271C070EED007E4270 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -76,8 +81,6 @@
 		B841423B1C070EEE007E4270 /* MobileBotUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobileBotUITests.swift; sourceTree = "<group>"; };
 		B841423D1C070EEE007E4270 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B841426A1C070FB5007E4270 /* MobileBot-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MobileBot-Bridging-Header.h"; sourceTree = "<group>"; };
-		B841426B1C070FB5007E4270 /* BabysitterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BabysitterViewController.swift; sourceTree = "<group>"; };
-		B841426C1C070FB5007E4270 /* beaconSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = beaconSettings.swift; sourceTree = "<group>"; };
 		B841426D1C070FB5007E4270 /* BotConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BotConnection.h; sourceTree = "<group>"; };
 		B841426E1C070FB5007E4270 /* BotConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BotConnection.m; sourceTree = "<group>"; };
 		B841426F1C070FB5007E4270 /* BotConnectionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BotConnectionManager.h; sourceTree = "<group>"; };
@@ -106,14 +109,19 @@
 		B84142891C070FB5007E4270 /* TestHardwareController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestHardwareController.swift; sourceTree = "<group>"; };
 		B841428A1C070FB5007E4270 /* Toaster.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Toaster.swift; sourceTree = "<group>"; };
 		B841428B1C070FB5007E4270 /* UILocalNotificationExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UILocalNotificationExtension.swift; sourceTree = "<group>"; };
-		B84142C51C071178007E4270 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		B84142C61C071178007E4270 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		B84142C71C071178007E4270 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
-		B84142C81C071178007E4270 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
-		B84142C91C071178007E4270 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		B84142CF1C071196007E4270 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
-		B84142D11C071287007E4270 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		B84142D31C0713B6007E4270 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		B895E98A1C21B1EA00BDFE04 /* UseCaseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UseCaseManager.swift; sourceTree = "<group>"; };
+		B895E99F1C21B43B00BDFE04 /* beaconmanager.de.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = beaconmanager.de.framework; path = beaconmanager_sdk/Framework/beaconmanager.de.framework; sourceTree = "<group>"; };
+		B895E9A11C21B44D00BDFE04 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
+		B895E9A31C21B45300BDFE04 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		B895E9A51C21B45900BDFE04 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		B895E9A71C21B45F00BDFE04 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		B895E9A91C21B46800BDFE04 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
+		B895E9AB1C21B46D00BDFE04 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		B895E9AD1C21B47300BDFE04 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		B895E9AF1C21B5DD00BDFE04 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SOURCE_ROOT; };
+		B895E9B01C21B5DD00BDFE04 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SOURCE_ROOT; };
+		B8BF80E71C21C41D00FA890C /* beaconmanager.de.res.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = beaconmanager.de.res.bundle; path = beaconmanager_sdk/Framework/beaconmanager.de.res.bundle; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,13 +129,16 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B84142D21C071287007E4270 /* Accelerate.framework in Frameworks */,
-				B84142D01C071196007E4270 /* AVFoundation.framework in Frameworks */,
-				B84142CA1C071178007E4270 /* CoreGraphics.framework in Frameworks */,
-				B84142CB1C071178007E4270 /* UIKit.framework in Frameworks */,
-				B84142CC1C071178007E4270 /* CoreLocation.framework in Frameworks */,
-				B84142CD1C071178007E4270 /* CoreBluetooth.framework in Frameworks */,
-				B84142CE1C071178007E4270 /* Foundation.framework in Frameworks */,
+				B895E9AE1C21B47300BDFE04 /* CoreLocation.framework in Frameworks */,
+				B895E9AC1C21B46D00BDFE04 /* MapKit.framework in Frameworks */,
+				B895E9AA1C21B46800BDFE04 /* NotificationCenter.framework in Frameworks */,
+				B895E9A81C21B45F00BDFE04 /* Security.framework in Frameworks */,
+				B895E9A61C21B45900BDFE04 /* Accelerate.framework in Frameworks */,
+				B895E9B11C21B5DD00BDFE04 /* libz.dylib in Frameworks */,
+				B895E9A41C21B45300BDFE04 /* CoreData.framework in Frameworks */,
+				B895E9A21C21B44D00BDFE04 /* CoreBluetooth.framework in Frameworks */,
+				B895E9A01C21B43B00BDFE04 /* beaconmanager.de.framework in Frameworks */,
+				B895E9B21C21B5DD00BDFE04 /* libxml2.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -151,13 +162,17 @@
 		B841420C1C070EED007E4270 = {
 			isa = PBXGroup;
 			children = (
-				B84142D11C071287007E4270 /* Accelerate.framework */,
-				B84142CF1C071196007E4270 /* AVFoundation.framework */,
-				B84142C51C071178007E4270 /* CoreGraphics.framework */,
-				B84142C61C071178007E4270 /* UIKit.framework */,
-				B84142C71C071178007E4270 /* CoreLocation.framework */,
-				B84142C81C071178007E4270 /* CoreBluetooth.framework */,
-				B84142C91C071178007E4270 /* Foundation.framework */,
+				B8BF80E71C21C41D00FA890C /* beaconmanager.de.res.bundle */,
+				B895E9AF1C21B5DD00BDFE04 /* libz.dylib */,
+				B895E9B01C21B5DD00BDFE04 /* libxml2.dylib */,
+				B895E9AD1C21B47300BDFE04 /* CoreLocation.framework */,
+				B895E9AB1C21B46D00BDFE04 /* MapKit.framework */,
+				B895E9A91C21B46800BDFE04 /* NotificationCenter.framework */,
+				B895E9A71C21B45F00BDFE04 /* Security.framework */,
+				B895E9A51C21B45900BDFE04 /* Accelerate.framework */,
+				B895E9A31C21B45300BDFE04 /* CoreData.framework */,
+				B895E9A11C21B44D00BDFE04 /* CoreBluetooth.framework */,
+				B895E99F1C21B43B00BDFE04 /* beaconmanager.de.framework */,
 				B84142171C070EED007E4270 /* MobileBot */,
 				B841422F1C070EEE007E4270 /* MobileBotTests */,
 				B841423A1C070EEE007E4270 /* MobileBotUITests */,
@@ -179,6 +194,7 @@
 			isa = PBXGroup;
 			children = (
 				B84142D31C0713B6007E4270 /* Main.storyboard */,
+				B895E9731C21B18F00BDFE04 /* Frameworks */,
 				B84142AB1C07103F007E4270 /* Use-Cases */,
 				B84142AA1C07102C007E4270 /* BotConnection */,
 				B84142A91C07101D007E4270 /* BotControl */,
@@ -196,7 +212,6 @@
 				B84142221C070EED007E4270 /* Assets.xcassets */,
 				B84142241C070EED007E4270 /* LaunchScreen.storyboard */,
 				B84142271C070EED007E4270 /* Info.plist */,
-				B841421F1C070EED007E4270 /* MobileBot.xcdatamodeld */,
 				B841426A1C070FB5007E4270 /* MobileBot-Bridging-Header.h */,
 			);
 			path = MobileBot;
@@ -272,7 +287,9 @@
 		B84142AB1C07103F007E4270 /* Use-Cases */ = {
 			isa = PBXGroup;
 			children = (
-				B841426B1C070FB5007E4270 /* BabysitterViewController.swift */,
+				B895E98A1C21B1EA00BDFE04 /* UseCaseManager.swift */,
+				A66C92681C4FE9C7009E9CAF /* BabysitterBot.swift */,
+				AF632AC31C5117F700270027 /* RaumvermesserBot.swift */,
 			);
 			name = "Use-Cases";
 			sourceTree = "<group>";
@@ -280,9 +297,15 @@
 		B84142AC1C07104E007E4270 /* Beacons */ = {
 			isa = PBXGroup;
 			children = (
-				B841426C1C070FB5007E4270 /* beaconSettings.swift */,
 			);
 			name = Beacons;
+			sourceTree = "<group>";
+		};
+		B895E9731C21B18F00BDFE04 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -396,6 +419,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B84142D41C0713B6007E4270 /* Main.storyboard in Resources */,
+				B8BF80E81C21C41D00FA890C /* beaconmanager.de.res.bundle in Resources */,
 				B84142261C070EED007E4270 /* LaunchScreen.storyboard in Resources */,
 				B84142231C070EED007E4270 /* Assets.xcassets in Resources */,
 			);
@@ -424,19 +448,19 @@
 			files = (
 				B84142A21C070FB5007E4270 /* TestHardwareController.swift in Sources */,
 				B84142901C070FB5007E4270 /* BotConnectionManager.m in Sources */,
-				B84142211C070EED007E4270 /* MobileBot.xcdatamodeld in Sources */,
-				B841428D1C070FB5007E4270 /* BabysitterViewController.swift in Sources */,
 				B84142961C070FB5007E4270 /* CommandQueue.swift in Sources */,
-				B841428E1C070FB5007E4270 /* beaconSettings.swift in Sources */,
 				B841429D1C070FB5007E4270 /* ProtocolCommandField.m in Sources */,
+				B895E98B1C21B1EA00BDFE04 /* UseCaseManager.swift in Sources */,
 				B84142A31C070FB5007E4270 /* Toaster.swift in Sources */,
 				B84142921C070FB5007E4270 /* BotControlTestViewController.swift in Sources */,
+				AF632AC41C5117F700270027 /* RaumvermesserBot.swift in Sources */,
 				B841429A1C070FB5007E4270 /* PersistableRegion.swift in Sources */,
 				B84142941C070FB5007E4270 /* BotUtils.swift in Sources */,
 				B84142971C070FB5007E4270 /* DashViewController.swift in Sources */,
 				B84142191C070EED007E4270 /* AppDelegate.swift in Sources */,
 				B841429F1C070FB5007E4270 /* SettingsViewController.swift in Sources */,
 				B84142991C070FB5007E4270 /* MobileBot.xcdatamodeld in Sources */,
+				A66C92691C4FE9C7009E9CAF /* BabysitterBot.swift in Sources */,
 				B84142A01C070FB5007E4270 /* Stream.swift in Sources */,
 				B84142931C070FB5007E4270 /* BotNavigator.swift in Sources */,
 				B84142A11C070FB5007E4270 /* StreamableLogger.swift in Sources */,
@@ -582,13 +606,20 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/MobileBot",
+					"$(PROJECT_DIR)/beaconmanager_sdk/Framework",
 				);
 				INFOPLIST_FILE = MobileBot/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/usr/lib",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "de.beuth-hochschule.mobilebot";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -604,13 +635,20 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/MobileBot",
+					"$(PROJECT_DIR)/beaconmanager_sdk/Framework",
 				);
 				INFOPLIST_FILE = MobileBot/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/usr/lib",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "de.beuth-hochschule.mobilebot";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -708,16 +746,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		B841421F1C070EED007E4270 /* MobileBot.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				B84142201C070EED007E4270 /* MobileBot.xcdatamodel */,
-			);
-			currentVersion = B84142201C070EED007E4270 /* MobileBot.xcdatamodel */;
-			path = MobileBot.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
 		B841427C1C070FB5007E4270 /* MobileBot.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
