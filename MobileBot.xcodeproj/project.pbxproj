@@ -47,9 +47,9 @@
 		B895E9B11C21B5DD00BDFE04 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B895E9AF1C21B5DD00BDFE04 /* libz.dylib */; };
 		B895E9B21C21B5DD00BDFE04 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B895E9B01C21B5DD00BDFE04 /* libxml2.dylib */; };
 		B8BF80E81C21C41D00FA890C /* beaconmanager.de.res.bundle in Resources */ = {isa = PBXBuildFile; fileRef = B8BF80E71C21C41D00FA890C /* beaconmanager.de.res.bundle */; };
-		C5EC15791C5A268A00ED1C66 /* OfficeHelperHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5EC15761C5A268A00ED1C66 /* OfficeHelperHome.swift */; };
-		C5EC157A1C5A268A00ED1C66 /* OfficeHelperSendRobot.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5EC15771C5A268A00ED1C66 /* OfficeHelperSendRobot.swift */; };
-		C5EC157B1C5A268A00ED1C66 /* ParkingBot.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5EC15781C5A268A00ED1C66 /* ParkingBot.swift */; };
+		C52009821C5F7EF50010AC8A /* ParkingBot.swift in Sources */ = {isa = PBXBuildFile; fileRef = C52009811C5F7EF50010AC8A /* ParkingBot.swift */; };
+		C52009851C5F80A60010AC8A /* OfficeHelperHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = C52009831C5F80A60010AC8A /* OfficeHelperHome.swift */; };
+		C52009861C5F80A60010AC8A /* OfficeHelperSendRobot.swift in Sources */ = {isa = PBXBuildFile; fileRef = C52009841C5F80A60010AC8A /* OfficeHelperSendRobot.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -125,9 +125,9 @@
 		B895E9AF1C21B5DD00BDFE04 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SOURCE_ROOT; };
 		B895E9B01C21B5DD00BDFE04 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SOURCE_ROOT; };
 		B8BF80E71C21C41D00FA890C /* beaconmanager.de.res.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = beaconmanager.de.res.bundle; path = beaconmanager_sdk/Framework/beaconmanager.de.res.bundle; sourceTree = "<group>"; };
-		C5EC15761C5A268A00ED1C66 /* OfficeHelperHome.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OfficeHelperHome.swift; path = ../../OfficeHelperHome.swift; sourceTree = "<group>"; };
-		C5EC15771C5A268A00ED1C66 /* OfficeHelperSendRobot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OfficeHelperSendRobot.swift; path = ../../OfficeHelperSendRobot.swift; sourceTree = "<group>"; };
-		C5EC15781C5A268A00ED1C66 /* ParkingBot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ParkingBot.swift; path = ../../ParkingBot.swift; sourceTree = "<group>"; };
+		C52009811C5F7EF50010AC8A /* ParkingBot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParkingBot.swift; sourceTree = "<group>"; };
+		C52009831C5F80A60010AC8A /* OfficeHelperHome.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OfficeHelperHome.swift; sourceTree = "<group>"; };
+		C52009841C5F80A60010AC8A /* OfficeHelperSendRobot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OfficeHelperSendRobot.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -293,9 +293,9 @@
 		B84142AB1C07103F007E4270 /* Use-Cases */ = {
 			isa = PBXGroup;
 			children = (
-				C5EC15761C5A268A00ED1C66 /* OfficeHelperHome.swift */,
-				C5EC15771C5A268A00ED1C66 /* OfficeHelperSendRobot.swift */,
-				C5EC15781C5A268A00ED1C66 /* ParkingBot.swift */,
+				C52009831C5F80A60010AC8A /* OfficeHelperHome.swift */,
+				C52009841C5F80A60010AC8A /* OfficeHelperSendRobot.swift */,
+				C52009811C5F7EF50010AC8A /* ParkingBot.swift */,
 				B895E98A1C21B1EA00BDFE04 /* UseCaseManager.swift */,
 				A66C92681C4FE9C7009E9CAF /* BabysitterBot.swift */,
 				AF632AC31C5117F700270027 /* RaumvermesserBot.swift */,
@@ -456,21 +456,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				B84142A21C070FB5007E4270 /* TestHardwareController.swift in Sources */,
+				C52009861C5F80A60010AC8A /* OfficeHelperSendRobot.swift in Sources */,
 				B84142901C070FB5007E4270 /* BotConnectionManager.m in Sources */,
 				B84142961C070FB5007E4270 /* CommandQueue.swift in Sources */,
 				B841429D1C070FB5007E4270 /* ProtocolCommandField.m in Sources */,
-				C5EC15791C5A268A00ED1C66 /* OfficeHelperHome.swift in Sources */,
 				B895E98B1C21B1EA00BDFE04 /* UseCaseManager.swift in Sources */,
 				B84142A31C070FB5007E4270 /* Toaster.swift in Sources */,
 				B84142921C070FB5007E4270 /* BotControlTestViewController.swift in Sources */,
 				AF632AC41C5117F700270027 /* RaumvermesserBot.swift in Sources */,
-				C5EC157B1C5A268A00ED1C66 /* ParkingBot.swift in Sources */,
+				C52009821C5F7EF50010AC8A /* ParkingBot.swift in Sources */,
 				B841429A1C070FB5007E4270 /* PersistableRegion.swift in Sources */,
 				B84142941C070FB5007E4270 /* BotUtils.swift in Sources */,
 				B84142971C070FB5007E4270 /* DashViewController.swift in Sources */,
 				B84142191C070EED007E4270 /* AppDelegate.swift in Sources */,
 				B841429F1C070FB5007E4270 /* SettingsViewController.swift in Sources */,
-				C5EC157A1C5A268A00ED1C66 /* OfficeHelperSendRobot.swift in Sources */,
 				B84142991C070FB5007E4270 /* MobileBot.xcdatamodeld in Sources */,
 				A66C92691C4FE9C7009E9CAF /* BabysitterBot.swift in Sources */,
 				B84142A01C070FB5007E4270 /* Stream.swift in Sources */,
@@ -481,6 +480,7 @@
 				B84142911C070FB5007E4270 /* BotController.swift in Sources */,
 				B84142951C070FB5007E4270 /* Command.swift in Sources */,
 				B841429C1C070FB5007E4270 /* ProtocolCommandExecutionUnit.m in Sources */,
+				C52009851C5F80A60010AC8A /* OfficeHelperHome.swift in Sources */,
 				B841429B1C070FB5007E4270 /* ProtocolCommand.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
