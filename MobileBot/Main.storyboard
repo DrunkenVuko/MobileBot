@@ -188,8 +188,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Office Helper" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9r8-jd-x7h">
-                                <rect key="frame" x="145" y="28" width="125" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Office Helper" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9r8-jd-x7h">
+                                <rect key="frame" x="117" y="28" width="125" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="49y-TB-vqv"/>
                                 </constraints>
@@ -197,24 +197,17 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wähle ein Büro zum Abholen" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UbZ-jv-KMP">
-                                <rect key="frame" x="105" y="78" width="205" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Wähle ein Büro zum Abholen" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UbZ-jv-KMP">
+                                <rect key="frame" x="141" y="78" width="76" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Gl-3c-1Qm">
-                                <rect key="frame" x="86" y="107" width="243" height="216"/>
+                            <pickerView contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4Gl-3c-1Qm">
+                                <rect key="frame" x="179" y="107" width="0.0" height="216"/>
                             </pickerView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DZH-2G-jNL">
-                                <rect key="frame" x="26" y="686" width="34" height="30"/>
-                                <state key="normal" title="Back"/>
-                                <connections>
-                                    <segue destination="f9E-4d-Z3P" kind="show" id="WOY-OO-6ts"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QuJ-RH-8gi">
-                                <rect key="frame" x="157" y="342" width="101" height="36"/>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QuJ-RH-8gi">
+                                <rect key="frame" x="157" y="343" width="45" height="36"/>
                                 <color key="backgroundColor" red="1" green="0.41467130008433639" blue="0.34634861068632106" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="36" id="BRr-gL-n37"/>
@@ -224,22 +217,29 @@
                                     <segue destination="C6P-La-9rR" kind="show" identifier="sendRobo" id="BNV-N1-yHb"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DZH-2G-jNL">
+                                <rect key="frame" x="28" y="546" width="34" height="34"/>
+                                <state key="normal" title="Back"/>
+                                <connections>
+                                    <segue destination="f9E-4d-Z3P" kind="show" id="WOY-OO-6ts"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="DZH-2G-jNL" secondAttribute="bottom" constant="20" symbolic="YES" id="7aj-eA-ohc"/>
                             <constraint firstItem="UbZ-jv-KMP" firstAttribute="top" secondItem="9r8-jd-x7h" secondAttribute="bottom" constant="29" id="8db-0z-4MW"/>
                             <constraint firstItem="9r8-jd-x7h" firstAttribute="centerX" secondItem="UbZ-jv-KMP" secondAttribute="centerX" id="KDc-co-R2J"/>
-                            <constraint firstItem="4Gl-3c-1Qm" firstAttribute="leading" secondItem="zPf-kw-MAU" secondAttribute="leading" constant="86" id="KYL-Oo-Vc6"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="9r8-jd-x7h" secondAttribute="trailing" constant="124" id="LHh-U5-yF1"/>
+                            <constraint firstItem="4Gl-3c-1Qm" firstAttribute="leading" secondItem="zPf-kw-MAU" secondAttribute="leading" constant="179" id="KYL-Oo-Vc6"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="9r8-jd-x7h" secondAttribute="trailing" constant="217" id="LHh-U5-yF1"/>
                             <constraint firstItem="9r8-jd-x7h" firstAttribute="top" secondItem="t5C-mv-e2X" secondAttribute="bottom" constant="8" symbolic="YES" id="OX9-6G-ph9"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="UbZ-jv-KMP" secondAttribute="trailing" constant="84" id="OgM-LP-oiC"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="UbZ-jv-KMP" secondAttribute="trailing" constant="177" id="OgM-LP-oiC"/>
                             <constraint firstItem="4Gl-3c-1Qm" firstAttribute="top" secondItem="UbZ-jv-KMP" secondAttribute="bottom" constant="8" symbolic="YES" id="V42-Hm-0na"/>
-                            <constraint firstItem="QuJ-RH-8gi" firstAttribute="top" secondItem="4Gl-3c-1Qm" secondAttribute="bottom" constant="19" id="akG-aq-QpI"/>
+                            <constraint firstItem="QuJ-RH-8gi" firstAttribute="top" secondItem="4Gl-3c-1Qm" secondAttribute="bottom" constant="20" id="akG-aq-QpI"/>
                             <constraint firstItem="UbZ-jv-KMP" firstAttribute="centerX" secondItem="4Gl-3c-1Qm" secondAttribute="centerX" id="fR3-pB-Gkm"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="QuJ-RH-8gi" secondAttribute="trailing" constant="136" id="xCy-4Y-RrI"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="QuJ-RH-8gi" secondAttribute="trailing" constant="229" id="xCy-4Y-RrI"/>
                             <constraint firstItem="QuJ-RH-8gi" firstAttribute="centerX" secondItem="4Gl-3c-1Qm" secondAttribute="centerX" id="y9k-Eb-73W"/>
-                            <constraint firstItem="DZH-2G-jNL" firstAttribute="leading" secondItem="zPf-kw-MAU" secondAttribute="leadingMargin" constant="6" id="yfs-SD-DgG"/>
+                            <constraint firstItem="DZH-2G-jNL" firstAttribute="leading" secondItem="zPf-kw-MAU" secondAttribute="leadingMargin" constant="8" id="yfs-SD-DgG"/>
                         </constraints>
                     </view>
                     <connections>
@@ -315,6 +315,10 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="x5M-LH-3la">
                                 <rect key="frame" x="42" y="302" width="330" height="383"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="aBt-PM-ODH" id="qPU-EH-nyH"/>
+                                    <outlet property="delegate" destination="aBt-PM-ODH" id="sR8-rQ-jSe"/>
+                                </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aKc-hh-rCe">
                                 <rect key="frame" x="26" y="693" width="34" height="30"/>
@@ -364,7 +368,7 @@
                     <connections>
                         <outlet property="distanceToScanField" destination="Zpn-tF-dUR" id="thW-FD-Obh"/>
                         <outlet property="parkingLotSizeField" destination="YIn-aq-l7G" id="dUH-sS-KCR"/>
-                        <outlet property="tableView" destination="x5M-LH-3la" id="FI0-Gb-qOh"/>
+                        <outlet property="tableView" destination="x5M-LH-3la" id="gUW-SL-34Z"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wtr-Ng-hAj" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -394,10 +398,10 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZtG-Zu-agq">
-                                <rect key="frame" x="0.0" y="106" width="414" height="216"/>
+                                <rect key="frame" x="93" y="108" width="228" height="216"/>
                             </pickerView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fL6-uK-5LX">
-                                <rect key="frame" x="116" y="349" width="182" height="36"/>
+                                <rect key="frame" x="116" y="351" width="182" height="36"/>
                                 <color key="backgroundColor" red="1" green="0.41467130009999997" blue="0.3463486107" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="36" id="XUH-bY-F6b"/>
@@ -408,33 +412,33 @@
                                     <action selector="pickUpAndBring:" destination="C6P-La-9rR" eventType="touchUpInside" id="0iO-PL-b0a"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uID-Ls-RKr">
-                                <rect key="frame" x="26" y="686" width="34" height="30"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wähle ein Büro zum Dokumente bringen" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vid-FQ-EnE">
+                                <rect key="frame" x="53" y="86" width="308" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uID-Ls-RKr">
+                                <rect key="frame" x="20" y="547" width="34" height="33"/>
                                 <state key="normal" title="Back"/>
                                 <connections>
                                     <segue destination="f9E-4d-Z3P" kind="show" id="ESJ-bx-GF0"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wähle ein Büro zum Dokumente bringen" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vid-FQ-EnE">
-                                <rect key="frame" x="53" y="84" width="308" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="uID-Ls-RKr" secondAttribute="bottom" constant="20" symbolic="YES" id="38v-7e-EJi"/>
                             <constraint firstItem="ZtG-Zu-agq" firstAttribute="centerX" secondItem="vid-FQ-EnE" secondAttribute="centerX" id="4wX-XU-IG8"/>
-                            <constraint firstItem="uID-Ls-RKr" firstAttribute="leading" secondItem="wPn-d6-Jff" secondAttribute="leadingMargin" constant="6" id="5UM-AM-toz"/>
+                            <constraint firstItem="uID-Ls-RKr" firstAttribute="leading" secondItem="wPn-d6-Jff" secondAttribute="leadingMargin" id="5UM-AM-toz"/>
                             <constraint firstItem="ZtG-Zu-agq" firstAttribute="top" secondItem="vid-FQ-EnE" secondAttribute="bottom" constant="1" id="Ffb-a7-wkN"/>
                             <constraint firstItem="qji-bA-825" firstAttribute="top" secondItem="fPC-GR-qql" secondAttribute="bottom" constant="19" id="FkC-aX-lMg"/>
                             <constraint firstItem="fL6-uK-5LX" firstAttribute="top" secondItem="ZtG-Zu-agq" secondAttribute="bottom" constant="27" id="PaG-iK-SqV"/>
-                            <constraint firstItem="vid-FQ-EnE" firstAttribute="top" secondItem="qji-bA-825" secondAttribute="bottom" constant="24" id="RZf-DX-9sd"/>
+                            <constraint firstItem="vid-FQ-EnE" firstAttribute="top" secondItem="qji-bA-825" secondAttribute="bottom" constant="26" id="RZf-DX-9sd"/>
                             <constraint firstItem="qji-bA-825" firstAttribute="centerX" secondItem="vid-FQ-EnE" secondAttribute="centerX" id="VPE-rU-OzK"/>
-                            <constraint firstAttribute="trailing" secondItem="ZtG-Zu-agq" secondAttribute="trailing" id="ZTI-he-h4C"/>
+                            <constraint firstAttribute="trailing" secondItem="ZtG-Zu-agq" secondAttribute="trailing" constant="93" id="ZTI-he-h4C"/>
                             <constraint firstItem="ZtG-Zu-agq" firstAttribute="centerX" secondItem="fL6-uK-5LX" secondAttribute="centerX" id="bgr-NG-Gjd"/>
-                            <constraint firstItem="ZtG-Zu-agq" firstAttribute="leading" secondItem="wPn-d6-Jff" secondAttribute="leading" id="lTU-IO-TsG"/>
+                            <constraint firstItem="ZtG-Zu-agq" firstAttribute="leading" secondItem="wPn-d6-Jff" secondAttribute="leading" constant="93" id="lTU-IO-TsG"/>
                         </constraints>
                     </view>
                     <connections>
@@ -671,7 +675,7 @@
                         <viewControllerLayoutGuide type="bottom" id="YNk-BF-Ynd"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Xgt-4Q-bF5">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="IP" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X1K-Ma-bQw">
@@ -680,7 +684,7 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="wifibee01" borderStyle="roundedRect" placeholder="192.168.43.98" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ktl-Ra-THA">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="wifibee02" borderStyle="roundedRect" placeholder="192.168.43.98" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ktl-Ra-THA">
                                 <rect key="frame" x="148" y="72" width="436" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -1006,8 +1010,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="b1J-E5-joi"/>
         <segue reference="WtB-i4-f2b"/>
+        <segue reference="0Sw-Nd-xoC"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
 </document>

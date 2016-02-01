@@ -112,12 +112,6 @@ class UseCaseManager : NSObject, CLLocationManagerDelegate {
             logger.log(.Info, data: "3030 ist Beacon: Station")
             UseCaseManager.atStation = true
             break
-            
-            // Station Beacon
-        case "4010":
-            logger.log(.Info, data: "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
-            break
-            
         default:
             logger.log(.Info, data: "No known Event!")
             return
