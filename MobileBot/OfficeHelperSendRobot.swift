@@ -41,7 +41,7 @@ class OfficeHelperSendRobot: UIViewController, UIPickerViewDataSource,UIPickerVi
         pickerView.dataSource = self
         pickerView.delegate = self
         
-        titleLabel.text = fromOffice
+        //titleLabel.text = fromOffice
     }
     
     /**
