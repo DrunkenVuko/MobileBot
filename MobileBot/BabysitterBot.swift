@@ -3,21 +3,19 @@
 //  MobileBot
 //
 //  Created by Bianca Ciuperca-Baier, Leonie Wismeth, Goran Vukovic on 10.10.15.
-//
+//  Copyright (c) 2015 Beuth Hochschule. All rights reserved.
 //
 
 import Foundation
 import UIKit
 
 /**
- * Diese Klasse dient dem Use Case : BabysitterBot
+ * Class for Use Case : BabysitterBot
  */
 class BabysitterBot: UIViewController {
     
-    // Point coordinates
-    
+    // Coordinates for Station, Door Point 1, Door Point 2
     let STATION_POINT: (Float, Float) = (0, 0)
-    
     let POINT_1: (Float, Float) = (0, 0)
     let POINT_2: (Float, Float) = (0, 100)
     
@@ -26,59 +24,22 @@ class BabysitterBot: UIViewController {
     let bcm = BotConnectionManager.sharedInstance();
     let logger = StreamableLogger();
     
-    var stopped = false
-    var someoneAtDoor: Bool = false
-    
-    var positiondata: (Float, Float, Float) = (0, 0, 0)
-    
     // Timer
-    var timerCounter: NSTimer = NSTimer()
     var timerScanFront: NSTimer = NSTimer()
     var timerScanRight: NSTimer = NSTimer()
     var timerDrive: NSTimer = NSTimer()
     var timerX: NSTimer = NSTimer()
     
-    // Kontrollvariablen
-    var frontScan: Bool = true
-    var stopMoving: Bool = true
-    var foundWallFront: Bool = false
-    var pingFront: Float = 0.0
-    var whichWall: Int = 0
-    var finished: Bool = false
+    // Control attributes
+    var stopped: Bool = false
+    var someoneAtDoor: Bool = false
     var log: Bool = true
-    
-    // Neue 100% Sichere Vars
-    var posDoorRightX: Int = 50
-    var posDoorRightY: Int = -180
     var timerDriveRight: NSTimer = NSTimer()
     var velocity: Float = 10
     
-    func reset(){
-        self.bc?.resetPosition({ () -> Void in
-            self.logger.log(.Info, data: "Reset Robo Position");
-        });
-    }
-    func updateCounter() {
-        //        counter++
-        //        counterMod = counter % 4
-        //        counterSingle++
-        //        labelCounter.text = String(counter)
-        //        labelFrontModulo.text = String(counterMod)
-    }
+    
     @IBAction func startWatch(sender: AnyObject) {
-        if(finished == false){
-            reset()
-            logger.log(.Info, data: "Start Action Watchdog");
-            //self.whichWall = 0
-            
-            self.timerCounter = NSTimer.scheduledTimerWithTimeInterval(1, target:self, selector: Selector("updateCounter"), userInfo: nil, repeats: true)
-            
-            driveAndDetect()
-            
-        }else{
-            Toaster.show("Scan-Vorgang noch nicht beendet")
-        }
-        
+        self.startWatchAction()
     }
     
     @IBAction func start(sender: AnyObject) {
@@ -89,12 +50,14 @@ class BabysitterBot: UIViewController {
         self.stopAction()
     }
     
+    /**
+     * When view did load:
+     * - Create connection
+     **/
     override func viewDidLoad() {
         super.viewDidLoad();
         
         createConnection()
-        bc?.resetPosition(nil);
-        
     }
     
     /**
@@ -135,16 +98,16 @@ class BabysitterBot: UIViewController {
         var angle:UInt8 = 0
         
         if(back){
-            self.logger.log(.Info, data: "babybot: MOVE back");
+            self.logger.log(.Info, data: "Babybot: Move Back");
             coordinate = self.POINT_1
             angle = 180
             
         } else {
-            self.logger.log(.Info, data: "babybot: MOVE forth");
+            self.logger.log(.Info, data: "Babybot: Move Forth");
         }
         
         self.moveToWithScan(CGPointMake(CGFloat(coordinate.0), CGFloat(coordinate.1)), scanAngle: angle, completion: { data in
-            self.logger.log(.Info, data: "babybot: point reached.");
+            self.logger.log(.Info, data: "Babybot: Point reached.");
             
             // unless stop was called, go to next streetpoint
             if(!self.stopped){
@@ -154,19 +117,40 @@ class BabysitterBot: UIViewController {
         
     }
 
+    /**
+     * Function is called, if User Phone walked by Beacons
+     * - Create Connection
+     * - Start Action (Patroling)
+     **/
     func beaconStartAction(){
-        
         createConnection()
-        bc?.resetPosition(nil);
         startAction()
     }
     
     /**
-     * Starts patroling
+     * Reset Function
+     * - Reset Bot Position
+     **/
+    func reset(){
+        self.bc?.resetPosition({ () -> Void in
+            self.logger.log(.Info, data: "Reset Bot Position");
+        });
+    }
+    
+    /**
+     * Is called after click on Start-Button
+     * If Bot is not moving
+     * - Reset Bot Position
+     * - Start Patroling
      */
     func startAction() {
-        self.stopped = false
-        goToDoor()
+        if(self.stopped == true){
+            self.stopped = false
+            reset()
+            goToDoor()
+        }else{
+            Toaster.show("Not finished")
+        }
     }
     
     /**
@@ -183,9 +167,10 @@ class BabysitterBot: UIViewController {
         NSNotificationCenter.defaultCenter().removeObserver(self)
     }
     
-    
     /**
-    * Diese Bewegungs-Funktion dient dem BabysitterBot Use Case
+    * Move Function, specific for BabysitterBot
+    * Bot is moving to given Point
+    * During moving, Bot is scanning for detecing an intruder
     **/
     func moveToWithScan(point: CGPoint, scanAngle: UInt8, completion: ((ForwardKinematicsData) -> ())? ) {
         self.bc?.stopRangeScan({
@@ -195,8 +180,7 @@ class BabysitterBot: UIViewController {
                 self.bc?.startUpdatingPosition(true, completion: { data in
                     self.logger.log(.Info, data: "current position: \(data)");
                     
-                    // Wenn der Roboter bereits im Zielrechteck ist, soll er nicht starten
-                    // Berechnung des Rechtecks um den Zielpunkt
+                    // If Bot reached Point call destReached-Function
                     let dest = CGRectMake(point.x, point.y, 0, 0);
                     let destWithInset = CGRectInset(dest, -1.0, -1.0);
                     let currentPoint = CGPointMake(CGFloat(data.x), CGFloat(data.y));
@@ -212,7 +196,7 @@ class BabysitterBot: UIViewController {
                         let angle = atan2f(Float(point.y) - data.y, Float(point.x) - data.x);
                         let degrees = angle * 180 / 3.14;
                         
-                        // Roboter dreht sich in die richtige Richtung
+                        // Bot turns with calculated angle / degrees, to reach point
                         self.bn?.turnToAngle(degrees, speed: (self.bn?.speed)!, completion: { data in
                             let startingPoint = CGPointMake(CGFloat(data.x), CGFloat(data.y));
                             var previousDistance = BotUtils.distance(from: startingPoint, to: point);
@@ -222,8 +206,8 @@ class BabysitterBot: UIViewController {
                             self.logger.log(.Info, data: "computed destination area: \(destWithInset), from point: \(point)");
                             
                             self.bc?.startMovingWithPositionalUpdate((self.bn?.speed)!, omega: 0, callback: { data in
-                                self.positiondata = data
-                                // Berechnung des Rechtecks um den Zielpunkt
+                                
+                                // Calculation of destination rectangle
                                 let angle = atan2f(Float(point.y) - data.y, Float(point.x) - data.x);
                                 let degrees = angle * 180 / 3.14;
                                 let currentPoint = CGPointMake(CGFloat(data.x), CGFloat(data.y));
@@ -247,8 +231,8 @@ class BabysitterBot: UIViewController {
                                 previousDistance = currentDistance;
                             });
                             
-                            // flag welches verhindern soll dass ein Hindernis vom Roboter wahrgenommen wird, wenn keines vorhanden ist
-                            // es muss mehrere male hintereinander vom Roboter gesendet werden, dass sich etwas vor ihm befindet
+                            // Flag that prevents saving buggy distance values
+                            // Distance needs to be over a threshold more than 5 times to be counted
                             var scanBugFlag = 0.0
                             
                             self.bc?.scanRange(scanAngle, max: scanAngle, inc: 0, callback: { scandata in
@@ -265,8 +249,6 @@ class BabysitterBot: UIViewController {
                                             self.bc?.stoptUpdatingPosition();
                                             self.bc?.stop({
                                                 //self.goToStation();
-                                                
-                                                
                                             });
                                         });
                                         
@@ -288,7 +270,9 @@ class BabysitterBot: UIViewController {
         })
     }
     
-    // der Roboter hat seine Zielposition erreicht. Es wird die Endaktion ausgeführt
+    /**
+      * Bot reached destination
+     **/
     func destinationReached(completion: ((ForwardKinematicsData) -> ())?) {
         self.bc?.stopMovingWithPositionalUpdate({
             self.bc?.startUpdatingPosition(true, completion: { data in
@@ -298,9 +282,12 @@ class BabysitterBot: UIViewController {
         });
         
         self.bc?.stopRangeScan({});
-        
     }
     
+    /**
+     * Bot is sent to station
+     * Function is called when an intruder is detected
+     **/
     func goToStation(){
         
         self.bn?.setTurnSpeed(20)
@@ -310,120 +297,178 @@ class BabysitterBot: UIViewController {
             
             self.sendAlarm("Robo at Station");
         })
-        
     }
     
+    /**
+     * Bot is sent to door and starts patroling
+     **/
     func goToDoor(){
         self.logger.log(.Info, data: "goToDoor");
         self.patrol(false)
-        
-        
     }
     
+    /**
+     * Shows Toaster Message
+     **/
     func sendAlarm(message: String){
         Toaster.show(message);
     }
     
+    /**** SECOND USE CASE - WITHOUT PATROL - ONLY SCANNING 
+     - First Bot is driving to door, turns left, and starts scanning for intruder
+     - After detecing an intruder, Bot is turning right and drives home
+     *****/
+    
+     /**
+     * Is called after click on Start-Button
+     * If Bot is not moving
+     * - Reset Bot Position
+     * - Start Scanning
+     */
+    func startWatchAction(){
+        if(self.stopped == true){
+            self.stopped = false
+            logger.log(.Info, data: "Start Action Watchdog");
+            
+            reset()
+            driveAndDetect()
+            
+        }else{
+            Toaster.show("Not finished")
+        }
+    }
+    
+    /**
+     * Starts Driving
+     * Start Scanning and calls checkFrontToDoor each second
+     *
+     */
     func driveAndDetect(){
 
-        if(stopMoving == true)
-        {
+        if(self.stopped == true){
             drive()
             self.timerScanFront = NSTimer.scheduledTimerWithTimeInterval(1, target:self, selector: Selector("checkFrontToDoor"),userInfo: nil, repeats: true)
         }
-        
     }
     
+    /**
+     * Drive Function
+     * Starts Bot moving
+     */
     func drive(){
         self.logger.log(.Info, data: "drive()");
         bc?.move(self.velocity, omega: 0, completion: nil);
-        
     }
+    
+    /**
+     * Starts Scanning
+     * Checks if bot arrived door
+     * - then stop moving, timer and scanning. And turn left.
+     * - after 8 seconds (time for turning) bot starts scanning for intruder
+     **/
     func checkFrontToDoor(){
         self.logger.log(.Info, data: "checkFrontToDoor()");
         self.bc?.scanRange(85, max: 95, inc: 5, callback: { data in
             
-            if(data.pingDistance <= 20 && data.pingDistance > 5)
-            {
+            if(data.pingDistance <= 20 && data.pingDistance > 5){
                 self.stop()
                 self.stopTimerScan()
                 self.stopRangeScan()
                 self.turnLeft()
                 self.timerDriveRight = NSTimer.scheduledTimerWithTimeInterval(8.0, target: self, selector: "checkFrontForEvent", userInfo: nil, repeats: false)
-                
             }
         });
     }
     
+    /** 
+     * Turn Right
+     **/
     func turnRight( ){
-        if let bn = bn {                   //bn.turnSpeed
+        if let bn = bn {
             bn.turnToAngle(Float(-180), speed: Float(15), completion: { [weak self] data in
                 self!.bc?.resetPosition({[weak self] data in  });
-                //self!.bc?.resetForwardKincematics({[weak self] data in  });
-                });
+            });
         }
     }
     
+    /**
+     * Turn Left
+     **/
     func turnLeft( ){
-        if let bn = bn {                   //bn.turnSpeed
+        if let bn = bn {
             bn.turnToAngle(Float(90), speed: Float(15), completion: { [weak self] data in
                 self!.bc?.resetPosition({[weak self] data in  });
-                //self!.bc?.resetForwardKincematics({[weak self] data in  });
-                });
+            });
         }
-        
     }
+    
+    /**
+     * Stops Scanning
+     **/
     func stopRangeScan(){
         self.bc?.stopRangeScan({ [weak self] in
             self?.logger.log(.Info, data: "scan stopped")
-            });
+        });
     }
+    
+    /**
+     * Check for intruder
+     * if Intruder is detected:
+     * - stop timer, scanning
+     * - and drive to station
+     **/
     func checkFrontForEvent(){
         self.logger.log(.Info, data: "checkFrontForEvent()");
         self.bc?.scanRange(85, max: 95, inc: 5, callback: { data in
             
-            if(data.pingDistance <= 50 && data.pingDistance > 5)
-            {
+            if(data.pingDistance <= 50 && data.pingDistance > 5){
                 self.stopTimerScan()
                 self.stopRangeScan()
                 self.driveHome()
-                
             }
         });
     }
+    
+    /**
+     * Drive to Station
+     **/
     func driveHome(){
-        if(stopMoving == true)
-        {
+        if(self.stopped == true){
             turnLeft()
             timerDriveRight = NSTimer.scheduledTimerWithTimeInterval(8.0, target: self, selector: "drive", userInfo: nil, repeats: false)
             self.timerScanFront = NSTimer.scheduledTimerWithTimeInterval(9.0, target:self, selector: Selector("checkFrontToHome"),userInfo: nil, repeats: true)
         }
     }
-    func checkFrontToHome()
-    {
+    
+    /**
+     * Checks if Bot arrived Station
+     **/
+    func checkFrontToHome(){
         self.logger.log(.Info, data: "checkFrontToHome()");
         self.bc?.scanRange(85, max: 95, inc: 5, callback: { data in
-            if(data.pingDistance <= 20 && data.pingDistance > 5)
-            {
+            if(data.pingDistance <= 20 && data.pingDistance > 5){
                 self.stop()
                 self.stopTimerScan()
                 self.stopRangeScan()
                 self.turnRight()
-                
-                
             }
         });
     }
     
+    /**
+     * Stop Timer Function
+     **/
     func stopTimerScan(){
         self.timerScanFront.invalidate()
         self.timerDriveRight.invalidate()
     }
     
+    /**
+     * Stop moving Bot
+     **/
     func stop() {
         self.logger.log(.Info, data: "stop");
         bc?.move(0, omega: 0, completion: nil);
         
     }
-    
 }
