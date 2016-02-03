@@ -48,6 +48,10 @@ class RaumvermesserBot: UIViewController {
         var points: [(x: Float,y: Float)] = Array()
         
         init(){}
+        
+        init(length: Float){
+            self.length = length
+        }
     }
     
     struct ScanData{
@@ -64,6 +68,8 @@ class RaumvermesserBot: UIViewController {
     }
     
     var walls: [Wall] = []
+    
+    //var walls: [Wall] = [Wall.init(length: 50), Wall.init(length: 10), Wall.init(length: 50), Wall.init(length: 10)]
     
     var scanData:ScanData = ScanData()
     
@@ -109,6 +115,19 @@ class RaumvermesserBot: UIViewController {
         labelDistanceFront.text = "0"
     }
     
+    func initWallValues(){
+        var i: Int = 0
+        for wall in walls{
+            print("Das hier ist gerade dran: " + String(i))
+            
+            self.walls[i].points = self.calcWallPoints(i)
+            i++;
+        }
+        
+        self.drawFloorPlan()
+        self.calcArea()
+    }
+    
     /**
      * When view did load:
      * - initialise Labels
@@ -121,6 +140,8 @@ class RaumvermesserBot: UIViewController {
         self.initValues()
         self.createConnection()
         self.getLastData()
+        //only for testing
+        //self.initWallValues()
     }
     
     /**
@@ -432,20 +453,33 @@ class RaumvermesserBot: UIViewController {
         
         // Setup complete, do drawing here
         CGContextSetStrokeColorWithColor(context, UIColor.whiteColor().CGColor)
-        CGContextSetLineWidth(context, 1.0)
+        CGContextSetLineWidth(context, 2.0)
         CGContextBeginPath(context)
         
         //first point starts at (0,0)
-        let startPoint: CGFloat = 2
-        CGContextMoveToPoint(context, startPoint, startPoint)
+        let padding: CGFloat = 30
         
-        let scaleFactor: CGFloat = 4
+        let scaleFactor: CGFloat = getScaleFactor(CGFloat(self.walls[0].length), oHeight: CGFloat(self.walls[1].length), padding: padding * 2)
+        
+        var paddingX: CGFloat = padding
+        var paddingY: CGFloat = padding
+        
+        if self.walls[0].length <= self.walls[1].length {
+            paddingX = ( (oSize.width - ( CGFloat(self.walls[0].length) * scaleFactor )) / 2 )
+        }else{
+            paddingY = ( (oSize.height - ( CGFloat(self.walls[1].length) * scaleFactor )) / 2 )
+        }
+        
+        CGContextMoveToPoint(context, paddingX, paddingY)
+        
+        print("oWidth: \(oSize.width) iWidth: \( CGFloat(self.walls[0].length) * scaleFactor ) paddingX: \(paddingX)")
+        print("oHeight: \(oSize.height) iHeight: \( CGFloat(self.walls[1].length) * scaleFactor ) paddingY: \(paddingY)")
         
         //iterate over all walls
         for var i = 0; i < self.walls.count; ++i {
             
             //draw line with second wall-point
-            CGContextAddLineToPoint(context, (CGFloat(self.walls[i].points[1].x) * scaleFactor + startPoint), (CGFloat(self.walls[i].points[1].y) * scaleFactor + startPoint) )
+            CGContextAddLineToPoint(context, (CGFloat(self.walls[i].points[1].x) * scaleFactor + paddingX), (CGFloat(self.walls[i].points[1].y) * scaleFactor + paddingY) )
             
             print("drawCustomImage: X:"+String(self.walls[i].points[1].x) + " Y: " + String(self.walls[i].points[1].y) )
         }
@@ -458,35 +492,57 @@ class RaumvermesserBot: UIViewController {
         return image
     }
     
-    /*func resizeCustomImage(oldImage: UIImage) -> UIImage {
-        
-        var iWidth: CGFloat = 360
+    func resizeCustomImage(oldImage: UIImage) -> UIImage {
+        //Frage, wie kann ich die Breite der Fläche ermitteln?
+        //padding mit einplanen. ca 30 pro seite
+        /*var iWidth: CGFloat = 360
         var oldWidth: CGFloat = oldImage.size.width;
         
         var iHeight: CGFloat = 290
         var oldHeight: CGFloat = oldImage.size.height
         
-        var scaleFactor: CGFloat = iWidth / oldWidth;
+        var scaleFactor: CGFloat = (iWidth - 60) / oldWidth;
         
         var newHeight: CGFloat = oldHeight * scaleFactor;
         var newWidth: CGFloat = oldWidth * scaleFactor;
         
         if newHeight > iHeight {
-            scaleFactor = iHeight / oldHeight
+            scaleFactor = (iHeight - 60) / oldHeight
             newHeight = oldHeight * scaleFactor
             newWidth = oldWidth * scaleFactor
-        }
+        }*/
         
         
         
-        UIGraphicsBeginImageContext(CGSizeMake(newWidth, newHeight));
-        //drawInRect = CGRectMake(0, 0, newWidth, newHeight);
+        UIGraphicsBeginImageContext(CGSizeMake(300, 200));
+        //drawInRect = CGRectMake(0, 0, 300, 200);
         let newImage: UIImage = UIGraphicsGetImageFromCurrentImageContext();
+        //UIImage(data: oldImage, scale: oldImage.scale * 2)
+       
+        //let newImage: UIImage = UIImage(CGImage:  oldImage.CGImage!, scale: oldImage.scale * 2, orientation: oldImage.imageOrientation)
         UIGraphicsEndImageContext();
         return newImage;
         
         
-    }*/
+    }
+    
+    func getScaleFactor(oWidth: CGFloat, oHeight: CGFloat, padding: CGFloat) -> CGFloat {
+        var iWidth: CGFloat = 360
+        var iHeight: CGFloat = 290
+        
+        var scaleFactor: CGFloat = (iWidth - padding) / oWidth;
+        
+        var newHeight: CGFloat = oHeight * scaleFactor;
+        var newWidth: CGFloat = oWidth * scaleFactor;
+        
+        if newHeight > (iHeight - padding) {
+            scaleFactor = (iHeight - padding) / oHeight
+            newHeight = oHeight * scaleFactor
+            newWidth = oWidth * scaleFactor
+        }
+    
+        return scaleFactor;
+    }
     
     /**
      * Calculates Room Area
