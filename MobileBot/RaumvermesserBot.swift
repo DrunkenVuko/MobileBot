@@ -30,6 +30,10 @@ class RaumvermesserBot: UIViewController {
     var timerDrive: NSTimer = NSTimer()
     var timerDriveForSpace: NSTimer = NSTimer()
     
+    //container
+    let containerWidth: CGFloat = 360
+    let containerHeight: CGFloat = 290
+    
     // counter
     var counter = 0
     var counterSingle = 0
@@ -69,7 +73,7 @@ class RaumvermesserBot: UIViewController {
     
     var walls: [Wall] = []
     
-    //var walls: [Wall] = [Wall.init(length: 50), Wall.init(length: 10), Wall.init(length: 50), Wall.init(length: 10)]
+    //var walls: [Wall] = [Wall.init(length: 90), Wall.init(length: 95), Wall.init(length: 90), Wall.init(length: 95)]
     
     var scanData:ScanData = ScanData()
     
@@ -423,11 +427,10 @@ class RaumvermesserBot: UIViewController {
      **/
     func drawFloorPlan(){
         print("drawFloorPlan: Start" )
-        let imageSize = CGSize(width: 360, height: 290)
+        let imageSize = CGSize(width: self.containerWidth, height: self.containerHeight)
         
         let imageView = UIImageView(frame: CGRect(origin: CGPoint(x: 0, y: 0), size: imageSize))
-        var image = self.drawCustomImage(imageSize)
-        //image = self.resizeCustomImage(image)
+        let image = self.drawCustomImage(imageSize)
         imageView.image = image
         
         self.containerFloorPlan.addSubview(imageView)
@@ -436,7 +439,7 @@ class RaumvermesserBot: UIViewController {
     
     /**
      * Setup Context (White Stroke, Size of Context)
-     * Starts Drawing Lines at (0,0)
+     * Starts Drawing Lines at (0,0) -> plus padding
      * For each Wall a Line is drawn
      **/
     func drawCustomImage(oSize: CGSize) -> UIImage {
@@ -456,20 +459,22 @@ class RaumvermesserBot: UIViewController {
         CGContextSetLineWidth(context, 2.0)
         CGContextBeginPath(context)
         
-        //first point starts at (0,0)
         let padding: CGFloat = 30
         
         let scaleFactor: CGFloat = getScaleFactor(CGFloat(self.walls[0].length), oHeight: CGFloat(self.walls[1].length), padding: padding * 2)
         
+        //is needed to center the floorplan in the container
         var paddingX: CGFloat = padding
         var paddingY: CGFloat = padding
         
+        //if the size of the width is smaller as the height, then change the x-padding (to center floorplan)
         if self.walls[0].length <= self.walls[1].length {
             paddingX = ( (oSize.width - ( CGFloat(self.walls[0].length) * scaleFactor )) / 2 )
-        }else{
+        }else{ // if the size of the height is smaller as the height, then change the y-padding (to center floorplan)
             paddingY = ( (oSize.height - ( CGFloat(self.walls[1].length) * scaleFactor )) / 2 )
         }
         
+        //first point starts at (0,0) + padding
         CGContextMoveToPoint(context, paddingX, paddingY)
         
         print("oWidth: \(oSize.width) iWidth: \( CGFloat(self.walls[0].length) * scaleFactor ) paddingX: \(paddingX)")
@@ -492,53 +497,20 @@ class RaumvermesserBot: UIViewController {
         return image
     }
     
-    func resizeCustomImage(oldImage: UIImage) -> UIImage {
-        //Frage, wie kann ich die Breite der Fläche ermitteln?
-        //padding mit einplanen. ca 30 pro seite
-        /*var iWidth: CGFloat = 360
-        var oldWidth: CGFloat = oldImage.size.width;
-        
-        var iHeight: CGFloat = 290
-        var oldHeight: CGFloat = oldImage.size.height
-        
-        var scaleFactor: CGFloat = (iWidth - 60) / oldWidth;
-        
-        var newHeight: CGFloat = oldHeight * scaleFactor;
-        var newWidth: CGFloat = oldWidth * scaleFactor;
-        
-        if newHeight > iHeight {
-            scaleFactor = (iHeight - 60) / oldHeight
-            newHeight = oldHeight * scaleFactor
-            newWidth = oldWidth * scaleFactor
-        }*/
-        
-        
-        
-        UIGraphicsBeginImageContext(CGSizeMake(300, 200));
-        //drawInRect = CGRectMake(0, 0, 300, 200);
-        let newImage: UIImage = UIGraphicsGetImageFromCurrentImageContext();
-        //UIImage(data: oldImage, scale: oldImage.scale * 2)
-       
-        //let newImage: UIImage = UIImage(CGImage:  oldImage.CGImage!, scale: oldImage.scale * 2, orientation: oldImage.imageOrientation)
-        UIGraphicsEndImageContext();
-        return newImage;
-        
-        
-    }
-    
+    /** Scale Function **
+     * is needed to scale the floorplan in the container
+     * Padding for container can be set
+     **/
     func getScaleFactor(oWidth: CGFloat, oHeight: CGFloat, padding: CGFloat) -> CGFloat {
-        var iWidth: CGFloat = 360
-        var iHeight: CGFloat = 290
+        var scaleFactor: CGFloat = (self.containerWidth - padding) / oWidth;
         
-        var scaleFactor: CGFloat = (iWidth - padding) / oWidth;
+        let newHeight: CGFloat = oHeight * scaleFactor;
+        //var newWidth: CGFloat = oWidth * scaleFactor;
         
-        var newHeight: CGFloat = oHeight * scaleFactor;
-        var newWidth: CGFloat = oWidth * scaleFactor;
-        
-        if newHeight > (iHeight - padding) {
-            scaleFactor = (iHeight - padding) / oHeight
-            newHeight = oHeight * scaleFactor
-            newWidth = oWidth * scaleFactor
+        if newHeight > (self.containerHeight - padding) {
+            scaleFactor = (self.containerHeight - padding) / oHeight
+            //newHeight = oHeight * scaleFactor
+            //newWidth = oWidth * scaleFactor
         }
     
         return scaleFactor;
@@ -633,11 +605,11 @@ class RaumvermesserBot: UIViewController {
      **/
     func saveLastData(){
         
-        self.prefs.setValue(String(walls.count), forKey: "wallSize")
+        self.prefs.setInteger(walls.count, forKey: "wallSize")
         
         //iterate over walls and save wall length in database
         for wall in self.walls{
-            self.prefs.setValue(String(wall.length), forKey: "wallLength" + String(wall.item))
+            self.prefs.setFloat(wall.length, forKey: "wallLength" + String(wall.item))
         }
         
         self.prefs.synchronize()
@@ -652,23 +624,24 @@ class RaumvermesserBot: UIViewController {
      **/
     func getLastData(){
         
-        if let wallSize: String = NSUserDefaults.standardUserDefaults().stringForKey("wallSize") {
-            print("Previous WallSize: " + wallSize)
-        
-            for (var i = 0; i < Int(wallSize); i++){
-                print("Das hier ist gerade dran: " + String(i))
-                let lengthString: String = self.prefs.stringForKey("wallLength" + String(i))!
-                let newLength: Float = Float(lengthString)!
+        if let wallSize: Int = NSUserDefaults.standardUserDefaults().integerForKey("wallSize") {
+            if(wallSize != 0){
+                print("Previous WallSize: \(wallSize)")
+            
+                for (var i = 0; i < wallSize; i++){
+                    print("Das hier ist gerade dran: " + String(i))
+                    let length: Float = self.prefs.floatForKey("wallLength" + String(i))
 
-                var newWall: Wall = Wall()
-                newWall.length = newLength
-                self.walls.append(newWall)
-                self.walls[walls.count - 1].points = self.calcWallPoints(walls.count - 1)
-                
+                    var newWall: Wall = Wall()
+                    newWall.length = length
+                    self.walls.append(newWall)
+                    self.walls[walls.count - 1].points = self.calcWallPoints(walls.count - 1)
+                    
+                }
+     
+                self.drawFloorPlan()
+                self.calcArea()
             }
- 
-            self.drawFloorPlan()
-            self.calcArea()
         }
 
     }
