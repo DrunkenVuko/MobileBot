@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A60AA2DB1C68C73D003166D7 /* Measure_patrol.png in Resources */ = {isa = PBXBuildFile; fileRef = A60AA2D91C68C73D003166D7 /* Measure_patrol.png */; };
+		A60AA2DC1C68C73D003166D7 /* Measure_scan.png in Resources */ = {isa = PBXBuildFile; fileRef = A60AA2DA1C68C73D003166D7 /* Measure_scan.png */; };
 		A66C92691C4FE9C7009E9CAF /* BabysitterBot.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66C92681C4FE9C7009E9CAF /* BabysitterBot.swift */; };
 		AF632AC41C5117F700270027 /* RaumvermesserBot.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF632AC31C5117F700270027 /* RaumvermesserBot.swift */; };
 		B84142191C070EED007E4270 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84142181C070EED007E4270 /* AppDelegate.swift */; };
@@ -121,6 +123,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A60AA2D91C68C73D003166D7 /* Measure_patrol.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Measure_patrol.png; sourceTree = "<group>"; };
+		A60AA2DA1C68C73D003166D7 /* Measure_scan.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Measure_scan.png; sourceTree = "<group>"; };
 		A66C92681C4FE9C7009E9CAF /* BabysitterBot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BabysitterBot.swift; sourceTree = "<group>"; };
 		AF632AC31C5117F700270027 /* RaumvermesserBot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RaumvermesserBot.swift; sourceTree = "<group>"; };
 		B84142151C070EED007E4270 /* MobileBot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MobileBot.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -484,6 +488,8 @@
 		B87C40B01C60E69B006CE2D0 /* Measure */ = {
 			isa = PBXGroup;
 			children = (
+				A60AA2D91C68C73D003166D7 /* Measure_patrol.png */,
+				A60AA2DA1C68C73D003166D7 /* Measure_scan.png */,
 				B87C40D11C60EB93006CE2D0 /* Measure_a_label.png */,
 				B87C40CD1C60E876006CE2D0 /* Measure_Line.png */,
 				B87C40B21C60E6A3006CE2D0 /* Measure_A.png */,
@@ -668,6 +674,8 @@
 				B87C40CA1C60E6A3006CE2D0 /* Measure_Servo.png in Resources */,
 				B86940A91C5FDC2900EBC4D2 /* ParkingBot_Stop.png in Resources */,
 				B869409A1C5FD85C00EBC4D2 /* Babysitter_Stop.png in Resources */,
+				A60AA2DC1C68C73D003166D7 /* Measure_scan.png in Resources */,
+				A60AA2DB1C68C73D003166D7 /* Measure_patrol.png in Resources */,
 				B87C40C91C60E6A3006CE2D0 /* Measure_Label.png in Resources */,
 				B86940731C5F9E8F00EBC4D2 /* LogIn_IP.png in Resources */,
 				B86940A41C5FDC2900EBC4D2 /* ParkingBot_Beacon.png in Resources */,

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="IOf-7S-mOe">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="IOf-7S-mOe">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -624,7 +624,7 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DFH-Y0-LI1">
                                 <rect key="frame" x="37" y="135" width="91" height="91"/>
-                                <state key="normal" title="Start Baby" image="Babysitter_Start.png"/>
+                                <state key="normal" title="Start Baby" image="Measure_patrol.png"/>
                                 <connections>
                                     <action selector="start:" destination="wGc-ko-QeX" eventType="touchUpInside" id="GcA-3o-XvK"/>
                                 </connections>
@@ -638,7 +638,7 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TYn-uW-MeH">
                                 <rect key="frame" x="166" y="135" width="91" height="91"/>
-                                <state key="normal" title="Start Scan Baby" image="Babysitter_Start2.png"/>
+                                <state key="normal" title="Start Scan Baby" image="Measure_scan.png"/>
                                 <connections>
                                     <action selector="startWatch:" destination="wGc-ko-QeX" eventType="touchUpInside" id="3wE-Gx-9Xb"/>
                                 </connections>
@@ -814,8 +814,6 @@
     <resources>
         <image name="Babysitter_Back.png" width="597" height="643"/>
         <image name="Babysitter_Label.png" width="812" height="204"/>
-        <image name="Babysitter_Start.png" width="597" height="663"/>
-        <image name="Babysitter_Start2.png" width="561" height="663"/>
         <image name="Babysitter_Stop.png" width="561" height="643"/>
         <image name="LogIn_IP.png" width="137" height="106"/>
         <image name="LogIn_Label.png" width="821" height="209"/>
@@ -835,6 +833,8 @@
         <image name="Measure_b.png" width="150" height="84"/>
         <image name="Measure_c.png" width="150" height="82"/>
         <image name="Measure_d.png" width="150" height="84"/>
+        <image name="Measure_patrol.png" width="516" height="625"/>
+        <image name="Measure_scan.png" width="516" height="625"/>
         <image name="Office1_Back.png" width="308" height="375"/>
         <image name="Office1_Go.png" width="321" height="365"/>
         <image name="Office1_Label.png" width="893" height="176"/>
@@ -863,7 +863,7 @@
         <image name="background.jpg" width="1080" height="1920"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="ylk-fP-Hqc"/>
+        <segue reference="epf-xT-H2v"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
 </document>
