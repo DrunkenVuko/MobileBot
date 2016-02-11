@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="IOf-7S-mOe">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="IOf-7S-mOe">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -131,38 +131,84 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="background.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="yBu-Mp-dYo">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="yBu-Mp-dYo">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Office1_Label.png" translatesAutoresizingMaskIntoConstraints="NO" id="rDd-Yc-o71">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Office1_Label.png" translatesAutoresizingMaskIntoConstraints="NO" id="rDd-Yc-o71">
                                 <rect key="frame" x="87" y="28" width="283" height="79"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="79" id="No9-vM-UQ4"/>
+                                </constraints>
                             </imageView>
-                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4Gl-3c-1Qm">
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Gl-3c-1Qm">
                                 <rect key="frame" x="179" y="107" width="0.0" height="216"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" id="c5L-dh-HMQ"/>
+                                </constraints>
                             </pickerView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DZH-2G-jNL">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DZH-2G-jNL">
                                 <rect key="frame" x="20" y="605" width="103" height="111"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="111" id="97d-5s-Iml"/>
+                                    <constraint firstAttribute="width" constant="103" id="dGh-8c-RLF"/>
+                                </constraints>
                                 <state key="normal" image="Office1_Back.png"/>
                                 <connections>
                                     <segue destination="f9E-4d-Z3P" kind="show" id="WOY-OO-6ts"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Office1_Text.png" translatesAutoresizingMaskIntoConstraints="NO" id="2ZH-T7-UZe">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Office1_Text.png" translatesAutoresizingMaskIntoConstraints="NO" id="2ZH-T7-UZe">
                                 <rect key="frame" x="107" y="179" width="200" height="55"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="55" id="icQ-tQ-6ej"/>
+                                </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QuJ-RH-8gi">
-                                <rect key="frame" x="137" y="242" width="141" height="138"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QuJ-RH-8gi">
+                                <rect key="frame" x="137" y="478" width="141" height="138"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="138" id="Qls-Gx-fFj"/>
+                                </constraints>
                                 <state key="normal" title="Weiter" image="Office1_Go.png"/>
                                 <connections>
                                     <segue destination="C6P-La-9rR" kind="show" identifier="sendRobo" id="BNV-N1-yHb"/>
                                 </connections>
                             </button>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j2y-OF-0EN">
+                                <rect key="frame" x="0.0" y="260" width="414" height="170"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="2SY-Ii-jdb" id="emb-wd-atA"/>
+                                    <outlet property="delegate" destination="2SY-Ii-jdb" id="CFC-gw-Zz3"/>
+                                </connections>
+                            </pickerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="2ZH-T7-UZe" firstAttribute="leading" secondItem="zPf-kw-MAU" secondAttribute="leadingMargin" constant="87" id="2y8-IU-m9w"/>
+                            <constraint firstItem="j2y-OF-0EN" firstAttribute="top" secondItem="2ZH-T7-UZe" secondAttribute="bottom" constant="26" id="8Vs-Cl-3we"/>
+                            <constraint firstItem="QuJ-RH-8gi" firstAttribute="top" secondItem="j2y-OF-0EN" secondAttribute="bottom" constant="48" id="8fm-bK-UKu"/>
+                            <constraint firstItem="b0r-FJ-KJn" firstAttribute="top" secondItem="QuJ-RH-8gi" secondAttribute="bottom" constant="120" id="MCo-lM-cym"/>
+                            <constraint firstItem="4Gl-3c-1Qm" firstAttribute="top" secondItem="zPf-kw-MAU" secondAttribute="top" constant="107" id="POM-1U-Uix"/>
+                            <constraint firstItem="rDd-Yc-o71" firstAttribute="top" secondItem="t5C-mv-e2X" secondAttribute="bottom" constant="8" symbolic="YES" id="QSy-XI-SCJ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="rDd-Yc-o71" secondAttribute="trailing" constant="24" id="Rmk-py-2VY"/>
+                            <constraint firstItem="yBu-Mp-dYo" firstAttribute="trailing" secondItem="j2y-OF-0EN" secondAttribute="trailing" id="YBc-Wr-lNd"/>
+                            <constraint firstItem="yBu-Mp-dYo" firstAttribute="top" secondItem="zPf-kw-MAU" secondAttribute="top" id="an3-c6-7ap"/>
+                            <constraint firstAttribute="trailing" secondItem="yBu-Mp-dYo" secondAttribute="trailing" id="ax3-Oy-nei"/>
+                            <constraint firstItem="yBu-Mp-dYo" firstAttribute="leading" secondItem="j2y-OF-0EN" secondAttribute="leading" id="dHO-EM-szt"/>
+                            <constraint firstItem="rDd-Yc-o71" firstAttribute="leading" secondItem="zPf-kw-MAU" secondAttribute="leadingMargin" constant="67" id="hhV-De-lIu"/>
+                            <constraint firstAttribute="bottom" secondItem="DZH-2G-jNL" secondAttribute="bottom" constant="20" symbolic="YES" id="kaS-GL-kf1"/>
+                            <constraint firstItem="4Gl-3c-1Qm" firstAttribute="leading" secondItem="zPf-kw-MAU" secondAttribute="leading" constant="179" id="mbM-ZS-IxL"/>
+                            <constraint firstItem="2ZH-T7-UZe" firstAttribute="top" secondItem="rDd-Yc-o71" secondAttribute="bottom" constant="72" id="rZz-Ev-hg2"/>
+                            <constraint firstItem="yBu-Mp-dYo" firstAttribute="leading" secondItem="zPf-kw-MAU" secondAttribute="leading" id="wJA-by-L4i"/>
+                            <constraint firstItem="DZH-2G-jNL" firstAttribute="leading" secondItem="zPf-kw-MAU" secondAttribute="leadingMargin" id="wVJ-BG-CiL"/>
+                            <constraint firstItem="j2y-OF-0EN" firstAttribute="centerX" secondItem="QuJ-RH-8gi" secondAttribute="centerX" id="wiZ-hf-4Zo"/>
+                            <constraint firstItem="QuJ-RH-8gi" firstAttribute="leading" secondItem="DZH-2G-jNL" secondAttribute="trailing" constant="14" id="xZg-9i-mie"/>
+                            <constraint firstItem="yBu-Mp-dYo" firstAttribute="bottom" secondItem="b0r-FJ-KJn" secondAttribute="top" id="y0I-fB-RUe"/>
+                            <constraint firstItem="2ZH-T7-UZe" firstAttribute="centerX" secondItem="j2y-OF-0EN" secondAttribute="centerX" id="zw9-ZN-FkL"/>
+                        </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
-                        <outlet property="pickerView" destination="4Gl-3c-1Qm" id="brL-gt-xob"/>
+                        <outlet property="pickerView" destination="j2y-OF-0EN" id="4mG-rI-rHd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ALy-qZ-H2U" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -600,7 +646,7 @@
         <!--Babysitter Bot-->
         <scene sceneID="Lvy-YX-fEC">
             <objects>
-                <viewController id="wGc-ko-QeX" customClass="BabysitterBot" sceneMemberID="viewController">
+                <viewController id="wGc-ko-QeX" customClass="BabysitterBot" customModule="MobileBot" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Aip-tL-ecU"/>
                         <viewControllerLayoutGuide type="bottom" id="KFh-8Y-ekh"/>
@@ -863,7 +909,7 @@
         <image name="background.jpg" width="1080" height="1920"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="epf-xT-H2v"/>
+        <segue reference="b1J-E5-joi"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
 </document>
