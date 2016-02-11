@@ -317,7 +317,7 @@ class RaumvermesserBot: UIViewController {
                     self!.bc?.stop({})
                     tempWall.item = self!.whichWall
                     tempWall.ping = data.pingDistance
-                    self!.pingDistance = data.pingDistance
+                    self!.pingDistance = Float(data.pingDistance)
                     
                     self!.newWall(tempWall, i: self!.whichWall)
                     
