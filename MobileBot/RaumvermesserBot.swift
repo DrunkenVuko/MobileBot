@@ -43,6 +43,7 @@ class RaumvermesserBot: UIViewController {
     var whichWall: Int = 0
     var velocity: Float = 5
     var finished: Bool = true
+    var pingDistance: Float = 0
     
     struct Wall {
         //wall ping distance
@@ -316,6 +317,7 @@ class RaumvermesserBot: UIViewController {
                     self!.bc?.stop({})
                     tempWall.item = self!.whichWall
                     tempWall.ping = data.pingDistance
+                    self!.pingDistance = data.pingDistance
                     
                     self!.newWall(tempWall, i: self!.whichWall)
                     
@@ -406,8 +408,9 @@ class RaumvermesserBot: UIViewController {
      * Calculates Wall Length, with Bot velocity and driven time
      **/
     func calcWallLength()-> Float{
-        /*@todo add pingdistance */
         let length: Float = ( self.velocity * Float(self.counterSingle) )
+        /*@todo add pingdistance */
+        //let length: Float = ( self.velocity * Float(self.counterSingle) ) + self.pingDistance
         return length
     }
     
